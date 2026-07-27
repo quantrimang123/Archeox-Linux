@@ -5,6 +5,7 @@ iso_name="ILVLinux-baseline"
 iso_label="ARCH_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
 iso_publisher="ILV Linux <hd070812@gmail.com>"
 iso_application="ILV Linux baseline"
+iso_version="live"
 iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)"
 install_dir="arch"
 buildmodes=('iso')
