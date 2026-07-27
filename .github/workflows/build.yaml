@@ -2,7 +2,7 @@ name: Build ILV Linux ISO
 
 on:
   schedule:
-     - cron:  '0 0 */7 * *'
+    - cron:  '0 0 */7 * *'
   workflow_dispatch:
     inputs:
       dev:
