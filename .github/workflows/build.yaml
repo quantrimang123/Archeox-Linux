@@ -2,6 +2,9 @@ name: Build ILV Linux ISO
 
 on:
   workflow_dispatch:
+  schedule:
+  - cron:  '0 0 */7 * *'
+
     inputs:
       dev:
         description: "Run as development?"
