@@ -1,12 +1,10 @@
 base
-cloud-init
-hyperv
 linux
 mkinitcpio
 mkinitcpio-archiso
-open-vm-tools
-openssh
-pv
-qemu-guest-agent
+nano
 syslinux
-virtualbox-guest-utils-nox
+git
+python
+base-devel
+go
