@@ -1,10 +1,10 @@
-# Install omarchy SDDM theme
+# Install ILV SDDM theme
 omarchy-refresh-sddm
 
 # Setup SDDM login service
 sudo mkdir -p /usr/local/share/wayland-sessions
-sudo cp "$OMARCHY_PATH/default/wayland-sessions/omarchy.desktop" /usr/local/share/wayland-sessions/omarchy.desktop
-sudo cp "$OMARCHY_PATH/default/sddm/hyprland.conf" /usr/share/sddm/hyprland.conf
+sudo cp "$ILV_PATH/default/wayland-sessions/omarchy.desktop" /usr/local/share/wayland-sessions/omarchy.desktop
+sudo cp "$ILV_PATH/default/sddm/hyprland.conf" /usr/share/sddm/hyprland.conf
 
 sudo mkdir -p /etc/sddm.conf.d
 cat <<EOF | sudo tee /etc/sddm.conf.d/10-wayland.conf >/dev/null
@@ -19,7 +19,7 @@ if [[ ! -f /etc/sddm.conf.d/autologin.conf ]]; then
   cat <<EOF | sudo tee /etc/sddm.conf.d/autologin.conf
 [Autologin]
 User=$USER
-Session=omarchy
+Session=ILV
 
 [Theme]
 Current=omarchy
