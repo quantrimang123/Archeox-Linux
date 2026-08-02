@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# omarchy:summary=Run all pending migrations to bring the system in line with the installed version.
+# ILV:summary=Run all pending migrations to bring the system in line with the installed version.
 
-STATE_DIR="$HOME/.local/state/omarchy/migrations"
+STATE_DIR="$HOME/.local/state/ILV/migrations"
 mkdir -p "$STATE_DIR"
 
 # Skipped migrations are tracked separately

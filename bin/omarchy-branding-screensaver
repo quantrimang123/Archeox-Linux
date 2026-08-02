@@ -1,28 +1,28 @@
 #!/bin/bash
 
-# omarchy:summary=Edit, set, or reset screensaver branding
-# omarchy:group=branding
-# omarchy:name=screensaver
-# omarchy:args=<image|text|reset>
-# omarchy:examples=omarchy branding screensaver image | omarchy branding screensaver text | omarchy branding screensaver reset
+# ILV:summary=Edit, set, or reset screensaver branding
+# ILV:group=branding
+# ILV:name=screensaver
+# ILV:args=<image|text|reset>
+# ILV:examples=ILV branding screensaver image | ILV branding screensaver text | ILV branding screensaver reset
 
 set -euo pipefail
 
 case "${1:-}" in
 image)
-  image=$(omarchy-menu-file "Logo image" "$HOME" "svg png")
-  if [[ -n $image ]] && omarchy-transcode-ascii "$image" ~/.config/omarchy/branding/screensaver.txt; then
-    omarchy-launch-screensaver force >/dev/null 2>&1
+  image=$(ILV-menu-file "Logo image" "$HOME" "svg png")
+  if [[ -n $image ]] && ILV-transcode-ascii "$image" ~/.config/ILV/branding/screensaver.txt; then
+    ILV-launch-screensaver force >/dev/null 2>&1
   fi
   ;;
 text)
-  omarchy-launch-editor ~/.config/omarchy/branding/screensaver.txt >/dev/null 2>&1 && omarchy-launch-screensaver force >/dev/null 2>&1
+  ILV-launch-editor ~/.config/ILV/branding/screensaver.txt >/dev/null 2>&1 && ILV-launch-screensaver force >/dev/null 2>&1
   ;;
 reset)
-  cp "$OMARCHY_PATH/logo.txt" ~/.config/omarchy/branding/screensaver.txt && omarchy-launch-screensaver force >/dev/null 2>&1
+  cp "$OMARCHY_PATH/logo.txt" ~/.config/ILV/branding/screensaver.txt && ILV-launch-screensaver force >/dev/null 2>&1
   ;;
 *)
-  echo "Usage: omarchy-branding-screensaver <image|text|reset>" >&2
+  echo "Usage: ILV-branding-screensaver <image|text|reset>" >&2
   exit 1
   ;;
 esac

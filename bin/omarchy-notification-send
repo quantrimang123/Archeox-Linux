@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# omarchy:summary=Send a desktop notification with Omarchy glyph and body spacing
-# omarchy:args=<glyph> <headline> [description] [notify-send options]
-# omarchy:examples=omarchy notification send "󰔛" "Reminder" "5 minutes are up" -u critical
+# ILV:summary=Send a desktop notification with Omarchy glyph and body spacing
+# ILV:args=<glyph> <headline> [description] [notify-send options]
+# ILV:examples=ILV notification send "󰔛" "Reminder" "5 minutes are up" -u critical
 
 set -euo pipefail
 
 if (($# < 2)); then
-  echo "Usage: omarchy-notification-send <glyph> <headline> [description] [notify-send options]"
+  echo "Usage: ILV-notification-send <glyph> <headline> [description] [notify-send options]"
   exit 1
 fi
 

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# omarchy:summary=Launch a TUI or focus an existing terminal window for it
-# omarchy:args=<command> [args...]
+# ILV:summary=Launch a TUI or focus an existing terminal window for it
+# ILV:args=<command> [args...]
 
-APP_ID="org.omarchy.$(basename "$1")"
-LAUNCH_COMMAND="omarchy-launch-tui $@"
+APP_ID="org.ILV.$(basename "$1")"
+LAUNCH_COMMAND="ILV-launch-tui $@"
 
-exec omarchy-launch-or-focus "$APP_ID" "$LAUNCH_COMMAND"
+exec ILV-launch-or-focus "$APP_ID" "$LAUNCH_COMMAND"

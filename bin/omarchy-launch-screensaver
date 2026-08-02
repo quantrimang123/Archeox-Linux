@@ -1,23 +1,23 @@
 #!/bin/bash
 
-# omarchy:summary=Launch the Omarchy screensaver in the default terminal on the system with the correct font configuration.
+# ILV:summary=Launch the Omarchy screensaver in the default terminal on the system with the correct font configuration.
 
 if ! command -v tte &>/dev/null; then
   exit 1
 fi
 
 # Exit early if screensave is already running
-pgrep -f org.omarchy.screensaver && exit 0
+pgrep -f org.ILV.screensaver && exit 0
 
 # Allow screensaver to be turned off but also force started
-if omarchy-toggle-enabled screensaver-off && [[ $1 != "force" ]]; then
+if ILV-toggle-enabled screensaver-off && [[ $1 != "force" ]]; then
   exit 1
 fi
 
 # Silently quit Walker on overlay
 walker -q
 
-focused=$(omarchy-hyprland-monitor-focused)
+focused=$(ILV-hyprland-monitor-focused)
 terminal=$(xdg-terminal-exec --print-id)
 
 for m in $(hyprctl monitors -j | jq -r '.[] | .name'); do
@@ -26,29 +26,29 @@ for m in $(hyprctl monitors -j | jq -r '.[] | .name'); do
   case $terminal in
   *Alacritty*)
     hyprctl dispatch exec -- \
-      alacritty --class=org.omarchy.screensaver \
-      --config-file ~/.local/share/omarchy/default/alacritty/screensaver.toml \
-      -e omarchy-screensaver
+      alacritty --class=org.ILV.screensaver \
+      --config-file ~/.local/share/ILV/default/alacritty/screensaver.toml \
+      -e ILV-screensaver
     ;;
   *ghostty*)
     hyprctl dispatch exec -- \
-      ghostty --class=org.omarchy.screensaver \
-      --config-file=~/.local/share/omarchy/default/ghostty/screensaver \
+      ghostty --class=org.ILV.screensaver \
+      --config-file=~/.local/share/ILV/default/ghostty/screensaver \
       --font-size=18 \
-      -e omarchy-screensaver
+      -e ILV-screensaver
     ;;
   *foot*)
     hyprctl dispatch exec -- \
-      foot --app-id=org.omarchy.screensaver \
+      foot --app-id=org.ILV.screensaver \
       --config="$OMARCHY_PATH/default/foot/screensaver.ini" \
-      -e omarchy-screensaver
+      -e ILV-screensaver
     ;;
   *kitty*)
     hyprctl dispatch exec -- \
-      kitty --class=org.omarchy.screensaver \
+      kitty --class=org.ILV.screensaver \
       --override font_size=18 \
       --override window_padding_width=0 \
-      -e omarchy-screensaver
+      -e ILV-screensaver
     ;;
   *)
     notify-send -u low "✋  Screensaver only runs in Alacritty, Foot, Ghostty, or Kitty"

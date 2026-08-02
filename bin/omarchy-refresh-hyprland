@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# omarchy:summary=Overwrite all the user configs in ~/.config/hypr with the Omarchy defaults.
+# ILV:summary=Overwrite all the user configs in ~/.config/hypr with the Omarchy defaults.
 
-omarchy-refresh-config hypr/autostart.conf
-omarchy-refresh-config hypr/bindings.conf
-omarchy-refresh-config hypr/input.conf
-omarchy-refresh-config hypr/looknfeel.conf
-omarchy-refresh-config hypr/hyprland.conf
-omarchy-refresh-config hypr/monitors.conf
+ILV-refresh-config hypr/autostart.conf
+ILV-refresh-config hypr/bindings.conf
+ILV-refresh-config hypr/input.conf
+ILV-refresh-config hypr/looknfeel.conf
+ILV-refresh-config hypr/hyprland.conf
+ILV-refresh-config hypr/monitors.conf
 bash "$OMARCHY_PATH/install/config/detect-keyboard-layout.sh"

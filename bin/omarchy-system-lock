@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# omarchy:summary=Lock the computer and turn off the display
-# omarchy:group=system
-# omarchy:name=lock
-# omarchy:examples=omarchy system lock
+# ILV:summary=Lock the computer and turn off the display
+# ILV:group=system
+# ILV:name=lock
+# ILV:examples=ILV system lock
 
 if ! pidof hyprlock >/dev/null; then
   (
     hyprlock
-    omarchy-system-wake
+    ILV-system-wake
   ) &
 fi
 
@@ -21,13 +21,13 @@ if pgrep -x "1password" >/dev/null; then
 fi
 
 # Avoid running screensaver when locked
-pkill -f org.omarchy.screensaver
+pkill -f org.ILV.screensaver
 
 if [[ ${OMARCHY_LOCK_ONLY:-false} != "true" ]]; then
   (
     sleep 3
     pidof hyprlock >/dev/null || exit 0
-    omarchy-brightness-keyboard off
-    omarchy-brightness-display off
+    ILV-brightness-keyboard off
+    ILV-brightness-display off
   ) &
 fi

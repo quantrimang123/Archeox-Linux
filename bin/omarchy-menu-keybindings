@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# omarchy:summary=Display Hyprland keybindings defined in your configuration using walker for an interactive search menu.
+# ILV:summary=Display Hyprland keybindings defined in your configuration using walker for an interactive search menu.
 
 declare -A KEYCODE_SYM_MAP
 
@@ -101,7 +101,7 @@ dynamic_bindings() {
       if (key == "" && f["keycode"] != "0") key = "code:" f["keycode"]
 
       arg = f["arg"]
-      sub(/~\/.local\/share\/omarchy\/bin\//, "", arg)
+      sub(/~\/.local\/share\/ILV\/bin\//, "", arg)
       sub(/uwsm(-app| app) -- /, "", arg)
 
       modifiers = (f["modmask"] in mod_text) ? mod_text[f["modmask"]] : f["modmask"]

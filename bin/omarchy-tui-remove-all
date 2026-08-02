@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# omarchy:summary=Remove all TUIs installed via omarchy-tui-install.
+# ILV:summary=Remove all TUIs installed via ILV-tui-install.
 
 set -e
 

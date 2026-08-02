@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# omarchy:summary=Remove Steam and all of its game libraries, configs, and caches.
-# omarchy:requires-sudo=true
+# ILV:summary=Remove Steam and all of its game libraries, configs, and caches.
+# ILV:requires-sudo=true
 
 set -e
 
-omarchy-pkg-drop steam
+ILV-pkg-drop steam
 
 rm -rf \
   "$HOME/.steam" \

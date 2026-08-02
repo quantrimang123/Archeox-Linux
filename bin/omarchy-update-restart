@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# omarchy:summary=Prompt for required reboot or service restarts after updates
+# ILV:summary=Prompt for required reboot or service restarts after updates
 
 echo
 
@@ -19,22 +19,22 @@ for kernel in /usr/lib/modules/*/vmlinuz; do
 done
 
 if [[ $kernel_updated == "true" ]]; then
-  gum confirm "Linux kernel has been updated. Reboot?" && omarchy-system-reboot
-elif [[ -f $HOME/.local/state/omarchy/reboot-required ]]; then
-  gum confirm "Updates require reboot. Ready?" && omarchy-system-reboot
+  gum confirm "Linux kernel has been updated. Reboot?" && ILV-system-reboot
+elif [[ -f $HOME/.local/state/ILV/reboot-required ]]; then
+  gum confirm "Updates require reboot. Ready?" && ILV-system-reboot
 fi
 
 running_hyprland=$(readlink /proc/$(pgrep -x Hyprland)/exe 2>/dev/null)
 if [[ $running_hyprland == *"(deleted)"* ]]; then
-  gum confirm "Hyprland has been updated. Reboot?" && omarchy-system-reboot
+  gum confirm "Hyprland has been updated. Reboot?" && ILV-system-reboot
 fi
 
-for file in "$HOME"/.local/state/omarchy/restart-*-required; do
+for file in "$HOME"/.local/state/ILV/restart-*-required; do
   if [[ -f $file ]]; then
     filename=$(basename "$file")
     service=$(echo "$filename" | sed 's/restart-\(.*\)-required/\1/')
     echo "Restarting $service"
-    omarchy-state clear "$filename"
-    omarchy-restart-"$service"
+    ILV-state clear "$filename"
+    ILV-restart-"$service"
   fi
 done

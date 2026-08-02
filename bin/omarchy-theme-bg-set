@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# omarchy:summary=Set the current background image
-# omarchy:args=<path-to-image>
-# omarchy:examples=omarchy theme bg set ~/Pictures/wallpaper.png
+# ILV:summary=Set the current background image
+# ILV:args=<path-to-image>
+# ILV:examples=ILV theme bg set ~/Pictures/wallpaper.png
 
 if [[ -z $1 ]]; then
-  echo "Usage: omarchy-theme-bg-set <path-to-image>" >&2
+  echo "Usage: ILV-theme-bg-set <path-to-image>" >&2
   exit 1
 fi
 
 BACKGROUND="$(realpath "$1")"
-CURRENT_BACKGROUND_LINK="$HOME/.config/omarchy/current/background"
+CURRENT_BACKGROUND_LINK="$HOME/.config/ILV/current/background"
 
 if [[ ! -f "$BACKGROUND" ]]; then
   echo "File does not exist: $BACKGROUND" >&2

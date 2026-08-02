@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# omarchy:summary=Pick one option with Walker
-# omarchy:group=menu
-# omarchy:name=select
-# omarchy:args=prompt option... [-- walker args...]
-# omarchy:examples=omarchy menu select Format jpg png|omarchy-menu-select Resolution 4k 1080p 720p -- --width 400
+# ILV:summary=Pick one option with Walker
+# ILV:group=menu
+# ILV:name=select
+# ILV:args=prompt option... [-- walker args...]
+# ILV:examples=ILV menu select Format jpg png|ILV-menu-select Resolution 4k 1080p 720p -- --width 400
 
 set -euo pipefail
 
 if (( $# < 2 )); then
-  echo "Usage: omarchy-menu-select <prompt> <option>... [-- walker args...]" >&2
+  echo "Usage: ILV-menu-select <prompt> <option>... [-- walker args...]" >&2
   exit 1
 fi
 
@@ -31,8 +31,8 @@ while (( $# > 0 )); do
 done
 
 if (( ${#options[@]} == 0 )); then
-  echo "Usage: omarchy-menu-select <prompt> <option>... [-- walker args...]" >&2
+  echo "Usage: ILV-menu-select <prompt> <option>... [-- walker args...]" >&2
   exit 1
 fi
 
-printf '%s\n' "${options[@]}" | omarchy-launch-walker --dmenu --width 295 --minheight 1 --maxheight 300 -p "$prompt…" "${walker_args[@]}" 2>/dev/null
+printf '%s\n' "${options[@]}" | ILV-launch-walker --dmenu --width 295 --minheight 1 --maxheight 300 -p "$prompt…" "${walker_args[@]}" 2>/dev/null

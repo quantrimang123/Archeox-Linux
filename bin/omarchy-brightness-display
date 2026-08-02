@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# omarchy:summary=Adjust brightness on the most likely display device.
-# omarchy:args=<+N%|N%-|N%|off|on>
-# omarchy:examples=omarchy brightness display +5% | omarchy brightness display 5%- | omarchy brightness display 50% | omarchy brightness display off | omarchy brightness display on
+# ILV:summary=Adjust brightness on the most likely display device.
+# ILV:args=<+N%|N%-|N%|off|on>
+# ILV:examples=ILV brightness display +5% | ILV brightness display 5%- | ILV brightness display 50% | ILV brightness display off | ILV brightness display on
 
 step="${1:-+5%}"
 
@@ -23,8 +23,8 @@ elif [[ $step == "on" ]]; then
   exit 0
 fi
 
-if omarchy-hyprland-monitor-focused-apple; then
-  omarchy-brightness-display-apple "$step"
+if ILV-hyprland-monitor-focused-apple; then
+  ILV-brightness-display-apple "$step"
   exit
 fi
 
@@ -57,4 +57,4 @@ fi
 brightnessctl -d "$device" set "$step" >/dev/null
 
 # Use SwayOSD to display the new brightness setting.
-omarchy-swayosd-brightness "$(brightnessctl -d "$device" -m | cut -d',' -f4 | tr -d '%')"
+ILV-swayosd-brightness "$(brightnessctl -d "$device" -m | cut -d',' -f4 | tr -d '%')"

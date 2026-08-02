@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# omarchy:summary=Launch the Omarchy Menu or takes a parameter to jump straight to a submenu.
+# ILV:summary=Launch the Omarchy Menu or takes a parameter to jump straight to a submenu.
 
 # Set to true when going directly to a submenu, so we can exit directly
 BACK_TO_EXIT=false
@@ -40,54 +40,54 @@ menu() {
     fi
   fi
 
-  echo -e "$options" | omarchy-launch-walker --dmenu --width 295 --minheight 1 --maxheight 630 -p "$prompt…" "${args[@]}" 2>/dev/null
+  echo -e "$options" | ILV-launch-walker --dmenu --width 295 --minheight 1 --maxheight 630 -p "$prompt…" "${args[@]}" 2>/dev/null
 }
 
 terminal() {
-  xdg-terminal-exec --app-id=org.omarchy.terminal "$@"
+  xdg-terminal-exec --app-id=org.ILV.terminal "$@"
 }
 
 present_terminal() {
-  omarchy-launch-floating-terminal-with-presentation $1
+  ILV-launch-floating-terminal-with-presentation $1
 }
 
 open_in_editor() {
   notify-send -u low "Editing config file" "$1"
-  omarchy-launch-editor "$1"
+  ILV-launch-editor "$1"
 }
 
 install() {
-  present_terminal "echo 'Installing $1...'; omarchy-pkg-add $2"
+  present_terminal "echo 'Installing $1...'; ILV-pkg-add $2"
 }
 
 install_and_launch() {
-  present_terminal "echo 'Installing $1...'; omarchy-pkg-add $2 && setsid gtk-launch $3"
+  present_terminal "echo 'Installing $1...'; ILV-pkg-add $2 && setsid gtk-launch $3"
 }
 
 install_font() {
-  present_terminal "echo 'Installing $1...'; omarchy-pkg-add $2 && sleep 2 && omarchy-font-set '$3'"
+  present_terminal "echo 'Installing $1...'; ILV-pkg-add $2 && sleep 2 && ILV-font-set '$3'"
 }
 
 install_terminal() {
-  present_terminal "omarchy-install-terminal $1"
+  present_terminal "ILV-install-terminal $1"
 }
 
 aur_install() {
-  present_terminal "echo 'Installing $1 from AUR...'; omarchy-pkg-aur-add $2"
+  present_terminal "echo 'Installing $1 from AUR...'; ILV-pkg-aur-add $2"
 }
 
 aur_install_and_launch() {
-  present_terminal "echo 'Installing $1 from AUR...'; omarchy-pkg-aur-add $2 && setsid gtk-launch $3"
+  present_terminal "echo 'Installing $1 from AUR...'; ILV-pkg-aur-add $2 && setsid gtk-launch $3"
 }
 
 show_learn_menu() {
   case $(menu "Learn" "  Keybindings\n  Omarchy\n  Hyprland\n󰣇  Arch\n  Neovim\n󱆃  Bash") in
-  *Keybindings*) omarchy-menu-keybindings ;;
-  *Omarchy*) omarchy-launch-webapp "https://learn.omacom.io/2/the-omarchy-manual" ;;
-  *Hyprland*) omarchy-launch-webapp "https://wiki.hypr.land/" ;;
-  *Arch*) omarchy-launch-webapp "https://wiki.archlinux.org/title/Main_page" ;;
-  *Bash*) omarchy-launch-webapp "https://devhints.io/bash" ;;
-  *Neovim*) omarchy-launch-webapp "https://www.lazyvim.org/keymaps" ;;
+  *Keybindings*) ILV-menu-keybindings ;;
+  *Omarchy*) ILV-launch-webapp "https://learn.omacom.io/2/the-ILV-manual" ;;
+  *Hyprland*) ILV-launch-webapp "https://wiki.hypr.land/" ;;
+  *Arch*) ILV-launch-webapp "https://wiki.archlinux.org/title/Main_page" ;;
+  *Bash*) ILV-launch-webapp "https://devhints.io/bash" ;;
+  *Neovim*) ILV-launch-webapp "https://www.lazyvim.org/keymaps" ;;
   *) show_main_menu ;;
   esac
 }
@@ -96,7 +96,7 @@ show_trigger_menu() {
   case $(menu "Trigger" "󰔛  Reminder\n  Capture\n󰧸  Transcode\n  Share\n󰔎  Toggle\n  Hardware") in
   *Reminder*) show_reminder_menu ;;
   *Capture*) show_capture_menu ;;
-  *Transcode*) omarchy-transcode || back_to show_trigger_menu ;;
+  *Transcode*) ILV-transcode || back_to show_trigger_menu ;;
   *Share*) show_share_menu ;;
   *Toggle*) show_toggle_menu ;;
   *Hardware*) show_hardware_menu ;;
@@ -107,20 +107,20 @@ show_trigger_menu() {
 show_reminder_menu() {
   case $(menu "Reminder" "󰔛  Set one\n󰔛  Show all\n󰔛  Clear all") in
   *Set*) show_custom_reminder_input ;;
-  *"Show all"*) omarchy-reminder show ;;
-  *"Clear all"*) omarchy-reminder clear ;;
+  *"Show all"*) ILV-reminder show ;;
+  *"Clear all"*) ILV-reminder clear ;;
   *) back_to show_trigger_menu ;;
   esac
 }
 
 show_custom_reminder_input() {
   local minutes
-  minutes=$(omarchy-menu-input "Remind in minutes")
+  minutes=$(ILV-menu-input "Remind in minutes")
 
   if [[ $minutes =~ ^[0-9]+$ ]] && ((minutes > 0)); then
     show_reminder_message_input "$minutes"
   elif [[ -n $minutes ]]; then
-    omarchy-notification-send "󰔛" "Invalid reminder" "Enter the number of minutes" -u critical
+    ILV-notification-send "󰔛" "Invalid reminder" "Enter the number of minutes" -u critical
     show_custom_reminder_input
   else
     back_to show_reminder_menu
@@ -130,20 +130,20 @@ show_custom_reminder_input() {
 show_reminder_message_input() {
   local minutes="$1"
   local message
-  message=$(omarchy-menu-input "Reminder message")
+  message=$(ILV-menu-input "Reminder message")
 
   if [[ -n $message ]]; then
-    omarchy-reminder "$minutes" "$message"
+    ILV-reminder "$minutes" "$message"
   else
-    omarchy-reminder "$minutes"
+    ILV-reminder "$minutes"
   fi
 }
 
 show_capture_menu() {
   case $(menu "Capture" "  Screenshot\n  Screenrecord\n󰴑  Text Extraction\n󰃉  Color") in
-  *Screenshot*) omarchy-capture-screenshot ;;
+  *Screenshot*) ILV-capture-screenshot ;;
   *Screenrecord*) show_screenrecord_menu ;;
-  *Text*) omarchy-capture-text-extraction ;;
+  *Text*) ILV-capture-text-extraction ;;
   *Color*) pkill hyprpicker || hyprpicker -a ;;
   *) back_to show_trigger_menu ;;
   esac
@@ -177,18 +177,18 @@ show_webcam_select_menu() {
 }
 
 show_screenrecord_menu() {
-  omarchy-capture-screenrecording --stop-recording && exit 0
+  ILV-capture-screenrecording --stop-recording && exit 0
 
   case $(menu "Screenrecord" "  With no audio\n  With desktop audio\n  With desktop + microphone audio\n  With desktop + microphone audio + webcam") in
-  *"With no audio") omarchy-capture-screenrecording ;;
-  *"With desktop audio") omarchy-capture-screenrecording --with-desktop-audio ;;
-  *"With desktop + microphone audio") omarchy-capture-screenrecording --with-desktop-audio --with-microphone-audio ;;
+  *"With no audio") ILV-capture-screenrecording ;;
+  *"With desktop audio") ILV-capture-screenrecording --with-desktop-audio ;;
+  *"With desktop + microphone audio") ILV-capture-screenrecording --with-desktop-audio --with-microphone-audio ;;
   *"With desktop + microphone audio + webcam")
     local device=$(show_webcam_select_menu) || {
       back_to show_capture_menu
       return
     }
-    omarchy-capture-screenrecording --with-desktop-audio --with-microphone-audio --with-webcam --webcam-device="$device"
+    ILV-capture-screenrecording --with-desktop-audio --with-microphone-audio --with-webcam --webcam-device="$device"
     ;;
   *) back_to show_capture_menu ;;
   esac
@@ -196,9 +196,9 @@ show_screenrecord_menu() {
 
 show_share_menu() {
   case $(menu "Share" "  Clipboard\n  File \n  Folder") in
-  *Clipboard*) omarchy-menu-share clipboard ;;
-  *File*) terminal bash -c "omarchy-menu-share file" ;;
-  *Folder*) terminal bash -c "omarchy-menu-share folder" ;;
+  *Clipboard*) ILV-menu-share clipboard ;;
+  *File*) terminal bash -c "ILV-menu-share file" ;;
+  *Folder*) terminal bash -c "ILV-menu-share folder" ;;
   *) back_to show_trigger_menu ;;
   esac
 }
@@ -207,17 +207,17 @@ show_toggle_menu() {
   local options="󱄄  Screensaver\n󰔎  Nightlight\n󱫖  Idle Lock\n󰂛  Notifications\n󰍜  Top Bar\n󱂬  Workspace Layout\n  Window Gaps\n  1-Window Ratio\n󰍹  Monitor Scaling\n  Direct Boot\n󰟵  Passwordless Sudo"
 
   case $(menu "Toggle" "$options") in
-  *Screensaver*) omarchy-toggle-screensaver ;;
-  *Nightlight*) omarchy-toggle-nightlight ;;
-  *Idle*) omarchy-toggle-idle ;;
-  *Notifications*) omarchy-toggle-notification-silencing ;;
-  *Bar*) omarchy-toggle-waybar ;;
-  *Layout*) omarchy-hyprland-workspace-layout-toggle ;;
-  *Ratio*) omarchy-hyprland-window-single-square-aspect-toggle ;;
-  *Gaps*) omarchy-hyprland-window-gaps-toggle ;;
-  *Scaling*) omarchy-hyprland-monitor-scaling-cycle ;;
-  *"Direct Boot"*) present_terminal omarchy-config-direct-boot ;;
-  *"Passwordless Sudo"*) present_terminal omarchy-sudo-passwordless ;;
+  *Screensaver*) ILV-toggle-screensaver ;;
+  *Nightlight*) ILV-toggle-nightlight ;;
+  *Idle*) ILV-toggle-idle ;;
+  *Notifications*) ILV-toggle-notification-silencing ;;
+  *Bar*) ILV-toggle-waybar ;;
+  *Layout*) ILV-hyprland-workspace-layout-toggle ;;
+  *Ratio*) ILV-hyprland-window-single-square-aspect-toggle ;;
+  *Gaps*) ILV-hyprland-window-gaps-toggle ;;
+  *Scaling*) ILV-hyprland-monitor-scaling-cycle ;;
+  *"Direct Boot"*) present_terminal ILV-config-direct-boot ;;
+  *"Passwordless Sudo"*) present_terminal ILV-sudo-passwordless ;;
   *) back_to show_trigger_menu ;;
   esac
 }
@@ -225,29 +225,29 @@ show_toggle_menu() {
 show_hardware_menu() {
   local options="󰛧  Laptop Display\n 󰍹  Mirror Display"
 
-  if omarchy-hw-hybrid-gpu; then
+  if ILV-hw-hybrid-gpu; then
     options="$options\n  Hybrid GPU"
   fi
 
-  if omarchy-hw-touchpad; then
+  if ILV-hw-touchpad; then
     options="$options\n󰟸  Touchpad"
   fi
 
-  if omarchy-hw-dell-xps-haptic-touchpad && omarchy-cmd-present dell-xps-touchpad-haptics; then
+  if ILV-hw-dell-xps-haptic-touchpad && ILV-cmd-present dell-xps-touchpad-haptics; then
     options="$options\n󰌌  Touchpad Haptics"
   fi
 
-  if omarchy-hw-touchscreen; then
+  if ILV-hw-touchscreen; then
     options="$options\n󰆽  Touchscreen"
   fi
 
   case $(menu "Toggle" "$options") in
-  *Laptop*) omarchy-hyprland-monitor-internal toggle ;;
-  *Mirror*) omarchy-hyprland-monitor-internal-mirror toggle ;;
+  *Laptop*) ILV-hyprland-monitor-internal toggle ;;
+  *Mirror*) ILV-hyprland-monitor-internal-mirror toggle ;;
   *Haptics*) show_hardware_touchpad_haptics_menu ;;
-  *Touchpad*) omarchy-toggle-touchpad ;;
-  *Touchscreen*) omarchy-toggle-touchscreen ;;
-  *"Hybrid GPU"*) present_terminal omarchy-toggle-hybrid-gpu ;;
+  *Touchpad*) ILV-toggle-touchpad ;;
+  *Touchscreen*) ILV-toggle-touchscreen ;;
+  *"Hybrid GPU"*) present_terminal ILV-toggle-hybrid-gpu ;;
   *) back_to show_trigger_menu ;;
   esac
 }
@@ -266,7 +266,7 @@ show_hardware_touchpad_haptics_menu() {
 show_style_menu() {
   case $(menu "Style" "󰸌  Theme\n󰟵  Unlock\n  Font\n  Background\n  Hyprland\n󱄄  Screensaver\n  About") in
   *Theme*) show_theme_menu ;;
-  *Unlock*) omarchy-launch-walker -m menus:omarchyunlocks --width 800 --minheight 400 ;;
+  *Unlock*) ILV-launch-walker -m menus:ILVunlocks --width 800 --minheight 400 ;;
   *Font*) show_font_menu ;;
   *Background*) show_background_menu ;;
   *Hyprland*) open_in_editor ~/.config/hypr/looknfeel.conf ;;
@@ -278,36 +278,36 @@ show_style_menu() {
 
 show_about_menu() {
   case $(menu "About" "  Edit Text\n  Set From Image\n  Restore Default") in
-  *Text*) omarchy-branding-about text ;;
-  *Image*) omarchy-branding-about image ;;
-  *Default*) omarchy-branding-about reset ;;
+  *Text*) ILV-branding-about text ;;
+  *Image*) ILV-branding-about image ;;
+  *Default*) ILV-branding-about reset ;;
   *) show_style_menu ;;
   esac
 }
 
 show_screensaver_menu() {
   case $(menu "Screensaver" "  Edit Text\n  Set From Image\n  Restore Default") in
-  *Text*) omarchy-branding-screensaver text ;;
-  *Image*) omarchy-branding-screensaver image ;;
-  *Default*) omarchy-branding-screensaver reset ;;
+  *Text*) ILV-branding-screensaver text ;;
+  *Image*) ILV-branding-screensaver image ;;
+  *Default*) ILV-branding-screensaver reset ;;
   *) show_style_menu ;;
   esac
 }
 
 show_theme_menu() {
-  omarchy-launch-walker -m menus:omarchythemes --width 800 --minheight 400
+  ILV-launch-walker -m menus:ILVthemes --width 800 --minheight 400
 }
 
 show_background_menu() {
-  omarchy-launch-walker -m menus:omarchyBackgroundSelector --width 800 --minheight 400
+  ILV-launch-walker -m menus:ILVBackgroundSelector --width 800 --minheight 400
 }
 
 show_font_menu() {
-  theme=$(menu "Font" "$(omarchy-font-list)" "--width 350" "$(omarchy-font-current)")
+  theme=$(menu "Font" "$(ILV-font-list)" "--width 350" "$(ILV-font-current)")
   if [[ $theme == "CNCLD" || -z $theme ]]; then
     back_to show_style_menu
   else
-    omarchy-font-set "$theme"
+    ILV-font-set "$theme"
   fi
 }
 
@@ -318,16 +318,16 @@ show_setup_menu() {
   options="$options\n  Defaults\n󰱔  DNS\n  Security\n  Config"
 
   case $(menu "Setup" "$options") in
-  *Audio*) omarchy-launch-audio ;;
-  *Wifi*) omarchy-launch-wifi ;;
-  *Bluetooth*) omarchy-launch-bluetooth ;;
+  *Audio*) ILV-launch-audio ;;
+  *Wifi*) ILV-launch-wifi ;;
+  *Bluetooth*) ILV-launch-bluetooth ;;
   *Power*) show_setup_power_menu ;;
   *System*) show_setup_system_menu ;;
   *Monitors*) open_in_editor ~/.config/hypr/monitors.conf ;;
   *Keybindings*) open_in_editor ~/.config/hypr/bindings.conf ;;
   *Input*) open_in_editor ~/.config/hypr/input.conf ;;
   *Defaults*) show_setup_default_menu ;;
-  *DNS*) present_terminal omarchy-setup-dns ;;
+  *DNS*) present_terminal ILV-setup-dns ;;
   *Security*) show_setup_security_menu ;;
   *Config*) show_setup_config_menu ;;
   *) show_main_menu ;;
@@ -335,7 +335,7 @@ show_setup_menu() {
 }
 
 show_setup_power_menu() {
-  profile=$(menu "Power Profile" "$(omarchy-powerprofiles-list)" "" "$(powerprofilesctl get)")
+  profile=$(menu "Power Profile" "$(ILV-powerprofiles-list)" "" "$(powerprofilesctl get)")
 
   if [[ $profile == "CNCLD" || -z $profile ]]; then
     back_to show_setup_menu
@@ -346,8 +346,8 @@ show_setup_power_menu() {
 
 show_setup_security_menu() {
   case $(menu "Setup" "󰈷  Fingerprint\n  Fido2") in
-  *Fingerprint*) present_terminal omarchy-setup-security-fingerprint ;;
-  *Fido2*) present_terminal omarchy-setup-security-fido2 ;;
+  *Fingerprint*) present_terminal ILV-setup-security-fingerprint ;;
+  *Fido2*) present_terminal ILV-setup-security-fido2 ;;
   *) show_setup_menu ;;
   esac
 }
@@ -376,7 +376,7 @@ show_setup_default_browser_menu() {
   browser_desktop_exists zen.desktop && options="${options:+$options\n}󰖟  Zen"
 
   local current=""
-  case "$(omarchy-default-browser)" in
+  case "$(ILV-default-browser)" in
   chromium) current="  Chromium" ;;
   chrome) current="󰊯  Chrome" ;;
   brave) current="󰖟  Brave" ;;
@@ -387,26 +387,26 @@ show_setup_default_browser_menu() {
   esac
 
   case $(menu "Default Browser" "$options" "" "$current") in
-  *Chromium*) omarchy-default-browser chromium ;;
-  *Chrome*) omarchy-default-browser chrome ;;
-  *"Brave Origin"*) omarchy-default-browser brave-origin ;;
-  *Brave*) omarchy-default-browser brave ;;
-  *Edge*) omarchy-default-browser edge ;;
-  *Firefox*) omarchy-default-browser firefox ;;
-  *Zen*) omarchy-default-browser zen ;;
+  *Chromium*) ILV-default-browser chromium ;;
+  *Chrome*) ILV-default-browser chrome ;;
+  *"Brave Origin"*) ILV-default-browser brave-origin ;;
+  *Brave*) ILV-default-browser brave ;;
+  *Edge*) ILV-default-browser edge ;;
+  *Firefox*) ILV-default-browser firefox ;;
+  *Zen*) ILV-default-browser zen ;;
   *) show_setup_default_menu ;;
   esac
 }
 
 show_setup_default_terminal_menu() {
   local options=""
-  omarchy-cmd-present alacritty && options="$options  Alacritty"
-  omarchy-cmd-present foot && options="${options:+$options\n}  Foot"
-  omarchy-cmd-present ghostty && options="${options:+$options\n}  Ghostty"
-  omarchy-cmd-present kitty && options="${options:+$options\n}  Kitty"
+  ILV-cmd-present alacritty && options="$options  Alacritty"
+  ILV-cmd-present foot && options="${options:+$options\n}  Foot"
+  ILV-cmd-present ghostty && options="${options:+$options\n}  Ghostty"
+  ILV-cmd-present kitty && options="${options:+$options\n}  Kitty"
 
   local current=""
-  case "$(omarchy-default-terminal)" in
+  case "$(ILV-default-terminal)" in
   alacritty) current="  Alacritty" ;;
   foot) current="  Foot" ;;
   ghostty) current="  Ghostty" ;;
@@ -414,27 +414,27 @@ show_setup_default_terminal_menu() {
   esac
 
   case $(menu "Default Terminal" "$options" "" "$current") in
-  *Alacritty*) omarchy-default-terminal alacritty ;;
-  *Foot*) omarchy-default-terminal foot ;;
-  *Ghostty*) omarchy-default-terminal ghostty ;;
-  *Kitty*) omarchy-default-terminal kitty ;;
+  *Alacritty*) ILV-default-terminal alacritty ;;
+  *Foot*) ILV-default-terminal foot ;;
+  *Ghostty*) ILV-default-terminal ghostty ;;
+  *Kitty*) ILV-default-terminal kitty ;;
   *) show_setup_default_menu ;;
   esac
 }
 
 show_setup_default_editor_menu() {
   local options=""
-  omarchy-cmd-present nvim && options="$options  Neovim"
-  omarchy-cmd-present code && options="${options:+$options\n}  VSCode"
-  omarchy-cmd-present cursor && options="${options:+$options\n}  Cursor"
-  omarchy-cmd-present zeditor && options="${options:+$options\n}  Zed"
-  omarchy-cmd-present sublime_text && options="${options:+$options\n}  Sublime Text"
-  omarchy-cmd-present helix && options="${options:+$options\n}  Helix"
-  omarchy-cmd-present vim && options="${options:+$options\n}  Vim"
-  omarchy-cmd-present emacs && options="${options:+$options\n}  Emacs"
+  ILV-cmd-present nvim && options="$options  Neovim"
+  ILV-cmd-present code && options="${options:+$options\n}  VSCode"
+  ILV-cmd-present cursor && options="${options:+$options\n}  Cursor"
+  ILV-cmd-present zeditor && options="${options:+$options\n}  Zed"
+  ILV-cmd-present sublime_text && options="${options:+$options\n}  Sublime Text"
+  ILV-cmd-present helix && options="${options:+$options\n}  Helix"
+  ILV-cmd-present vim && options="${options:+$options\n}  Vim"
+  ILV-cmd-present emacs && options="${options:+$options\n}  Emacs"
 
   local current=""
-  case "$(omarchy-default-editor)" in
+  case "$(ILV-default-editor)" in
   nvim) current="  Neovim" ;;
   code) current="  VSCode" ;;
   cursor) current="  Cursor" ;;
@@ -446,14 +446,14 @@ show_setup_default_editor_menu() {
   esac
 
   case $(menu "Default Editor" "$options" "" "$current") in
-  *Neovim*) omarchy-default-editor nvim ;;
-  *VSCode*) omarchy-default-editor code ;;
-  *Cursor*) omarchy-default-editor cursor ;;
-  *Zed*) omarchy-default-editor zed ;;
-  *Sublime*) omarchy-default-editor sublime_text ;;
-  *Helix*) omarchy-default-editor helix ;;
-  *Vim*) omarchy-default-editor vim ;;
-  *Emacs*) omarchy-default-editor emacs ;;
+  *Neovim*) ILV-default-editor nvim ;;
+  *VSCode*) ILV-default-editor code ;;
+  *Cursor*) ILV-default-editor cursor ;;
+  *Zed*) ILV-default-editor zed ;;
+  *Sublime*) ILV-default-editor sublime_text ;;
+  *Helix*) ILV-default-editor helix ;;
+  *Vim*) ILV-default-editor vim ;;
+  *Emacs*) ILV-default-editor emacs ;;
   *) show_setup_default_menu ;;
   esac
 }
@@ -461,13 +461,13 @@ show_setup_default_editor_menu() {
 show_setup_config_menu() {
   case $(menu "Setup" "  Hyprland\n  Hypridle\n  Hyprlock\n  Hyprsunset\n  Swayosd\n󰌧  Walker\n󰍜  Waybar\n󰞅  XCompose") in
   *Hyprland*) open_in_editor ~/.config/hypr/hyprland.conf ;;
-  *Hypridle*) open_in_editor ~/.config/hypr/hypridle.conf && omarchy-restart-hypridle ;;
+  *Hypridle*) open_in_editor ~/.config/hypr/hypridle.conf && ILV-restart-hypridle ;;
   *Hyprlock*) open_in_editor ~/.config/hypr/hyprlock.conf ;;
-  *Hyprsunset*) open_in_editor ~/.config/hypr/hyprsunset.conf && omarchy-restart-hyprsunset ;;
-  *Swayosd*) open_in_editor ~/.config/swayosd/config.toml && omarchy-restart-swayosd ;;
-  *Walker*) open_in_editor ~/.config/walker/config.toml && omarchy-restart-walker ;;
-  *Waybar*) open_in_editor ~/.config/waybar/config.jsonc && omarchy-restart-waybar ;;
-  *XCompose*) open_in_editor ~/.XCompose && omarchy-restart-xcompose ;;
+  *Hyprsunset*) open_in_editor ~/.config/hypr/hyprsunset.conf && ILV-restart-hyprsunset ;;
+  *Swayosd*) open_in_editor ~/.config/swayosd/config.toml && ILV-restart-swayosd ;;
+  *Walker*) open_in_editor ~/.config/walker/config.toml && ILV-restart-walker ;;
+  *Waybar*) open_in_editor ~/.config/waybar/config.jsonc && ILV-restart-waybar ;;
+  *XCompose*) open_in_editor ~/.XCompose && ILV-restart-xcompose ;;
   *) show_setup_menu ;;
   esac
 }
@@ -475,32 +475,32 @@ show_setup_config_menu() {
 show_setup_system_menu() {
   local options=""
 
-  if omarchy-toggle-enabled suspend-off; then
+  if ILV-toggle-enabled suspend-off; then
     options="$options󰒲  Enable Suspend"
   else
     options="$options󰒲  Disable Suspend"
   fi
 
-  if omarchy-hibernation-available; then
+  if ILV-hibernation-available; then
     options="$options\n󰤁  Disable Hibernate"
   else
     options="$options\n󰤁  Enable Hibernate"
   fi
 
   case $(menu "System" "$options") in
-  *Suspend*) omarchy-toggle-suspend ;;
-  *"Enable Hibernate"*) present_terminal omarchy-hibernation-setup ;;
-  *"Disable Hibernate"*) present_terminal omarchy-hibernation-remove ;;
+  *Suspend*) ILV-toggle-suspend ;;
+  *"Enable Hibernate"*) present_terminal ILV-hibernation-setup ;;
+  *"Disable Hibernate"*) present_terminal ILV-hibernation-remove ;;
   *) show_setup_menu ;;
   esac
 }
 
 show_install_menu() {
   case $(menu "Install" "󰣇  Package\n󰣇  AUR\n  Web App\n  TUI\n  Service\n  Style\n󰵮  Development\n  Editor\n  Terminal\n  Browser\n󱚤  AI\n  Gaming\n󰍲  Windows") in
-  *Package*) terminal omarchy-pkg-install ;;
-  *AUR*) terminal omarchy-pkg-aur-install ;;
-  *Web*) present_terminal omarchy-webapp-install ;;
-  *TUI*) present_terminal omarchy-tui-install ;;
+  *Package*) terminal ILV-pkg-install ;;
+  *AUR*) terminal ILV-pkg-aur-install ;;
+  *Web*) present_terminal ILV-webapp-install ;;
+  *TUI*) present_terminal ILV-tui-install ;;
   *Service*) show_install_service_menu ;;
   *Style*) show_install_style_menu ;;
   *Development*) show_install_development_menu ;;
@@ -509,42 +509,42 @@ show_install_menu() {
   *Browser*) show_install_browser_menu ;;
   *Gaming*) show_install_gaming_menu ;;
   *AI*) show_install_ai_menu ;;
-  *Windows*) present_terminal "omarchy-windows-vm install" ;;
+  *Windows*) present_terminal "ILV-windows-vm install" ;;
   *) show_main_menu ;;
   esac
 }
 
 show_install_browser_menu() {
   case $(menu "Install" "  Chrome\n  Edge\n  Brave\n  Brave Origin\n  Firefox\n󰖟  Zen") in
-  *Chrome*) present_terminal "omarchy-install-browser chrome" ;;
-  *Edge*) present_terminal "omarchy-install-browser edge" ;;
-  *"Brave Origin"*) present_terminal "omarchy-install-browser brave-origin" ;;
-  *Brave*) present_terminal "omarchy-install-browser brave" ;;
-  *Firefox*) present_terminal "omarchy-install-browser firefox" ;;
-  *Zen*) present_terminal "omarchy-install-browser zen" ;;
+  *Chrome*) present_terminal "ILV-install-browser chrome" ;;
+  *Edge*) present_terminal "ILV-install-browser edge" ;;
+  *"Brave Origin"*) present_terminal "ILV-install-browser brave-origin" ;;
+  *Brave*) present_terminal "ILV-install-browser brave" ;;
+  *Firefox*) present_terminal "ILV-install-browser firefox" ;;
+  *Zen*) present_terminal "ILV-install-browser zen" ;;
   *) show_install_menu ;;
   esac
 }
 
 show_install_service_menu() {
   case $(menu "Install" "  Dropbox\n  Tailscale\n󱇱  NordVPN [AUR]\n󰏖  ONCE\n󰟵  Bitwarden\n  Chromium Account") in
-  *Dropbox*) present_terminal omarchy-install-dropbox ;;
-  *Tailscale*) present_terminal omarchy-install-tailscale ;;
-  *NordVPN*) present_terminal omarchy-install-nordvpn ;;
-  *ONCE*) present_terminal omarchy-install-once ;;
+  *Dropbox*) present_terminal ILV-install-dropbox ;;
+  *Tailscale*) present_terminal ILV-install-tailscale ;;
+  *NordVPN*) present_terminal ILV-install-nordvpn ;;
+  *ONCE*) present_terminal ILV-install-once ;;
   *Bitwarden*) install_and_launch "Bitwarden" "bitwarden bitwarden-cli" "bitwarden" ;;
-  *Chromium*) present_terminal omarchy-install-chromium-google-account ;;
+  *Chromium*) present_terminal ILV-install-chromium-google-account ;;
   *) show_install_menu ;;
   esac
 }
 
 show_install_editor_menu() {
   case $(menu "Install" "  VSCode\n  Cursor\n  Zed\n  Sublime Text\n  Helix\n  Vim\n  Emacs") in
-  *VSCode*) present_terminal omarchy-install-vscode ;;
+  *VSCode*) present_terminal ILV-install-vscode ;;
   *Cursor*) install_and_launch "Cursor" "cursor-bin" "cursor" ;;
-  *Zed*) present_terminal omarchy-install-zed ;;
+  *Zed*) present_terminal ILV-install-zed ;;
   *Sublime*) install_and_launch "Sublime Text" "sublime-text-4" "sublime_text" ;;
-  *Helix*) present_terminal omarchy-install-helix ;;
+  *Helix*) present_terminal ILV-install-helix ;;
   *Vim*) install "Vim" "vim" ;;
   *Emacs*) install "Emacs" "emacs-wayland" && systemctl --user enable --now emacs.service ;;
   *) show_install_menu ;;
@@ -563,13 +563,13 @@ show_install_terminal_menu() {
 
 show_install_ai_menu() {
   ollama_pkg=$(
-    (omarchy-cmd-present nvidia-smi && echo ollama-cuda) ||
-      (omarchy-cmd-present rocminfo && echo ollama-rocm) ||
+    (ILV-cmd-present nvidia-smi && echo ollama-cuda) ||
+      (ILV-cmd-present rocminfo && echo ollama-rocm) ||
       echo ollama
   )
 
   case $(menu "Install" "  Dictation\n󱚤  LM Studio\n󱚤  Ollama\n󱚤  Crush") in
-  *Dictation*) present_terminal omarchy-voxtype-install ;;
+  *Dictation*) present_terminal ILV-voxtype-install ;;
   *Studio*) install "LM Studio" "lmstudio-bin" ;;
   *Ollama*) install "Ollama" $ollama_pkg ;;
   *Crush*) install "Crush" "crush-bin" ;;
@@ -579,23 +579,23 @@ show_install_ai_menu() {
 
 show_install_gaming_menu() {
   case $(menu "Install" "  Steam\n  RetroArch\n󰍳  Minecraft\n󰢹  NVIDIA GeForce NOW\n  Xbox Cloud Gaming\n󰂯  Xbox Controller\n󰍹  Moonlight (GameStream)\n  Lutris (Battle.net)\n󱓟  Heroic (Epic Games)") in
-  *Steam*) present_terminal omarchy-install-gaming-steam ;;
-  *RetroArch*) present_terminal omarchy-install-gaming-retroarch ;;
+  *Steam*) present_terminal ILV-install-gaming-steam ;;
+  *RetroArch*) present_terminal ILV-install-gaming-retroarch ;;
   *Minecraft*) install_and_launch "Minecraft" "minecraft-launcher" "minecraft-launcher" ;;
-  *GeForce*) present_terminal omarchy-install-gaming-geforce-now ;;
-  *"Xbox Cloud"*) present_terminal omarchy-install-gaming-xbox-cloud ;;
-  *Xbox*) present_terminal omarchy-install-gaming-xbox-controllers ;;
-  *Lutris*) present_terminal omarchy-install-gaming-lutris ;;
-  *Heroic*) present_terminal omarchy-install-gaming-heroic ;;
-  *Moonlight*) present_terminal omarchy-install-gaming-moonlight ;;
+  *GeForce*) present_terminal ILV-install-gaming-geforce-now ;;
+  *"Xbox Cloud"*) present_terminal ILV-install-gaming-xbox-cloud ;;
+  *Xbox*) present_terminal ILV-install-gaming-xbox-controllers ;;
+  *Lutris*) present_terminal ILV-install-gaming-lutris ;;
+  *Heroic*) present_terminal ILV-install-gaming-heroic ;;
+  *Moonlight*) present_terminal ILV-install-gaming-moonlight ;;
   *) show_install_menu ;;
   esac
 }
 
 show_install_style_menu() {
   case $(menu "Install" "󰸌  Theme\n  Background\n  Font") in
-  *Theme*) present_terminal omarchy-theme-install ;;
-  *Background*) omarchy-theme-bg-install ;;
+  *Theme*) present_terminal ILV-theme-install ;;
+  *Background*) ILV-theme-bg-install ;;
   *Font*) show_install_font_menu ;;
   *) show_install_menu ;;
   esac
@@ -615,62 +615,62 @@ show_install_font_menu() {
 
 show_install_development_menu() {
   case $(menu "Install" "󰫏  Ruby on Rails\n  Docker DB\n  JavaScript\n  Go\n  PHP\n  Python\n  Elixir\n  Zig\n  Rust\n  Java\n  .NET\n  OCaml\n  Clojure\n  Scala") in
-  *Rails*) present_terminal "omarchy-install-dev-env ruby" ;;
-  *Docker*) present_terminal omarchy-install-docker-dbs ;;
+  *Rails*) present_terminal "ILV-install-dev-env ruby" ;;
+  *Docker*) present_terminal ILV-install-docker-dbs ;;
   *JavaScript*) show_install_javascript_menu ;;
-  *Go*) present_terminal "omarchy-install-dev-env go" ;;
+  *Go*) present_terminal "ILV-install-dev-env go" ;;
   *PHP*) show_install_php_menu ;;
-  *Python*) present_terminal "omarchy-install-dev-env python" ;;
+  *Python*) present_terminal "ILV-install-dev-env python" ;;
   *Elixir*) show_install_elixir_menu ;;
-  *Zig*) present_terminal "omarchy-install-dev-env zig" ;;
-  *Rust*) present_terminal "omarchy-install-dev-env rust" ;;
-  *Java*) present_terminal "omarchy-install-dev-env java" ;;
-  *NET*) present_terminal "omarchy-install-dev-env dotnet" ;;
-  *OCaml*) present_terminal "omarchy-install-dev-env ocaml" ;;
-  *Clojure*) present_terminal "omarchy-install-dev-env clojure" ;;
-  *Scala*) present_terminal "omarchy-install-dev-env scala" ;;
+  *Zig*) present_terminal "ILV-install-dev-env zig" ;;
+  *Rust*) present_terminal "ILV-install-dev-env rust" ;;
+  *Java*) present_terminal "ILV-install-dev-env java" ;;
+  *NET*) present_terminal "ILV-install-dev-env dotnet" ;;
+  *OCaml*) present_terminal "ILV-install-dev-env ocaml" ;;
+  *Clojure*) present_terminal "ILV-install-dev-env clojure" ;;
+  *Scala*) present_terminal "ILV-install-dev-env scala" ;;
   *) show_install_menu ;;
   esac
 }
 
 show_install_javascript_menu() {
   case $(menu "Install" "  Node.js\n  Bun\n  Deno") in
-  *Node*) present_terminal "omarchy-install-dev-env node" ;;
-  *Bun*) present_terminal "omarchy-install-dev-env bun" ;;
-  *Deno*) present_terminal "omarchy-install-dev-env deno" ;;
+  *Node*) present_terminal "ILV-install-dev-env node" ;;
+  *Bun*) present_terminal "ILV-install-dev-env bun" ;;
+  *Deno*) present_terminal "ILV-install-dev-env deno" ;;
   *) show_install_development_menu ;;
   esac
 }
 
 show_install_php_menu() {
   case $(menu "Install" "  PHP\n  Laravel\n  Symfony") in
-  *PHP*) present_terminal "omarchy-install-dev-env php" ;;
-  *Laravel*) present_terminal "omarchy-install-dev-env laravel" ;;
-  *Symfony*) present_terminal "omarchy-install-dev-env symfony" ;;
+  *PHP*) present_terminal "ILV-install-dev-env php" ;;
+  *Laravel*) present_terminal "ILV-install-dev-env laravel" ;;
+  *Symfony*) present_terminal "ILV-install-dev-env symfony" ;;
   *) show_install_development_menu ;;
   esac
 }
 
 show_install_elixir_menu() {
   case $(menu "Install" "  Elixir\n  Phoenix") in
-  *Elixir*) present_terminal "omarchy-install-dev-env elixir" ;;
-  *Phoenix*) present_terminal "omarchy-install-dev-env phoenix" ;;
+  *Elixir*) present_terminal "ILV-install-dev-env elixir" ;;
+  *Phoenix*) present_terminal "ILV-install-dev-env phoenix" ;;
   *) show_install_development_menu ;;
   esac
 }
 
 show_remove_menu() {
   case $(menu "Remove" "󰣇  Package\n  Web App\n  TUI\n󰵮  Development\n󰸌  Theme\n  Browser\n  Dictation\n  Gaming\n󰍲  Windows\n󰏓  Preinstalls\n  Security") in
-  *Package*) terminal omarchy-pkg-remove ;;
-  *Web*) present_terminal omarchy-webapp-remove ;;
-  *TUI*) present_terminal omarchy-tui-remove ;;
+  *Package*) terminal ILV-pkg-remove ;;
+  *Web*) present_terminal ILV-webapp-remove ;;
+  *TUI*) present_terminal ILV-tui-remove ;;
   *Development*) show_remove_development_menu ;;
-  *Theme*) present_terminal omarchy-theme-remove ;;
+  *Theme*) present_terminal ILV-theme-remove ;;
   *Browser*) show_remove_browser_menu ;;
-  *Dictation*) present_terminal omarchy-voxtype-remove ;;
+  *Dictation*) present_terminal ILV-voxtype-remove ;;
   *Gaming*) show_remove_gaming_menu ;;
-  *Windows*) present_terminal "omarchy-windows-vm remove" ;;
-  *Preinstalls*) present_terminal omarchy-remove-preinstalls ;;
+  *Windows*) present_terminal "ILV-windows-vm remove" ;;
+  *Preinstalls*) present_terminal ILV-remove-preinstalls ;;
   *Security*) show_remove_security_menu ;;
   *) show_main_menu ;;
   esac
@@ -678,95 +678,95 @@ show_remove_menu() {
 
 show_remove_security_menu() {
   case $(menu "Remove" "󰈷  Fingerprint\n  Fido2") in
-  *Fingerprint*) present_terminal omarchy-remove-security-fingerprint ;;
-  *Fido2*) present_terminal omarchy-remove-security-fido2 ;;
+  *Fingerprint*) present_terminal ILV-remove-security-fingerprint ;;
+  *Fido2*) present_terminal ILV-remove-security-fido2 ;;
   *) show_remove_menu ;;
   esac
 }
 
 show_remove_browser_menu() {
   case $(menu "Remove" "  Chrome\n  Edge\n  Brave\n  Brave Origin\n  Firefox\n  Zen") in
-  *Chrome*) present_terminal "omarchy-remove-browser chrome" ;;
-  *Edge*) present_terminal "omarchy-remove-browser edge" ;;
-  *"Brave Origin"*) present_terminal "omarchy-remove-browser brave-origin" ;;
-  *Brave*) present_terminal "omarchy-remove-browser brave" ;;
-  *Firefox*) present_terminal "omarchy-remove-browser firefox" ;;
-  *Zen*) present_terminal "omarchy-remove-browser zen" ;;
+  *Chrome*) present_terminal "ILV-remove-browser chrome" ;;
+  *Edge*) present_terminal "ILV-remove-browser edge" ;;
+  *"Brave Origin"*) present_terminal "ILV-remove-browser brave-origin" ;;
+  *Brave*) present_terminal "ILV-remove-browser brave" ;;
+  *Firefox*) present_terminal "ILV-remove-browser firefox" ;;
+  *Zen*) present_terminal "ILV-remove-browser zen" ;;
   *) show_remove_menu ;;
   esac
 }
 
 show_remove_gaming_menu() {
   case $(menu "Remove" "  Steam\n  RetroArch\n󰍳  Minecraft\n󰢹  NVIDIA GeForce NOW\n  Xbox Cloud Gaming\n󰖺  Xbox Controller (󰂯)\n󰍹  Moonlight (GameStream)\n  Lutris (Battle.net)\n󱓟  Heroic (Epic Games)") in
-  *Steam*) present_terminal omarchy-remove-gaming-steam ;;
-  *RetroArch*) present_terminal omarchy-remove-gaming-retroarch ;;
-  *Minecraft*) present_terminal omarchy-remove-gaming-minecraft ;;
-  *GeForce*) present_terminal omarchy-remove-gaming-geforce-now ;;
-  *"Xbox Cloud"*) present_terminal omarchy-remove-gaming-xbox-cloud ;;
-  *Xbox*) present_terminal omarchy-remove-gaming-xbox-controllers ;;
-  *Moonlight*) present_terminal omarchy-remove-gaming-moonlight ;;
-  *Lutris*) present_terminal omarchy-remove-gaming-lutris ;;
-  *Heroic*) present_terminal omarchy-remove-gaming-heroic ;;
+  *Steam*) present_terminal ILV-remove-gaming-steam ;;
+  *RetroArch*) present_terminal ILV-remove-gaming-retroarch ;;
+  *Minecraft*) present_terminal ILV-remove-gaming-minecraft ;;
+  *GeForce*) present_terminal ILV-remove-gaming-geforce-now ;;
+  *"Xbox Cloud"*) present_terminal ILV-remove-gaming-xbox-cloud ;;
+  *Xbox*) present_terminal ILV-remove-gaming-xbox-controllers ;;
+  *Moonlight*) present_terminal ILV-remove-gaming-moonlight ;;
+  *Lutris*) present_terminal ILV-remove-gaming-lutris ;;
+  *Heroic*) present_terminal ILV-remove-gaming-heroic ;;
   *) show_remove_menu ;;
   esac
 }
 
 show_remove_development_menu() {
   case $(menu "Remove" "󰫏  Ruby on Rails\n  JavaScript\n  Go\n  PHP\n  Python\n  Elixir\n  Zig\n  Rust\n  Java\n  .NET\n  OCaml\n  Clojure\n  Scala") in
-  *Rails*) present_terminal "omarchy-remove-dev-env ruby" ;;
+  *Rails*) present_terminal "ILV-remove-dev-env ruby" ;;
   *JavaScript*) show_remove_javascript_menu ;;
-  *Go*) present_terminal "omarchy-remove-dev-env go" ;;
+  *Go*) present_terminal "ILV-remove-dev-env go" ;;
   *PHP*) show_remove_php_menu ;;
-  *Python*) present_terminal "omarchy-remove-dev-env python" ;;
+  *Python*) present_terminal "ILV-remove-dev-env python" ;;
   *Elixir*) show_remove_elixir_menu ;;
-  *Zig*) present_terminal "omarchy-remove-dev-env zig" ;;
-  *Rust*) present_terminal "omarchy-remove-dev-env rust" ;;
-  *Java*) present_terminal "omarchy-remove-dev-env java" ;;
-  *NET*) present_terminal "omarchy-remove-dev-env dotnet" ;;
-  *OCaml*) present_terminal "omarchy-remove-dev-env ocaml" ;;
-  *Clojure*) present_terminal "omarchy-remove-dev-env clojure" ;;
-  *Scala*) present_terminal "omarchy-remove-dev-env scala" ;;
+  *Zig*) present_terminal "ILV-remove-dev-env zig" ;;
+  *Rust*) present_terminal "ILV-remove-dev-env rust" ;;
+  *Java*) present_terminal "ILV-remove-dev-env java" ;;
+  *NET*) present_terminal "ILV-remove-dev-env dotnet" ;;
+  *OCaml*) present_terminal "ILV-remove-dev-env ocaml" ;;
+  *Clojure*) present_terminal "ILV-remove-dev-env clojure" ;;
+  *Scala*) present_terminal "ILV-remove-dev-env scala" ;;
   *) show_remove_menu ;;
   esac
 }
 
 show_remove_javascript_menu() {
   case $(menu "Remove" "  Node.js\n  Bun\n  Deno") in
-  *Node*) present_terminal "omarchy-remove-dev-env node" ;;
-  *Bun*) present_terminal "omarchy-remove-dev-env bun" ;;
-  *Deno*) present_terminal "omarchy-remove-dev-env deno" ;;
+  *Node*) present_terminal "ILV-remove-dev-env node" ;;
+  *Bun*) present_terminal "ILV-remove-dev-env bun" ;;
+  *Deno*) present_terminal "ILV-remove-dev-env deno" ;;
   *) show_remove_development_menu ;;
   esac
 }
 
 show_remove_php_menu() {
   case $(menu "Remove" "  PHP\n  Laravel\n  Symfony") in
-  *PHP*) present_terminal "omarchy-remove-dev-env php" ;;
-  *Laravel*) present_terminal "omarchy-remove-dev-env laravel" ;;
-  *Symfony*) present_terminal "omarchy-remove-dev-env symfony" ;;
+  *PHP*) present_terminal "ILV-remove-dev-env php" ;;
+  *Laravel*) present_terminal "ILV-remove-dev-env laravel" ;;
+  *Symfony*) present_terminal "ILV-remove-dev-env symfony" ;;
   *) show_remove_development_menu ;;
   esac
 }
 
 show_remove_elixir_menu() {
   case $(menu "Remove" "  Elixir\n  Phoenix") in
-  *Elixir*) present_terminal "omarchy-remove-dev-env elixir" ;;
-  *Phoenix*) present_terminal "omarchy-remove-dev-env phoenix" ;;
+  *Elixir*) present_terminal "ILV-remove-dev-env elixir" ;;
+  *Phoenix*) present_terminal "ILV-remove-dev-env phoenix" ;;
   *) show_remove_development_menu ;;
   esac
 }
 
 show_update_menu() {
   case $(menu "Update" "  Omarchy\n󰔫  Channel\n  Config\n󰸌  Extra Themes\n  Process\n󰇅  Hardware\n  Firmware\n  Password\n  Timezone\n  Time") in
-  *Omarchy*) present_terminal omarchy-update ;;
+  *Omarchy*) present_terminal ILV-update ;;
   *Channel*) show_update_channel_menu ;;
   *Config*) show_update_config_menu ;;
-  *Themes*) present_terminal omarchy-theme-update ;;
+  *Themes*) present_terminal ILV-theme-update ;;
   *Process*) show_update_process_menu ;;
   *Hardware*) show_update_hardware_menu ;;
-  *Firmware*) present_terminal omarchy-update-firmware ;;
-  *Timezone*) present_terminal omarchy-tz-select ;;
-  *Time*) present_terminal omarchy-update-time ;;
+  *Firmware*) present_terminal ILV-update-firmware ;;
+  *Timezone*) present_terminal ILV-tz-select ;;
+  *Time*) present_terminal ILV-update-time ;;
   *Password*) show_update_password_menu ;;
   *) show_main_menu ;;
   esac
@@ -774,76 +774,76 @@ show_update_menu() {
 
 show_update_channel_menu() {
   case $(menu "Update channel" "🟢 Stable\n🟡 RC\n🟠 Edge\n🔴 Dev") in
-  *Stable*) present_terminal "omarchy-channel-set stable" ;;
-  *RC*) present_terminal "omarchy-channel-set rc" ;;
-  *Edge*) present_terminal "omarchy-channel-set edge" ;;
-  *Dev*) present_terminal "omarchy-channel-set dev" ;;
+  *Stable*) present_terminal "ILV-channel-set stable" ;;
+  *RC*) present_terminal "ILV-channel-set rc" ;;
+  *Edge*) present_terminal "ILV-channel-set edge" ;;
+  *Dev*) present_terminal "ILV-channel-set dev" ;;
   *) show_update_menu ;;
   esac
 }
 show_update_process_menu() {
   case $(menu "Restart" "  Hypridle\n  Hyprsunset\n󰎟  Mako\n  Swayosd\n󰌧  Walker\n󰍜  Waybar") in
-  *Hypridle*) omarchy-restart-hypridle ;;
-  *Hyprsunset*) omarchy-restart-hyprsunset ;;
-  *Mako*) omarchy-restart-mako ;;
-  *Swayosd*) omarchy-restart-swayosd ;;
-  *Walker*) omarchy-restart-walker ;;
-  *Waybar*) omarchy-restart-waybar ;;
+  *Hypridle*) ILV-restart-hypridle ;;
+  *Hyprsunset*) ILV-restart-hyprsunset ;;
+  *Mako*) ILV-restart-mako ;;
+  *Swayosd*) ILV-restart-swayosd ;;
+  *Walker*) ILV-restart-walker ;;
+  *Waybar*) ILV-restart-waybar ;;
   *) show_update_menu ;;
   esac
 }
 
 show_update_config_menu() {
   case $(menu "Use default config" "  Hyprland\n  Hypridle\n  Hyprlock\n  Hyprsunset\n󱣴  Plymouth\n  Swayosd\n  Tmux\n󰌧  Walker\n󰍜  Waybar") in
-  *Hyprland*) present_terminal omarchy-refresh-hyprland ;;
-  *Hypridle*) present_terminal omarchy-refresh-hypridle ;;
-  *Hyprlock*) present_terminal omarchy-refresh-hyprlock ;;
-  *Hyprsunset*) present_terminal omarchy-refresh-hyprsunset ;;
-  *Plymouth*) present_terminal omarchy-refresh-plymouth ;;
-  *Swayosd*) present_terminal omarchy-refresh-swayosd ;;
-  *Tmux*) present_terminal omarchy-refresh-tmux ;;
-  *Walker*) present_terminal omarchy-refresh-walker ;;
-  *Waybar*) present_terminal omarchy-refresh-waybar ;;
+  *Hyprland*) present_terminal ILV-refresh-hyprland ;;
+  *Hypridle*) present_terminal ILV-refresh-hypridle ;;
+  *Hyprlock*) present_terminal ILV-refresh-hyprlock ;;
+  *Hyprsunset*) present_terminal ILV-refresh-hyprsunset ;;
+  *Plymouth*) present_terminal ILV-refresh-plymouth ;;
+  *Swayosd*) present_terminal ILV-refresh-swayosd ;;
+  *Tmux*) present_terminal ILV-refresh-tmux ;;
+  *Walker*) present_terminal ILV-refresh-walker ;;
+  *Waybar*) present_terminal ILV-refresh-waybar ;;
   *) show_update_menu ;;
   esac
 }
 
 show_update_hardware_menu() {
   case $(menu "Restart" "  Audio\n󱚾  Wi-Fi\n󰂯  Bluetooth\n󰟸  Trackpad") in
-  *Audio*) present_terminal omarchy-restart-pipewire ;;
-  *Wi-Fi*) present_terminal omarchy-restart-wifi ;;
-  *Bluetooth*) present_terminal omarchy-restart-bluetooth ;;
-  *Trackpad*) present_terminal omarchy-restart-trackpad ;;
+  *Audio*) present_terminal ILV-restart-pipewire ;;
+  *Wi-Fi*) present_terminal ILV-restart-wifi ;;
+  *Bluetooth*) present_terminal ILV-restart-bluetooth ;;
+  *Trackpad*) present_terminal ILV-restart-trackpad ;;
   *) show_update_menu ;;
   esac
 }
 
 show_update_password_menu() {
   case $(menu "Update Password" "  Drive Encryption\n  User") in
-  *Drive*) present_terminal omarchy-drive-password ;;
+  *Drive*) present_terminal ILV-drive-password ;;
   *User*) present_terminal passwd ;;
   *) show_update_menu ;;
   esac
 }
 
 show_about() {
-  omarchy-launch-about
+  ILV-launch-about
 }
 
 show_system_menu() {
   local options="󱄄  Screensaver\n  Lock"
-  ! omarchy-toggle-enabled suspend-off && options="$options\n󰒲  Suspend"
-  omarchy-hibernation-available && options="$options\n󰤁  Hibernate"
+  ! ILV-toggle-enabled suspend-off && options="$options\n󰒲  Suspend"
+  ILV-hibernation-available && options="$options\n󰤁  Hibernate"
   options="$options\n󰍃  Logout\n󰜉  Restart\n󰐥  Shutdown"
 
   case $(menu "System" "$options") in
-  *Screensaver*) omarchy-launch-screensaver force ;;
-  *Lock*) omarchy-system-lock ;;
+  *Screensaver*) ILV-launch-screensaver force ;;
+  *Lock*) ILV-system-lock ;;
   *Suspend*) systemctl suspend ;;
   *Hibernate*) systemctl hibernate ;;
-  *Logout*) omarchy-system-logout ;;
-  *Restart*) omarchy-system-reboot ;;
-  *Shutdown*) omarchy-system-shutdown ;;
+  *Logout*) ILV-system-logout ;;
+  *Restart*) ILV-system-reboot ;;
+  *Shutdown*) ILV-system-shutdown ;;
   *) back_to show_main_menu ;;
   esac
 }
@@ -878,7 +878,7 @@ go_to_menu() {
 }
 
 # Allow user extensions and overrides
-USER_EXTENSIONS="$HOME/.config/omarchy/extensions/menu.sh"
+USER_EXTENSIONS="$HOME/.config/ILV/extensions/menu.sh"
 [[ -f $USER_EXTENSIONS ]] && source "$USER_EXTENSIONS"
 
 toggle_existing_menu

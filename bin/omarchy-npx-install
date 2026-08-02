@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# omarchy:summary=Install an npx wrapper for a given npm package.
-# omarchy:args=<package> [command-name]
+# ILV:summary=Install an npx wrapper for a given npm package.
+# ILV:args=<package> [command-name]
 
 if [[ -z $1 ]]; then
-  echo "Usage: omarchy-npx-install <package> [command-name]"
+  echo "Usage: ILV-npx-install <package> [command-name]"
   exit 1
 fi
 
@@ -33,9 +33,9 @@ ensure_bin_runtime() {
   IFS= read -r shebang < "\$bin_path"
 
   if [[ \$shebang == "#!"*"/bun"* || \$shebang == "#!"*"/env bun"* ]]; then
-    if omarchy-cmd-missing bun; then
+    if ILV-cmd-missing bun; then
       echo "Installing bun runtime for \$package..."
-      omarchy-pkg-add bun
+      ILV-pkg-add bun
       hash -r
     fi
   fi

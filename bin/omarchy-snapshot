@@ -1,26 +1,26 @@
 #!/bin/bash
 
-# omarchy:summary=Create or restore system snapshots with snapper
-# omarchy:args=<create|restore>
-# omarchy:requires-sudo=true
+# ILV:summary=Create or restore system snapshots with snapper
+# ILV:args=<create|restore>
+# ILV:requires-sudo=true
 
 set -e
 
 COMMAND="$1"
-OMARCHY_PATH=${OMARCHY_PATH:-$HOME/.local/share/omarchy}
+OMARCHY_PATH=${OMARCHY_PATH:-$HOME/.local/share/ILV}
 
 if [[ -z $COMMAND ]]; then
-  echo "Usage: omarchy-snapshot <create|restore>" >&2
+  echo "Usage: ILV-snapshot <create|restore>" >&2
   exit 1
 fi
 
 if ! command -v snapper &>/dev/null; then
-  exit 127 # omarchy-update can use this to just ignore if snapper is not available
+  exit 127 # ILV-update can use this to just ignore if snapper is not available
 fi
 
 case "$COMMAND" in
 create)
-  DESC="$(omarchy-version)"
+  DESC="$(ILV-version)"
 
   echo -e "\e[32mCreate system snapshot\e[0m"
 

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# omarchy:summary=Reinstall the Omarchy source directory from git
+# ILV:summary=Reinstall the Omarchy source directory from git
 
 set -e
 
 # Reinstall the Omarchy configuration directory from the git source.
 
-git clone --depth=1 --branch master "https://github.com/basecamp/omarchy.git" ~/.local/share/omarchy-new >/dev/null
-mv $OMARCHY_PATH ~/.local/share/omarchy-old
-mv ~/.local/share/omarchy-new $OMARCHY_PATH
+git clone --depth=1 --branch master "https://github.com/basecamp/ILV.git" ~/.local/share/ILV-new >/dev/null
+mv $OMARCHY_PATH ~/.local/share/ILV-old
+mv ~/.local/share/ILV-new $OMARCHY_PATH

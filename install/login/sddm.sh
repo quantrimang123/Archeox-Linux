@@ -1,9 +1,9 @@
 # Install ILV SDDM theme
-omarchy-refresh-sddm
+ILV-refresh-sddm
 
 # Setup SDDM login service
 sudo mkdir -p /usr/local/share/wayland-sessions
-sudo cp "$ILV_PATH/default/wayland-sessions/omarchy.desktop" /usr/local/share/wayland-sessions/omarchy.desktop
+sudo cp "$ILV_PATH/default/wayland-sessions/ILV.desktop" /usr/local/share/wayland-sessions/ILV.desktop
 sudo cp "$ILV_PATH/default/sddm/hyprland.conf" /usr/share/sddm/hyprland.conf
 
 sudo mkdir -p /etc/sddm.conf.d
@@ -22,10 +22,10 @@ User=$USER
 Session=ILV
 
 [Theme]
-Current=omarchy
+Current=ILV
 EOF
 else
-  sudo sed -i 's/^Session=hyprland-uwsm$/Session=omarchy/' /etc/sddm.conf.d/autologin.conf
+  sudo sed -i 's/^Session=hyprland-uwsm$/Session=ILV/' /etc/sddm.conf.d/autologin.conf
 fi
 
 # Prevent password-based SDDM logins from creating an encrypted login keyring

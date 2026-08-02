@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# omarchy:summary=Run a named hook from ~/.config/omarchy/hooks/<name> and ~/.config/omarchy/hooks/<name>.d/.
-# omarchy:args=[name] [args...]
+# ILV:summary=Run a named hook from ~/.config/ILV/hooks/<name> and ~/.config/ILV/hooks/<name>.d/.
+# ILV:args=[name] [args...]
 
 set -e
 
 if (( $# < 1 )); then
-  echo "Usage: omarchy-hook [name] [args...]"
+  echo "Usage: ILV-hook [name] [args...]"
   exit 1
 fi
 
 HOOK=$1
-HOOK_PATH="$HOME/.config/omarchy/hooks/$1"
+HOOK_PATH="$HOME/.config/ILV/hooks/$1"
 HOOK_DIR="$HOOK_PATH.d"
 shift
 

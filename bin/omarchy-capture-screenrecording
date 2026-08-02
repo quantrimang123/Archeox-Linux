@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# omarchy:summary=Start or stop screen recording
-# omarchy:group=capture
-# omarchy:args=[--with-desktop-audio] [--with-microphone-audio] [--with-webcam] [--webcam-device=<device>] [--resolution=<size>] [--stop-recording]
-# omarchy:examples=omarchy screenrecord | omarchy capture screenrecord --with-desktop-audio
-# omarchy:aliases=omarchy screenrecord
+# ILV:summary=Start or stop screen recording
+# ILV:group=capture
+# ILV:args=[--with-desktop-audio] [--with-microphone-audio] [--with-webcam] [--webcam-device=<device>] [--resolution=<size>] [--stop-recording]
+# ILV:examples=ILV screenrecord | ILV capture screenrecord --with-desktop-audio
+# ILV:aliases=ILV screenrecord
 #
 # Env: OMARCHY_SCREENRECORD_USE_PORTAL=true skips the built-in slurp picker and
 # uses gpu-screen-recorder's xdg-desktop-portal capture backend instead. The
@@ -15,7 +15,7 @@
 # start.
 #
 # Env: OMARCHY_SCREENRECORD_DEBUG=true appends gpu-screen-recorder's stderr (and
-# the picker target it was launched with) to /tmp/omarchy-screenrecord.log so
+# the picker target it was launched with) to /tmp/ILV-screenrecord.log so
 # users can attach a log when reporting capture failures.
 
 [[ -f ~/.config/user-dirs.dirs ]] && source ~/.config/user-dirs.dirs
@@ -32,8 +32,8 @@ WEBCAM="false"
 WEBCAM_DEVICE=""
 RESOLUTION=""
 STOP_RECORDING="false"
-RECORDING_FILE="/tmp/omarchy-screenrecord-filename"
-LOG_FILE=$([[ ${OMARCHY_SCREENRECORD_DEBUG:-false} == "true" ]] && echo "/tmp/omarchy-screenrecord.log" || echo "/dev/null")
+RECORDING_FILE="/tmp/ILV-screenrecord-filename"
+LOG_FILE=$([[ ${OMARCHY_SCREENRECORD_DEBUG:-false} == "true" ]] && echo "/tmp/ILV-screenrecord.log" || echo "/dev/null")
 
 for arg in "$@"; do
   case "$arg" in
@@ -101,7 +101,7 @@ default_resolution() {
 }
 
 # Monitor + window rectangles on the focused workspace, in slurp's "X,Y WxH" format.
-# Mirrors omarchy-capture-screenshot so the picker UX is identical.
+# Mirrors ILV-capture-screenshot so the picker UX is identical.
 get_rectangles() {
   local active_workspace=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .activeWorkspace.id')
   hyprctl monitors -j | jq -r --arg ws "$active_workspace" '

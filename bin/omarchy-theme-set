@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# omarchy:summary=Apply an Omarchy theme
-# omarchy:args=<theme-name>
-# omarchy:examples=omarchy theme list | omarchy theme set "Tokyo Night"
+# ILV:summary=Apply an Omarchy theme
+# ILV:args=<theme-name>
+# ILV:examples=ILV theme list | ILV theme set "Tokyo Night"
 
 if [[ -z $1 ]]; then
-  echo "Usage: omarchy-theme-set <theme-name>"
+  echo "Usage: ILV-theme-set <theme-name>"
   exit 1
 fi
 
-CURRENT_THEME_PATH="$HOME/.config/omarchy/current/theme"
-NEXT_THEME_PATH="$HOME/.config/omarchy/current/next-theme"
-USER_THEMES_PATH="$HOME/.config/omarchy/themes"
+CURRENT_THEME_PATH="$HOME/.config/ILV/current/theme"
+NEXT_THEME_PATH="$HOME/.config/ILV/current/next-theme"
+USER_THEMES_PATH="$HOME/.config/ILV/themes"
 OMARCHY_THEMES_PATH="$OMARCHY_PATH/themes"
 
 THEME_NAME=$(echo "$1" | sed -E 's/<[^>]+>//g' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
@@ -31,43 +31,43 @@ cp -r "$USER_THEMES_PATH/$THEME_NAME/"* "$NEXT_THEME_PATH/" 2>/dev/null
 
 # Generate colors.toml from alacritty.toml if theme is missing colors.toml
 if [[ ! -f $NEXT_THEME_PATH/colors.toml && -f $NEXT_THEME_PATH/alacritty.toml ]]; then
-  omarchy-theme-colors-from-alacritty "$NEXT_THEME_PATH"
+  ILV-theme-colors-from-alacritty "$NEXT_THEME_PATH"
 fi
 
 # Generate dynamic configs
-omarchy-theme-set-templates
+ILV-theme-set-templates
 
 # Swap next theme in as current
 rm -rf "$CURRENT_THEME_PATH"
 mv "$NEXT_THEME_PATH" "$CURRENT_THEME_PATH"
 
 # Store theme name for reference
-echo "$THEME_NAME" >"$HOME/.config/omarchy/current/theme.name"
+echo "$THEME_NAME" >"$HOME/.config/ILV/current/theme.name"
 
 # Change background with theme
 if [[ $OMARCHY_THEME_SKIP_BACKGROUND != "1" ]]; then
-  omarchy-theme-bg-next
+  ILV-theme-bg-next
 fi
 
 # Restart components to apply new theme
 if pgrep -x waybar >/dev/null; then
-  omarchy-restart-waybar
+  ILV-restart-waybar
 fi
-omarchy-restart-swayosd
-omarchy-restart-terminal
-omarchy-restart-hyprctl
-omarchy-restart-btop
-omarchy-restart-opencode
-omarchy-restart-mako
-omarchy-restart-helix
+ILV-restart-swayosd
+ILV-restart-terminal
+ILV-restart-hyprctl
+ILV-restart-btop
+ILV-restart-opencode
+ILV-restart-mako
+ILV-restart-helix
 
 # Change app-specific themes
-omarchy-theme-set-foot
-omarchy-theme-set-gnome
-omarchy-theme-set-browser
-omarchy-theme-set-vscode
-omarchy-theme-set-obsidian
-omarchy-theme-set-keyboard
+ILV-theme-set-foot
+ILV-theme-set-gnome
+ILV-theme-set-browser
+ILV-theme-set-vscode
+ILV-theme-set-obsidian
+ILV-theme-set-keyboard
 
 # Call hook on theme set
-omarchy-hook theme-set "$THEME_NAME" >/dev/null
+ILV-hook theme-set "$THEME_NAME" >/dev/null

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# omarchy:summary=Reset all Omarchy user configs to the defaults
-# omarchy:requires-sudo=true
+# ILV:summary=Reset all Omarchy user configs to the defaults
+# ILV:requires-sudo=true
 
 set -e
 
@@ -13,12 +13,12 @@ if (( EUID == 0 )); then
 fi
 
 echo "Resetting all Omarchy configs"
-cp -R ~/.local/share/omarchy/config/* ~/.config/
-cp ~/.local/share/omarchy/default/bashrc ~/.bashrc
+cp -R ~/.local/share/ILV/config/* ~/.config/
+cp ~/.local/share/ILV/default/bashrc ~/.bashrc
 echo '[[ -f ~/.bashrc ]] && . ~/.bashrc' | tee ~/.bash_profile >/dev/null
 
 $(bash $OMARCHY_PATH/install/config/theme.sh)
 
-omarchy-refresh-limine
-omarchy-refresh-plymouth
-omarchy-nvim-setup
+ILV-refresh-limine
+ILV-refresh-plymouth
+ILV-nvim-setup

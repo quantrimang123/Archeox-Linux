@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# omarchy:summary=Prompt for text input with Walker
-# omarchy:group=menu
-# omarchy:name=input
-# omarchy:args=prompt [walker args...]
-# omarchy:examples=omarchy menu input Reminder|omarchy-menu-input "Reminder in minutes" --width 400
+# ILV:summary=Prompt for text input with Walker
+# ILV:group=menu
+# ILV:name=input
+# ILV:args=prompt [walker args...]
+# ILV:examples=ILV menu input Reminder|ILV-menu-input "Reminder in minutes" --width 400
 
 set -euo pipefail
 
@@ -13,4 +13,4 @@ if (( $# > 0 )); then
   shift
 fi
 
-omarchy-launch-walker --dmenu --inputonly --width 295 --minheight 1 --maxheight 1 -p "$prompt…" "$@" 2>/dev/null
+ILV-launch-walker --dmenu --inputonly --width 295 --minheight 1 --maxheight 1 -p "$prompt…" "$@" 2>/dev/null

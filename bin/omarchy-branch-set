@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# omarchy:summary=Set the branch for Omarchy's git repository.
-# omarchy:args=<master|rc|dev>
+# ILV:summary=Set the branch for Omarchy's git repository.
+# ILV:args=<master|rc|dev>
 
 if (($# == 0)); then
-  echo "Usage: omarchy-branch-set [master|rc|dev]"
+  echo "Usage: ILV-branch-set [master|rc|dev]"
   exit 1
 else
   branch="$1"

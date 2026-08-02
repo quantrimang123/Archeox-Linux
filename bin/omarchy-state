@@ -1,22 +1,22 @@
 #!/bin/bash
 
-# omarchy:summary=Manage persistent state files for Omarchy toggles and settings.
-# omarchy:args=<set|clear> <state-name-or-pattern>
-# omarchy:hidden=true
+# ILV:summary=Manage persistent state files for Omarchy toggles and settings.
+# ILV:args=<set|clear> <state-name-or-pattern>
+# ILV:hidden=true
 
-STATE_DIR="$HOME/.local/state/omarchy"
+STATE_DIR="$HOME/.local/state/ILV"
 mkdir -p "$STATE_DIR"
 
 COMMAND="$1"
 STATE_NAME="$2"
 
 if [[ -z $COMMAND ]]; then
-  echo "Usage: omarchy-state <set|clear> <state-name-or-pattern>"
+  echo "Usage: ILV-state <set|clear> <state-name-or-pattern>"
   exit 1
 fi
 
 if [[ -z $STATE_NAME ]]; then
-  echo "Usage: omarchy-state $COMMAND <state-name>"
+  echo "Usage: ILV-state $COMMAND <state-name>"
   exit 1
 fi
 

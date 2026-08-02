@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# omarchy:summary=Refresh the SDDM theme from default
-# omarchy:requires-sudo=true
+# ILV:summary=Refresh the SDDM theme from default
+# ILV:requires-sudo=true
 
-sudo rm -rf /usr/share/sddm/themes/omarchy
-sudo cp -r $OMARCHY_PATH/default/sddm/omarchy /usr/share/sddm/themes/omarchy
+sudo rm -rf /usr/share/sddm/themes/ILV
+sudo cp -r $OMARCHY_PATH/default/sddm/ILV /usr/share/sddm/themes/ILV

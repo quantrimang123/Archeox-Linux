@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# omarchy:summary=Finish the installation of Omarchy with items that can only be done after logging in.
-# omarchy:requires-sudo=true
+# ILV:summary=Finish the installation of Omarchy with items that can only be done after logging in.
+# ILV:requires-sudo=true
 
 set -e
 
-FIRST_RUN_MODE=~/.local/state/omarchy/first-run.mode
+FIRST_RUN_MODE=~/.local/state/ILV/first-run.mode
 
 if [[ -f $FIRST_RUN_MODE ]]; then
   rm -f "$FIRST_RUN_MODE"
@@ -20,7 +20,7 @@ if [[ -f $FIRST_RUN_MODE ]]; then
   bash "$OMARCHY_PATH/install/first-run/gtk-primary-paste.sh"
   bash "$OMARCHY_PATH/install/first-run/text-scaling.sh"
   bash "$OMARCHY_PATH/install/first-run/elephant.sh"
-  omarchy-hook-install post-update "$OMARCHY_PATH/install/first-run/install-voxtype.hook"
+  ILV-hook-install post-update "$OMARCHY_PATH/install/first-run/install-voxtype.hook"
   sudo rm -f /etc/sudoers.d/first-run
 
   bash "$OMARCHY_PATH/install/first-run/welcome.sh"

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# omarchy:summary=Reset Waybar config to Omarchy defaults
-# omarchy:examples=omarchy refresh waybar
+# ILV:summary=Reset Waybar config to Omarchy defaults
+# ILV:examples=ILV refresh waybar
 
-omarchy-refresh-config waybar/config.jsonc
-omarchy-refresh-config waybar/style.css
-omarchy-restart-waybar
+ILV-refresh-config waybar/config.jsonc
+ILV-refresh-config waybar/style.css
+ILV-restart-waybar

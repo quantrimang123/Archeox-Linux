@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# omarchy:summary=Show current monospace font
-# omarchy:examples=omarchy font current
+# ILV:summary=Show current monospace font
+# ILV:examples=ILV font current
 
 grep -oP 'font-family:\s*["'\'']?\K[^;"'\'']+' ~/.config/waybar/style.css | head -n1

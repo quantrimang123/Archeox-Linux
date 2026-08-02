@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# omarchy:summary=Launch or focus on a given web app identified by the window-pattern.
-# omarchy:args=<window-pattern> <url-and-flags...>
+# ILV:summary=Launch or focus on a given web app identified by the window-pattern.
+# ILV:args=<window-pattern> <url-and-flags...>
 
 if (($# == 0)); then
-  echo "Usage: omarchy-launch-or-focus-webapp [window-pattern] [url-and-flags...]"
+  echo "Usage: ILV-launch-or-focus-webapp [window-pattern] [url-and-flags...]"
   exit 1
 fi
 
 WINDOW_PATTERN="$1"
 shift
-LAUNCH_COMMAND="omarchy-launch-webapp $@"
+LAUNCH_COMMAND="ILV-launch-webapp $@"
 
-exec omarchy-launch-or-focus "$WINDOW_PATTERN" "$LAUNCH_COMMAND"
+exec ILV-launch-or-focus "$WINDOW_PATTERN" "$LAUNCH_COMMAND"

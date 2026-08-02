@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# omarchy:summary=Launch the default editor as determined by $EDITOR (set via ~/.config/uwsm/default) (or nvim if missing).
-# omarchy:args=<path>
+# ILV:summary=Launch the default editor as determined by $EDITOR (set via ~/.config/uwsm/default) (or nvim if missing).
+# ILV:args=<path>
 
-omarchy-cmd-present "$EDITOR" || EDITOR=nvim
+ILV-cmd-present "$EDITOR" || EDITOR=nvim
 
 case "$EDITOR" in
 nvim | vim | nano | micro | hx | helix | fresh)
-  exec omarchy-launch-tui "$EDITOR" "$@"
+  exec ILV-launch-tui "$EDITOR" "$@"
   ;;
 *)
   exec setsid uwsm-app -- "$EDITOR" "$@"

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-# omarchy:summary=No-op now that omarchy-update-perform is responsible for idle management.
-# omarchy:hidden=true
+# ILV:summary=No-op now that ILV-update-perform is responsible for idle management.
+# ILV:hidden=true

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# omarchy:summary=Configure the system DNS provider
-# omarchy:args=[Cloudflare|Google|DHCP|Custom]
-# omarchy:requires-sudo=true
+# ILV:summary=Configure the system DNS provider
+# ILV:args=[Cloudflare|Google|DHCP|Custom]
+# ILV:requires-sudo=true
 
 lock_dns_to_resolved() {
   for file in /etc/systemd/network/*.network; do

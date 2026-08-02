@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# omarchy:summary=Take a screenshot
-# omarchy:group=capture
-# omarchy:args=[smart|region|windows|fullscreen] [slurp|copy|save] [--editor=<name>]
-# omarchy:examples=omarchy screenshot | omarchy capture screenshot region
-# omarchy:aliases=omarchy screenshot
+# ILV:summary=Take a screenshot
+# ILV:group=capture
+# ILV:args=[smart|region|windows|fullscreen] [slurp|copy|save] [--editor=<name>]
+# ILV:examples=ILV screenshot | ILV capture screenshot region
+# ILV:aliases=ILV screenshot
 
 [[ -f ~/.config/user-dirs.dirs ]] && source ~/.config/user-dirs.dirs
 OUTPUT_DIR="${OMARCHY_SCREENSHOT_DIR:-${XDG_PICTURES_DIR:-$HOME/Pictures}}"

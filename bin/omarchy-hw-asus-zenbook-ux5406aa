@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# omarchy:summary=Detect ASUS Zenbook UX5406AA series laptops on Intel Panther Lake.
+# ILV:summary=Detect ASUS Zenbook UX5406AA series laptops on Intel Panther Lake.
 
-omarchy-hw-match "ux5406aa" && omarchy-hw-intel-ptl
+ILV-hw-match "ux5406aa" && ILV-hw-intel-ptl

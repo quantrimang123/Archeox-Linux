@@ -159,7 +159,7 @@ register_command() {
       break
     fi
 
-    if [[ $line =~ ^[[:space:]]*#[[:space:]]*omarchy:([[:alnum:]_-]+)=(.*)$ ]]; then
+    if [[ $line =~ ^[[:space:]]*#[[:space:]]*ILV:([[:alnum:]_-]+)=(.*)$ ]]; then
       metadata_key="${BASH_REMATCH[1]}"
       metadata_value="${BASH_REMATCH[2]}"
       metadata_value="${metadata_value%$'\r'}"
@@ -202,16 +202,16 @@ register_command() {
       fallback_summary="${fallback_summary%$'\r'}"
       fallback_summary="${fallback_summary//$'\t'/ }"
 
-      if [[ -z $fallback_summary || $fallback_summary == omarchy:* ]]; then
+      if [[ -z $fallback_summary || $fallback_summary == ILV:* ]]; then
         fallback_summary=""
       fi
     fi
   done <"$file"
 
-  local stem="${file_binary#omarchy-}"
+  local stem="${file_binary#ILV-}"
   local fallback_group="$stem"
   local fallback_name=""
-  local fallback_route="omarchy ${stem//-/ }"
+  local fallback_route="ILV ${stem//-/ }"
 
   if [[ $stem == *-* ]]; then
     fallback_group="${stem%%-*}"
@@ -224,7 +224,7 @@ register_command() {
   [[ $name_seen != "true" ]] && name="$fallback_name"
   [[ -z $summary && -n $fallback_summary ]] && summary="$fallback_summary"
   [[ -z $summary ]] && summary="Run the ${stem//-/ } command"
-  local route="omarchy $group"
+  local route="ILV $group"
   if [[ -n $name ]]; then
     route+=" $name"
   fi
@@ -275,7 +275,7 @@ register_command() {
 load_commands() {
   local file=""
 
-  for file in "$OMARCHY_BIN_DIR"/omarchy-*; do
+  for file in "$OMARCHY_BIN_DIR"/ILV-*; do
     [[ -f $file && -x $file ]] || continue
     register_command "$file"
   done
@@ -304,7 +304,7 @@ group_has_child_commands() {
   local group="$1"
   local file=""
 
-  for file in "$OMARCHY_BIN_DIR/omarchy-$group"-*; do
+  for file in "$OMARCHY_BIN_DIR/ILV-$group"-*; do
     [[ -f $file && -x $file ]] && return 0
   done
 
@@ -314,7 +314,7 @@ group_has_child_commands() {
 group_has_binary_commands() {
   local group="$1"
 
-  [[ -x $OMARCHY_BIN_DIR/omarchy-$group ]] && return 0
+  [[ -x $OMARCHY_BIN_DIR/ILV-$group ]] && return 0
   group_has_child_commands "$group"
 }
 
@@ -335,11 +335,11 @@ load_group_commands() {
   local group="$1"
   local file=""
 
-  if [[ -f $OMARCHY_BIN_DIR/omarchy-$group && -x $OMARCHY_BIN_DIR/omarchy-$group ]]; then
-    register_command "$OMARCHY_BIN_DIR/omarchy-$group"
+  if [[ -f $OMARCHY_BIN_DIR/ILV-$group && -x $OMARCHY_BIN_DIR/ILV-$group ]]; then
+    register_command "$OMARCHY_BIN_DIR/ILV-$group"
   fi
 
-  for file in "$OMARCHY_BIN_DIR/omarchy-$group"-*; do
+  for file in "$OMARCHY_BIN_DIR/ILV-$group"-*; do
     [[ -f $file && -x $file ]] || continue
     register_command "$file"
   done
@@ -356,9 +356,9 @@ resolve_direct_route() {
   local candidate=""
 
   for (( prefix_count = argc; prefix_count >= 1; prefix_count-- )); do
-    route="omarchy $(join_words " " "${args[@]:0:prefix_count}")"
+    route="ILV $(join_words " " "${args[@]:0:prefix_count}")"
 
-    binary="omarchy-$(join_words "-" "${args[@]:0:prefix_count}")"
+    binary="ILV-$(join_words "-" "${args[@]:0:prefix_count}")"
     candidate="$OMARCHY_BIN_DIR/$binary"
     if [[ -f $candidate && -x $candidate ]]; then
       DIRECT_RESOLVED_BINARY="$binary"
@@ -385,7 +385,7 @@ sorted_keys() {
 
 fallback_group_for_key() {
   local key="$1"
-  local fallback="${COMMAND_FALLBACK_ROUTE[$key]#omarchy }"
+  local fallback="${COMMAND_FALLBACK_ROUTE[$key]#ILV }"
 
   printf '%s' "${fallback%% *}"
 }
@@ -480,18 +480,18 @@ show_main_help() {
 Omarchy command center
 
 Usage:
-  omarchy <command> [args...]
-  omarchy commands [--all] [--json] [--check]
-  omarchy <group> --help
-  omarchy <group> <command> --help
+  ILV <command> [args...]
+  ILV commands [--all] [--json] [--check]
+  ILV <group> --help
+  ILV <group> <command> --help
 
 Common commands:
-  omarchy update              Update Omarchy and system packages
-  omarchy theme list          List available themes
-  omarchy theme set <name>    Apply a theme
-  omarchy font list           List available fonts
-  omarchy screenshot          Take a screenshot
-  omarchy debug               Print debugging information
+  ILV update              Update Omarchy and system packages
+  ILV theme list          List available themes
+  ILV theme set <name>    Apply a theme
+  ILV font list           List available fonts
+  ILV screenshot          Take a screenshot
+  ILV debug               Print debugging information
 
 Groups:
 EOF
@@ -499,17 +499,17 @@ EOF
   cat <<'EOF'
 
 Discovery:
-  omarchy commands            List all commands
-  omarchy commands --all      Include commands explicitly marked hidden
-  omarchy commands --json     Machine-readable command list
-  omarchy commands --check    Validate command metadata and routes
+  ILV commands            List all commands
+  ILV commands --all      Include commands explicitly marked hidden
+  ILV commands --json     Machine-readable command list
+  ILV commands --check    Validate command metadata and routes
 EOF
 }
 
 show_commands_help() {
   cat <<'EOF'
 Usage:
-  omarchy commands [--all] [--json] [--markdown] [--check]
+  ILV commands [--all] [--json] [--markdown] [--check]
 
 List commands known to the Omarchy command center.
 
@@ -734,7 +734,7 @@ parse_commands_args() {
       return 0
       ;;
     *)
-      echo "Unknown option for omarchy commands: $1" >&2
+      echo "Unknown option for ILV commands: $1" >&2
       show_commands_help >&2
       return 2
       ;;
@@ -787,7 +787,7 @@ show_group_help() {
   if [[ -n $rows ]]; then
     print_command_table "$rows"
   else
-    echo "  No documented commands found. Try: omarchy commands --all"
+    echo "  No documented commands found. Try: ILV commands --all"
   fi
 }
 
@@ -806,7 +806,7 @@ show_prefix_help() {
 
   [[ -n $rows ]] || return 1
 
-  echo "${prefix#omarchy } commands:"
+  echo "${prefix#ILV } commands:"
   print_command_table "$rows"
 }
 
@@ -887,7 +887,7 @@ resolve_route() {
   local key=""
 
   for (( prefix_count = argc; prefix_count >= 1; prefix_count-- )); do
-    route="omarchy $(join_words " " "${args[@]:0:prefix_count}")"
+    route="ILV $(join_words " " "${args[@]:0:prefix_count}")"
     key="${ROUTE_TO_KEY[$route]}"
 
     if [[ -n $key ]]; then
@@ -906,7 +906,7 @@ suggest_command() {
   local candidate=""
 
   for candidate in "${!ROUTE_TO_KEY[@]}"; do
-    candidate="${candidate#omarchy }"
+    candidate="${candidate#ILV }"
     if [[ $candidate == "$first"* ]]; then
       printf '%s' "${candidate%% *}"
       return 0
@@ -1027,16 +1027,16 @@ dispatch_or_help() {
     return 0
   fi
 
-  if show_prefix_help "omarchy ${args[*]}"; then
+  if show_prefix_help "ILV ${args[*]}"; then
     return 0
   fi
 
-  echo "Unknown Omarchy command: omarchy ${args[*]}" >&2
+  echo "Unknown Omarchy command: ILV ${args[*]}" >&2
   suggestion=$(suggest_command "${args[0]}")
   if [[ -n $suggestion ]]; then
-    echo "Did you mean: omarchy $suggestion ?" >&2
+    echo "Did you mean: ILV $suggestion ?" >&2
   fi
-  echo "Run 'omarchy commands --all' to discover available commands." >&2
+  echo "Run 'ILV commands --all' to discover available commands." >&2
   return 127
 }
 

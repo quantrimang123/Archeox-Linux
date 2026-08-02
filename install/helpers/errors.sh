@@ -119,7 +119,7 @@ catch_errors() {
       fi
       ;;
     "Upload log for support")
-      omarchy-upload-log
+      ILV-upload-log
       ;;
     "Exit" | "")
       exit 1

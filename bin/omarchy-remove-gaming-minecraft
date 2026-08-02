@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# omarchy:summary=Remove the Minecraft launcher along with its worlds, mods, and caches.
-# omarchy:requires-sudo=true
+# ILV:summary=Remove the Minecraft launcher along with its worlds, mods, and caches.
+# ILV:requires-sudo=true
 
 set -e
 
-omarchy-pkg-drop minecraft-launcher
+ILV-pkg-drop minecraft-launcher
 
 rm -rf \
   "$HOME/.minecraft" \

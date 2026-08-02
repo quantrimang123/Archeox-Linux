@@ -1,9 +1,9 @@
 # Set default XCompose that is triggered with CapsLock
 tee ~/.XCompose >/dev/null <<EOF
-# Run omarchy-restart-xcompose to apply changes
+# Run ILV-restart-xcompose to apply changes
 
 # Include fast emoji access
-include "%H/.local/share/omarchy/default/xcompose"
+include "%H/.local/share/ILV/default/xcompose"
 
 # Identification
 <Multi_key> <space> <n> : "$OMARCHY_USER_NAME"

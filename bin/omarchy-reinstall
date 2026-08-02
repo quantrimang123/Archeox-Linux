@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# omarchy:summary=Reinstall Omarchy packages and reset default configs
-# omarchy:requires-sudo=true
+# ILV:summary=Reinstall Omarchy packages and reset default configs
+# ILV:requires-sudo=true
 
 set -e
 
@@ -10,9 +10,9 @@ set -e
 echo -e "This will reinstall all the default Omarchy packages and reset all default configs.\nWarning: All user changes to configs will be lost.\n"
 
 if gum confirm "Are you sure you want to reinstall and lose all config changes?"; then
-  omarchy-reinstall-git
-  omarchy-reinstall-pkgs
-  omarchy-reinstall-configs
+  ILV-reinstall-git
+  ILV-reinstall-pkgs
+  ILV-reinstall-configs
 
-  gum confirm "System has been reinstalled. Reboot?" && omarchy-system-reboot
+  gum confirm "System has been reinstalled. Reboot?" && ILV-system-reboot
 fi

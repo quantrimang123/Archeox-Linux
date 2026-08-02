@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# omarchy:summary=Set up hibernation with swap and boot resume configuration
-# omarchy:requires-sudo=true
-# omarchy:args=[--force] [--no-rebuild]
+# ILV:summary=Set up hibernation with swap and boot resume configuration
+# ILV:requires-sudo=true
+# ILV:args=[--force] [--no-rebuild]
 
 FORCE=false
 NO_REBUILD=false
@@ -26,7 +26,7 @@ if ! $NO_REBUILD && ! command -v limine-mkinitcpio &>/dev/null; then
   exit 0
 fi
 
-MKINITCPIO_CONF="/etc/mkinitcpio.conf.d/omarchy_resume.conf"
+MKINITCPIO_CONF="/etc/mkinitcpio.conf.d/ILV_resume.conf"
 SWAP_FILE="/swap/swapfile"
 RESUME_DROP_IN="/etc/limine-entry-tool.d/resume.conf"
 
@@ -128,5 +128,5 @@ if ! $NO_REBUILD; then
 fi
 
 if ! $FORCE && ! $NO_REBUILD && gum confirm "Reboot to enable hibernation?"; then
-  omarchy-system-reboot
+  ILV-system-reboot
 fi

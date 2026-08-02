@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# omarchy:summary=Pull the latest Omarchy git changes
+# ILV:summary=Pull the latest Omarchy git changes
 
 set -e
 
 echo -e "\e[32mUpdate Omarchy\e[0m"
 
-omarchy-update-time
+ILV-update-time
 
 # Suppress Hyprland config errors while git updates default config files mid-pull
 hyprctl keyword debug:suppress_errors true &>/dev/null || true
