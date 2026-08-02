@@ -7,5 +7,5 @@ set -e
 # Reinstall the Omarchy configuration directory from the git source.
 
 git clone --depth=1 --branch master "https://github.com/basecamp/ILV.git" ~/.local/share/ILV-new >/dev/null
-mv $OMARCHY_PATH ~/.local/share/ILV-old
-mv ~/.local/share/ILV-new $OMARCHY_PATH
+mv $ILV_PATH ~/.local/share/ILV-old
+mv ~/.local/share/ILV-new $ILV_PATH

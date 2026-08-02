@@ -4,4 +4,4 @@
 # ILV:requires-sudo=true
 
 sudo rm -rf /usr/share/sddm/themes/ILV
-sudo cp -r $OMARCHY_PATH/default/sddm/ILV /usr/share/sddm/themes/ILV
+sudo cp -r $ILV_PATH/default/sddm/ILV /usr/share/sddm/themes/ILV

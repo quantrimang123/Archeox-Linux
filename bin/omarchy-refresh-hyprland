@@ -8,4 +8,4 @@ ILV-refresh-config hypr/input.conf
 ILV-refresh-config hypr/looknfeel.conf
 ILV-refresh-config hypr/hyprland.conf
 ILV-refresh-config hypr/monitors.conf
-bash "$OMARCHY_PATH/install/config/detect-keyboard-layout.sh"
+bash "$ILV_PATH/install/config/detect-keyboard-layout.sh"

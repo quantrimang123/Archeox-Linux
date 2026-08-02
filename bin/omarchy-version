@@ -2,4 +2,4 @@
 
 # ILV:summary=Print the installed Omarchy version
 
-cat $OMARCHY_PATH/version
+cat $ILV_PATH/version

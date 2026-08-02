@@ -17,7 +17,7 @@ theme=$1
 if [[ -d ~/.config/ILV/themes/$theme ]]; then
   theme_dir=~/.config/ILV/themes/$theme
 else
-  theme_dir="$OMARCHY_PATH/themes/$theme"
+  theme_dir="$ILV_PATH/themes/$theme"
 fi
 
 bg=$(awk -F'"' '/^background/{print $2}' "$theme_dir/colors.toml")

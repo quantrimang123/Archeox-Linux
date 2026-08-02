@@ -7,7 +7,7 @@
 set -e
 
 COMMAND="$1"
-OMARCHY_PATH=${OMARCHY_PATH:-$HOME/.local/share/ILV}
+ILV_PATH=${ILV_PATH:-$HOME/.local/share/ILV}
 
 if [[ -z $COMMAND ]]; then
   echo "Usage: ILV-snapshot <create|restore>" >&2

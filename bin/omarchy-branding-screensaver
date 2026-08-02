@@ -19,7 +19,7 @@ text)
   ILV-launch-editor ~/.config/ILV/branding/screensaver.txt >/dev/null 2>&1 && ILV-launch-screensaver force >/dev/null 2>&1
   ;;
 reset)
-  cp "$OMARCHY_PATH/logo.txt" ~/.config/ILV/branding/screensaver.txt && ILV-launch-screensaver force >/dev/null 2>&1
+  cp "$ILV_PATH/logo.txt" ~/.config/ILV/branding/screensaver.txt && ILV-launch-screensaver force >/dev/null 2>&1
   ;;
 *)
   echo "Usage: ILV-branding-screensaver <image|text|reset>" >&2

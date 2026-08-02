@@ -16,9 +16,9 @@ if ILV-cmd-present foot; then
 fi
 
 # Refresh the webapps, TUIs, and npx wrappers
-bash $OMARCHY_PATH/install/packaging/icons.sh
-bash $OMARCHY_PATH/install/packaging/webapps.sh
-bash $OMARCHY_PATH/install/packaging/tuis.sh
-bash $OMARCHY_PATH/install/packaging/npx.sh
+bash $ILV_PATH/install/packaging/icons.sh
+bash $ILV_PATH/install/packaging/webapps.sh
+bash $ILV_PATH/install/packaging/tuis.sh
+bash $ILV_PATH/install/packaging/npx.sh
 
 update-desktop-database ~/.local/share/applications

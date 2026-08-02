@@ -48,16 +48,16 @@ install)
   # there it's the right one).
   ARCHINSTALL_LOG="/var/log/archinstall/install.log"
   if [[ -s /mnt/var/log/ILV-install.log ]]; then
-    OMARCHY_LOG="/mnt/var/log/ILV-install.log"
+    ILV_LOG="/mnt/var/log/ILV-install.log"
   else
-    OMARCHY_LOG="/var/log/ILV-install.log"
+    ILV_LOG="/var/log/ILV-install.log"
   fi
 
   cat "$SYSTEM_INFO" >"$TEMP_LOG"
   [[ -s $ARCHINSTALL_LOG ]] && cat "$ARCHINSTALL_LOG" >>"$TEMP_LOG"
-  if [[ -s $OMARCHY_LOG ]]; then
-    printf '\n========================================\nOMARCHY INSTALL LOG (%s)\n========================================\n\n' "$OMARCHY_LOG" >>"$TEMP_LOG"
-    cat "$OMARCHY_LOG" >>"$TEMP_LOG"
+  if [[ -s $ILV_LOG ]]; then
+    printf '\n========================================\nILV INSTALL LOG (%s)\n========================================\n\n' "$ILV_LOG" >>"$TEMP_LOG"
+    cat "$ILV_LOG" >>"$TEMP_LOG"
   else
     echo "Warning: ILV install log not found (looked at /mnt/var/log/ and /var/log/)" >&2
   fi

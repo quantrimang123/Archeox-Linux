@@ -3,7 +3,7 @@
 # ILV:summary=Generate themed config files from Omarchy templates
 # ILV:hidden=true
 
-TEMPLATES_DIR="$OMARCHY_PATH/default/themed"
+TEMPLATES_DIR="$ILV_PATH/default/themed"
 USER_TEMPLATES_DIR="$HOME/.config/ILV/themed"
 NEXT_THEME_DIR="$HOME/.config/ILV/current/next-theme"
 COLORS_FILE="$NEXT_THEME_DIR/colors.toml"

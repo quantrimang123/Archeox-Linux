@@ -40,7 +40,7 @@ for m in $(hyprctl monitors -j | jq -r '.[] | .name'); do
   *foot*)
     hyprctl dispatch exec -- \
       foot --app-id=org.ILV.screensaver \
-      --config="$OMARCHY_PATH/default/foot/screensaver.ini" \
+      --config="$ILV_PATH/default/foot/screensaver.ini" \
       -e ILV-screensaver
     ;;
   *kitty*)

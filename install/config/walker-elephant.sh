@@ -2,11 +2,11 @@
 
 # Ensure Walker service is started automatically on boot
 mkdir -p ~/.config/autostart/
-cp $OMARCHY_PATH/default/walker/walker.desktop ~/.config/autostart/
+cp $ILV_PATH/default/walker/walker.desktop ~/.config/autostart/
 
 # And is restarted if it crashes or is killed
 mkdir -p ~/.config/systemd/user/app-walker@autostart.service.d/
-cp $OMARCHY_PATH/default/walker/restart.conf ~/.config/systemd/user/app-walker@autostart.service.d/restart.conf
+cp $ILV_PATH/default/walker/restart.conf ~/.config/systemd/user/app-walker@autostart.service.d/restart.conf
 
 # Create pacman hook to restart walker after updates
 sudo mkdir -p /etc/pacman.d/hooks
@@ -21,11 +21,11 @@ Target = elephant*
 [Action]
 Description = Restarting Walker services after system update
 When = PostTransaction
-Exec = $OMARCHY_PATH/bin/ILV-restart-walker
+Exec = $ILV_PATH/bin/ILV-restart-walker
 EOF
 
 # Link the visual theme menu config
 mkdir -p ~/.config/elephant/menus
-ln -snf $OMARCHY_PATH/default/elephant/ILV_themes.lua ~/.config/elephant/menus/ILV_themes.lua
-ln -snf $OMARCHY_PATH/default/elephant/ILV_background_selector.lua ~/.config/elephant/menus/ILV_background_selector.lua
-ln -snf $OMARCHY_PATH/default/elephant/ILV_unlocks.lua ~/.config/elephant/menus/ILV_unlocks.lua
+ln -snf $ILV_PATH/default/elephant/ILV_themes.lua ~/.config/elephant/menus/ILV_themes.lua
+ln -snf $ILV_PATH/default/elephant/ILV_background_selector.lua ~/.config/elephant/menus/ILV_background_selector.lua
+ln -snf $ILV_PATH/default/elephant/ILV_unlocks.lua ~/.config/elephant/menus/ILV_unlocks.lua

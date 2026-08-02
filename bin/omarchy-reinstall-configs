@@ -17,7 +17,7 @@ cp -R ~/.local/share/ILV/config/* ~/.config/
 cp ~/.local/share/ILV/default/bashrc ~/.bashrc
 echo '[[ -f ~/.bashrc ]] && . ~/.bashrc' | tee ~/.bash_profile >/dev/null
 
-$(bash $OMARCHY_PATH/install/config/theme.sh)
+$(bash $ILV_PATH/install/config/theme.sh)
 
 ILV-refresh-limine
 ILV-refresh-plymouth

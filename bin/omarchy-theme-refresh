@@ -5,5 +5,5 @@
 THEME_NAME_PATH="$HOME/.config/ILV/current/theme.name"
 
 if [[ -f $THEME_NAME_PATH ]]; then
-  OMARCHY_THEME_SKIP_BACKGROUND=1 ILV-theme-set "$(cat $THEME_NAME_PATH)"
+  ILV_THEME_SKIP_BACKGROUND=1 ILV-theme-set "$(cat $THEME_NAME_PATH)"
 fi

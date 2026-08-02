@@ -16,7 +16,7 @@ done
 
 FLAG_NAME="$1"
 FLAG="$HOME/.local/state/ILV/toggles/hypr/$FLAG_NAME.conf"
-FLAG_SOURCE="$OMARCHY_PATH/default/hypr/toggles/$FLAG_NAME.conf"
+FLAG_SOURCE="$ILV_PATH/default/hypr/toggles/$FLAG_NAME.conf"
 
 if [[ -f $FLAG ]]; then
   rm $FLAG

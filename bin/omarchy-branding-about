@@ -19,7 +19,7 @@ text)
   ILV-launch-editor ~/.config/ILV/branding/about.txt >/dev/null 2>&1 && ILV-launch-about >/dev/null 2>&1
   ;;
 reset)
-  cp "$OMARCHY_PATH/icon.txt" ~/.config/ILV/branding/about.txt && ILV-launch-about >/dev/null 2>&1
+  cp "$ILV_PATH/icon.txt" ~/.config/ILV/branding/about.txt && ILV-launch-about >/dev/null 2>&1
   ;;
 *)
   echo "Usage: ILV-branding-about <image|text|reset>" >&2
