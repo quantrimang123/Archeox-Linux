@@ -3,7 +3,7 @@
 # Exit immediately if a command exits with a non-zero status
 set -eEo pipefail
 
-# Define Omarchy locations
+# Define ILV locations
 export ILV_PATH="$HOME/.local/share/ilv"
 export ILV_INSTALL="$ILV_PATH/install"
 export ILV_INSTALL_LOG_FILE="/var/log/ilv-install.log"
