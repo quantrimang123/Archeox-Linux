@@ -23,9 +23,9 @@ run_logged $ILV_INSTALL/config/fast-shutdown.sh
 run_logged $ILV_INSTALL/config/unmount-fuse.sh
 run_logged $ILV_INSTALL/config/sudoless-asdcontrol.sh
 run_logged $ILV_INSTALL/config/input-group.sh
-run_logged $ILV_INSTALL/config/omarchy-ai-skill.sh
+run_logged $ILV_INSTALL/config/ilv-ai-skill.sh
 run_logged $ILV_INSTALL/config/pi.sh
-run_logged $ILV_INSTALL/config/ILV-toggles.sh
+run_logged $ILV_INSTALL/config/ilv-toggles.sh
 run_logged $ILV_INSTALL/config/kernel-modules-hook.sh
 run_logged $ILV_INSTALL/config/powerprofilesctl-rules.sh
 run_logged $ILV_INSTALL/config/wifi-powersave-rules.sh
