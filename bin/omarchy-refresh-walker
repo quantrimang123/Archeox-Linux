@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Overwrite the user configs for the Walker application launcher (which also powers the Omarchy Menu) and restart the services.
+# ILV:summary=Overwrite the user configs for the Walker application launcher (which also powers the ILV Menu) and restart the services.
 
 mkdir -p ~/.config/autostart/
 cp $ILV_PATH/default/walker/walker.desktop ~/.config/autostart/

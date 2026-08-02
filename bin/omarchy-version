@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ILV:summary=Print the installed Omarchy version
+# ILV:summary=Print the installed ILV version
 
 cat $ILV_PATH/version

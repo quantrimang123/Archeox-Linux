@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Reset Waybar config to Omarchy defaults
+# ILV:summary=Reset Waybar config to ILV defaults
 # ILV:examples=ILV refresh waybar
 
 ILV-refresh-config waybar/config.jsonc

@@ -58,7 +58,7 @@ start_install_log() {
 
   export ILV_START_TIME=$(date '+%Y-%m-%d %H:%M:%S')
 
-  echo "=== Omarchy Installation Started: $ILV_START_TIME ===" >>"$ILV_INSTALL_LOG_FILE"
+  echo "=== ILV Installation Started: $ILV_START_TIME ===" >>"$ILV_INSTALL_LOG_FILE"
   start_log_output
 }
 
@@ -68,7 +68,7 @@ stop_install_log() {
 
   if [[ -n ${ILV_INSTALL_LOG_FILE:-} ]]; then
     ILV_END_TIME=$(date '+%Y-%m-%d %H:%M:%S')
-    echo "=== Omarchy Installation Completed: $ILV_END_TIME ===" >>"$ILV_INSTALL_LOG_FILE"
+    echo "=== ILV Installation Completed: $ILV_END_TIME ===" >>"$ILV_INSTALL_LOG_FILE"
     echo "" >>"$ILV_INSTALL_LOG_FILE"
     echo "=== Installation Time Summary ===" >>"$ILV_INSTALL_LOG_FILE"
 
@@ -96,7 +96,7 @@ stop_install_log() {
       ILV_MINS=$((ILV_DURATION / 60))
       ILV_SECS=$((ILV_DURATION % 60))
 
-      echo "Omarchy:     ${ILV_MINS}m ${ILV_SECS}s" >>"$ILV_INSTALL_LOG_FILE"
+      echo "ILV:     ${ILV_MINS}m ${ILV_SECS}s" >>"$ILV_INSTALL_LOG_FILE"
 
       if [[ -n $ARCH_DURATION ]]; then
         TOTAL_DURATION=$((ARCH_DURATION + ILV_DURATION))

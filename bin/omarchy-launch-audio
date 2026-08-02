@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ILV:summary=Launch the Omarchy audio controls TUI (provided by wiremix).
+# ILV:summary=Launch the ILV audio controls TUI (provided by wiremix).
 
 ILV-launch-or-focus-tui wiremix

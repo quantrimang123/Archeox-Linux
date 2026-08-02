@@ -1,4 +1,4 @@
-# Omarchy logo in a font for Waybar use
+# ILV logo in a font for Waybar use
 mkdir -p ~/.local/share/fonts
 cp ~/.local/share/ILV/config/ILV.ttf ~/.local/share/fonts/
 fc-cache

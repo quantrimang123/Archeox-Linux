@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ILV:summary=Reload hyprland configuration (used by the Omarchy theme switching).
+# ILV:summary=Reload hyprland configuration (used by the ILV theme switching).
 
 hyprctl reload >/dev/null

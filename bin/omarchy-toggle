@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Toggle Omarchy features between enabled and disabled
+# ILV:summary=Toggle ILV features between enabled and disabled
 # ILV:args=[--enabled-notification <text>] [--disabled-notification <text>] <flag-name>
 
 ENABLED_NOTIFICATION=""

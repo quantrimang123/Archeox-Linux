@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Set the Plymouth boot theme from an Omarchy theme
+# ILV:summary=Set the Plymouth boot theme from an ILV theme
 # ILV:args=<theme-name>
 # ILV:requires-sudo=true
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Install one of the approved terminals and set it as the default for Omarchy (Super + Return etc).
+# ILV:summary=Install one of the approved terminals and set it as the default for ILV (Super + Return etc).
 # ILV:args=<alacritty|foot|ghostty|kitty>
 # ILV:requires-sudo=true
 

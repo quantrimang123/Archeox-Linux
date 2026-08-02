@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ILV:summary=Overwrite the user config for fastfetch with the Omarchy default.
+# ILV:summary=Overwrite the user config for fastfetch with the ILV default.
 
 ILV-refresh-config fastfetch/config.jsonc

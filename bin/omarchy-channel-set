@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Set the Omarchy channel, which dictates what git branch and package repository is used.
+# ILV:summary=Set the ILV channel, which dictates what git branch and package repository is used.
 # ILV:args=<stable|rc|edge|dev>
 # ILV:requires-sudo=true
 

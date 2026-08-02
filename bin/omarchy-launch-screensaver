@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Launch the Omarchy screensaver in the default terminal on the system with the correct font configuration.
+# ILV:summary=Launch the ILV screensaver in the default terminal on the system with the correct font configuration.
 
 if ! command -v tte &>/dev/null; then
   exit 1

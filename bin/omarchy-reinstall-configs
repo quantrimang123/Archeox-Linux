@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# ILV:summary=Reset all Omarchy user configs to the defaults
+# ILV:summary=Reset all ILV user configs to the defaults
 # ILV:requires-sudo=true
 
 set -e
 
-# Overwrite all user configs with the Omarchy defaults.
+# Overwrite all user configs with the ILV defaults.
 
 if (( EUID == 0 )); then
   echo "Error: This script should not be run as root"
   exit 1
 fi
 
-echo "Resetting all Omarchy configs"
+echo "Resetting all ILV configs"
 cp -R ~/.local/share/ILV/config/* ~/.config/
 cp ~/.local/share/ILV/default/bashrc ~/.bashrc
 echo '[[ -f ~/.bashrc ]] && . ~/.bashrc' | tee ~/.bash_profile >/dev/null

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Set the default browser for Omarchy and XDG handlers
+# ILV:summary=Set the default browser for ILV and XDG handlers
 # ILV:args=[chromium|chrome|brave|brave-origin|edge|firefox|zen]
 # ILV:examples=ILV default browser firefox | ILV default browser brave
 

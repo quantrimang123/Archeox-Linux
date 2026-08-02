@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Overwrite the user config for the Plymouth drive decryption and boot sequence with the Omarchy default and rebuild it.
+# ILV:summary=Overwrite the user config for the Plymouth drive decryption and boot sequence with the ILV default and rebuild it.
 # ILV:requires-sudo=true
 
 sudo cp -r ~/.local/share/ILV/default/plymouth/* /usr/share/plymouth/themes/ILV/

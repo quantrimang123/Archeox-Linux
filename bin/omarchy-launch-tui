@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Launch a TUI command in the default terminal with Omarchy styling
+# ILV:summary=Launch a TUI command in the default terminal with ILV styling
 # ILV:args=<command> [args...]
 
 exec setsid uwsm-app -- xdg-terminal-exec --app-id=org.ILV.$(basename $1) -e "$1" "${@:2}"

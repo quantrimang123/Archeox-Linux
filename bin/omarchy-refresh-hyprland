@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Overwrite all the user configs in ~/.config/hypr with the Omarchy defaults.
+# ILV:summary=Overwrite all the user configs in ~/.config/hypr with the ILV defaults.
 
 ILV-refresh-config hypr/autostart.conf
 ILV-refresh-config hypr/bindings.conf

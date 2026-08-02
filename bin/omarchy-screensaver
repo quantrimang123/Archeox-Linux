@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Run the Omarchy screensaver using random effects from TTE.
+# ILV:summary=Run the ILV screensaver using random effects from TTE.
 
 screensaver_in_focus() {
   hyprctl activewindow -j | jq -e '.class == "org.ILV.screensaver"' >/dev/null 2>&1

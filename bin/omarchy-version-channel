@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Print the active Omarchy mirror and package channel
+# ILV:summary=Print the active ILV mirror and package channel
 
 if grep -q "https://stable-mirror.ILV.org/" /etc/pacman.d/mirrorlist; then
   mirror="stable"

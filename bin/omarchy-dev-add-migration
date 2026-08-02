@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Creates a new Omarchy migration named after the unix timestamp of the last commit.
+# ILV:summary=Creates a new ILV migration named after the unix timestamp of the last commit.
 
 cd ~/.local/share/ILV
 migration_file="$HOME/.local/share/ILV/migrations/$(git log -1 --format=%cd --date=unix).sh"

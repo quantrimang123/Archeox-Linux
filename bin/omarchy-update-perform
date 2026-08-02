@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Run the full Omarchy update pipeline
+# ILV:summary=Run the full ILV update pipeline
 # ILV:requires-sudo=true
 
 set -e

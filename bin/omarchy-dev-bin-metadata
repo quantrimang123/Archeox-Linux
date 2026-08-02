@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Show Omarchy bin metadata fields and defaults
+# ILV:summary=Show ILV bin metadata fields and defaults
 # ILV:args=[--json]
 
 set -euo pipefail
@@ -30,7 +30,7 @@ show_json() {
 
 show_help() {
   cat <<'EOF'
-Omarchy bin metadata
+ILV bin metadata
 
 Metadata lives in the top comment block of each executable bin/ILV-* file.
 Keep it slim: define only fields that are required or override defaults.

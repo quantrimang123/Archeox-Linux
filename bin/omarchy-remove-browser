@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Remove a supported browser and clean up Omarchy browser defaults
+# ILV:summary=Remove a supported browser and clean up ILV browser defaults
 # ILV:args=<chrome|brave|brave-origin|edge|firefox|zen>
 # ILV:examples=ILV remove browser firefox | ILV remove browser brave
 # ILV:requires-sudo=true

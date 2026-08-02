@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Finish the installation of Omarchy with items that can only be done after logging in.
+# ILV:summary=Finish the installation of ILV with items that can only be done after logging in.
 # ILV:requires-sudo=true
 
 set -e

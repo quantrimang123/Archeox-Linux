@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Overwrite the user configs for swayosd (controls on-screen feedback for changing volume/songs etc) with the Omarchy defaults and restart the service.
+# ILV:summary=Overwrite the user configs for swayosd (controls on-screen feedback for changing volume/songs etc) with the ILV defaults and restart the service.
 
 ILV-refresh-config swayosd/config.toml
 ILV-refresh-config swayosd/style.css

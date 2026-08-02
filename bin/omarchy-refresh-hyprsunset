@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Overwrite the user config for hyprsunset with the Omarchy default and restart the service.
+# ILV:summary=Overwrite the user config for hyprsunset with the ILV default and restart the service.
 
 ILV-refresh-config hypr/hyprsunset.conf
 ILV-restart-hyprsunset

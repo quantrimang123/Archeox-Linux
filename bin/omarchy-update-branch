@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Switch Omarchy branches and update from the selected branch
+# ILV:summary=Switch ILV branches and update from the selected branch
 # ILV:args=<branch>
 
 set -e

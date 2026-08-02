@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ILV:summary=Overwrite the user config for hyprlock with the Omarchy default.
+# ILV:summary=Overwrite the user config for hyprlock with the ILV default.
 
 ILV-refresh-config hypr/hyprlock.conf

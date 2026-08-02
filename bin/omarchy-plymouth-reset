@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Restore the default Omarchy Plymouth boot theme and SDDM login screen
+# ILV:summary=Restore the default ILV Plymouth boot theme and SDDM login screen
 # ILV:requires-sudo=true
 
 theme_dir="/usr/share/plymouth/themes/ILV"

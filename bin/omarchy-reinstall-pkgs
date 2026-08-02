@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ILV:summary=Reinstall all default Omarchy packages from the stable channel
+# ILV:summary=Reinstall all default ILV packages from the stable channel
 # ILV:requires-sudo=true
 
 set -e
 
-# Reinstall all default Omarchy packages from the stable channel and downgrade any packages that are too new.
+# Reinstall all default ILV packages from the stable channel and downgrade any packages that are too new.
 
 # Set the package repository to the stable mirrors
 ILV-refresh-pacman

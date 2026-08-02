@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Apply an Omarchy theme
+# ILV:summary=Apply an ILV theme
 # ILV:args=<theme-name>
 # ILV:examples=ILV theme list | ILV theme set "Tokyo Night"
 

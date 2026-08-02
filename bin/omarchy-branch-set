@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Set the branch for Omarchy's git repository.
+# ILV:summary=Set the branch for ILV's git repository.
 # ILV:args=<master|rc|dev>
 
 if (($# == 0)); then

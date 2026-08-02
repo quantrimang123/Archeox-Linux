@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Overwrite the package configuration for /etc/pacman with the Omarchy default of using its dedicated mirrors and repositories, then update all packages.
+# ILV:summary=Overwrite the package configuration for /etc/pacman with the ILV default of using its dedicated mirrors and repositories, then update all packages.
 # ILV:requires-sudo=true
 
 sudo cp -f /etc/pacman.conf /etc/pacman.conf.bak

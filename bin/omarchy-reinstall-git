@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ILV:summary=Reinstall the Omarchy source directory from git
+# ILV:summary=Reinstall the ILV source directory from git
 
 set -e
 
-# Reinstall the Omarchy configuration directory from the git source.
+# Reinstall the ILV configuration directory from the git source.
 
 git clone --depth=1 --branch master "https://github.com/basecamp/ILV.git" ~/.local/share/ILV-new >/dev/null
 mv $ILV_PATH ~/.local/share/ILV-old

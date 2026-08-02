@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Apply current Omarchy theme colors to running Foot terminals
+# ILV:summary=Apply current ILV theme colors to running Foot terminals
 # ILV:hidden=true
 
 foot_theme=~/.config/ILV/current/theme/foot.ini

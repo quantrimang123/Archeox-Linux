@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ILV:summary=Install Zed Editor and configure it with the current Omarchy theme
+# ILV:summary=Install Zed Editor and configure it with the current ILV theme
 
 echo "Installing Zed Editor..."
 ILV-pkg-add zed omazed
 
-# Apply Omarchy theme to Zed
+# Apply ILV theme to Zed
 omazed setup
 
 setsid gtk-launch dev.zed.Zed

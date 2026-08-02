@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Measure Omarchy CLI response times
+# ILV:summary=Measure ILV CLI response times
 # ILV:args=[--repeat=<count>]
 # ILV:examples=ILV dev benchmark | ILV dev benchmark --repeat=10
 
@@ -15,7 +15,7 @@ show_help() {
 Usage:
   ILV dev benchmark [--repeat=<count>]
 
-Measure response times for common Omarchy CLI surfaces.
+Measure response times for common ILV CLI surfaces.
 
 Options:
   --repeat=<count>  Number of times to run each case (default: 5)
@@ -99,7 +99,7 @@ if [[ ! $REPEAT =~ ^[0-9]+$ ]] || (( REPEAT < 1 )); then
   exit 2
 fi
 
-printf 'Omarchy CLI benchmark (%d runs each)\n\n' "$REPEAT"
+printf 'ILV CLI benchmark (%d runs each)\n\n' "$REPEAT"
 run_case "ILV" "$CLI"
 run_case "ILV --help" "$CLI" --help
 run_case "ILV commands" "$CLI" commands

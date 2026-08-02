@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Update Omarchy and system packages
+# ILV:summary=Update ILV and system packages
 # ILV:args=[-y]
 # ILV:examples=ILV update | ILV update -y
 # ILV:requires-sudo=true

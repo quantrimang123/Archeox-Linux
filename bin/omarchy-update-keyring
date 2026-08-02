@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Ensure the Omarchy and Arch keyring packages are installed and populated
+# ILV:summary=Ensure the ILV and Arch keyring packages are installed and populated
 # ILV:requires-sudo=true
 
 if ILV-pkg-missing ILV-keyring || ! sudo pacman-key --list-keys 40DFB630FF42BCFFB047046CF0134EE680CAC571 &>/dev/null; then

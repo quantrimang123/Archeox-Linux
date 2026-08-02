@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ILV:summary=Pull the latest Omarchy git changes
+# ILV:summary=Pull the latest ILV git changes
 
 set -e
 
-echo -e "\e[32mUpdate Omarchy\e[0m"
+echo -e "\e[32mUpdate ILV\e[0m"
 
 ILV-update-time
 

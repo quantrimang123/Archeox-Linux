@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Launch the Omarchy wifi controls (provided by the Impala TUI).
+# ILV:summary=Launch the ILV wifi controls (provided by the Impala TUI).
 
 rfkill unblock wifi
 ILV-launch-or-focus-tui impala

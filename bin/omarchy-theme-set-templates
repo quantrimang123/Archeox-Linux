@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Generate themed config files from Omarchy templates
+# ILV:summary=Generate themed config files from ILV templates
 # ILV:hidden=true
 
 TEMPLATES_DIR="$ILV_PATH/default/themed"

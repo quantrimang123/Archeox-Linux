@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Send a desktop notification with Omarchy glyph and body spacing
+# ILV:summary=Send a desktop notification with ILV glyph and body spacing
 # ILV:args=<glyph> <headline> [description] [notify-send options]
 # ILV:examples=ILV notification send "󰔛" "Reminder" "5 minutes are up" -u critical
 

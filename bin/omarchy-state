@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Manage persistent state files for Omarchy toggles and settings.
+# ILV:summary=Manage persistent state files for ILV toggles and settings.
 # ILV:args=<set|clear> <state-name-or-pattern>
 # ILV:hidden=true
 
