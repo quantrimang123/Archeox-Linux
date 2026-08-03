@@ -4,9 +4,9 @@
 set -eEo pipefail
 
 # Define ARCHEOX locations
-export ARCHEOX_PATH="$HOME/.local/share/ilv"
+export ARCHEOX_PATH="$HOME/.local/share/ARCHEOX"
 export ARCHEOX_INSTALL="$ARCHEOX_PATH/install"
-export ARCHEOX_INSTALL_LOG_FILE="/var/log/ilv-install.log"
+export ARCHEOX_INSTALL_LOG_FILE="/var/log/ARCHEOX-install.log"
 export PATH="$ARCHEOX_PATH/bin:$PATH"
 
 # Install

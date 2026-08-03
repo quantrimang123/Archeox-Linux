@@ -23,9 +23,9 @@ run_logged $ARCHEOX_INSTALL/config/fast-shutdown.sh
 run_logged $ARCHEOX_INSTALL/config/unmount-fuse.sh
 run_logged $ARCHEOX_INSTALL/config/sudoless-asdcontrol.sh
 run_logged $ARCHEOX_INSTALL/config/input-group.sh
-run_logged $ARCHEOX_INSTALL/config/ilv-ai-skill.sh
+run_logged $ARCHEOX_INSTALL/config/ARCHEOX-ai-skill.sh
 run_logged $ARCHEOX_INSTALL/config/pi.sh
-run_logged $ARCHEOX_INSTALL/config/ilv-toggles.sh
+run_logged $ARCHEOX_INSTALL/config/ARCHEOX-toggles.sh
 run_logged $ARCHEOX_INSTALL/config/kernel-modules-hook.sh
 run_logged $ARCHEOX_INSTALL/config/powerprofilesctl-rules.sh
 run_logged $ARCHEOX_INSTALL/config/wifi-powersave-rules.sh
