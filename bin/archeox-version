@@ -2,4 +2,4 @@
 
 # archeox:summary=Print the installed archeox version
 
-cat $ARCHEOX_"PATH/version
+cat $ARCHEOX_PATH/version

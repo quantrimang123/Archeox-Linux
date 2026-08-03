@@ -17,7 +17,7 @@ theme=$1
 if [[ -d ~/.config/archeox/themes/$theme ]]; then
   theme_dir=~/.config/archeox/themes/$theme
 else
-  theme_dir="$ARCHEOX_"PATH/themes/$theme"
+  theme_dir="$ARCHEOX_PATH/themes/$theme"
 fi
 
 bg=$(awk -F'"' '/^background/{print $2}' "$theme_dir/colors.toml")

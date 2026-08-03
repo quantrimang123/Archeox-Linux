@@ -48,16 +48,16 @@ install)
   # there it's the right one).
   ARCHINSTALL_LOG="/var/log/archinstall/install.log"
   if [[ -s /mnt/var/log/archeox-install.log ]]; then
-    ARCHEOX_"LOG="/mnt/var/log/archeox-install.log"
+    ARCHEOX_LOG="/mnt/var/log/archeox-install.log"
   else
-    ARCHEOX_"LOG="/var/log/archeox-install.log"
+    ARCHEOX_LOG="/var/log/archeox-install.log"
   fi
 
   cat "$SYSTEM_INFO" >"$TEMP_LOG"
   [[ -s $ARCHINSTALL_LOG ]] && cat "$ARCHINSTALL_LOG" >>"$TEMP_LOG"
-  if [[ -s $ARCHEOX_"LOG ]]; then
-    printf '\n========================================\narcheox INSTALL LOG (%s)\n========================================\n\n' "$ARCHEOX_"LOG" >>"$TEMP_LOG"
-    cat "$ARCHEOX_"LOG" >>"$TEMP_LOG"
+  if [[ -s $ARCHEOX_LOG ]]; then
+    printf '\n========================================\narcheox INSTALL LOG (%s)\n========================================\n\n' "$ARCHEOX_LOG" >>"$TEMP_LOG"
+    cat "$ARCHEOX_LOG" >>"$TEMP_LOG"
   else
     echo "Warning: archeox install log not found (looked at /mnt/var/log/ and /var/log/)" >&2
   fi

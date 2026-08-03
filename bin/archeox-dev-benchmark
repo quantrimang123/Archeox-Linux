@@ -6,8 +6,8 @@
 
 set -euo pipefail
 
-ARCHEOX_"BIN_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
-CLI="$ARCHEOX_"BIN_DIR/archeox"
+ARCHEOX_BIN_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+CLI="$ARCHEOX_BIN_DIR/archeox"
 REPEAT=5
 
 show_help() {

@@ -7,7 +7,7 @@
 set -e
 
 COMMAND="$1"
-ARCHEOX_"PATH=${ARCHEOX_"PATH:-$HOME/.local/share/archeox}
+ARCHEOX_PATH=${ARCHEOX_PATH:-$HOME/.local/share/archeox}
 
 if [[ -z $COMMAND ]]; then
   echo "Usage: archeox-snapshot <create|restore>" >&2

@@ -8,4 +8,4 @@ archeox-refresh-config hypr/input.conf
 archeox-refresh-config hypr/looknfeel.conf
 archeox-refresh-config hypr/hyprland.conf
 archeox-refresh-config hypr/monitors.conf
-bash "$ARCHEOX_"PATH/install/config/detect-keyboard-layout.sh"
+bash "$ARCHEOX_PATH/install/config/detect-keyboard-layout.sh"

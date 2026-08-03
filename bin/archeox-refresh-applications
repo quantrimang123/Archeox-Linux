@@ -16,9 +16,9 @@ if archeox-cmd-present foot; then
 fi
 
 # Refresh the webapps, TUIs, and npx wrappers
-bash $ARCHEOX_"PATH/install/packaging/icons.sh
-bash $ARCHEOX_"PATH/install/packaging/webapps.sh
-bash $ARCHEOX_"PATH/install/packaging/tuis.sh
-bash $ARCHEOX_"PATH/install/packaging/npx.sh
+bash $ARCHEOX_PATH/install/packaging/icons.sh
+bash $ARCHEOX_PATH/install/packaging/webapps.sh
+bash $ARCHEOX_PATH/install/packaging/tuis.sh
+bash $ARCHEOX_PATH/install/packaging/npx.sh
 
 update-desktop-database ~/.local/share/applications

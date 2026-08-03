@@ -11,7 +11,7 @@ archeox-update-time
 # Suppress Hyprland config errors while git updates default config files mid-pull
 hyprctl keyword debug:suppress_errors true &>/dev/null || true
 
-git -C $ARCHEOX_"PATH pull --autostash
-git -C $ARCHEOX_"PATH --no-pager diff --check || git -C $ARCHEOX_"PATH reset --merge
+git -C $ARCHEOX_PATH pull --autostash
+git -C $ARCHEOX_PATH --no-pager diff --check || git -C $ARCHEOX_PATH reset --merge
 
 hyprctl reload &>/dev/null || true

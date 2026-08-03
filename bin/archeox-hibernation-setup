@@ -26,7 +26,7 @@ if ! $NO_REBUILD && ! command -v limine-mkinitcpio &>/dev/null; then
   exit 0
 fi
 
-MKINITCPIO_CONF="/etc/mkinitcpio.conf.d/ARCHEOX_"resume.conf"
+MKINITCPIO_CONF="/etc/mkinitcpio.conf.d/ARCHEOX_resume.conf"
 SWAP_FILE="/swap/swapfile"
 RESUME_DROP_IN="/etc/limine-entry-tool.d/resume.conf"
 
@@ -88,7 +88,7 @@ echo "Adding resume hook to $MKINITCPIO_CONF"
 echo "HOOKS+=(resume)" | sudo tee "$MKINITCPIO_CONF" >/dev/null
 
 # Ensure keyboard backlight doesn't prevent sleep
-sudo cp -p "$ARCHEOX_"PATH/default/systemd/system-sleep/keyboard-backlight" /usr/lib/systemd/system-sleep/
+sudo cp -p "$ARCHEOX_PATH/default/systemd/system-sleep/keyboard-backlight" /usr/lib/systemd/system-sleep/
 
 # Add resume= kernel parameters so the initramfs resume hook knows where to find the
 # hibernation image. Without these, resume happens late (after GPU drivers load) and fails.

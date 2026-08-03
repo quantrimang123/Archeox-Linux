@@ -30,15 +30,15 @@ if archeox-pkg-add $package; then
   # Copy custom desktop entries with X-TerminalArg* keys
   if [[ $package == "alacritty" ]]; then
     mkdir -p ~/.local/share/applications
-    cp "$ARCHEOX_"PATH/applications/$desktop_id" ~/.local/share/applications/
+    cp "$ARCHEOX_PATH/applications/$desktop_id" ~/.local/share/applications/
   elif [[ $package == "foot" ]]; then
     mkdir -p ~/.local/share/applications
-    cp "$ARCHEOX_"PATH/default/foot/$desktop_id" ~/.local/share/applications/
+    cp "$ARCHEOX_PATH/default/foot/$desktop_id" ~/.local/share/applications/
   fi
 
   # Copy default config for optional terminals when missing
   if [[ ! -e ~/.config/$package ]]; then
-    cp -Rpf "$ARCHEOX_"PATH/config/$package" ~/.config/
+    cp -Rpf "$ARCHEOX_PATH/config/$package" ~/.config/
   fi
 
   # Update xdg-terminals.list to prioritize the proper terminal

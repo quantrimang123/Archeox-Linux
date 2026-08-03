@@ -37,7 +37,7 @@ fi
 cat > "$LOG_FILE" <<EOF
 Date: $(date)
 Hostname: $(hostname)
-archeox Branch: $(git -C "$ARCHEOX_"PATH" branch --show-current 2>/dev/null || echo "unknown")
+archeox Branch: $(git -C "$ARCHEOX_PATH" branch --show-current 2>/dev/null || echo "unknown")
 
 =========================================
 SYSTEM INFORMATION

@@ -15,4 +15,4 @@ if [[ $branch != "master" && $branch != "rc" && $branch != "dev" ]]; then
   exit 1
 fi
 
-git -C $ARCHEOX_"PATH switch $branch
+git -C $ARCHEOX_PATH switch $branch

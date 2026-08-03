@@ -10,9 +10,9 @@ tte -i ~/.local/share/archeox/logo.txt --canvas-width 0 --anchor-text c --frame-
 echo
 
 # Display installation time if available
-if [[ -f $ARCHEOX_"INSTALL_LOG_FILE ]] && grep -q "Total:" "$ARCHEOX_"INSTALL_LOG_FILE" 2>/dev/null; then
+if [[ -f $ARCHEOX_INSTALL_LOG_FILE ]] && grep -q "Total:" "$ARCHEOX_INSTALL_LOG_FILE" 2>/dev/null; then
   echo
-  TOTAL_TIME=$(tail -n 20 "$ARCHEOX_"INSTALL_LOG_FILE" | grep "^Total:" | sed 's/^Total:[[:space:]]*//')
+  TOTAL_TIME=$(tail -n 20 "$ARCHEOX_INSTALL_LOG_FILE" | grep "^Total:" | sed 's/^Total:[[:space:]]*//')
   if [[ -n $TOTAL_TIME ]]; then
     echo_in_style "Installed in $TOTAL_TIME"
   fi
@@ -29,7 +29,7 @@ if gum confirm --padding "0 0 0 $((PADDING_LEFT + 32))" --show-help=false --defa
   # Clear screen to hide any shutdown messages
   clear
 
-  if [[ -n ${ARCHEOX_"CHROOT_INSTALL:-} ]]; then
+  if [[ -n ${ARCHEOX_CHROOT_INSTALL:-} ]]; then
     touch /var/tmp/archeox-install-completed
     exit 0
   else

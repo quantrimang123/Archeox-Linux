@@ -10,19 +10,19 @@ FIRST_RUN_MODE=~/.local/state/archeox/first-run.mode
 if [[ -f $FIRST_RUN_MODE ]]; then
   rm -f "$FIRST_RUN_MODE"
 
-  bash "$ARCHEOX_"PATH/install/first-run/battery-monitor.sh"
-  bash "$ARCHEOX_"PATH/install/first-run/recover-internal-monitor.sh"
-  bash "$ARCHEOX_"PATH/install/first-run/cleanup-reboot-sudoers.sh"
-  bash "$ARCHEOX_"PATH/install/first-run/firewall.sh"
-  bash "$ARCHEOX_"PATH/install/first-run/dns-resolver.sh"
-  bash "$ARCHEOX_"PATH/install/first-run/gnome-theme.sh"
-  bash "$ARCHEOX_"PATH/install/first-run/swayosd.sh"
-  bash "$ARCHEOX_"PATH/install/first-run/gtk-primary-paste.sh"
-  bash "$ARCHEOX_"PATH/install/first-run/text-scaling.sh"
-  bash "$ARCHEOX_"PATH/install/first-run/elephant.sh"
-  archeox-hook-install post-update "$ARCHEOX_"PATH/install/first-run/install-voxtype.hook"
+  bash "$ARCHEOX_PATH/install/first-run/battery-monitor.sh"
+  bash "$ARCHEOX_PATH/install/first-run/recover-internal-monitor.sh"
+  bash "$ARCHEOX_PATH/install/first-run/cleanup-reboot-sudoers.sh"
+  bash "$ARCHEOX_PATH/install/first-run/firewall.sh"
+  bash "$ARCHEOX_PATH/install/first-run/dns-resolver.sh"
+  bash "$ARCHEOX_PATH/install/first-run/gnome-theme.sh"
+  bash "$ARCHEOX_PATH/install/first-run/swayosd.sh"
+  bash "$ARCHEOX_PATH/install/first-run/gtk-primary-paste.sh"
+  bash "$ARCHEOX_PATH/install/first-run/text-scaling.sh"
+  bash "$ARCHEOX_PATH/install/first-run/elephant.sh"
+  archeox-hook-install post-update "$ARCHEOX_PATH/install/first-run/install-voxtype.hook"
   sudo rm -f /etc/sudoers.d/first-run
 
-  bash "$ARCHEOX_"PATH/install/first-run/welcome.sh"
-  bash "$ARCHEOX_"PATH/install/first-run/wifi.sh"
+  bash "$ARCHEOX_PATH/install/first-run/welcome.sh"
+  bash "$ARCHEOX_PATH/install/first-run/wifi.sh"
 fi

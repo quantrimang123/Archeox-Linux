@@ -19,7 +19,7 @@ text)
   archeox-launch-editor ~/.config/archeox/branding/about.txt >/dev/null 2>&1 && archeox-launch-about >/dev/null 2>&1
   ;;
 reset)
-  cp "$ARCHEOX_"PATH/icon.txt" ~/.config/archeox/branding/about.txt && archeox-launch-about >/dev/null 2>&1
+  cp "$ARCHEOX_PATH/icon.txt" ~/.config/archeox/branding/about.txt && archeox-launch-about >/dev/null 2>&1
   ;;
 *)
   echo "Usage: archeox-branding-about <image|text|reset>" >&2

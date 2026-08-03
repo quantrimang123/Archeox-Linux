@@ -16,7 +16,7 @@ done
 
 FLAG_NAME="$1"
 FLAG="$HOME/.local/state/archeox/toggles/hypr/$FLAG_NAME.conf"
-FLAG_SOURCE="$ARCHEOX_"PATH/default/hypr/toggles/$FLAG_NAME.conf"
+FLAG_SOURCE="$ARCHEOX_PATH/default/hypr/toggles/$FLAG_NAME.conf"
 
 if [[ -f $FLAG ]]; then
   rm $FLAG
