@@ -1,2 +1,2 @@
 # Includes lazyvim and the themes
-ARCHEOX-nvim-setup
+Archeox-nvim-setup

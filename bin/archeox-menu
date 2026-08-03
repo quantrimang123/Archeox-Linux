@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Launch the ARCHEOX Menu or takes a parameter to jump straight to a submenu.
+# Archeox:summary=Launch the Archeox Menu or takes a parameter to jump straight to a submenu.
 
 # Set to true when going directly to a submenu, so we can exit directly
 BACK_TO_EXIT=false
@@ -40,54 +40,54 @@ menu() {
     fi
   fi
 
-  echo -e "$options" | ARCHEOX-launch-walker --dmenu --width 295 --minheight 1 --maxheight 630 -p "$prompt…" "${args[@]}" 2>/dev/null
+  echo -e "$options" | Archeox-launch-walker --dmenu --width 295 --minheight 1 --maxheight 630 -p "$prompt…" "${args[@]}" 2>/dev/null
 }
 
 terminal() {
-  xdg-terminal-exec --app-id=org.ARCHEOX.terminal "$@"
+  xdg-terminal-exec --app-id=org.Archeox.terminal "$@"
 }
 
 present_terminal() {
-  ARCHEOX-launch-floating-terminal-with-presentation $1
+  Archeox-launch-floating-terminal-with-presentation $1
 }
 
 open_in_editor() {
   notify-send -u low "Editing config file" "$1"
-  ARCHEOX-launch-editor "$1"
+  Archeox-launch-editor "$1"
 }
 
 install() {
-  present_terminal "echo 'Installing $1...'; ARCHEOX-pkg-add $2"
+  present_terminal "echo 'Installing $1...'; Archeox-pkg-add $2"
 }
 
 install_and_launch() {
-  present_terminal "echo 'Installing $1...'; ARCHEOX-pkg-add $2 && setsid gtk-launch $3"
+  present_terminal "echo 'Installing $1...'; Archeox-pkg-add $2 && setsid gtk-launch $3"
 }
 
 install_font() {
-  present_terminal "echo 'Installing $1...'; ARCHEOX-pkg-add $2 && sleep 2 && ARCHEOX-font-set '$3'"
+  present_terminal "echo 'Installing $1...'; Archeox-pkg-add $2 && sleep 2 && Archeox-font-set '$3'"
 }
 
 install_terminal() {
-  present_terminal "ARCHEOX-install-terminal $1"
+  present_terminal "Archeox-install-terminal $1"
 }
 
 aur_install() {
-  present_terminal "echo 'Installing $1 from AUR...'; ARCHEOX-pkg-aur-add $2"
+  present_terminal "echo 'Installing $1 from AUR...'; Archeox-pkg-aur-add $2"
 }
 
 aur_install_and_launch() {
-  present_terminal "echo 'Installing $1 from AUR...'; ARCHEOX-pkg-aur-add $2 && setsid gtk-launch $3"
+  present_terminal "echo 'Installing $1 from AUR...'; Archeox-pkg-aur-add $2 && setsid gtk-launch $3"
 }
 
 show_learn_menu() {
-  case $(menu "Learn" "  Keybindings\n  ARCHEOX\n  Hyprland\n󰣇  Arch\n  Neovim\n󱆃  Bash") in
-  *Keybindings*) ARCHEOX-menu-keybindings ;;
-  *ARCHEOX*) ARCHEOX-launch-webapp "https://learn.omacom.io/2/the-ARCHEOX-manual" ;;
-  *Hyprland*) ARCHEOX-launch-webapp "https://wiki.hypr.land/" ;;
-  *Arch*) ARCHEOX-launch-webapp "https://wiki.archlinux.org/title/Main_page" ;;
-  *Bash*) ARCHEOX-launch-webapp "https://devhints.io/bash" ;;
-  *Neovim*) ARCHEOX-launch-webapp "https://www.lazyvim.org/keymaps" ;;
+  case $(menu "Learn" "  Keybindings\n  Archeox\n  Hyprland\n󰣇  Arch\n  Neovim\n󱆃  Bash") in
+  *Keybindings*) Archeox-menu-keybindings ;;
+  *Archeox*) Archeox-launch-webapp "https://learn.omacom.io/2/the-Archeox-manual" ;;
+  *Hyprland*) Archeox-launch-webapp "https://wiki.hypr.land/" ;;
+  *Arch*) Archeox-launch-webapp "https://wiki.archlinux.org/title/Main_page" ;;
+  *Bash*) Archeox-launch-webapp "https://devhints.io/bash" ;;
+  *Neovim*) Archeox-launch-webapp "https://www.lazyvim.org/keymaps" ;;
   *) show_main_menu ;;
   esac
 }
@@ -96,7 +96,7 @@ show_trigger_menu() {
   case $(menu "Trigger" "󰔛  Reminder\n  Capture\n󰧸  Transcode\n  Share\n󰔎  Toggle\n  Hardware") in
   *Reminder*) show_reminder_menu ;;
   *Capture*) show_capture_menu ;;
-  *Transcode*) ARCHEOX-transcode || back_to show_trigger_menu ;;
+  *Transcode*) Archeox-transcode || back_to show_trigger_menu ;;
   *Share*) show_share_menu ;;
   *Toggle*) show_toggle_menu ;;
   *Hardware*) show_hardware_menu ;;
@@ -107,20 +107,20 @@ show_trigger_menu() {
 show_reminder_menu() {
   case $(menu "Reminder" "󰔛  Set one\n󰔛  Show all\n󰔛  Clear all") in
   *Set*) show_custom_reminder_input ;;
-  *"Show all"*) ARCHEOX-reminder show ;;
-  *"Clear all"*) ARCHEOX-reminder clear ;;
+  *"Show all"*) Archeox-reminder show ;;
+  *"Clear all"*) Archeox-reminder clear ;;
   *) back_to show_trigger_menu ;;
   esac
 }
 
 show_custom_reminder_input() {
   local minutes
-  minutes=$(ARCHEOX-menu-input "Remind in minutes")
+  minutes=$(Archeox-menu-input "Remind in minutes")
 
   if [[ $minutes =~ ^[0-9]+$ ]] && ((minutes > 0)); then
     show_reminder_message_input "$minutes"
   elif [[ -n $minutes ]]; then
-    ARCHEOX-notification-send "󰔛" "Invalid reminder" "Enter the number of minutes" -u critical
+    Archeox-notification-send "󰔛" "Invalid reminder" "Enter the number of minutes" -u critical
     show_custom_reminder_input
   else
     back_to show_reminder_menu
@@ -130,20 +130,20 @@ show_custom_reminder_input() {
 show_reminder_message_input() {
   local minutes="$1"
   local message
-  message=$(ARCHEOX-menu-input "Reminder message")
+  message=$(Archeox-menu-input "Reminder message")
 
   if [[ -n $message ]]; then
-    ARCHEOX-reminder "$minutes" "$message"
+    Archeox-reminder "$minutes" "$message"
   else
-    ARCHEOX-reminder "$minutes"
+    Archeox-reminder "$minutes"
   fi
 }
 
 show_capture_menu() {
   case $(menu "Capture" "  Screenshot\n  Screenrecord\n󰴑  Text Extraction\n󰃉  Color") in
-  *Screenshot*) ARCHEOX-capture-screenshot ;;
+  *Screenshot*) Archeox-capture-screenshot ;;
   *Screenrecord*) show_screenrecord_menu ;;
-  *Text*) ARCHEOX-capture-text-extraction ;;
+  *Text*) Archeox-capture-text-extraction ;;
   *Color*) pkill hyprpicker || hyprpicker -a ;;
   *) back_to show_trigger_menu ;;
   esac
@@ -177,18 +177,18 @@ show_webcam_select_menu() {
 }
 
 show_screenrecord_menu() {
-  ARCHEOX-capture-screenrecording --stop-recording && exit 0
+  Archeox-capture-screenrecording --stop-recording && exit 0
 
   case $(menu "Screenrecord" "  With no audio\n  With desktop audio\n  With desktop + microphone audio\n  With desktop + microphone audio + webcam") in
-  *"With no audio") ARCHEOX-capture-screenrecording ;;
-  *"With desktop audio") ARCHEOX-capture-screenrecording --with-desktop-audio ;;
-  *"With desktop + microphone audio") ARCHEOX-capture-screenrecording --with-desktop-audio --with-microphone-audio ;;
+  *"With no audio") Archeox-capture-screenrecording ;;
+  *"With desktop audio") Archeox-capture-screenrecording --with-desktop-audio ;;
+  *"With desktop + microphone audio") Archeox-capture-screenrecording --with-desktop-audio --with-microphone-audio ;;
   *"With desktop + microphone audio + webcam")
     local device=$(show_webcam_select_menu) || {
       back_to show_capture_menu
       return
     }
-    ARCHEOX-capture-screenrecording --with-desktop-audio --with-microphone-audio --with-webcam --webcam-device="$device"
+    Archeox-capture-screenrecording --with-desktop-audio --with-microphone-audio --with-webcam --webcam-device="$device"
     ;;
   *) back_to show_capture_menu ;;
   esac
@@ -196,9 +196,9 @@ show_screenrecord_menu() {
 
 show_share_menu() {
   case $(menu "Share" "  Clipboard\n  File \n  Folder") in
-  *Clipboard*) ARCHEOX-menu-share clipboard ;;
-  *File*) terminal bash -c "ARCHEOX-menu-share file" ;;
-  *Folder*) terminal bash -c "ARCHEOX-menu-share folder" ;;
+  *Clipboard*) Archeox-menu-share clipboard ;;
+  *File*) terminal bash -c "Archeox-menu-share file" ;;
+  *Folder*) terminal bash -c "Archeox-menu-share folder" ;;
   *) back_to show_trigger_menu ;;
   esac
 }
@@ -207,17 +207,17 @@ show_toggle_menu() {
   local options="󱄄  Screensaver\n󰔎  Nightlight\n󱫖  Idle Lock\n󰂛  Notifications\n󰍜  Top Bar\n󱂬  Workspace Layout\n  Window Gaps\n  1-Window Ratio\n󰍹  Monitor Scaling\n  Direct Boot\n󰟵  Passwordless Sudo"
 
   case $(menu "Toggle" "$options") in
-  *Screensaver*) ARCHEOX-toggle-screensaver ;;
-  *Nightlight*) ARCHEOX-toggle-nightlight ;;
-  *Idle*) ARCHEOX-toggle-idle ;;
-  *Notifications*) ARCHEOX-toggle-notification-silencing ;;
-  *Bar*) ARCHEOX-toggle-waybar ;;
-  *Layout*) ARCHEOX-hyprland-workspace-layout-toggle ;;
-  *Ratio*) ARCHEOX-hyprland-window-single-square-aspect-toggle ;;
-  *Gaps*) ARCHEOX-hyprland-window-gaps-toggle ;;
-  *Scaling*) ARCHEOX-hyprland-monitor-scaling-cycle ;;
-  *"Direct Boot"*) present_terminal ARCHEOX-config-direct-boot ;;
-  *"Passwordless Sudo"*) present_terminal ARCHEOX-sudo-passwordless ;;
+  *Screensaver*) Archeox-toggle-screensaver ;;
+  *Nightlight*) Archeox-toggle-nightlight ;;
+  *Idle*) Archeox-toggle-idle ;;
+  *Notifications*) Archeox-toggle-notification-silencing ;;
+  *Bar*) Archeox-toggle-waybar ;;
+  *Layout*) Archeox-hyprland-workspace-layout-toggle ;;
+  *Ratio*) Archeox-hyprland-window-single-square-aspect-toggle ;;
+  *Gaps*) Archeox-hyprland-window-gaps-toggle ;;
+  *Scaling*) Archeox-hyprland-monitor-scaling-cycle ;;
+  *"Direct Boot"*) present_terminal Archeox-config-direct-boot ;;
+  *"Passwordless Sudo"*) present_terminal Archeox-sudo-passwordless ;;
   *) back_to show_trigger_menu ;;
   esac
 }
@@ -225,29 +225,29 @@ show_toggle_menu() {
 show_hardware_menu() {
   local options="󰛧  Laptop Display\n 󰍹  Mirror Display"
 
-  if ARCHEOX-hw-hybrid-gpu; then
+  if Archeox-hw-hybrid-gpu; then
     options="$options\n  Hybrid GPU"
   fi
 
-  if ARCHEOX-hw-touchpad; then
+  if Archeox-hw-touchpad; then
     options="$options\n󰟸  Touchpad"
   fi
 
-  if ARCHEOX-hw-dell-xps-haptic-touchpad && ARCHEOX-cmd-present dell-xps-touchpad-haptics; then
+  if Archeox-hw-dell-xps-haptic-touchpad && Archeox-cmd-present dell-xps-touchpad-haptics; then
     options="$options\n󰌌  Touchpad Haptics"
   fi
 
-  if ARCHEOX-hw-touchscreen; then
+  if Archeox-hw-touchscreen; then
     options="$options\n󰆽  Touchscreen"
   fi
 
   case $(menu "Toggle" "$options") in
-  *Laptop*) ARCHEOX-hyprland-monitor-internal toggle ;;
-  *Mirror*) ARCHEOX-hyprland-monitor-internal-mirror toggle ;;
+  *Laptop*) Archeox-hyprland-monitor-internal toggle ;;
+  *Mirror*) Archeox-hyprland-monitor-internal-mirror toggle ;;
   *Haptics*) show_hardware_touchpad_haptics_menu ;;
-  *Touchpad*) ARCHEOX-toggle-touchpad ;;
-  *Touchscreen*) ARCHEOX-toggle-touchscreen ;;
-  *"Hybrid GPU"*) present_terminal ARCHEOX-toggle-hybrid-gpu ;;
+  *Touchpad*) Archeox-toggle-touchpad ;;
+  *Touchscreen*) Archeox-toggle-touchscreen ;;
+  *"Hybrid GPU"*) present_terminal Archeox-toggle-hybrid-gpu ;;
   *) back_to show_trigger_menu ;;
   esac
 }
@@ -266,7 +266,7 @@ show_hardware_touchpad_haptics_menu() {
 show_style_menu() {
   case $(menu "Style" "󰸌  Theme\n󰟵  Unlock\n  Font\n  Background\n  Hyprland\n󱄄  Screensaver\n  About") in
   *Theme*) show_theme_menu ;;
-  *Unlock*) ARCHEOX-launch-walker -m menus:ARCHEOXunlocks --width 800 --minheight 400 ;;
+  *Unlock*) Archeox-launch-walker -m menus:Archeoxunlocks --width 800 --minheight 400 ;;
   *Font*) show_font_menu ;;
   *Background*) show_background_menu ;;
   *Hyprland*) open_in_editor ~/.config/hypr/looknfeel.conf ;;
@@ -278,36 +278,36 @@ show_style_menu() {
 
 show_about_menu() {
   case $(menu "About" "  Edit Text\n  Set From Image\n  Restore Default") in
-  *Text*) ARCHEOX-branding-about text ;;
-  *Image*) ARCHEOX-branding-about image ;;
-  *Default*) ARCHEOX-branding-about reset ;;
+  *Text*) Archeox-branding-about text ;;
+  *Image*) Archeox-branding-about image ;;
+  *Default*) Archeox-branding-about reset ;;
   *) show_style_menu ;;
   esac
 }
 
 show_screensaver_menu() {
   case $(menu "Screensaver" "  Edit Text\n  Set From Image\n  Restore Default") in
-  *Text*) ARCHEOX-branding-screensaver text ;;
-  *Image*) ARCHEOX-branding-screensaver image ;;
-  *Default*) ARCHEOX-branding-screensaver reset ;;
+  *Text*) Archeox-branding-screensaver text ;;
+  *Image*) Archeox-branding-screensaver image ;;
+  *Default*) Archeox-branding-screensaver reset ;;
   *) show_style_menu ;;
   esac
 }
 
 show_theme_menu() {
-  ARCHEOX-launch-walker -m menus:ARCHEOXthemes --width 800 --minheight 400
+  Archeox-launch-walker -m menus:Archeoxthemes --width 800 --minheight 400
 }
 
 show_background_menu() {
-  ARCHEOX-launch-walker -m menus:ARCHEOXBackgroundSelector --width 800 --minheight 400
+  Archeox-launch-walker -m menus:ArcheoxBackgroundSelector --width 800 --minheight 400
 }
 
 show_font_menu() {
-  theme=$(menu "Font" "$(ARCHEOX-font-list)" "--width 350" "$(ARCHEOX-font-current)")
+  theme=$(menu "Font" "$(Archeox-font-list)" "--width 350" "$(Archeox-font-current)")
   if [[ $theme == "CNCLD" || -z $theme ]]; then
     back_to show_style_menu
   else
-    ARCHEOX-font-set "$theme"
+    Archeox-font-set "$theme"
   fi
 }
 
@@ -318,16 +318,16 @@ show_setup_menu() {
   options="$options\n  Defaults\n󰱔  DNS\n  Security\n  Config"
 
   case $(menu "Setup" "$options") in
-  *Audio*) ARCHEOX-launch-audio ;;
-  *Wifi*) ARCHEOX-launch-wifi ;;
-  *Bluetooth*) ARCHEOX-launch-bluetooth ;;
+  *Audio*) Archeox-launch-audio ;;
+  *Wifi*) Archeox-launch-wifi ;;
+  *Bluetooth*) Archeox-launch-bluetooth ;;
   *Power*) show_setup_power_menu ;;
   *System*) show_setup_system_menu ;;
   *Monitors*) open_in_editor ~/.config/hypr/monitors.conf ;;
   *Keybindings*) open_in_editor ~/.config/hypr/bindings.conf ;;
   *Input*) open_in_editor ~/.config/hypr/input.conf ;;
   *Defaults*) show_setup_default_menu ;;
-  *DNS*) present_terminal ARCHEOX-setup-dns ;;
+  *DNS*) present_terminal Archeox-setup-dns ;;
   *Security*) show_setup_security_menu ;;
   *Config*) show_setup_config_menu ;;
   *) show_main_menu ;;
@@ -335,7 +335,7 @@ show_setup_menu() {
 }
 
 show_setup_power_menu() {
-  profile=$(menu "Power Profile" "$(ARCHEOX-powerprofiles-list)" "" "$(powerprofilesctl get)")
+  profile=$(menu "Power Profile" "$(Archeox-powerprofiles-list)" "" "$(powerprofilesctl get)")
 
   if [[ $profile == "CNCLD" || -z $profile ]]; then
     back_to show_setup_menu
@@ -346,8 +346,8 @@ show_setup_power_menu() {
 
 show_setup_security_menu() {
   case $(menu "Setup" "󰈷  Fingerprint\n  Fido2") in
-  *Fingerprint*) present_terminal ARCHEOX-setup-security-fingerprint ;;
-  *Fido2*) present_terminal ARCHEOX-setup-security-fido2 ;;
+  *Fingerprint*) present_terminal Archeox-setup-security-fingerprint ;;
+  *Fido2*) present_terminal Archeox-setup-security-fido2 ;;
   *) show_setup_menu ;;
   esac
 }
@@ -376,7 +376,7 @@ show_setup_default_browser_menu() {
   browser_desktop_exists zen.desktop && options="${options:+$options\n}󰖟  Zen"
 
   local current=""
-  case "$(ARCHEOX-default-browser)" in
+  case "$(Archeox-default-browser)" in
   chromium) current="  Chromium" ;;
   chrome) current="󰊯  Chrome" ;;
   brave) current="󰖟  Brave" ;;
@@ -387,26 +387,26 @@ show_setup_default_browser_menu() {
   esac
 
   case $(menu "Default Browser" "$options" "" "$current") in
-  *Chromium*) ARCHEOX-default-browser chromium ;;
-  *Chrome*) ARCHEOX-default-browser chrome ;;
-  *"Brave Origin"*) ARCHEOX-default-browser brave-origin ;;
-  *Brave*) ARCHEOX-default-browser brave ;;
-  *Edge*) ARCHEOX-default-browser edge ;;
-  *Firefox*) ARCHEOX-default-browser firefox ;;
-  *Zen*) ARCHEOX-default-browser zen ;;
+  *Chromium*) Archeox-default-browser chromium ;;
+  *Chrome*) Archeox-default-browser chrome ;;
+  *"Brave Origin"*) Archeox-default-browser brave-origin ;;
+  *Brave*) Archeox-default-browser brave ;;
+  *Edge*) Archeox-default-browser edge ;;
+  *Firefox*) Archeox-default-browser firefox ;;
+  *Zen*) Archeox-default-browser zen ;;
   *) show_setup_default_menu ;;
   esac
 }
 
 show_setup_default_terminal_menu() {
   local options=""
-  ARCHEOX-cmd-present alacritty && options="$options  Alacritty"
-  ARCHEOX-cmd-present foot && options="${options:+$options\n}  Foot"
-  ARCHEOX-cmd-present ghostty && options="${options:+$options\n}  Ghostty"
-  ARCHEOX-cmd-present kitty && options="${options:+$options\n}  Kitty"
+  Archeox-cmd-present alacritty && options="$options  Alacritty"
+  Archeox-cmd-present foot && options="${options:+$options\n}  Foot"
+  Archeox-cmd-present ghostty && options="${options:+$options\n}  Ghostty"
+  Archeox-cmd-present kitty && options="${options:+$options\n}  Kitty"
 
   local current=""
-  case "$(ARCHEOX-default-terminal)" in
+  case "$(Archeox-default-terminal)" in
   alacritty) current="  Alacritty" ;;
   foot) current="  Foot" ;;
   ghostty) current="  Ghostty" ;;
@@ -414,27 +414,27 @@ show_setup_default_terminal_menu() {
   esac
 
   case $(menu "Default Terminal" "$options" "" "$current") in
-  *Alacritty*) ARCHEOX-default-terminal alacritty ;;
-  *Foot*) ARCHEOX-default-terminal foot ;;
-  *Ghostty*) ARCHEOX-default-terminal ghostty ;;
-  *Kitty*) ARCHEOX-default-terminal kitty ;;
+  *Alacritty*) Archeox-default-terminal alacritty ;;
+  *Foot*) Archeox-default-terminal foot ;;
+  *Ghostty*) Archeox-default-terminal ghostty ;;
+  *Kitty*) Archeox-default-terminal kitty ;;
   *) show_setup_default_menu ;;
   esac
 }
 
 show_setup_default_editor_menu() {
   local options=""
-  ARCHEOX-cmd-present nvim && options="$options  Neovim"
-  ARCHEOX-cmd-present code && options="${options:+$options\n}  VSCode"
-  ARCHEOX-cmd-present cursor && options="${options:+$options\n}  Cursor"
-  ARCHEOX-cmd-present zeditor && options="${options:+$options\n}  Zed"
-  ARCHEOX-cmd-present sublime_text && options="${options:+$options\n}  Sublime Text"
-  ARCHEOX-cmd-present helix && options="${options:+$options\n}  Helix"
-  ARCHEOX-cmd-present vim && options="${options:+$options\n}  Vim"
-  ARCHEOX-cmd-present emacs && options="${options:+$options\n}  Emacs"
+  Archeox-cmd-present nvim && options="$options  Neovim"
+  Archeox-cmd-present code && options="${options:+$options\n}  VSCode"
+  Archeox-cmd-present cursor && options="${options:+$options\n}  Cursor"
+  Archeox-cmd-present zeditor && options="${options:+$options\n}  Zed"
+  Archeox-cmd-present sublime_text && options="${options:+$options\n}  Sublime Text"
+  Archeox-cmd-present helix && options="${options:+$options\n}  Helix"
+  Archeox-cmd-present vim && options="${options:+$options\n}  Vim"
+  Archeox-cmd-present emacs && options="${options:+$options\n}  Emacs"
 
   local current=""
-  case "$(ARCHEOX-default-editor)" in
+  case "$(Archeox-default-editor)" in
   nvim) current="  Neovim" ;;
   code) current="  VSCode" ;;
   cursor) current="  Cursor" ;;
@@ -446,14 +446,14 @@ show_setup_default_editor_menu() {
   esac
 
   case $(menu "Default Editor" "$options" "" "$current") in
-  *Neovim*) ARCHEOX-default-editor nvim ;;
-  *VSCode*) ARCHEOX-default-editor code ;;
-  *Cursor*) ARCHEOX-default-editor cursor ;;
-  *Zed*) ARCHEOX-default-editor zed ;;
-  *Sublime*) ARCHEOX-default-editor sublime_text ;;
-  *Helix*) ARCHEOX-default-editor helix ;;
-  *Vim*) ARCHEOX-default-editor vim ;;
-  *Emacs*) ARCHEOX-default-editor emacs ;;
+  *Neovim*) Archeox-default-editor nvim ;;
+  *VSCode*) Archeox-default-editor code ;;
+  *Cursor*) Archeox-default-editor cursor ;;
+  *Zed*) Archeox-default-editor zed ;;
+  *Sublime*) Archeox-default-editor sublime_text ;;
+  *Helix*) Archeox-default-editor helix ;;
+  *Vim*) Archeox-default-editor vim ;;
+  *Emacs*) Archeox-default-editor emacs ;;
   *) show_setup_default_menu ;;
   esac
 }
@@ -461,13 +461,13 @@ show_setup_default_editor_menu() {
 show_setup_config_menu() {
   case $(menu "Setup" "  Hyprland\n  Hypridle\n  Hyprlock\n  Hyprsunset\n  Swayosd\n󰌧  Walker\n󰍜  Waybar\n󰞅  XCompose") in
   *Hyprland*) open_in_editor ~/.config/hypr/hyprland.conf ;;
-  *Hypridle*) open_in_editor ~/.config/hypr/hypridle.conf && ARCHEOX-restart-hypridle ;;
+  *Hypridle*) open_in_editor ~/.config/hypr/hypridle.conf && Archeox-restart-hypridle ;;
   *Hyprlock*) open_in_editor ~/.config/hypr/hyprlock.conf ;;
-  *Hyprsunset*) open_in_editor ~/.config/hypr/hyprsunset.conf && ARCHEOX-restart-hyprsunset ;;
-  *Swayosd*) open_in_editor ~/.config/swayosd/config.toml && ARCHEOX-restart-swayosd ;;
-  *Walker*) open_in_editor ~/.config/walker/config.toml && ARCHEOX-restart-walker ;;
-  *Waybar*) open_in_editor ~/.config/waybar/config.jsonc && ARCHEOX-restart-waybar ;;
-  *XCompose*) open_in_editor ~/.XCompose && ARCHEOX-restart-xcompose ;;
+  *Hyprsunset*) open_in_editor ~/.config/hypr/hyprsunset.conf && Archeox-restart-hyprsunset ;;
+  *Swayosd*) open_in_editor ~/.config/swayosd/config.toml && Archeox-restart-swayosd ;;
+  *Walker*) open_in_editor ~/.config/walker/config.toml && Archeox-restart-walker ;;
+  *Waybar*) open_in_editor ~/.config/waybar/config.jsonc && Archeox-restart-waybar ;;
+  *XCompose*) open_in_editor ~/.XCompose && Archeox-restart-xcompose ;;
   *) show_setup_menu ;;
   esac
 }
@@ -475,32 +475,32 @@ show_setup_config_menu() {
 show_setup_system_menu() {
   local options=""
 
-  if ARCHEOX-toggle-enabled suspend-off; then
+  if Archeox-toggle-enabled suspend-off; then
     options="$options󰒲  Enable Suspend"
   else
     options="$options󰒲  Disable Suspend"
   fi
 
-  if ARCHEOX-hibernation-available; then
+  if Archeox-hibernation-available; then
     options="$options\n󰤁  Disable Hibernate"
   else
     options="$options\n󰤁  Enable Hibernate"
   fi
 
   case $(menu "System" "$options") in
-  *Suspend*) ARCHEOX-toggle-suspend ;;
-  *"Enable Hibernate"*) present_terminal ARCHEOX-hibernation-setup ;;
-  *"Disable Hibernate"*) present_terminal ARCHEOX-hibernation-remove ;;
+  *Suspend*) Archeox-toggle-suspend ;;
+  *"Enable Hibernate"*) present_terminal Archeox-hibernation-setup ;;
+  *"Disable Hibernate"*) present_terminal Archeox-hibernation-remove ;;
   *) show_setup_menu ;;
   esac
 }
 
 show_install_menu() {
   case $(menu "Install" "󰣇  Package\n󰣇  AUR\n  Web App\n  TUI\n  Service\n  Style\n󰵮  Development\n  Editor\n  Terminal\n  Browser\n󱚤  AI\n  Gaming\n󰍲  Windows") in
-  *Package*) terminal ARCHEOX-pkg-install ;;
-  *AUR*) terminal ARCHEOX-pkg-aur-install ;;
-  *Web*) present_terminal ARCHEOX-webapp-install ;;
-  *TUI*) present_terminal ARCHEOX-tui-install ;;
+  *Package*) terminal Archeox-pkg-install ;;
+  *AUR*) terminal Archeox-pkg-aur-install ;;
+  *Web*) present_terminal Archeox-webapp-install ;;
+  *TUI*) present_terminal Archeox-tui-install ;;
   *Service*) show_install_service_menu ;;
   *Style*) show_install_style_menu ;;
   *Development*) show_install_development_menu ;;
@@ -509,42 +509,42 @@ show_install_menu() {
   *Browser*) show_install_browser_menu ;;
   *Gaming*) show_install_gaming_menu ;;
   *AI*) show_install_ai_menu ;;
-  *Windows*) present_terminal "ARCHEOX-windows-vm install" ;;
+  *Windows*) present_terminal "Archeox-windows-vm install" ;;
   *) show_main_menu ;;
   esac
 }
 
 show_install_browser_menu() {
   case $(menu "Install" "  Chrome\n  Edge\n  Brave\n  Brave Origin\n  Firefox\n󰖟  Zen") in
-  *Chrome*) present_terminal "ARCHEOX-install-browser chrome" ;;
-  *Edge*) present_terminal "ARCHEOX-install-browser edge" ;;
-  *"Brave Origin"*) present_terminal "ARCHEOX-install-browser brave-origin" ;;
-  *Brave*) present_terminal "ARCHEOX-install-browser brave" ;;
-  *Firefox*) present_terminal "ARCHEOX-install-browser firefox" ;;
-  *Zen*) present_terminal "ARCHEOX-install-browser zen" ;;
+  *Chrome*) present_terminal "Archeox-install-browser chrome" ;;
+  *Edge*) present_terminal "Archeox-install-browser edge" ;;
+  *"Brave Origin"*) present_terminal "Archeox-install-browser brave-origin" ;;
+  *Brave*) present_terminal "Archeox-install-browser brave" ;;
+  *Firefox*) present_terminal "Archeox-install-browser firefox" ;;
+  *Zen*) present_terminal "Archeox-install-browser zen" ;;
   *) show_install_menu ;;
   esac
 }
 
 show_install_service_menu() {
   case $(menu "Install" "  Dropbox\n  Tailscale\n󱇱  NordVPN [AUR]\n󰏖  ONCE\n󰟵  Bitwarden\n  Chromium Account") in
-  *Dropbox*) present_terminal ARCHEOX-install-dropbox ;;
-  *Tailscale*) present_terminal ARCHEOX-install-tailscale ;;
-  *NordVPN*) present_terminal ARCHEOX-install-nordvpn ;;
-  *ONCE*) present_terminal ARCHEOX-install-once ;;
+  *Dropbox*) present_terminal Archeox-install-dropbox ;;
+  *Tailscale*) present_terminal Archeox-install-tailscale ;;
+  *NordVPN*) present_terminal Archeox-install-nordvpn ;;
+  *ONCE*) present_terminal Archeox-install-once ;;
   *Bitwarden*) install_and_launch "Bitwarden" "bitwarden bitwarden-cli" "bitwarden" ;;
-  *Chromium*) present_terminal ARCHEOX-install-chromium-google-account ;;
+  *Chromium*) present_terminal Archeox-install-chromium-google-account ;;
   *) show_install_menu ;;
   esac
 }
 
 show_install_editor_menu() {
   case $(menu "Install" "  VSCode\n  Cursor\n  Zed\n  Sublime Text\n  Helix\n  Vim\n  Emacs") in
-  *VSCode*) present_terminal ARCHEOX-install-vscode ;;
+  *VSCode*) present_terminal Archeox-install-vscode ;;
   *Cursor*) install_and_launch "Cursor" "cursor-bin" "cursor" ;;
-  *Zed*) present_terminal ARCHEOX-install-zed ;;
+  *Zed*) present_terminal Archeox-install-zed ;;
   *Sublime*) install_and_launch "Sublime Text" "sublime-text-4" "sublime_text" ;;
-  *Helix*) present_terminal ARCHEOX-install-helix ;;
+  *Helix*) present_terminal Archeox-install-helix ;;
   *Vim*) install "Vim" "vim" ;;
   *Emacs*) install "Emacs" "emacs-wayland" && systemctl --user enable --now emacs.service ;;
   *) show_install_menu ;;
@@ -563,13 +563,13 @@ show_install_terminal_menu() {
 
 show_install_ai_menu() {
   ollama_pkg=$(
-    (ARCHEOX-cmd-present nvidia-smi && echo ollama-cuda) ||
-      (ARCHEOX-cmd-present rocminfo && echo ollama-rocm) ||
+    (Archeox-cmd-present nvidia-smi && echo ollama-cuda) ||
+      (Archeox-cmd-present rocminfo && echo ollama-rocm) ||
       echo ollama
   )
 
   case $(menu "Install" "  Dictation\n󱚤  LM Studio\n󱚤  Ollama\n󱚤  Crush") in
-  *Dictation*) present_terminal ARCHEOX-voxtype-install ;;
+  *Dictation*) present_terminal Archeox-voxtype-install ;;
   *Studio*) install "LM Studio" "lmstudio-bin" ;;
   *Ollama*) install "Ollama" $ollama_pkg ;;
   *Crush*) install "Crush" "crush-bin" ;;
@@ -579,23 +579,23 @@ show_install_ai_menu() {
 
 show_install_gaming_menu() {
   case $(menu "Install" "  Steam\n  RetroArch\n󰍳  Minecraft\n󰢹  NVIDIA GeForce NOW\n  Xbox Cloud Gaming\n󰂯  Xbox Controller\n󰍹  Moonlight (GameStream)\n  Lutris (Battle.net)\n󱓟  Heroic (Epic Games)") in
-  *Steam*) present_terminal ARCHEOX-install-gaming-steam ;;
-  *RetroArch*) present_terminal ARCHEOX-install-gaming-retroarch ;;
+  *Steam*) present_terminal Archeox-install-gaming-steam ;;
+  *RetroArch*) present_terminal Archeox-install-gaming-retroarch ;;
   *Minecraft*) install_and_launch "Minecraft" "minecraft-launcher" "minecraft-launcher" ;;
-  *GeForce*) present_terminal ARCHEOX-install-gaming-geforce-now ;;
-  *"Xbox Cloud"*) present_terminal ARCHEOX-install-gaming-xbox-cloud ;;
-  *Xbox*) present_terminal ARCHEOX-install-gaming-xbox-controllers ;;
-  *Lutris*) present_terminal ARCHEOX-install-gaming-lutris ;;
-  *Heroic*) present_terminal ARCHEOX-install-gaming-heroic ;;
-  *Moonlight*) present_terminal ARCHEOX-install-gaming-moonlight ;;
+  *GeForce*) present_terminal Archeox-install-gaming-geforce-now ;;
+  *"Xbox Cloud"*) present_terminal Archeox-install-gaming-xbox-cloud ;;
+  *Xbox*) present_terminal Archeox-install-gaming-xbox-controllers ;;
+  *Lutris*) present_terminal Archeox-install-gaming-lutris ;;
+  *Heroic*) present_terminal Archeox-install-gaming-heroic ;;
+  *Moonlight*) present_terminal Archeox-install-gaming-moonlight ;;
   *) show_install_menu ;;
   esac
 }
 
 show_install_style_menu() {
   case $(menu "Install" "󰸌  Theme\n  Background\n  Font") in
-  *Theme*) present_terminal ARCHEOX-theme-install ;;
-  *Background*) ARCHEOX-theme-bg-install ;;
+  *Theme*) present_terminal Archeox-theme-install ;;
+  *Background*) Archeox-theme-bg-install ;;
   *Font*) show_install_font_menu ;;
   *) show_install_menu ;;
   esac
@@ -615,62 +615,62 @@ show_install_font_menu() {
 
 show_install_development_menu() {
   case $(menu "Install" "󰫏  Ruby on Rails\n  Docker DB\n  JavaScript\n  Go\n  PHP\n  Python\n  Elixir\n  Zig\n  Rust\n  Java\n  .NET\n  OCaml\n  Clojure\n  Scala") in
-  *Rails*) present_terminal "ARCHEOX-install-dev-env ruby" ;;
-  *Docker*) present_terminal ARCHEOX-install-docker-dbs ;;
+  *Rails*) present_terminal "Archeox-install-dev-env ruby" ;;
+  *Docker*) present_terminal Archeox-install-docker-dbs ;;
   *JavaScript*) show_install_javascript_menu ;;
-  *Go*) present_terminal "ARCHEOX-install-dev-env go" ;;
+  *Go*) present_terminal "Archeox-install-dev-env go" ;;
   *PHP*) show_install_php_menu ;;
-  *Python*) present_terminal "ARCHEOX-install-dev-env python" ;;
+  *Python*) present_terminal "Archeox-install-dev-env python" ;;
   *Elixir*) show_install_elixir_menu ;;
-  *Zig*) present_terminal "ARCHEOX-install-dev-env zig" ;;
-  *Rust*) present_terminal "ARCHEOX-install-dev-env rust" ;;
-  *Java*) present_terminal "ARCHEOX-install-dev-env java" ;;
-  *NET*) present_terminal "ARCHEOX-install-dev-env dotnet" ;;
-  *OCaml*) present_terminal "ARCHEOX-install-dev-env ocaml" ;;
-  *Clojure*) present_terminal "ARCHEOX-install-dev-env clojure" ;;
-  *Scala*) present_terminal "ARCHEOX-install-dev-env scala" ;;
+  *Zig*) present_terminal "Archeox-install-dev-env zig" ;;
+  *Rust*) present_terminal "Archeox-install-dev-env rust" ;;
+  *Java*) present_terminal "Archeox-install-dev-env java" ;;
+  *NET*) present_terminal "Archeox-install-dev-env dotnet" ;;
+  *OCaml*) present_terminal "Archeox-install-dev-env ocaml" ;;
+  *Clojure*) present_terminal "Archeox-install-dev-env clojure" ;;
+  *Scala*) present_terminal "Archeox-install-dev-env scala" ;;
   *) show_install_menu ;;
   esac
 }
 
 show_install_javascript_menu() {
   case $(menu "Install" "  Node.js\n  Bun\n  Deno") in
-  *Node*) present_terminal "ARCHEOX-install-dev-env node" ;;
-  *Bun*) present_terminal "ARCHEOX-install-dev-env bun" ;;
-  *Deno*) present_terminal "ARCHEOX-install-dev-env deno" ;;
+  *Node*) present_terminal "Archeox-install-dev-env node" ;;
+  *Bun*) present_terminal "Archeox-install-dev-env bun" ;;
+  *Deno*) present_terminal "Archeox-install-dev-env deno" ;;
   *) show_install_development_menu ;;
   esac
 }
 
 show_install_php_menu() {
   case $(menu "Install" "  PHP\n  Laravel\n  Symfony") in
-  *PHP*) present_terminal "ARCHEOX-install-dev-env php" ;;
-  *Laravel*) present_terminal "ARCHEOX-install-dev-env laravel" ;;
-  *Symfony*) present_terminal "ARCHEOX-install-dev-env symfony" ;;
+  *PHP*) present_terminal "Archeox-install-dev-env php" ;;
+  *Laravel*) present_terminal "Archeox-install-dev-env laravel" ;;
+  *Symfony*) present_terminal "Archeox-install-dev-env symfony" ;;
   *) show_install_development_menu ;;
   esac
 }
 
 show_install_elixir_menu() {
   case $(menu "Install" "  Elixir\n  Phoenix") in
-  *Elixir*) present_terminal "ARCHEOX-install-dev-env elixir" ;;
-  *Phoenix*) present_terminal "ARCHEOX-install-dev-env phoenix" ;;
+  *Elixir*) present_terminal "Archeox-install-dev-env elixir" ;;
+  *Phoenix*) present_terminal "Archeox-install-dev-env phoenix" ;;
   *) show_install_development_menu ;;
   esac
 }
 
 show_remove_menu() {
   case $(menu "Remove" "󰣇  Package\n  Web App\n  TUI\n󰵮  Development\n󰸌  Theme\n  Browser\n  Dictation\n  Gaming\n󰍲  Windows\n󰏓  Preinstalls\n  Security") in
-  *Package*) terminal ARCHEOX-pkg-remove ;;
-  *Web*) present_terminal ARCHEOX-webapp-remove ;;
-  *TUI*) present_terminal ARCHEOX-tui-remove ;;
+  *Package*) terminal Archeox-pkg-remove ;;
+  *Web*) present_terminal Archeox-webapp-remove ;;
+  *TUI*) present_terminal Archeox-tui-remove ;;
   *Development*) show_remove_development_menu ;;
-  *Theme*) present_terminal ARCHEOX-theme-remove ;;
+  *Theme*) present_terminal Archeox-theme-remove ;;
   *Browser*) show_remove_browser_menu ;;
-  *Dictation*) present_terminal ARCHEOX-voxtype-remove ;;
+  *Dictation*) present_terminal Archeox-voxtype-remove ;;
   *Gaming*) show_remove_gaming_menu ;;
-  *Windows*) present_terminal "ARCHEOX-windows-vm remove" ;;
-  *Preinstalls*) present_terminal ARCHEOX-remove-preinstalls ;;
+  *Windows*) present_terminal "Archeox-windows-vm remove" ;;
+  *Preinstalls*) present_terminal Archeox-remove-preinstalls ;;
   *Security*) show_remove_security_menu ;;
   *) show_main_menu ;;
   esac
@@ -678,95 +678,95 @@ show_remove_menu() {
 
 show_remove_security_menu() {
   case $(menu "Remove" "󰈷  Fingerprint\n  Fido2") in
-  *Fingerprint*) present_terminal ARCHEOX-remove-security-fingerprint ;;
-  *Fido2*) present_terminal ARCHEOX-remove-security-fido2 ;;
+  *Fingerprint*) present_terminal Archeox-remove-security-fingerprint ;;
+  *Fido2*) present_terminal Archeox-remove-security-fido2 ;;
   *) show_remove_menu ;;
   esac
 }
 
 show_remove_browser_menu() {
   case $(menu "Remove" "  Chrome\n  Edge\n  Brave\n  Brave Origin\n  Firefox\n  Zen") in
-  *Chrome*) present_terminal "ARCHEOX-remove-browser chrome" ;;
-  *Edge*) present_terminal "ARCHEOX-remove-browser edge" ;;
-  *"Brave Origin"*) present_terminal "ARCHEOX-remove-browser brave-origin" ;;
-  *Brave*) present_terminal "ARCHEOX-remove-browser brave" ;;
-  *Firefox*) present_terminal "ARCHEOX-remove-browser firefox" ;;
-  *Zen*) present_terminal "ARCHEOX-remove-browser zen" ;;
+  *Chrome*) present_terminal "Archeox-remove-browser chrome" ;;
+  *Edge*) present_terminal "Archeox-remove-browser edge" ;;
+  *"Brave Origin"*) present_terminal "Archeox-remove-browser brave-origin" ;;
+  *Brave*) present_terminal "Archeox-remove-browser brave" ;;
+  *Firefox*) present_terminal "Archeox-remove-browser firefox" ;;
+  *Zen*) present_terminal "Archeox-remove-browser zen" ;;
   *) show_remove_menu ;;
   esac
 }
 
 show_remove_gaming_menu() {
   case $(menu "Remove" "  Steam\n  RetroArch\n󰍳  Minecraft\n󰢹  NVIDIA GeForce NOW\n  Xbox Cloud Gaming\n󰖺  Xbox Controller (󰂯)\n󰍹  Moonlight (GameStream)\n  Lutris (Battle.net)\n󱓟  Heroic (Epic Games)") in
-  *Steam*) present_terminal ARCHEOX-remove-gaming-steam ;;
-  *RetroArch*) present_terminal ARCHEOX-remove-gaming-retroarch ;;
-  *Minecraft*) present_terminal ARCHEOX-remove-gaming-minecraft ;;
-  *GeForce*) present_terminal ARCHEOX-remove-gaming-geforce-now ;;
-  *"Xbox Cloud"*) present_terminal ARCHEOX-remove-gaming-xbox-cloud ;;
-  *Xbox*) present_terminal ARCHEOX-remove-gaming-xbox-controllers ;;
-  *Moonlight*) present_terminal ARCHEOX-remove-gaming-moonlight ;;
-  *Lutris*) present_terminal ARCHEOX-remove-gaming-lutris ;;
-  *Heroic*) present_terminal ARCHEOX-remove-gaming-heroic ;;
+  *Steam*) present_terminal Archeox-remove-gaming-steam ;;
+  *RetroArch*) present_terminal Archeox-remove-gaming-retroarch ;;
+  *Minecraft*) present_terminal Archeox-remove-gaming-minecraft ;;
+  *GeForce*) present_terminal Archeox-remove-gaming-geforce-now ;;
+  *"Xbox Cloud"*) present_terminal Archeox-remove-gaming-xbox-cloud ;;
+  *Xbox*) present_terminal Archeox-remove-gaming-xbox-controllers ;;
+  *Moonlight*) present_terminal Archeox-remove-gaming-moonlight ;;
+  *Lutris*) present_terminal Archeox-remove-gaming-lutris ;;
+  *Heroic*) present_terminal Archeox-remove-gaming-heroic ;;
   *) show_remove_menu ;;
   esac
 }
 
 show_remove_development_menu() {
   case $(menu "Remove" "󰫏  Ruby on Rails\n  JavaScript\n  Go\n  PHP\n  Python\n  Elixir\n  Zig\n  Rust\n  Java\n  .NET\n  OCaml\n  Clojure\n  Scala") in
-  *Rails*) present_terminal "ARCHEOX-remove-dev-env ruby" ;;
+  *Rails*) present_terminal "Archeox-remove-dev-env ruby" ;;
   *JavaScript*) show_remove_javascript_menu ;;
-  *Go*) present_terminal "ARCHEOX-remove-dev-env go" ;;
+  *Go*) present_terminal "Archeox-remove-dev-env go" ;;
   *PHP*) show_remove_php_menu ;;
-  *Python*) present_terminal "ARCHEOX-remove-dev-env python" ;;
+  *Python*) present_terminal "Archeox-remove-dev-env python" ;;
   *Elixir*) show_remove_elixir_menu ;;
-  *Zig*) present_terminal "ARCHEOX-remove-dev-env zig" ;;
-  *Rust*) present_terminal "ARCHEOX-remove-dev-env rust" ;;
-  *Java*) present_terminal "ARCHEOX-remove-dev-env java" ;;
-  *NET*) present_terminal "ARCHEOX-remove-dev-env dotnet" ;;
-  *OCaml*) present_terminal "ARCHEOX-remove-dev-env ocaml" ;;
-  *Clojure*) present_terminal "ARCHEOX-remove-dev-env clojure" ;;
-  *Scala*) present_terminal "ARCHEOX-remove-dev-env scala" ;;
+  *Zig*) present_terminal "Archeox-remove-dev-env zig" ;;
+  *Rust*) present_terminal "Archeox-remove-dev-env rust" ;;
+  *Java*) present_terminal "Archeox-remove-dev-env java" ;;
+  *NET*) present_terminal "Archeox-remove-dev-env dotnet" ;;
+  *OCaml*) present_terminal "Archeox-remove-dev-env ocaml" ;;
+  *Clojure*) present_terminal "Archeox-remove-dev-env clojure" ;;
+  *Scala*) present_terminal "Archeox-remove-dev-env scala" ;;
   *) show_remove_menu ;;
   esac
 }
 
 show_remove_javascript_menu() {
   case $(menu "Remove" "  Node.js\n  Bun\n  Deno") in
-  *Node*) present_terminal "ARCHEOX-remove-dev-env node" ;;
-  *Bun*) present_terminal "ARCHEOX-remove-dev-env bun" ;;
-  *Deno*) present_terminal "ARCHEOX-remove-dev-env deno" ;;
+  *Node*) present_terminal "Archeox-remove-dev-env node" ;;
+  *Bun*) present_terminal "Archeox-remove-dev-env bun" ;;
+  *Deno*) present_terminal "Archeox-remove-dev-env deno" ;;
   *) show_remove_development_menu ;;
   esac
 }
 
 show_remove_php_menu() {
   case $(menu "Remove" "  PHP\n  Laravel\n  Symfony") in
-  *PHP*) present_terminal "ARCHEOX-remove-dev-env php" ;;
-  *Laravel*) present_terminal "ARCHEOX-remove-dev-env laravel" ;;
-  *Symfony*) present_terminal "ARCHEOX-remove-dev-env symfony" ;;
+  *PHP*) present_terminal "Archeox-remove-dev-env php" ;;
+  *Laravel*) present_terminal "Archeox-remove-dev-env laravel" ;;
+  *Symfony*) present_terminal "Archeox-remove-dev-env symfony" ;;
   *) show_remove_development_menu ;;
   esac
 }
 
 show_remove_elixir_menu() {
   case $(menu "Remove" "  Elixir\n  Phoenix") in
-  *Elixir*) present_terminal "ARCHEOX-remove-dev-env elixir" ;;
-  *Phoenix*) present_terminal "ARCHEOX-remove-dev-env phoenix" ;;
+  *Elixir*) present_terminal "Archeox-remove-dev-env elixir" ;;
+  *Phoenix*) present_terminal "Archeox-remove-dev-env phoenix" ;;
   *) show_remove_development_menu ;;
   esac
 }
 
 show_update_menu() {
-  case $(menu "Update" "  ARCHEOX\n󰔫  Channel\n  Config\n󰸌  Extra Themes\n  Process\n󰇅  Hardware\n  Firmware\n  Password\n  Timezone\n  Time") in
-  *ARCHEOX*) present_terminal ARCHEOX-update ;;
+  case $(menu "Update" "  Archeox\n󰔫  Channel\n  Config\n󰸌  Extra Themes\n  Process\n󰇅  Hardware\n  Firmware\n  Password\n  Timezone\n  Time") in
+  *Archeox*) present_terminal Archeox-update ;;
   *Channel*) show_update_channel_menu ;;
   *Config*) show_update_config_menu ;;
-  *Themes*) present_terminal ARCHEOX-theme-update ;;
+  *Themes*) present_terminal Archeox-theme-update ;;
   *Process*) show_update_process_menu ;;
   *Hardware*) show_update_hardware_menu ;;
-  *Firmware*) present_terminal ARCHEOX-update-firmware ;;
-  *Timezone*) present_terminal ARCHEOX-tz-select ;;
-  *Time*) present_terminal ARCHEOX-update-time ;;
+  *Firmware*) present_terminal Archeox-update-firmware ;;
+  *Timezone*) present_terminal Archeox-tz-select ;;
+  *Time*) present_terminal Archeox-update-time ;;
   *Password*) show_update_password_menu ;;
   *) show_main_menu ;;
   esac
@@ -774,76 +774,76 @@ show_update_menu() {
 
 show_update_channel_menu() {
   case $(menu "Update channel" "🟢 Stable\n🟡 RC\n🟠 Edge\n🔴 Dev") in
-  *Stable*) present_terminal "ARCHEOX-channel-set stable" ;;
-  *RC*) present_terminal "ARCHEOX-channel-set rc" ;;
-  *Edge*) present_terminal "ARCHEOX-channel-set edge" ;;
-  *Dev*) present_terminal "ARCHEOX-channel-set dev" ;;
+  *Stable*) present_terminal "Archeox-channel-set stable" ;;
+  *RC*) present_terminal "Archeox-channel-set rc" ;;
+  *Edge*) present_terminal "Archeox-channel-set edge" ;;
+  *Dev*) present_terminal "Archeox-channel-set dev" ;;
   *) show_update_menu ;;
   esac
 }
 show_update_process_menu() {
   case $(menu "Restart" "  Hypridle\n  Hyprsunset\n󰎟  Mako\n  Swayosd\n󰌧  Walker\n󰍜  Waybar") in
-  *Hypridle*) ARCHEOX-restart-hypridle ;;
-  *Hyprsunset*) ARCHEOX-restart-hyprsunset ;;
-  *Mako*) ARCHEOX-restart-mako ;;
-  *Swayosd*) ARCHEOX-restart-swayosd ;;
-  *Walker*) ARCHEOX-restart-walker ;;
-  *Waybar*) ARCHEOX-restart-waybar ;;
+  *Hypridle*) Archeox-restart-hypridle ;;
+  *Hyprsunset*) Archeox-restart-hyprsunset ;;
+  *Mako*) Archeox-restart-mako ;;
+  *Swayosd*) Archeox-restart-swayosd ;;
+  *Walker*) Archeox-restart-walker ;;
+  *Waybar*) Archeox-restart-waybar ;;
   *) show_update_menu ;;
   esac
 }
 
 show_update_config_menu() {
   case $(menu "Use default config" "  Hyprland\n  Hypridle\n  Hyprlock\n  Hyprsunset\n󱣴  Plymouth\n  Swayosd\n  Tmux\n󰌧  Walker\n󰍜  Waybar") in
-  *Hyprland*) present_terminal ARCHEOX-refresh-hyprland ;;
-  *Hypridle*) present_terminal ARCHEOX-refresh-hypridle ;;
-  *Hyprlock*) present_terminal ARCHEOX-refresh-hyprlock ;;
-  *Hyprsunset*) present_terminal ARCHEOX-refresh-hyprsunset ;;
-  *Plymouth*) present_terminal ARCHEOX-refresh-plymouth ;;
-  *Swayosd*) present_terminal ARCHEOX-refresh-swayosd ;;
-  *Tmux*) present_terminal ARCHEOX-refresh-tmux ;;
-  *Walker*) present_terminal ARCHEOX-refresh-walker ;;
-  *Waybar*) present_terminal ARCHEOX-refresh-waybar ;;
+  *Hyprland*) present_terminal Archeox-refresh-hyprland ;;
+  *Hypridle*) present_terminal Archeox-refresh-hypridle ;;
+  *Hyprlock*) present_terminal Archeox-refresh-hyprlock ;;
+  *Hyprsunset*) present_terminal Archeox-refresh-hyprsunset ;;
+  *Plymouth*) present_terminal Archeox-refresh-plymouth ;;
+  *Swayosd*) present_terminal Archeox-refresh-swayosd ;;
+  *Tmux*) present_terminal Archeox-refresh-tmux ;;
+  *Walker*) present_terminal Archeox-refresh-walker ;;
+  *Waybar*) present_terminal Archeox-refresh-waybar ;;
   *) show_update_menu ;;
   esac
 }
 
 show_update_hardware_menu() {
   case $(menu "Restart" "  Audio\n󱚾  Wi-Fi\n󰂯  Bluetooth\n󰟸  Trackpad") in
-  *Audio*) present_terminal ARCHEOX-restart-pipewire ;;
-  *Wi-Fi*) present_terminal ARCHEOX-restart-wifi ;;
-  *Bluetooth*) present_terminal ARCHEOX-restart-bluetooth ;;
-  *Trackpad*) present_terminal ARCHEOX-restart-trackpad ;;
+  *Audio*) present_terminal Archeox-restart-pipewire ;;
+  *Wi-Fi*) present_terminal Archeox-restart-wifi ;;
+  *Bluetooth*) present_terminal Archeox-restart-bluetooth ;;
+  *Trackpad*) present_terminal Archeox-restart-trackpad ;;
   *) show_update_menu ;;
   esac
 }
 
 show_update_password_menu() {
   case $(menu "Update Password" "  Drive Encryption\n  User") in
-  *Drive*) present_terminal ARCHEOX-drive-password ;;
+  *Drive*) present_terminal Archeox-drive-password ;;
   *User*) present_terminal passwd ;;
   *) show_update_menu ;;
   esac
 }
 
 show_about() {
-  ARCHEOX-launch-about
+  Archeox-launch-about
 }
 
 show_system_menu() {
   local options="󱄄  Screensaver\n  Lock"
-  ! ARCHEOX-toggle-enabled suspend-off && options="$options\n󰒲  Suspend"
-  ARCHEOX-hibernation-available && options="$options\n󰤁  Hibernate"
+  ! Archeox-toggle-enabled suspend-off && options="$options\n󰒲  Suspend"
+  Archeox-hibernation-available && options="$options\n󰤁  Hibernate"
   options="$options\n󰍃  Logout\n󰜉  Restart\n󰐥  Shutdown"
 
   case $(menu "System" "$options") in
-  *Screensaver*) ARCHEOX-launch-screensaver force ;;
-  *Lock*) ARCHEOX-system-lock ;;
+  *Screensaver*) Archeox-launch-screensaver force ;;
+  *Lock*) Archeox-system-lock ;;
   *Suspend*) systemctl suspend ;;
   *Hibernate*) systemctl hibernate ;;
-  *Logout*) ARCHEOX-system-logout ;;
-  *Restart*) ARCHEOX-system-reboot ;;
-  *Shutdown*) ARCHEOX-system-shutdown ;;
+  *Logout*) Archeox-system-logout ;;
+  *Restart*) Archeox-system-reboot ;;
+  *Shutdown*) Archeox-system-shutdown ;;
   *) back_to show_main_menu ;;
   esac
 }
@@ -878,7 +878,7 @@ go_to_menu() {
 }
 
 # Allow user extensions and overrides
-USER_EXTENSIONS="$HOME/.config/ARCHEOX/extensions/menu.sh"
+USER_EXTENSIONS="$HOME/.config/Archeox/extensions/menu.sh"
 [[ -f $USER_EXTENSIONS ]] && source "$USER_EXTENSIONS"
 
 toggle_existing_menu

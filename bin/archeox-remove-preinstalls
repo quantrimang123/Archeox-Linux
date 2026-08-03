@@ -1,22 +1,22 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Remove preinstalled ARCHEOX applications (web apps, TUIs, and selected packages).
+# Archeox:summary=Remove preinstalled Archeox applications (web apps, TUIs, and selected packages).
 
 if gum confirm "Are you sure you want to remove all preinstalled web apps, TUI wrappers, and desktop applications?"; then
-  echo -e "Removing preinstalled ARCHEOX applications...\n"
+  echo -e "Removing preinstalled Archeox applications...\n"
 
-  ARCHEOX-webapp-remove-all
-  ARCHEOX-tui-remove-all
+  Archeox-webapp-remove-all
+  Archeox-tui-remove-all
 
   cp ~/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf.bak
-  cp "$ARCHEOX_PATH/default/hypr/plain-bindings.conf" ~/.config/hypr/bindings.conf
+  cp "$Archeox_PATH/default/hypr/plain-bindings.conf" ~/.config/hypr/bindings.conf
   hyprctl reload
 
   # Remove npx stubs
   rm -f ~/.local/bin/codex ~/.local/bin/gemini ~/.local/bin/copilot \
        ~/.local/bin/opencode ~/.local/bin/playwright-cli ~/.local/bin/pi
 
-  ARCHEOX-pkg-drop \
+  Archeox-pkg-drop \
     aether \
     cliamp \
     typora \

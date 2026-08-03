@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Wrapper for swayosd-client that targets the currently focused monitor.
-# ARCHEOX:args=<swayosd-client-args...>
+# Archeox:summary=Wrapper for swayosd-client that targets the currently focused monitor.
+# Archeox:args=<swayosd-client-args...>
 
-exec swayosd-client --monitor "$(ARCHEOX-hyprland-monitor-focused)" "$@"
+exec swayosd-client --monitor "$(Archeox-hyprland-monitor-focused)" "$@"

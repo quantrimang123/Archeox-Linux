@@ -1,26 +1,26 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Set the Plymouth boot theme from an ARCHEOX theme
-# ARCHEOX:args=<theme-name>
-# ARCHEOX:requires-sudo=true
+# Archeox:summary=Set the Plymouth boot theme from an Archeox theme
+# Archeox:args=<theme-name>
+# Archeox:requires-sudo=true
 
 # Resolve a theme by name and apply its unlock.png + colors.toml as the
-# Plymouth boot screen via ARCHEOX-plymouth-set.
+# Plymouth boot screen via Archeox-plymouth-set.
 
 if [[ $# -ne 1 ]]; then
-  echo "Usage: ARCHEOX-plymouth-set-by-theme <theme-name>" >&2
+  echo "Usage: Archeox-plymouth-set-by-theme <theme-name>" >&2
   exit 1
 fi
 
 theme=$1
 
-if [[ -d ~/.config/ARCHEOX/themes/$theme ]]; then
-  theme_dir=~/.config/ARCHEOX/themes/$theme
+if [[ -d ~/.config/Archeox/themes/$theme ]]; then
+  theme_dir=~/.config/Archeox/themes/$theme
 else
-  theme_dir="$ARCHEOX_PATH/themes/$theme"
+  theme_dir="$Archeox_PATH/themes/$theme"
 fi
 
 bg=$(awk -F'"' '/^background/{print $2}' "$theme_dir/colors.toml")
 text=$(awk -F'"' '/^foreground/{print $2}' "$theme_dir/colors.toml")
 
-exec ARCHEOX-plymouth-set "$bg" "$text" "$theme_dir/unlock.png"
+exec Archeox-plymouth-set "$bg" "$text" "$theme_dir/unlock.png"

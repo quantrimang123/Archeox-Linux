@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Restart the XCompose input method service (fcitx5) to apply new compose key settings.
+# Archeox:summary=Restart the XCompose input method service (fcitx5) to apply new compose key settings.
 
-ARCHEOX-restart-app fcitx5 --disable notificationitem
+Archeox-restart-app fcitx5 --disable notificationitem

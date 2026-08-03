@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Refresh the SDDM theme from default
-# ARCHEOX:requires-sudo=true
+# Archeox:summary=Refresh the SDDM theme from default
+# Archeox:requires-sudo=true
 
-sudo rm -rf /usr/share/sddm/themes/ARCHEOX
-sudo cp -r $ARCHEOX_PATH/default/sddm/ARCHEOX /usr/share/sddm/themes/ARCHEOX
+sudo rm -rf /usr/share/sddm/themes/Archeox
+sudo cp -r $Archeox_PATH/default/sddm/Archeox /usr/share/sddm/themes/Archeox

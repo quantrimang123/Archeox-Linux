@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Run a named hook from ~/.config/ARCHEOX/hooks/<name> and ~/.config/ARCHEOX/hooks/<name>.d/.
-# ARCHEOX:args=[name] [args...]
+# Archeox:summary=Run a named hook from ~/.config/Archeox/hooks/<name> and ~/.config/Archeox/hooks/<name>.d/.
+# Archeox:args=[name] [args...]
 
 set -e
 
 if (( $# < 1 )); then
-  echo "Usage: ARCHEOX-hook [name] [args...]"
+  echo "Usage: Archeox-hook [name] [args...]"
   exit 1
 fi
 
 HOOK=$1
-HOOK_PATH="$HOME/.config/ARCHEOX/hooks/$1"
+HOOK_PATH="$HOME/.config/Archeox/hooks/$1"
 HOOK_DIR="$HOOK_PATH.d"
 shift
 

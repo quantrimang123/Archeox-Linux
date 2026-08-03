@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Generate themed config files from ARCHEOX templates
-# ARCHEOX:hidden=true
+# Archeox:summary=Generate themed config files from Archeox templates
+# Archeox:hidden=true
 
-TEMPLATES_DIR="$ARCHEOX_PATH/default/themed"
-USER_TEMPLATES_DIR="$HOME/.config/ARCHEOX/themed"
-NEXT_THEME_DIR="$HOME/.config/ARCHEOX/current/next-theme"
+TEMPLATES_DIR="$Archeox_PATH/default/themed"
+USER_TEMPLATES_DIR="$HOME/.config/Archeox/themed"
+NEXT_THEME_DIR="$HOME/.config/Archeox/current/next-theme"
 COLORS_FILE="$NEXT_THEME_DIR/colors.toml"
 
 # Convert hex color to decimal RGB (e.g., "#1e1e2e" -> "30,30,46")

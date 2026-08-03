@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Match Dell XPS systems with the Synaptics haptic touchpad.
+# Archeox:summary=Match Dell XPS systems with the Synaptics haptic touchpad.
 
-ARCHEOX-hw-match "XPS" && [[ -e /sys/bus/i2c/devices/i2c-VEN_06CB:00 ]]
+Archeox-hw-match "XPS" && [[ -e /sys/bus/i2c/devices/i2c-VEN_06CB:00 ]]

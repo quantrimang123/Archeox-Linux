@@ -1,1 +1,1 @@
-systemctl --user enable ARCHEOX-recover-internal-monitor.service
+systemctl --user enable Archeox-recover-internal-monitor.service

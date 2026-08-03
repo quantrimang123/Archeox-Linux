@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Remove a development environment that was previously installed via ARCHEOX-install-dev-env.
-# ARCHEOX:args=<ruby|node|bun|deno|go|php|laravel|symfony|python|elixir|phoenix|zig|rust|java|dotnet|ocaml|clojure|scala>
-# ARCHEOX:requires-sudo=true
+# Archeox:summary=Remove a development environment that was previously installed via Archeox-install-dev-env.
+# Archeox:args=<ruby|node|bun|deno|go|php|laravel|symfony|python|elixir|phoenix|zig|rust|java|dotnet|ocaml|clojure|scala>
+# Archeox:requires-sudo=true
 
 if [[ -z $1 ]]; then
-  echo "Usage: ARCHEOX-remove-dev-env <ruby|node|bun|deno|go|php|laravel|symfony|python|elixir|phoenix|zig|rust|java|dotnet|ocaml|clojure|scala>" >&2
+  echo "Usage: Archeox-remove-dev-env <ruby|node|bun|deno|go|php|laravel|symfony|python|elixir|phoenix|zig|rust|java|dotnet|ocaml|clojure|scala>" >&2
   exit 1
 fi
 

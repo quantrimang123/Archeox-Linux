@@ -1,3 +1,3 @@
-if ARCHEOX-hw-asus-rog; then
-  ARCHEOX-pkg-add asusctl
+if Archeox-hw-asus-rog; then
+  Archeox-pkg-add asusctl
 fi

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Overwrite all the user configs in ~/.config/hypr with the ARCHEOX defaults.
+# Archeox:summary=Overwrite all the user configs in ~/.config/hypr with the Archeox defaults.
 
-ARCHEOX-refresh-config hypr/autostart.conf
-ARCHEOX-refresh-config hypr/bindings.conf
-ARCHEOX-refresh-config hypr/input.conf
-ARCHEOX-refresh-config hypr/looknfeel.conf
-ARCHEOX-refresh-config hypr/hyprland.conf
-ARCHEOX-refresh-config hypr/monitors.conf
-bash "$ARCHEOX_PATH/install/config/detect-keyboard-layout.sh"
+Archeox-refresh-config hypr/autostart.conf
+Archeox-refresh-config hypr/bindings.conf
+Archeox-refresh-config hypr/input.conf
+Archeox-refresh-config hypr/looknfeel.conf
+Archeox-refresh-config hypr/hyprland.conf
+Archeox-refresh-config hypr/monitors.conf
+bash "$Archeox_PATH/install/config/detect-keyboard-layout.sh"

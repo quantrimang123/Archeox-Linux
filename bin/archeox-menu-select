@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Pick one option with Walker
-# ARCHEOX:group=menu
-# ARCHEOX:name=select
-# ARCHEOX:args=prompt option... [-- walker args...]
-# ARCHEOX:examples=ARCHEOX menu select Format jpg png|ARCHEOX-menu-select Resolution 4k 1080p 720p -- --width 400
+# Archeox:summary=Pick one option with Walker
+# Archeox:group=menu
+# Archeox:name=select
+# Archeox:args=prompt option... [-- walker args...]
+# Archeox:examples=Archeox menu select Format jpg png|Archeox-menu-select Resolution 4k 1080p 720p -- --width 400
 
 set -euo pipefail
 
 if (( $# < 2 )); then
-  echo "Usage: ARCHEOX-menu-select <prompt> <option>... [-- walker args...]" >&2
+  echo "Usage: Archeox-menu-select <prompt> <option>... [-- walker args...]" >&2
   exit 1
 fi
 
@@ -31,8 +31,8 @@ while (( $# > 0 )); do
 done
 
 if (( ${#options[@]} == 0 )); then
-  echo "Usage: ARCHEOX-menu-select <prompt> <option>... [-- walker args...]" >&2
+  echo "Usage: Archeox-menu-select <prompt> <option>... [-- walker args...]" >&2
   exit 1
 fi
 
-printf '%s\n' "${options[@]}" | ARCHEOX-launch-walker --dmenu --width 295 --minheight 1 --maxheight 300 -p "$prompt…" "${walker_args[@]}" 2>/dev/null
+printf '%s\n' "${options[@]}" | Archeox-launch-walker --dmenu --width 295 --minheight 1 --maxheight 300 -p "$prompt…" "${walker_args[@]}" 2>/dev/null

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Returns the battery percentage remaining as an integer.
+# Archeox:summary=Returns the battery percentage remaining as an integer.
 
 upower -i $(upower -e | grep BAT) | awk '/percentage/ { 
     print int($2)

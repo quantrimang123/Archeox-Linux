@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Restart Walker and related user services
+# Archeox:summary=Restart Walker and related user services
 
 restart_services() {
   if systemctl --user is-enabled elephant.service &>/dev/null; then

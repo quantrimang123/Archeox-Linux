@@ -7,7 +7,7 @@
 # Without xe.enable_dpcd_backlight=1, intel_backlight sysfs writes succeed
 # but produce no visible change; brightness is effectively binary.
 
-if ARCHEOX-hw-asus-expertbook-b9406 || ARCHEOX-hw-asus-zenbook-ux5406aa; then
+if Archeox-hw-asus-expertbook-b9406 || Archeox-hw-asus-zenbook-ux5406aa; then
   sudo mkdir -p /etc/limine-entry-tool.d
   cat <<EOF | sudo tee /etc/limine-entry-tool.d/asus-ptl-display-backlight.conf >/dev/null
 # ASUS Panther Lake display backlight fix

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Overwrite the package configuration for /etc/pacman with the ARCHEOX default of using its dedicated mirrors and repositories, then update all packages.
-# ARCHEOX:requires-sudo=true
+# Archeox:summary=Overwrite the package configuration for /etc/pacman with the Archeox default of using its dedicated mirrors and repositories, then update all packages.
+# Archeox:requires-sudo=true
 
 sudo cp -f /etc/pacman.conf /etc/pacman.conf.bak
 sudo cp -f /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bak
@@ -16,8 +16,8 @@ fi
 echo "Setting channel to $channel"
 echo
 
-sudo cp -f "$ARCHEOX_PATH/default/pacman/pacman-$channel.conf" /etc/pacman.conf
-sudo cp -f "$ARCHEOX_PATH/default/pacman/mirrorlist-$channel" /etc/pacman.d/mirrorlist
+sudo cp -f "$Archeox_PATH/default/pacman/pacman-$channel.conf" /etc/pacman.conf
+sudo cp -f "$Archeox_PATH/default/pacman/mirrorlist-$channel" /etc/pacman.d/mirrorlist
 
 # Reset all package DBs and then update
 sudo pacman -Syyuu --noconfirm

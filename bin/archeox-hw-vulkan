@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Detect whether Vulkan is available.
+# Archeox:summary=Detect whether Vulkan is available.
 
 [[ -d /usr/share/vulkan/icd.d ]] &&
   find /usr/share/vulkan/icd.d -maxdepth 1 -name "*.json" -print -quit | grep -q .

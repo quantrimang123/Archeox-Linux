@@ -3,16 +3,16 @@
 # Exit immediately if a command exits with a non-zero status
 set -eEo pipefail
 
-# Define ARCHEOX locations
-export ARCHEOX_PATH="$HOME/.local/share/ARCHEOX"
-export ARCHEOX_INSTALL="$ARCHEOX_PATH/install"
-export ARCHEOX_INSTALL_LOG_FILE="/var/log/ARCHEOX-install.log"
-export PATH="$ARCHEOX_PATH/bin:$PATH"
+# Define Archeox locations
+export Archeox_PATH="$HOME/.local/share/Archeox"
+export Archeox_INSTALL="$Archeox_PATH/install"
+export Archeox_INSTALL_LOG_FILE="/var/log/Archeox-install.log"
+export PATH="$Archeox_PATH/bin:$PATH"
 
 # Install
-source "$ARCHEOX_INSTALL/helpers/all.sh"
-source "$ARCHEOX_INSTALL/preflight/all.sh"
-source "$ARCHEOX_INSTALL/packaging/all.sh"
-source "$ARCHEOX_INSTALL/config/all.sh"
-source "$ARCHEOX_INSTALL/login/all.sh"
-source "$ARCHEOX_INSTALL/post-install/all.sh"
+source "$Archeox_INSTALL/helpers/all.sh"
+source "$Archeox_INSTALL/preflight/all.sh"
+source "$Archeox_INSTALL/packaging/all.sh"
+source "$Archeox_INSTALL/config/all.sh"
+source "$Archeox_INSTALL/login/all.sh"
+source "$Archeox_INSTALL/post-install/all.sh"

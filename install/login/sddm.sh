@@ -1,10 +1,10 @@
-# Install ARCHEOX SDDM theme
-ARCHEOX-refresh-sddm
+# Install Archeox SDDM theme
+Archeox-refresh-sddm
 
 # Setup SDDM login service
 sudo mkdir -p /usr/local/share/wayland-sessions
-sudo cp "$ARCHEOX_PATH/default/wayland-sessions/ARCHEOX.desktop" /usr/local/share/wayland-sessions/ARCHEOX.desktop
-sudo cp "$ARCHEOX_PATH/default/sddm/hyprland.conf" /usr/share/sddm/hyprland.conf
+sudo cp "$Archeox_PATH/default/wayland-sessions/Archeox.desktop" /usr/local/share/wayland-sessions/Archeox.desktop
+sudo cp "$Archeox_PATH/default/sddm/hyprland.conf" /usr/share/sddm/hyprland.conf
 
 sudo mkdir -p /etc/sddm.conf.d
 cat <<EOF | sudo tee /etc/sddm.conf.d/10-wayland.conf >/dev/null
@@ -19,13 +19,13 @@ if [[ ! -f /etc/sddm.conf.d/autologin.conf ]]; then
   cat <<EOF | sudo tee /etc/sddm.conf.d/autologin.conf
 [Autologin]
 User=$USER
-Session=ARCHEOX
+Session=Archeox
 
 [Theme]
-Current=ARCHEOX
+Current=Archeox
 EOF
 else
-  sudo sed -i 's/^Session=hyprland-uwsm$/Session=ARCHEOX/' /etc/sddm.conf.d/autologin.conf
+  sudo sed -i 's/^Session=hyprland-uwsm$/Session=Archeox/' /etc/sddm.conf.d/autologin.conf
 fi
 
 # Prevent password-based SDDM logins from creating an encrypted login keyring

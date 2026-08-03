@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Open Voxtype AI model setup
+# Archeox:summary=Open Voxtype AI model setup
 
 set -e
 
-ARCHEOX-launch-floating-terminal-with-presentation "voxtype setup model"
-ARCHEOX-restart-waybar
+Archeox-launch-floating-terminal-with-presentation "voxtype setup model"
+Archeox-restart-waybar

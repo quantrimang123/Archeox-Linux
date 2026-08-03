@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Set and show lightweight desktop notification reminders
-# ARCHEOX:args=<minutes> [message] | show | clear
-# ARCHEOX:examples=ARCHEOX reminder 5 | ARCHEOX reminder 30 "Check the oven" | ARCHEOX reminder show | ARCHEOX reminder clear
+# Archeox:summary=Set and show lightweight desktop notification reminders
+# Archeox:args=<minutes> [message] | show | clear
+# Archeox:examples=Archeox reminder 5 | Archeox reminder 30 "Check the oven" | Archeox reminder show | Archeox reminder clear
 
 set -euo pipefail
 
@@ -42,10 +42,10 @@ parse_systemd_timespan() {
 
 show_reminders() {
   local timers timer next next_seconds uptime remaining body=""
-  local reminder_dir="${XDG_RUNTIME_DIR:-/tmp}/ARCHEOX-reminders"
+  local reminder_dir="${XDG_RUNTIME_DIR:-/tmp}/Archeox-reminders"
   local reminder_message=""
 
-  timers=$(systemctl --user list-timers --all --no-legend --no-pager "ARCHEOX-reminder-*.timer" 2>/dev/null | awk '{ print $(NF - 1) }')
+  timers=$(systemctl --user list-timers --all --no-legend --no-pager "Archeox-reminder-*.timer" 2>/dev/null | awk '{ print $(NF - 1) }')
   uptime=${SECONDS_SINCE_BOOT:-$(awk '{ print int($1) }' /proc/uptime)}
 
   for timer in $timers; do
@@ -57,7 +57,7 @@ show_reminders() {
 
     remaining=$((next_seconds - uptime))
     reminder=${timer%.timer}
-    reminder=${reminder#ARCHEOX-reminder-}
+    reminder=${reminder#Archeox-reminder-}
     set_at=${reminder##*-}
     reminder_minutes=${reminder%%m-*}
     reminder_message=""
@@ -71,24 +71,24 @@ show_reminders() {
   done
 
   if [[ -z $body ]]; then
-    ARCHEOX-notification-send "󰔛" "Upcoming reminders" "No outstanding reminders" -u low
+    Archeox-notification-send "󰔛" "Upcoming reminders" "No outstanding reminders" -u low
   else
-    ARCHEOX-notification-send "󰔛" "Upcoming reminders" "${body%$'\n'}" -u low
+    Archeox-notification-send "󰔛" "Upcoming reminders" "${body%$'\n'}" -u low
   fi
 }
 
 clear_reminders() {
   local units
-  local reminder_dir="${XDG_RUNTIME_DIR:-/tmp}/ARCHEOX-reminders"
+  local reminder_dir="${XDG_RUNTIME_DIR:-/tmp}/Archeox-reminders"
 
-  units=$(systemctl --user list-timers --all --no-legend --no-pager "ARCHEOX-reminder-*.timer" 2>/dev/null | awk '{ print $(NF - 1), $NF }')
+  units=$(systemctl --user list-timers --all --no-legend --no-pager "Archeox-reminder-*.timer" 2>/dev/null | awk '{ print $(NF - 1), $NF }')
 
   if [[ -n $units ]]; then
     xargs -r systemctl --user stop <<<"$units" || true
   fi
 
-  rm -f "$reminder_dir"/ARCHEOX-reminder-*.message 2>/dev/null || true
-  ARCHEOX-notification-send "󰔛" "All reminders have been cleared" -u low
+  rm -f "$reminder_dir"/Archeox-reminder-*.message 2>/dev/null || true
+  Archeox-notification-send "󰔛" "All reminders have been cleared" -u low
 }
 
 case ${1:-} in
@@ -108,9 +108,9 @@ message="$*"
 custom_message="$message"
 
 if [[ -z $minutes ]] || [[ ! $minutes =~ ^[0-9]+$ ]] || ((minutes == 0)); then
-  echo "Usage: ARCHEOX-reminder <minutes> [message]"
-  echo "       ARCHEOX-reminder show"
-  echo "       ARCHEOX-reminder clear"
+  echo "Usage: Archeox-reminder <minutes> [message]"
+  echo "       Archeox-reminder show"
+  echo "       Archeox-reminder clear"
   exit 1
 fi
 
@@ -120,8 +120,8 @@ fi
 
 set_at=$(date +%s)
 remind_at=$(date -d "+${minutes} minutes" +%H:%M)
-unit="ARCHEOX-reminder-${minutes}m-$set_at"
-reminder_dir="${XDG_RUNTIME_DIR:-/tmp}/ARCHEOX-reminders"
+unit="Archeox-reminder-${minutes}m-$set_at"
+reminder_dir="${XDG_RUNTIME_DIR:-/tmp}/Archeox-reminders"
 message_file="$reminder_dir/$unit.message"
 confirmation="You'll be reminded at $remind_at"
 confirmation_title="Reminder set for ${minutes} minutes"
@@ -134,6 +134,6 @@ if [[ -n $custom_message ]]; then
 fi
 
 systemd-run --user --quiet --collect --on-active="${minutes}m" --unit="$unit" \
-  bash -c 'ARCHEOX-notification-send "󰔛" "Reminder" "$1" -u critical; rm -f "$2"' bash "$message" "$message_file"
+  bash -c 'Archeox-notification-send "󰔛" "Reminder" "$1" -u critical; rm -f "$2"' bash "$message" "$message_file"
 
-ARCHEOX-notification-send "󰔛" "$confirmation_title" "$confirmation" -u low
+Archeox-notification-send "󰔛" "$confirmation_title" "$confirmation" -u low

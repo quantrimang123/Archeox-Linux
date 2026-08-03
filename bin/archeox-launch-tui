@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Launch a TUI command in the default terminal with ARCHEOX styling
-# ARCHEOX:args=<command> [args...]
+# Archeox:summary=Launch a TUI command in the default terminal with Archeox styling
+# Archeox:args=<command> [args...]
 
-exec setsid uwsm-app -- xdg-terminal-exec --app-id=org.ARCHEOX.$(basename $1) -e "$1" "${@:2}"
+exec setsid uwsm-app -- xdg-terminal-exec --app-id=org.Archeox.$(basename $1) -e "$1" "${@:2}"

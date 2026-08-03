@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Update system firmware using fwupd. Ensures the fwupd EFI binary is installed
-# ARCHEOX:requires-sudo=true
+# Archeox:summary=Update system firmware using fwupd. Ensures the fwupd EFI binary is installed
+# Archeox:requires-sudo=true
 
 set -e
 echo -e "\e[32mUpdate Firmware\e[0m"
 
-if ARCHEOX-cmd-missing fwupdmgr; then
-  ARCHEOX-pkg-add fwupd
+if Archeox-cmd-missing fwupdmgr; then
+  Archeox-pkg-add fwupd
 fi
 
 if [[ -d /sys/firmware/efi ]] && [[ -f /usr/lib/fwupd/efi/fwupdx64.efi ]]; then

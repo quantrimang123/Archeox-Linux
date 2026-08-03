@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Print the name of the currently focused Hyprland monitor.
+# Archeox:summary=Print the name of the currently focused Hyprland monitor.
 
 hyprctl monitors -j | jq -r '.[] | select(.focused == true).name'

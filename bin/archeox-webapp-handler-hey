@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Open HEY webmail and translate mailto links
-# ARCHEOX:args=[url]
+# Archeox:summary=Open HEY webmail and translate mailto links
+# Archeox:args=[url]
 
 url="$1"
 web_url="https://app.hey.com"
@@ -12,4 +12,4 @@ if [[ $url =~ ^mailto: ]]; then
   web_url="https://app.hey.com/messages/new?to=$email"
 fi
 
-exec ARCHEOX-launch-webapp "$web_url"
+exec Archeox-launch-webapp "$web_url"

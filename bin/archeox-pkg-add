@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Install Arch packages if they are missing
-# ARCHEOX:args=<packages...>
-# ARCHEOX:examples=ARCHEOX pkg add jq ripgrep
-# ARCHEOX:requires-sudo=true
+# Archeox:summary=Install Arch packages if they are missing
+# Archeox:args=<packages...>
+# Archeox:examples=Archeox pkg add jq ripgrep
+# Archeox:requires-sudo=true
 
-if ARCHEOX-pkg-missing "$@"; then
+if Archeox-pkg-missing "$@"; then
   sudo pacman -S --noconfirm --needed "$@" || exit 1
 fi
 

@@ -1,26 +1,26 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Sync ARCHEOX theme to all Obsidian vaults
-# ARCHEOX:hidden=true
+# Archeox:summary=Sync Archeox theme to all Obsidian vaults
+# Archeox:hidden=true
 
-CURRENT_THEME_DIR="$HOME/.config/ARCHEOX/current/theme"
+CURRENT_THEME_DIR="$HOME/.config/Archeox/current/theme"
 
 [[ -f $CURRENT_THEME_DIR/obsidian.css ]] || exit 0
 
 jq -r '.vaults | values[].path' ~/.config/obsidian/obsidian.json 2>/dev/null | while read -r vault_path; do
   [[ -d $vault_path/.obsidian ]] || continue
 
-  theme_dir="$vault_path/.obsidian/themes/ARCHEOX"
+  theme_dir="$vault_path/.obsidian/themes/Archeox"
   mkdir -p "$theme_dir"
 
   [[ -f $theme_dir/manifest.json ]] || cat >"$theme_dir/manifest.json" <<'EOF'
 {
-  "name": "ARCHEOX",
+  "name": "Archeox",
   "version": "1.0.0",
   "minAppVersion": "0.16.0",
-  "description": "Automatically syncs with your current ARCHEOX system theme colors and fonts",
-  "author": "ARCHEOX",
-  "authorUrl": "https://ARCHEOX.org"
+  "description": "Automatically syncs with your current Archeox system theme colors and fonts",
+  "author": "Archeox",
+  "authorUrl": "https://Archeox.org"
 }
 EOF
 

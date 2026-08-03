@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Reset the sudo lockout/faillock for the current user.
+# Archeox:summary=Reset the sudo lockout/faillock for the current user.
 
 su -c "faillock --reset --user $USER"

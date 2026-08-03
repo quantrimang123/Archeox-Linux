@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Prompt for text input with Walker
-# ARCHEOX:group=menu
-# ARCHEOX:name=input
-# ARCHEOX:args=prompt [walker args...]
-# ARCHEOX:examples=ARCHEOX menu input Reminder|ARCHEOX-menu-input "Reminder in minutes" --width 400
+# Archeox:summary=Prompt for text input with Walker
+# Archeox:group=menu
+# Archeox:name=input
+# Archeox:args=prompt [walker args...]
+# Archeox:examples=Archeox menu input Reminder|Archeox-menu-input "Reminder in minutes" --width 400
 
 set -euo pipefail
 
@@ -13,4 +13,4 @@ if (( $# > 0 )); then
   shift
 fi
 
-ARCHEOX-launch-walker --dmenu --inputonly --width 295 --minheight 1 --maxheight 1 -p "$prompt…" "$@" 2>/dev/null
+Archeox-launch-walker --dmenu --inputonly --width 295 --minheight 1 --maxheight 1 -p "$prompt…" "$@" 2>/dev/null

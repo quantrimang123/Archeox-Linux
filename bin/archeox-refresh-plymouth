@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Overwrite the user config for the Plymouth drive decryption and boot sequence with the ARCHEOX default and rebuild it.
-# ARCHEOX:requires-sudo=true
+# Archeox:summary=Overwrite the user config for the Plymouth drive decryption and boot sequence with the Archeox default and rebuild it.
+# Archeox:requires-sudo=true
 
-sudo cp -r ~/.local/share/ARCHEOX/default/plymouth/* /usr/share/plymouth/themes/ARCHEOX/
-sudo plymouth-set-default-theme ARCHEOX
+sudo cp -r ~/.local/share/Archeox/default/plymouth/* /usr/share/plymouth/themes/Archeox/
+sudo plymouth-set-default-theme Archeox
 
 if command -v limine-mkinitcpio &>/dev/null; then
   sudo limine-mkinitcpio

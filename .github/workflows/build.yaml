@@ -1,4 +1,4 @@
-name: Build ARCHEOX Linux ISO
+name: Build Archeox Linux ISO
 
 on:
   #schedule:
@@ -28,7 +28,7 @@ jobs:
       - name: Checkout My Config Repo
         uses: actions/checkout@v4
         with:
-          repository: quantrimang123/ARCHEOX-linux
+          repository: quantrimang123/Archeox-linux
           path: my_config_folder
           token: ${{ secrets.GH_PAT }}
       - name: Extract Baseline Profile
@@ -45,17 +45,17 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.dev == 'true' }}
         with:
-          name: ARCHEOX Linux ${{ env.DATE }}
+          name: Archeox Linux ${{ env.DATE }}
           path: |
-            ARCHEOXLinux-baseline-${{ env.DATE }}-x86_64.iso
+            ArcheoxLinux-baseline-${{ env.DATE }}-x86_64.iso
             CHECKSUMS.txt
       - name: Create tag and release
         uses: softprops/action-gh-release@v2
         if: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && github.event.inputs.dev == 'false') }}
         with:
-          name: ARCHEOX Linux ${{ env.DATE }}
+          name: Archeox Linux ${{ env.DATE }}
           tag_name: ${{ env.DATE }}
           body_path: CHECKSUMS.txt
           files: |
-            ARCHEOX Linux-baseline-${{ env.DATE }}-x86_64.iso
+            Archeox Linux-baseline-${{ env.DATE }}-x86_64.iso
             CHECKSUMS.txt

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Install Zed Editor and configure it with the current ARCHEOX theme
+# Archeox:summary=Install Zed Editor and configure it with the current Archeox theme
 
 echo "Installing Zed Editor..."
-ARCHEOX-pkg-add zed omazed
+Archeox-pkg-add zed omazed
 
-# Apply ARCHEOX theme to Zed
+# Apply Archeox theme to Zed
 omazed setup
 
 setsid gtk-launch dev.zed.Zed

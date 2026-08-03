@@ -1,3 +1,3 @@
-if ARCHEOX-hw-framework16; then
-  ARCHEOX-pkg-add qmk-hid
+if Archeox-hw-framework16; then
+  Archeox-pkg-add qmk-hid
 fi

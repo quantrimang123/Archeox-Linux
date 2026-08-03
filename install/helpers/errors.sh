@@ -10,11 +10,11 @@ show_cursor() {
 
 # Display truncated log lines from the install log
 show_log_tail() {
-  if [[ -f $ARCHEOX_INSTALL_LOG_FILE ]]; then
+  if [[ -f $Archeox_INSTALL_LOG_FILE ]]; then
     local log_lines=$((TERM_HEIGHT - LOGO_HEIGHT - 35))
     local max_line_width=$((LOGO_WIDTH - 4))
 
-    tail -n $log_lines "$ARCHEOX_INSTALL_LOG_FILE" | while IFS= read -r line; do
+    tail -n $log_lines "$Archeox_INSTALL_LOG_FILE" | while IFS= read -r line; do
       if ((${#line} > max_line_width)); then
         local truncated_line="${line:0:$max_line_width}..."
       else
@@ -76,7 +76,7 @@ catch_errors() {
   clear_logo
   show_cursor
 
-  gum style --foreground 1 --padding "1 0 1 $PADDING_LEFT" "ARCHEOX installation stopped!"
+  gum style --foreground 1 --padding "1 0 1 $PADDING_LEFT" "Archeox installation stopped!"
   show_log_tail
 
   gum style "This command halted with exit code $exit_code:"
@@ -91,7 +91,7 @@ catch_errors() {
     options=()
 
     # If online install, show retry first
-    if [[ -n ${ARCHEOX_ONLINE_INSTALL:-} ]]; then
+    if [[ -n ${Archeox_ONLINE_INSTALL:-} ]]; then
       options+=("Retry installation")
     fi
 
@@ -108,18 +108,18 @@ catch_errors() {
 
     case "$choice" in
     "Retry installation")
-      bash ~/.local/share/ARCHEOX/install.sh
+      bash ~/.local/share/Archeox/install.sh
       break
       ;;
     "View full log")
       if command -v less &>/dev/null; then
-        less "$ARCHEOX_INSTALL_LOG_FILE"
+        less "$Archeox_INSTALL_LOG_FILE"
       else
-        tail "$ARCHEOX_INSTALL_LOG_FILE"
+        tail "$Archeox_INSTALL_LOG_FILE"
       fi
       ;;
     "Upload log for support")
-      ARCHEOX-upload-log
+      Archeox-upload-log
       ;;
     "Exit" | "")
       exit 1

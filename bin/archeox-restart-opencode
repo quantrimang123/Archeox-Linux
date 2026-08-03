@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Reload opencode configuration (used by the ARCHEOX theme switching).
+# Archeox:summary=Reload opencode configuration (used by the Archeox theme switching).
 
 if pgrep -x opencode >/dev/null; then
   killall -SIGUSR2 opencode

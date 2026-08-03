@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Launch a floating terminal with the ARCHEOX presentation wrapper
-# ARCHEOX:args=<command>
+# Archeox:summary=Launch a floating terminal with the Archeox presentation wrapper
+# Archeox:args=<command>
 
 cmd="$*"
-exec setsid uwsm-app -- xdg-terminal-exec --app-id=org.ARCHEOX.terminal --title=ARCHEOX -e bash -c "ARCHEOX-show-logo; $cmd; if (( \$? != 130 )); then ARCHEOX-show-done; fi"
+exec setsid uwsm-app -- xdg-terminal-exec --app-id=org.Archeox.terminal --title=Archeox -e bash -c "Archeox-show-logo; $cmd; if (( \$? != 130 )); then Archeox-show-done; fi"

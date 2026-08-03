@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Remove the GeForce NOW Flatpak app and its data.
+# Archeox:summary=Remove the GeForce NOW Flatpak app and its data.
 
 set -e
 

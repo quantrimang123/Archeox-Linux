@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Check if hibernation is supported
+# Archeox:summary=Check if hibernation is supported
 
 if [[ ! -f /sys/power/image_size ]]; then
   exit 1
@@ -12,7 +12,7 @@ SWAPSIZE=$(( 1024 * ${SWAPSIZE_KB:-0} ))
 
 HIBERNATION_IMAGE_SIZE=$(cat /sys/power/image_size)
 
-if (( SWAPSIZE > HIBERNATION_IMAGE_SIZE )) && [[ -f /etc/mkinitcpio.conf.d/ARCHEOX_resume.conf ]]; then
+if (( SWAPSIZE > HIBERNATION_IMAGE_SIZE )) && [[ -f /etc/mkinitcpio.conf.d/Archeox_resume.conf ]]; then
   exit 0
 else
   exit 1

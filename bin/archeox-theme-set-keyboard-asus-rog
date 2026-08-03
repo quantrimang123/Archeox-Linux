@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Apply the current theme keyboard color to ASUS ROG keyboards
-# ARCHEOX:hidden=true
+# Archeox:summary=Apply the current theme keyboard color to ASUS ROG keyboards
+# Archeox:hidden=true
 
-ASUSCTL_THEME=~/.config/ARCHEOX/current/theme/keyboard.rgb
+ASUSCTL_THEME=~/.config/Archeox/current/theme/keyboard.rgb
 
-if ARCHEOX-cmd-present asusctl; then
+if Archeox-cmd-present asusctl; then
   asusctl aura effect static -c $(sed 's/^#//' $ASUSCTL_THEME)
 fi

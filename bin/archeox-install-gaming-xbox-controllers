@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Install support for using Xbox controllers with Steam/RetroArch/etc.
-# ARCHEOX:requires-sudo=true
+# Archeox:summary=Install support for using Xbox controllers with Steam/RetroArch/etc.
+# Archeox:requires-sudo=true
 
 set -e
 
 echo "Installing Xbox controller Bluetooth support..."
 
 # Install xpadneo to ensure controllers work out of the box
-ARCHEOX-pkg-add linux-headers xpadneo-dkms
+Archeox-pkg-add linux-headers xpadneo-dkms
 
 # Prevent xpad/xpadneo driver conflict
 echo blacklist xpad | sudo tee /etc/modprobe.d/blacklist-xpad.conf >/dev/null

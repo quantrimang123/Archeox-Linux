@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Remove Heroic Games Launcher and its game libraries, configs, and caches.
-# ARCHEOX:requires-sudo=true
+# Archeox:summary=Remove Heroic Games Launcher and its game libraries, configs, and caches.
+# Archeox:requires-sudo=true
 
 set -e
 
-ARCHEOX-pkg-drop heroic-games-launcher-bin
+Archeox-pkg-drop heroic-games-launcher-bin
 
 rm -rf \
   "$HOME/.config/heroic" \

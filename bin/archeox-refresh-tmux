@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Overwrite the user tmux config with the ARCHEOX default and reload tmux.
+# Archeox:summary=Overwrite the user tmux config with the Archeox default and reload tmux.
 
-ARCHEOX-refresh-config tmux/tmux.conf
-ARCHEOX-restart-tmux
+Archeox-refresh-config tmux/tmux.conf
+Archeox-restart-tmux

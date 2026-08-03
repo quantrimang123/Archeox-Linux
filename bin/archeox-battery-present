@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Returns true if a battery is present on the system.
+# Archeox:summary=Returns true if a battery is present on the system.
 
 for bat in /sys/class/power_supply/BAT*; do
   [[ -r $bat/present ]] &&

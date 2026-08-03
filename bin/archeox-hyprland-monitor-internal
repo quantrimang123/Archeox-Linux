@@ -1,27 +1,27 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Enable, disable, toggle, or recover the internal laptop display
-# ARCHEOX:args=<on|off|toggle|recover>
+# Archeox:summary=Enable, disable, toggle, or recover the internal laptop display
+# Archeox:args=<on|off|toggle|recover>
 
 TOGGLE="internal-monitor-disable"
-TOGGLE_FLAG="$HOME/.local/state/ARCHEOX/toggles/hypr/$TOGGLE.conf"
+TOGGLE_FLAG="$HOME/.local/state/Archeox/toggles/hypr/$TOGGLE.conf"
 MIRROR_TOGGLE="internal-monitor-mirror"
 
 # Get internal monitor name dynamically
 INTERNAL=$(hyprctl monitors -j | jq -r '.[] | select(.name | contains("eDP")).name' | head -n 1)
 
 enable() {
-  if ARCHEOX-hyprland-toggle-enabled "$TOGGLE"; then
-    ARCHEOX-hyprland-toggle --disabled-notification "󰍹    Laptop display enabled" "$TOGGLE"
+  if Archeox-hyprland-toggle-enabled "$TOGGLE"; then
+    Archeox-hyprland-toggle --disabled-notification "󰍹    Laptop display enabled" "$TOGGLE"
   fi
 }
 
 disable() {
-  if ! ARCHEOX-hw-external-monitors; then
+  if ! Archeox-hw-external-monitors; then
     notify-send -u low "󰍹    Can't disable the only active display"
     exit 1
   fi
-  if ARCHEOX-hyprland-toggle-disabled "$TOGGLE" && ARCHEOX-hyprland-toggle-disabled "$MIRROR_TOGGLE"; then
+  if Archeox-hyprland-toggle-disabled "$TOGGLE" && Archeox-hyprland-toggle-disabled "$MIRROR_TOGGLE"; then
     echo "monitor=$INTERNAL,disable" >"$TOGGLE_FLAG"
     notify-send -u low "󰍹    Laptop display disabled"
     hyprctl reload
@@ -29,15 +29,15 @@ disable() {
 }
 
 recover() {
-  if ! ARCHEOX-hw-external-monitors && ARCHEOX-hyprland-toggle-enabled "$TOGGLE"; then
-    ARCHEOX-hyprland-toggle "$TOGGLE"
+  if ! Archeox-hw-external-monitors && Archeox-hyprland-toggle-enabled "$TOGGLE"; then
+    Archeox-hyprland-toggle "$TOGGLE"
   fi
 }
 
 case "$1" in
   on) enable ;;
   off) disable ;;
-  toggle) if ARCHEOX-hyprland-toggle-enabled "$TOGGLE"; then enable; else disable; fi ;;
+  toggle) if Archeox-hyprland-toggle-enabled "$TOGGLE"; then enable; else disable; fi ;;
   recover) recover ;;
   *)
     echo "Usage: $(basename "$0") {on|off|toggle|recover}" >&2

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Toggle notification do-not-disturb mode
+# Archeox:summary=Toggle notification do-not-disturb mode
 
 makoctl mode -t do-not-disturb
 

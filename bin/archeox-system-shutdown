@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Shut down after closing application windows
-# ARCHEOX:examples=ARCHEOX shutdown | ARCHEOX system shutdown
-# ARCHEOX:aliases=ARCHEOX shutdown
+# Archeox:summary=Shut down after closing application windows
+# Archeox:examples=Archeox shutdown | Archeox system shutdown
+# Archeox:aliases=Archeox shutdown
 
-ARCHEOX-state clear re*-required
+Archeox-state clear re*-required
 
 # Schedule the shutdown to happen after closing windows (detached from terminal)
 nohup bash -c "sleep 2 && systemctl poweroff --no-wall" >/dev/null 2>&1 &
 
 # Now close all windows
-ARCHEOX-hyprland-window-close-all
+Archeox-hyprland-window-close-all
 sleep 1 # Allow apps like Chrome to shutdown correctly

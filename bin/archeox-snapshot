@@ -1,26 +1,26 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Create or restore system snapshots with snapper
-# ARCHEOX:args=<create|restore>
-# ARCHEOX:requires-sudo=true
+# Archeox:summary=Create or restore system snapshots with snapper
+# Archeox:args=<create|restore>
+# Archeox:requires-sudo=true
 
 set -e
 
 COMMAND="$1"
-ARCHEOX_PATH=${ARCHEOX_PATH:-$HOME/.local/share/ARCHEOX}
+Archeox_PATH=${Archeox_PATH:-$HOME/.local/share/Archeox}
 
 if [[ -z $COMMAND ]]; then
-  echo "Usage: ARCHEOX-snapshot <create|restore>" >&2
+  echo "Usage: Archeox-snapshot <create|restore>" >&2
   exit 1
 fi
 
 if ! command -v snapper &>/dev/null; then
-  exit 127 # ARCHEOX-update can use this to just ignore if snapper is not available
+  exit 127 # Archeox-update can use this to just ignore if snapper is not available
 fi
 
 case "$COMMAND" in
 create)
-  DESC="$(ARCHEOX-version)"
+  DESC="$(Archeox-version)"
 
   echo -e "\e[32mCreate system snapshot\e[0m"
 

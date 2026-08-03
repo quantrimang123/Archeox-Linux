@@ -2,10 +2,10 @@ if lspci | grep -qi 'nvidia'; then
   # Check which kernel is installed and set appropriate headers package
   KERNEL_HEADERS="$(pacman -Qqs '^linux(-zen|-lts|-hardened)?$' | head -1)-headers"
 
-  if ARCHEOX-hw-nvidia-gsp; then
+  if Archeox-hw-nvidia-gsp; then
     PACKAGES=(nvidia-open-dkms nvidia-utils lib32-nvidia-utils libva-nvidia-driver)
     GPU_ARCH="turing_plus"
-  elif ARCHEOX-hw-nvidia-without-gsp; then
+  elif Archeox-hw-nvidia-without-gsp; then
     PACKAGES=(nvidia-580xx-dkms nvidia-580xx-utils lib32-nvidia-580xx-utils)
     GPU_ARCH="maxwell_pascal_volta"
   fi
@@ -15,7 +15,7 @@ if lspci | grep -qi 'nvidia'; then
     exit 0
   fi
 
-  ARCHEOX-pkg-add "$KERNEL_HEADERS" "${PACKAGES[@]}"
+  Archeox-pkg-add "$KERNEL_HEADERS" "${PACKAGES[@]}"
 
   # Configure modprobe for early KMS
   sudo tee /etc/modprobe.d/nvidia.conf <<EOF >/dev/null

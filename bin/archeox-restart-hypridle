@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Restart the hypridle service (used for idle detection and auto-lock).
+# Archeox:summary=Restart the hypridle service (used for idle detection and auto-lock).
 
-ARCHEOX-restart-app hypridle
+Archeox-restart-app hypridle

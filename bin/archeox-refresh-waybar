@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Reset Waybar config to ARCHEOX defaults
-# ARCHEOX:examples=ARCHEOX refresh waybar
+# Archeox:summary=Reset Waybar config to Archeox defaults
+# Archeox:examples=Archeox refresh waybar
 
-ARCHEOX-refresh-config waybar/config.jsonc
-ARCHEOX-refresh-config waybar/style.css
-ARCHEOX-restart-waybar
+Archeox-refresh-config waybar/config.jsonc
+Archeox-refresh-config waybar/style.css
+Archeox-restart-waybar

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Remove terminal UI desktop launchers
-# ARCHEOX:args=[name...]
+# Archeox:summary=Remove terminal UI desktop launchers
+# Archeox:args=[name...]
 
 set -e
 

@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Detect ASUS ExpertBook B9406 series laptops on Intel Panther Lake.
+# Archeox:summary=Detect ASUS ExpertBook B9406 series laptops on Intel Panther Lake.
 
-ARCHEOX-hw-match "B9406" && ARCHEOX-hw-intel-ptl
+Archeox-hw-match "B9406" && Archeox-hw-intel-ptl

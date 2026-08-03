@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Toggle suspend availability in the system menu
+# Archeox:summary=Toggle suspend availability in the system menu
 
-ARCHEOX-toggle \
+Archeox-toggle \
   --enabled-notification "󰒲   Suspend removed from system menu" \
   --disabled-notification "󰒲   Suspend now available in system menu" \
   suspend-off

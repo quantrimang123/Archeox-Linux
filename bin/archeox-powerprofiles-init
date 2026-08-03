@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Set the correct power profile on boot based on current AC/battery state.
+# Archeox:summary=Set the correct power profile on boot based on current AC/battery state.
 
-if ARCHEOX-battery-present && ! ARCHEOX-ac-present; then
-  ARCHEOX-powerprofiles-set battery
+if Archeox-battery-present && ! Archeox-ac-present; then
+  Archeox-powerprofiles-set battery
 else
-  ARCHEOX-powerprofiles-set ac
+  Archeox-powerprofiles-set ac
 fi

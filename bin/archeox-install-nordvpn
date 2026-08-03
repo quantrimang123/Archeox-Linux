@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Install the NordVPN service with optional GUI.
-# ARCHEOX:requires-sudo=true
+# Archeox:summary=Install the NordVPN service with optional GUI.
+# Archeox:requires-sudo=true
 
 echo "Installing NordVPN..."
-ARCHEOX-pkg-aur-add nordvpn-bin
+Archeox-pkg-aur-add nordvpn-bin
 
 echo "Enabling NordVPN daemon..."
 sudo systemctl enable --now nordvpnd
@@ -15,4 +15,4 @@ sudo usermod -aG nordvpn "$USER"
 echo -e "\nNordVPN installed! After reboot, run 'nordvpn login' to authenticate."
 
 echo
-gum confirm "Reboot now to make NordVPN usable?" && ARCHEOX-system-reboot
+gum confirm "Reboot now to make NordVPN usable?" && Archeox-system-reboot

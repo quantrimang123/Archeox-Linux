@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Reload mako configuration (used by the ARCHEOX theme switching).
+# Archeox:summary=Reload mako configuration (used by the Archeox theme switching).
 
 makoctl reload

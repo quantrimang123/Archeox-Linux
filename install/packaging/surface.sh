@@ -1,3 +1,3 @@
-if ARCHEOX-hw-surface; then
-  ARCHEOX-pkg-add linux-firmware-marvell
+if Archeox-hw-surface; then
+  Archeox-pkg-add linux-firmware-marvell
 fi

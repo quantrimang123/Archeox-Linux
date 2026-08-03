@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Check if a toggle is enabled (flag file exists)
-# ARCHEOX:args=<flag-name>
+# Archeox:summary=Check if a toggle is enabled (flag file exists)
+# Archeox:args=<flag-name>
 
-[[ -f "$HOME/.local/state/ARCHEOX/toggles/$1" ]]
+[[ -f "$HOME/.local/state/Archeox/toggles/$1" ]]

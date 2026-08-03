@@ -4,6 +4,6 @@
 # Output sink. This affects Arrow Lake, Meteor Lake, Tiger Lake, Alder Lake,
 # Wildcat Lake, Panther Lake, and similar platforms.
 
-if ARCHEOX-hw-intel-sof; then
-  ARCHEOX-pkg-add sof-firmware
+if Archeox-hw-intel-sof; then
+  Archeox-pkg-add sof-firmware
 fi

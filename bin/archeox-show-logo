@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Display the ARCHEOX logo in the terminal using green color.
+# Archeox:summary=Display the Archeox logo in the terminal using green color.
 
 clear
 echo -e "\033[32m"
-cat <~/.local/share/ARCHEOX/logo.txt
+cat <~/.local/share/Archeox/logo.txt
 echo -e "\033[0m"
 echo

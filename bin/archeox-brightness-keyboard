@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Adjust keyboard backlight brightness using available steps.
-# ARCHEOX:args=<up|down|cycle|off|restore>
+# Archeox:summary=Adjust keyboard backlight brightness using available steps.
+# Archeox:args=<up|down|cycle|off|restore>
 
 direction="${1:-up}"
 
@@ -52,4 +52,4 @@ brightnessctl -d "$device" set "$new_brightness" >/dev/null
 
 # Use SwayOSD to display the new brightness setting.
 percent=$((new_brightness * 100 / max_brightness))
-ARCHEOX-swayosd-kbd-brightness "$percent"
+Archeox-swayosd-kbd-brightness "$percent"

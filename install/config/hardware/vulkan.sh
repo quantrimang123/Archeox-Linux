@@ -16,5 +16,5 @@ for vendor in "${!VULKAN_DRIVERS[@]}"; do
 done
 
 if (( ${#PACKAGES[@]} > 0 )); then
-  ARCHEOX-pkg-add "${PACKAGES[@]}"
+  Archeox-pkg-add "${PACKAGES[@]}"
 fi

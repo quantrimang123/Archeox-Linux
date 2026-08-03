@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Refresh the ~/.config/chromium-flags.conf file from the ARCHEOX defaults.
+# Archeox:summary=Refresh the ~/.config/chromium-flags.conf file from the Archeox defaults.
 
 CONFIG_FILE="$HOME/.config/chromium-flags.conf"
 INSTALL_GOOGLE_ACCOUNTS=false
@@ -13,9 +13,9 @@ if [[ -f $CONFIG_FILE ]] && \
 fi
 
 # Refresh the Chromium configuration
-ARCHEOX-refresh-config chromium-flags.conf
+Archeox-refresh-config chromium-flags.conf
 
 # Re-install Google accounts if previously configured
 if [[ $INSTALL_GOOGLE_ACCOUNTS == "true" ]]; then
-  ARCHEOX-install-chromium-google-account
+  Archeox-install-chromium-google-account
 fi

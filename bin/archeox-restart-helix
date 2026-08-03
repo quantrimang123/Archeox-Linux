@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Reload Helix configuration
+# Archeox:summary=Reload Helix configuration
 
 if pgrep -x helix >/dev/null; then
   pkill -USR1 helix

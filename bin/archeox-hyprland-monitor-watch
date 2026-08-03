@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Watch Hyprland monitor events and recover monitor toggles when a monitor is removed
+# Archeox:summary=Watch Hyprland monitor events and recover monitor toggles when a monitor is removed
 
 SOCKET="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
 
 socat -U - "UNIX-CONNECT:$SOCKET" | while read -r event; do
   case "$event" in
     monitorremoved\>\>*|monitorremovedv2\>\>*)
-      ARCHEOX-hyprland-monitor-internal recover
-      ARCHEOX-hyprland-monitor-internal-mirror recover
+      Archeox-hyprland-monitor-internal recover
+      Archeox-hyprland-monitor-internal-mirror recover
       ;;
   esac
 done

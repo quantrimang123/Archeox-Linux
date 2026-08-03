@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# ARCHEOX:group=transcode
-# ARCHEOX:name=
-# ARCHEOX:summary=Transcode pictures and videos for sharing
-# ARCHEOX:args=[--path path] [input] [format] [resolution]
-# ARCHEOX:examples=ARCHEOX transcode|ARCHEOX transcode --path ~/Downloads|ARCHEOX transcode ~/Videos/demo.mov mp4 1080p|ARCHEOX transcode ~/Pictures/wallpaper.heic jpg medium
+# Archeox:group=transcode
+# Archeox:name=
+# Archeox:summary=Transcode pictures and videos for sharing
+# Archeox:args=[--path path] [input] [format] [resolution]
+# Archeox:examples=Archeox transcode|Archeox transcode --path ~/Downloads|Archeox transcode ~/Videos/demo.mov mp4 1080p|Archeox transcode ~/Pictures/wallpaper.heic jpg medium
 
 set -euo pipefail
 
 usage() {
   cat <<'EOF'
 Usage:
-  ARCHEOX transcode [--path path] [input] [format] [resolution]
+  Archeox transcode [--path path] [input] [format] [resolution]
 
 With no input, pick a picture or video with Walker from ~/Pictures and ~/Videos,
 or only from --path when provided. Then pick the output format and resolution.
@@ -166,7 +166,7 @@ main() {
   search_path="${search_path:-$HOME/Pictures:$HOME/Videos}"
 
   if [[ -z $input ]]; then
-    input=$(ARCHEOX-menu-file "Transcode picture or video" "$search_path" "jpg jpeg png webp gif heic avif mp4 mov m4v mkv webm avi")
+    input=$(Archeox-menu-file "Transcode picture or video" "$search_path" "jpg jpeg png webp gif heic avif mp4 mov m4v mkv webm avi")
   fi
 
   [[ -n $input ]] || return 1
@@ -176,31 +176,31 @@ main() {
 
   if [[ -z $format ]]; then
     if [[ $type == "picture" ]]; then
-      format=$(ARCHEOX-menu-select "Select format" jpg png)
+      format=$(Archeox-menu-select "Select format" jpg png)
     else
-      format=$(ARCHEOX-menu-select "Select format" mp4 gif)
+      format=$(Archeox-menu-select "Select format" mp4 gif)
     fi
   fi
 
   if [[ -z $resolution ]]; then
     if [[ $type == "picture" ]]; then
-      resolution=$(ARCHEOX-menu-select "Select resolution" high medium low)
+      resolution=$(Archeox-menu-select "Select resolution" high medium low)
     else
-      resolution=$(ARCHEOX-menu-select "Select resolution" 4k 1080p 720p)
+      resolution=$(Archeox-menu-select "Select resolution" 4k 1080p 720p)
     fi
   fi
 
   output=$(output_path "$input" "$format" "$resolution")
 
   if [[ $type == "video" ]]; then
-    ARCHEOX-notification-send "" "Transcoding video…" "$(basename -- "$input") to $format ($resolution)"
+    Archeox-notification-send "" "Transcoding video…" "$(basename -- "$input") to $format ($resolution)"
     transcode_video "$input" "$format" "$resolution" "$output"
     copy_to_clipboard "$output"
-    ARCHEOX-notification-send "" "Transcoded to $resolution $format" "Saved and copied to clipboard."
+    Archeox-notification-send "" "Transcoded to $resolution $format" "Saved and copied to clipboard."
   else
     transcode_picture "$input" "$format" "$resolution" "$output"
     copy_to_clipboard "$output"
-    ARCHEOX-notification-send "" "Transcoded to $resolution $format" "Saved and copied to clipboard."
+    Archeox-notification-send "" "Transcoded to $resolution $format" "Saved and copied to clipboard."
   fi
 }
 

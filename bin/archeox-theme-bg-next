@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Cycle to the next background for the current theme
-# ARCHEOX:examples=ARCHEOX theme bg next
+# Archeox:summary=Cycle to the next background for the current theme
+# Archeox:examples=Archeox theme bg next
 
-THEME_NAME=$(cat "$HOME/.config/ARCHEOX/current/theme.name" 2>/dev/null)
-THEME_BACKGROUNDS_PATH="$HOME/.config/ARCHEOX/current/theme/backgrounds/"
-USER_BACKGROUNDS_PATH="$HOME/.config/ARCHEOX/backgrounds/$THEME_NAME/"
-CURRENT_BACKGROUND_LINK="$HOME/.config/ARCHEOX/current/background"
+THEME_NAME=$(cat "$HOME/.config/Archeox/current/theme.name" 2>/dev/null)
+THEME_BACKGROUNDS_PATH="$HOME/.config/Archeox/current/theme/backgrounds/"
+USER_BACKGROUNDS_PATH="$HOME/.config/Archeox/backgrounds/$THEME_NAME/"
+CURRENT_BACKGROUND_LINK="$HOME/.config/Archeox/current/background"
 
 mapfile -d '' -t BACKGROUNDS < <(find -L "$USER_BACKGROUNDS_PATH" "$THEME_BACKGROUNDS_PATH" -maxdepth 1 -type f -print0 2>/dev/null | sort -z)
 TOTAL=${#BACKGROUNDS[@]}

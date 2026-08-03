@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Returns the battery full capacity in Wh (rounded to whole number).
+# Archeox:summary=Returns the battery full capacity in Wh (rounded to whole number).
 
 battery_info=$(upower -i $(upower -e | grep BAT))
 

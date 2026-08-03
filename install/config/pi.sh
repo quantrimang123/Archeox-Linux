@@ -1,2 +1,2 @@
 mkdir -p ~/.pi/agent/extensions
-cp "$ARCHEOX_PATH/default/pi/agent/extensions/ARCHEOX-system-theme.ts" ~/.pi/agent/extensions/
+cp "$Archeox_PATH/default/pi/agent/extensions/Archeox-system-theme.ts" ~/.pi/agent/extensions/

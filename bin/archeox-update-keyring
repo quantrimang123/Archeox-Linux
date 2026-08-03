@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Ensure the ARCHEOX and Arch keyring packages are installed and populated
-# ARCHEOX:requires-sudo=true
+# Archeox:summary=Ensure the Archeox and Arch keyring packages are installed and populated
+# Archeox:requires-sudo=true
 
-if ARCHEOX-pkg-missing ARCHEOX-keyring || ! sudo pacman-key --list-keys 40DFB630FF42BCFFB047046CF0134EE680CAC571 &>/dev/null; then
+if Archeox-pkg-missing Archeox-keyring || ! sudo pacman-key --list-keys 40DFB630FF42BCFFB047046CF0134EE680CAC571 &>/dev/null; then
   sudo pacman-key --recv-keys 40DFB630FF42BCFFB047046CF0134EE680CAC571 --keyserver keys.openpgp.org
   sudo pacman-key --lsign-key 40DFB630FF42BCFFB047046CF0134EE680CAC571
 
   # This is generally not a good idea, but this is a special case because we're going to be updating
-  # the full set of packages in ARCHEOX-update-system-pkgs right after this (and it needs latest keyring)!
+  # the full set of packages in Archeox-update-system-pkgs right after this (and it needs latest keyring)!
   sudo pacman -Sy
-  ARCHEOX-pkg-add ARCHEOX-keyring
+  Archeox-pkg-add Archeox-keyring
 
   sudo pacman-key --list-keys 40DFB630FF42BCFFB047046CF0134EE680CAC571
 fi

@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Transcode an image into ASCII/Unicode art text
-# ARCHEOX:group=transcode
-# ARCHEOX:name=ascii
-# ARCHEOX:args=<input-image.svg|png> <output-path> [--width <columns>] [--height <rows>] [--mode <braille|block>] [--threshold <percent>] [--invert]
-# ARCHEOX:examples=ARCHEOX transcode ascii ~/logo.svg /tmp/logo.txt | ARCHEOX transcode ascii ~/logo.png ~/.config/ARCHEOX/branding/screensaver.txt --width 80
+# Archeox:summary=Transcode an image into ASCII/Unicode art text
+# Archeox:group=transcode
+# Archeox:name=ascii
+# Archeox:args=<input-image.svg|png> <output-path> [--width <columns>] [--height <rows>] [--mode <braille|block>] [--threshold <percent>] [--invert]
+# Archeox:examples=Archeox transcode ascii ~/logo.svg /tmp/logo.txt | Archeox transcode ascii ~/logo.png ~/.config/Archeox/branding/screensaver.txt --width 80
 
 set -o pipefail
 
 usage() {
   cat <<'EOF'
-Usage: ARCHEOX-transcode-ascii <input-image.svg|png> <output-path> [options]
+Usage: Archeox-transcode-ascii <input-image.svg|png> <output-path> [options]
 
 Transcodes an image into ASCII/Unicode art text.
 
@@ -165,7 +165,7 @@ if [[ ! -f $image_path ]]; then
   exit 1
 fi
 
-if ARCHEOX-cmd-missing magick; then
+if Archeox-cmd-missing magick; then
   echo "ImageMagick is required to convert logo images" >&2
   exit 1
 fi

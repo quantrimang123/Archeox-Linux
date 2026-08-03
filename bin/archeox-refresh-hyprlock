@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Overwrite the user config for hyprlock with the ARCHEOX default.
+# Archeox:summary=Overwrite the user config for hyprlock with the Archeox default.
 
-ARCHEOX-refresh-config hypr/hyprlock.conf
+Archeox-refresh-config hypr/hyprlock.conf

@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Set the branch for ARCHEOX's git repository.
-# ARCHEOX:args=<master|rc|dev>
+# Archeox:summary=Set the branch for Archeox's git repository.
+# Archeox:args=<master|rc|dev>
 
 if (($# == 0)); then
-  echo "Usage: ARCHEOX-branch-set [master|rc|dev]"
+  echo "Usage: Archeox-branch-set [master|rc|dev]"
   exit 1
 else
   branch="$1"
@@ -15,4 +15,4 @@ if [[ $branch != "master" && $branch != "rc" && $branch != "dev" ]]; then
   exit 1
 fi
 
-git -C $ARCHEOX_PATH switch $branch
+git -C $Archeox_PATH switch $branch

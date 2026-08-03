@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Install VS Code and configure ARCHEOX defaults for secrets, updates, and theme
+# Archeox:summary=Install VS Code and configure Archeox defaults for secrets, updates, and theme
 
 echo "Installing VSCode..."
-ARCHEOX-pkg-add visual-studio-code-bin
+Archeox-pkg-add visual-studio-code-bin
 
 mkdir -p ~/.vscode ~/.config/Code/User
 
@@ -23,7 +23,7 @@ EOF
 # Ensure VSC's own auto-update feature is turned off
 printf '{\n  "update.mode": "none"\n}\n' > ~/.config/Code/User/settings.json
 
-# Apply ARCHEOX theme to VSCode
-ARCHEOX-theme-set-vscode
+# Apply Archeox theme to VSCode
+Archeox-theme-set-vscode
 
 setsid gtk-launch code

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Restart the SwayOSD server
+# Archeox:summary=Restart the SwayOSD server
 
 systemctl --user daemon-reload
 systemctl --user stop swayosd-server.service || true

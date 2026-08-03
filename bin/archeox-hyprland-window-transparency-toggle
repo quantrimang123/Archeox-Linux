@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Toggles transparency for the currently focused window.
+# Archeox:summary=Toggles transparency for the currently focused window.
 
 hyprctl dispatch setprop "address:$(hyprctl activewindow -j | jq -r '.address')" opaque toggle

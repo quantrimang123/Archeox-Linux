@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Run the ARCHEOX screensaver using random effects from TTE.
+# Archeox:summary=Run the Archeox screensaver using random effects from TTE.
 
 screensaver_in_focus() {
-  hyprctl activewindow -j | jq -e '.class == "org.ARCHEOX.screensaver"' >/dev/null 2>&1
+  hyprctl activewindow -j | jq -e '.class == "org.Archeox.screensaver"' >/dev/null 2>&1
 }
 
 exit_screensaver() {
   hyprctl keyword cursor:invisible false &>/dev/null || true
   pkill -x tte 2>/dev/null
-  pkill -f org.ARCHEOX.screensaver 2>/dev/null
+  pkill -f org.Archeox.screensaver 2>/dev/null
   exit 0
 }
 
@@ -23,7 +23,7 @@ hyprctl keyword cursor:invisible true &>/dev/null
 tty=$(tty 2>/dev/null)
 
 while true; do
-  tte -i ~/.config/ARCHEOX/branding/screensaver.txt \
+  tte -i ~/.config/Archeox/branding/screensaver.txt \
     --frame-rate 120 --canvas-width 0 --canvas-height 0 --reuse-canvas --anchor-canvas c --anchor-text c\
     --random-effect --no-eol --no-restore-cursor &
 

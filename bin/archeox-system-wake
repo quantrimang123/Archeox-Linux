@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Wake displays and restore brightness after idle
-# ARCHEOX:group=system
-# ARCHEOX:name=wake
-# ARCHEOX:examples=ARCHEOX system wake
+# Archeox:summary=Wake displays and restore brightness after idle
+# Archeox:group=system
+# Archeox:name=wake
+# Archeox:examples=Archeox system wake
 
-ARCHEOX-brightness-display on
-ARCHEOX-brightness-keyboard restore
+Archeox-brightness-display on
+Archeox-brightness-keyboard restore

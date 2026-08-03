@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Prompt for required reboot or service restarts after updates
+# Archeox:summary=Prompt for required reboot or service restarts after updates
 
 echo
 
@@ -19,22 +19,22 @@ for kernel in /usr/lib/modules/*/vmlinuz; do
 done
 
 if [[ $kernel_updated == "true" ]]; then
-  gum confirm "Linux kernel has been updated. Reboot?" && ARCHEOX-system-reboot
-elif [[ -f $HOME/.local/state/ARCHEOX/reboot-required ]]; then
-  gum confirm "Updates require reboot. Ready?" && ARCHEOX-system-reboot
+  gum confirm "Linux kernel has been updated. Reboot?" && Archeox-system-reboot
+elif [[ -f $HOME/.local/state/Archeox/reboot-required ]]; then
+  gum confirm "Updates require reboot. Ready?" && Archeox-system-reboot
 fi
 
 running_hyprland=$(readlink /proc/$(pgrep -x Hyprland)/exe 2>/dev/null)
 if [[ $running_hyprland == *"(deleted)"* ]]; then
-  gum confirm "Hyprland has been updated. Reboot?" && ARCHEOX-system-reboot
+  gum confirm "Hyprland has been updated. Reboot?" && Archeox-system-reboot
 fi
 
-for file in "$HOME"/.local/state/ARCHEOX/restart-*-required; do
+for file in "$HOME"/.local/state/Archeox/restart-*-required; do
   if [[ -f $file ]]; then
     filename=$(basename "$file")
     service=$(echo "$filename" | sed 's/restart-\(.*\)-required/\1/')
     echo "Restarting $service"
-    ARCHEOX-state clear "$filename"
-    ARCHEOX-restart-"$service"
+    Archeox-state clear "$filename"
+    Archeox-restart-"$service"
   fi
 done

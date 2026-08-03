@@ -1,26 +1,26 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Overwrite the user configs for the Walker application launcher (which also powers the ARCHEOX Menu) and restart the services.
+# Archeox:summary=Overwrite the user configs for the Walker application launcher (which also powers the Archeox Menu) and restart the services.
 
 mkdir -p ~/.config/autostart/
-cp $ARCHEOX_PATH/default/walker/walker.desktop ~/.config/autostart/
+cp $Archeox_PATH/default/walker/walker.desktop ~/.config/autostart/
 
 # And restarts if it crashes or is killed
 mkdir -p ~/.config/systemd/user/app-walker@autostart.service.d/
-cp $ARCHEOX_PATH/default/walker/restart.conf ~/.config/systemd/user/app-walker@autostart.service.d/restart.conf
+cp $Archeox_PATH/default/walker/restart.conf ~/.config/systemd/user/app-walker@autostart.service.d/restart.conf
 
 systemctl --user daemon-reload
 
 # Refresh configs
-ARCHEOX-refresh-config walker/config.toml
-ARCHEOX-refresh-config elephant/calc.toml
-ARCHEOX-refresh-config elephant/desktopapplications.toml
+Archeox-refresh-config walker/config.toml
+Archeox-refresh-config elephant/calc.toml
+Archeox-refresh-config elephant/desktopapplications.toml
 
 # Link all elephant menus
 mkdir -p ~/.config/elephant/menus
-for menu in $ARCHEOX_PATH/default/elephant/*.lua; do
+for menu in $Archeox_PATH/default/elephant/*.lua; do
   ln -snf "$menu" ~/.config/elephant/menus/"$(basename "$menu")"
 done
 
 # Restart service
-ARCHEOX-restart-walker
+Archeox-restart-walker

@@ -1,28 +1,28 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Edit, set, or reset screensaver branding
-# ARCHEOX:group=branding
-# ARCHEOX:name=screensaver
-# ARCHEOX:args=<image|text|reset>
-# ARCHEOX:examples=ARCHEOX branding screensaver image | ARCHEOX branding screensaver text | ARCHEOX branding screensaver reset
+# Archeox:summary=Edit, set, or reset screensaver branding
+# Archeox:group=branding
+# Archeox:name=screensaver
+# Archeox:args=<image|text|reset>
+# Archeox:examples=Archeox branding screensaver image | Archeox branding screensaver text | Archeox branding screensaver reset
 
 set -euo pipefail
 
 case "${1:-}" in
 image)
-  image=$(ARCHEOX-menu-file "Logo image" "$HOME" "svg png")
-  if [[ -n $image ]] && ARCHEOX-transcode-ascii "$image" ~/.config/ARCHEOX/branding/screensaver.txt; then
-    ARCHEOX-launch-screensaver force >/dev/null 2>&1
+  image=$(Archeox-menu-file "Logo image" "$HOME" "svg png")
+  if [[ -n $image ]] && Archeox-transcode-ascii "$image" ~/.config/Archeox/branding/screensaver.txt; then
+    Archeox-launch-screensaver force >/dev/null 2>&1
   fi
   ;;
 text)
-  ARCHEOX-launch-editor ~/.config/ARCHEOX/branding/screensaver.txt >/dev/null 2>&1 && ARCHEOX-launch-screensaver force >/dev/null 2>&1
+  Archeox-launch-editor ~/.config/Archeox/branding/screensaver.txt >/dev/null 2>&1 && Archeox-launch-screensaver force >/dev/null 2>&1
   ;;
 reset)
-  cp "$ARCHEOX_PATH/logo.txt" ~/.config/ARCHEOX/branding/screensaver.txt && ARCHEOX-launch-screensaver force >/dev/null 2>&1
+  cp "$Archeox_PATH/logo.txt" ~/.config/Archeox/branding/screensaver.txt && Archeox-launch-screensaver force >/dev/null 2>&1
   ;;
 *)
-  echo "Usage: ARCHEOX-branding-screensaver <image|text|reset>" >&2
+  echo "Usage: Archeox-branding-screensaver <image|text|reset>" >&2
   exit 1
   ;;
 esac

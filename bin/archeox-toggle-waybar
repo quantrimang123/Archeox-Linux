@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Toggle Waybar visibility
-# ARCHEOX:examples=ARCHEOX toggle waybar
+# Archeox:summary=Toggle Waybar visibility
+# Archeox:examples=Archeox toggle waybar
 
-ARCHEOX-toggle waybar-off
+Archeox-toggle waybar-off
 
 if pgrep -x waybar >/dev/null; then
   pkill -9 -x waybar

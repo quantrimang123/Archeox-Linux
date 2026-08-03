@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Reinstall all default ARCHEOX packages from the stable channel
-# ARCHEOX:requires-sudo=true
+# Archeox:summary=Reinstall all default Archeox packages from the stable channel
+# Archeox:requires-sudo=true
 
 set -e
 
-# Reinstall all default ARCHEOX packages from the stable channel and downgrade any packages that are too new.
+# Reinstall all default Archeox packages from the stable channel and downgrade any packages that are too new.
 
 # Set the package repository to the stable mirrors
-ARCHEOX-refresh-pacman
+Archeox-refresh-pacman
 
 # Downgrade any packages to the stable setup
 sudo pacman -Suu --noconfirm
 
 # Ensure all packages are installed
-mapfile -t packages < <(grep -v '^#' "$ARCHEOX_PATH/install/ARCHEOX-base.packages" | grep -v '^$')
+mapfile -t packages < <(grep -v '^#' "$Archeox_PATH/install/Archeox-base.packages" | grep -v '^$')
 sudo pacman -Syu --noconfirm --needed "${packages[@]}"

@@ -1,7 +1,7 @@
-if ARCHEOX-battery-present; then
+if Archeox-battery-present; then
   cat <<EOF | sudo tee "/etc/udev/rules.d/99-wifi-powersave.rules"
-SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", RUN+="/usr/bin/systemd-run --no-block --collect --unit=ARCHEOX-wifi-powersave-on $HOME/.local/share/ARCHEOX/bin/ARCHEOX-wifi-powersave on"
-SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="1", RUN+="/usr/bin/systemd-run --no-block --collect --unit=ARCHEOX-wifi-powersave-off $HOME/.local/share/ARCHEOX/bin/ARCHEOX-wifi-powersave off"
+SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="0", RUN+="/usr/bin/systemd-run --no-block --collect --unit=Archeox-wifi-powersave-on $HOME/.local/share/Archeox/bin/Archeox-wifi-powersave on"
+SUBSYSTEM=="power_supply", ATTR{type}=="Mains", ATTR{online}=="1", RUN+="/usr/bin/systemd-run --no-block --collect --unit=Archeox-wifi-powersave-off $HOME/.local/share/Archeox/bin/Archeox-wifi-powersave off"
 EOF
 
   sudo udevadm control --reload

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Overwrite the user config for hyprsunset with the ARCHEOX default and restart the service.
+# Archeox:summary=Overwrite the user config for hyprsunset with the Archeox default and restart the service.
 
-ARCHEOX-refresh-config hypr/hyprsunset.conf
-ARCHEOX-restart-hyprsunset
+Archeox-refresh-config hypr/hyprsunset.conf
+Archeox-restart-hyprsunset

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Launch the ARCHEOX wifi controls (provided by the Impala TUI).
+# Archeox:summary=Launch the Archeox wifi controls (provided by the Impala TUI).
 
 rfkill unblock wifi
-ARCHEOX-launch-or-focus-tui impala
+Archeox-launch-or-focus-tui impala

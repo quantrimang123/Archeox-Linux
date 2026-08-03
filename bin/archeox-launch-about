@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Launch the fastfetch TUI that gives information about the current system.
+# Archeox:summary=Launch the fastfetch TUI that gives information about the current system.
 
-exec ARCHEOX-launch-or-focus-tui "bash -c 'fastfetch; read -n 1 -s'"
+exec Archeox-launch-or-focus-tui "bash -c 'fastfetch; read -n 1 -s'"

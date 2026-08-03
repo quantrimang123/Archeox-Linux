@@ -1,7 +1,7 @@
-if ARCHEOX-battery-present; then
+if Archeox-battery-present; then
   cat <<EOF | sudo tee "/etc/udev/rules.d/99-power-profile.rules"
-SUBSYSTEM=="power_supply", ATTR{type}=="Mains", RUN+="/usr/bin/systemd-run --no-block --collect --property=After=power-profiles-daemon.service $HOME/.local/share/ARCHEOX/bin/ARCHEOX-powerprofiles-set"
-SUBSYSTEM=="power_supply", ATTR{type}=="USB", RUN+="/usr/bin/systemd-run --no-block --collect --property=After=power-profiles-daemon.service $HOME/.local/share/ARCHEOX/bin/ARCHEOX-powerprofiles-set"
+SUBSYSTEM=="power_supply", ATTR{type}=="Mains", RUN+="/usr/bin/systemd-run --no-block --collect --property=After=power-profiles-daemon.service $HOME/.local/share/Archeox/bin/Archeox-powerprofiles-set"
+SUBSYSTEM=="power_supply", ATTR{type}=="USB", RUN+="/usr/bin/systemd-run --no-block --collect --property=After=power-profiles-daemon.service $HOME/.local/share/Archeox/bin/Archeox-powerprofiles-set"
 EOF
 
   sudo systemctl enable power-profiles-daemon

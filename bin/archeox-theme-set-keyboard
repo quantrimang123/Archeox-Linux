@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Apply the current theme keyboard color to supported keyboards
-# ARCHEOX:hidden=true
+# Archeox:summary=Apply the current theme keyboard color to supported keyboards
+# Archeox:hidden=true
 
-ARCHEOX-theme-set-keyboard-asus-rog
-ARCHEOX-theme-set-keyboard-f16
+Archeox-theme-set-keyboard-asus-rog
+Archeox-theme-set-keyboard-f16

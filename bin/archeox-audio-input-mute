@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Toggle microphone mute. Drives the hardware mic-mute LED on laptops that expose one.
+# Archeox:summary=Toggle microphone mute. Drives the hardware mic-mute LED on laptops that expose one.
 
 wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle >/dev/null
 
@@ -14,8 +14,8 @@ else
   osd_icon='audio-input-microphone-symbolic'
 fi
 
-ARCHEOX-brightness-keyboard-mute "$led"
+Archeox-brightness-keyboard-mute "$led"
 
-ARCHEOX-swayosd-client \
+Archeox-swayosd-client \
   --custom-message "$osd_message" \
   --custom-icon "$osd_icon"

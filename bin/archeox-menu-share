@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Share clipboard, files, or folders with LocalSend
-# ARCHEOX:group=share
-# ARCHEOX:name=
-# ARCHEOX:args=<clipboard|file|folder> [path...]
-# ARCHEOX:examples=ARCHEOX share clipboard | ARCHEOX share file ~/Downloads/example.txt
+# Archeox:summary=Share clipboard, files, or folders with LocalSend
+# Archeox:group=share
+# Archeox:name=
+# Archeox:args=<clipboard|file|folder> [path...]
+# Archeox:examples=Archeox share clipboard | Archeox share file ~/Downloads/example.txt
 
 if (($# == 0)); then
-  echo "Usage: ARCHEOX-menu-share [clipboard|file|folder]"
+  echo "Usage: Archeox-menu-share [clipboard|file|folder]"
   exit 1
 fi
 

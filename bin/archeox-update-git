@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Pull the latest ARCHEOX git changes
+# Archeox:summary=Pull the latest Archeox git changes
 
 set -e
 
-echo -e "\e[32mUpdate ARCHEOX\e[0m"
+echo -e "\e[32mUpdate Archeox\e[0m"
 
-ARCHEOX-update-time
+Archeox-update-time
 
 # Suppress Hyprland config errors while git updates default config files mid-pull
 hyprctl keyword debug:suppress_errors true &>/dev/null || true
 
-git -C $ARCHEOX_PATH pull --autostash
-git -C $ARCHEOX_PATH --no-pager diff --check || git -C $ARCHEOX_PATH reset --merge
+git -C $Archeox_PATH pull --autostash
+git -C $Archeox_PATH --no-pager diff --check || git -C $Archeox_PATH reset --merge
 
 hyprctl reload &>/dev/null || true

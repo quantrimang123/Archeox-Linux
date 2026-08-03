@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Install an npx wrapper for a given npm package.
-# ARCHEOX:args=<package> [command-name]
+# Archeox:summary=Install an npx wrapper for a given npm package.
+# Archeox:args=<package> [command-name]
 
 if [[ -z $1 ]]; then
-  echo "Usage: ARCHEOX-npx-install <package> [command-name]"
+  echo "Usage: Archeox-npx-install <package> [command-name]"
   exit 1
 fi
 
@@ -33,9 +33,9 @@ ensure_bin_runtime() {
   IFS= read -r shebang < "\$bin_path"
 
   if [[ \$shebang == "#!"*"/bun"* || \$shebang == "#!"*"/env bun"* ]]; then
-    if ARCHEOX-cmd-missing bun; then
+    if Archeox-cmd-missing bun; then
       echo "Installing bun runtime for \$package..."
-      ARCHEOX-pkg-add bun
+      Archeox-pkg-add bun
       hash -r
     fi
   fi

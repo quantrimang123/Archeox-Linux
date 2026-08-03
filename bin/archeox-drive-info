@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ARCHEOX:summary=Print drive information such as size, model, and mount details
-# ARCHEOX:args=<drive>
+# Archeox:summary=Print drive information such as size, model, and mount details
+# Archeox:args=<drive>
 
 if (($# == 0)); then
-  echo "Usage: ARCHEOX-drive-info [/dev/drive]"
+  echo "Usage: Archeox-drive-info [/dev/drive]"
   exit 1
 else
   drive="$1"
