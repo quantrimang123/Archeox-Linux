@@ -78,7 +78,7 @@ step "Copying baseline profile to build directory..." "mkdir -p /tmp/isobuild &&
 step "Building ISO..." "mkarchiso -v -w work/ -o ./ /tmp/isobuild"
   
   # Detect the actual ISO filename
-  ISO_NAME=$(ls | grep "ARCHEOXLinux-baseline-.*-x86_64.iso" | head -n1)
+  ISO_NAME=$(ls | grep "ARCHEOX Linux-baseline-.*-x86_64.iso" | head -n1)
 
   step "Generating checksums text file..." "
     b2sum $ISO_NAME > CHECKSUMS.txt
