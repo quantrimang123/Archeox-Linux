@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Archeox:summary=Overwrite the user config for hypridle with the Archeox default and restart the service.
+# archeox:summary=Overwrite the user config for hypridle with the archeox default and restart the service.
 
-Archeox-refresh-config hypr/hypridle.conf
-Archeox-restart-hypridle
+archeox-refresh-config hypr/hypridle.conf
+archeox-restart-hypridle

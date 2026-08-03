@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Archeox:summary=Run all pending migrations to bring the system in line with the installed version.
+# archeox:summary=Run all pending migrations to bring the system in line with the installed version.
 
-STATE_DIR="$HOME/.local/state/Archeox/migrations"
+STATE_DIR="$HOME/.local/state/archeox/migrations"
 mkdir -p "$STATE_DIR"
 
 # Skipped migrations are tracked separately
 mkdir -p "$STATE_DIR/skipped"
 
 # Run any pending migrations
-for file in $Archeox_PATH/migrations/*.sh; do
+for file in $archeox_PATH/migrations/*.sh; do
   filename=$(basename "$file")
 
   if [[ ! -f $STATE_DIR/$filename && ! -f $STATE_DIR/skipped/$filename ]]; then

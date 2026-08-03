@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Archeox:summary=Detect whether the computer is a Framework Laptop 16.
+# archeox:summary=Detect whether the computer is a Framework Laptop 16.
 
 [[ $(cat /sys/class/dmi/id/sys_vendor 2>/dev/null) == "Framework" ]] &&
-  Archeox-hw-match "Laptop 16"
+  archeox-hw-match "Laptop 16"

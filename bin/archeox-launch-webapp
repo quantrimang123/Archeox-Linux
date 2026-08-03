@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Archeox:summary=Launch a URL as a web app in the default supported browser
-# Archeox:args=<url>
+# archeox:summary=Launch a URL as a web app in the default supported browser
+# archeox:args=<url>
 
 browser=$(xdg-settings get default-web-browser)
 

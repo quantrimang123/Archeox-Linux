@@ -3,22 +3,22 @@ sudo ln -snf /usr/share/icons/Adwaita/symbolic/actions/go-previous-symbolic.svg 
 sudo ln -snf /usr/share/icons/Adwaita/symbolic/actions/go-next-symbolic.svg /usr/share/icons/Yaru/scalable/actions/go-next-symbolic.svg
 
 # Setup user theme folder
-mkdir -p ~/.config/Archeox/themes
+mkdir -p ~/.config/archeox/themes
 
 # Chromium policy directory for theme
 sudo mkdir -p /etc/chromium/policies/managed
 sudo chmod a+rw /etc/chromium/policies/managed
 
 # Set initial theme
-Archeox-theme-set "Tokyo Night"
+archeox-theme-set "Tokyo Night"
 rm -rf ~/.config/chromium/SingletonLock # otherwise archiso will own the chromium singleton
 
 # Set specific app links for current theme
 mkdir -p ~/.config/btop/themes
-ln -snf ~/.config/Archeox/current/theme/btop.theme ~/.config/btop/themes/current.theme
+ln -snf ~/.config/archeox/current/theme/btop.theme ~/.config/btop/themes/current.theme
 
 mkdir -p ~/.config/mako
-ln -snf ~/.config/Archeox/current/theme/mako.ini ~/.config/mako/config
+ln -snf ~/.config/archeox/current/theme/mako.ini ~/.config/mako/config
 
 # Default Chromium to follow system appearance ("device") instead of dark
 echo '{"browser":{"theme":{"color_scheme":0,"color_scheme2":0}}}' | sudo tee /usr/lib/chromium/initial_preferences >/dev/null

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Archeox:summary=Reinstall the Archeox source directory from git
+# archeox:summary=Reinstall the archeox source directory from git
 
 set -e
 
-# Reinstall the Archeox configuration directory from the git source.
+# Reinstall the archeox configuration directory from the git source.
 
-git clone --depth=1 --branch master "https://github.com/basecamp/Archeox.git" ~/.local/share/Archeox-new >/dev/null
-mv $Archeox_PATH ~/.local/share/Archeox-old
-mv ~/.local/share/Archeox-new $Archeox_PATH
+git clone --depth=1 --branch master "https://github.com/basecamp/archeox.git" ~/.local/share/archeox-new >/dev/null
+mv $archeox_PATH ~/.local/share/archeox-old
+mv ~/.local/share/archeox-new $archeox_PATH

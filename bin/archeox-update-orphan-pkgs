@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Archeox:summary=Remove orphaned system packages after updates
-# Archeox:requires-sudo=true
+# archeox:summary=Remove orphaned system packages after updates
+# archeox:requires-sudo=true
 
 orphans=$(pacman -Qtdq || true)
 if [[ -n $orphans ]]; then

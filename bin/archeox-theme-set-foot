@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Archeox:summary=Apply current Archeox theme colors to running Foot terminals
-# Archeox:hidden=true
+# archeox:summary=Apply current archeox theme colors to running Foot terminals
+# archeox:hidden=true
 
-foot_theme=~/.config/Archeox/current/theme/foot.ini
+foot_theme=~/.config/archeox/current/theme/foot.ini
 
 if [[ ! -f $foot_theme ]] || ! pgrep -x foot >/dev/null; then
   exit 0

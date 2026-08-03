@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Archeox:summary=Remove the xpadneo Xbox controller driver and undo its module/blacklist config.
-# Archeox:requires-sudo=true
+# archeox:summary=Remove the xpadneo Xbox controller driver and undo its module/blacklist config.
+# archeox:requires-sudo=true
 
 set -e
 
-Archeox-pkg-drop xpadneo-dkms
+archeox-pkg-drop xpadneo-dkms
 
 sudo rm -f /etc/modprobe.d/blacklist-xpad.conf /etc/modules-load.d/xpadneo.conf
 

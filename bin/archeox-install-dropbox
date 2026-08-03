@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Archeox:summary=Install and start the Dropbox service. Must then be authenticated via the web.
+# archeox:summary=Install and start the Dropbox service. Must then be authenticated via the web.
 
 echo "Installing all dependencies..."
-Archeox-pkg-add dropbox dropbox-cli libappindicator-gtk3 python-gpgme nautilus-dropbox
+archeox-pkg-add dropbox dropbox-cli libappindicator-gtk3 python-gpgme nautilus-dropbox
 
 echo "Starting Dropbox..."
 uwsm-app -- dropbox-cli start &>/dev/null &

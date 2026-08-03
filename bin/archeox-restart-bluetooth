@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Archeox:summary=Unblock and restart the bluetooth service.
+# archeox:summary=Unblock and restart the bluetooth service.
 
 echo -e "Unblocking bluetooth...\n"
 rfkill unblock bluetooth

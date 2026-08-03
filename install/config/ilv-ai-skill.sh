@@ -1,6 +1,6 @@
-# Place in each assistant's global skills directory so the Archeox skill is available on first install
+# Place in each assistant's global skills directory so the archeox skill is available on first install
 mkdir -p ~/.agents/skills ~/.claude/skills ~/.codex/skills ~/.pi/agent/skills
-ln -sfn "$Archeox_PATH/default/Archeox-skill" ~/.agents/skills/Archeox
-ln -sfn "$Archeox_PATH/default/Archeox-skill" ~/.claude/skills/Archeox
-ln -sfn "$Archeox_PATH/default/Archeox-skill" ~/.codex/skills/Archeox
-ln -sfn "$Archeox_PATH/default/Archeox-skill" ~/.pi/agent/skills/Archeox
+ln -sfn "$archeox_PATH/default/archeox-skill" ~/.agents/skills/archeox
+ln -sfn "$archeox_PATH/default/archeox-skill" ~/.claude/skills/archeox
+ln -sfn "$archeox_PATH/default/archeox-skill" ~/.codex/skills/archeox
+ln -sfn "$archeox_PATH/default/archeox-skill" ~/.pi/agent/skills/archeox

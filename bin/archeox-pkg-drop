@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Archeox:summary=Remove all the named packages from the system if they're installed (otherwise ignore).
-# Archeox:args=<packages...>
-# Archeox:requires-sudo=true
+# archeox:summary=Remove all the named packages from the system if they're installed (otherwise ignore).
+# archeox:args=<packages...>
+# archeox:requires-sudo=true
 
 installed=()
 for pkg in "$@"; do

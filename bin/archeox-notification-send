@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Archeox:summary=Send a desktop notification with Archeox glyph and body spacing
-# Archeox:args=<glyph> <headline> [description] [notify-send options]
-# Archeox:examples=Archeox notification send "󰔛" "Reminder" "5 minutes are up" -u critical
+# archeox:summary=Send a desktop notification with archeox glyph and body spacing
+# archeox:args=<glyph> <headline> [description] [notify-send options]
+# archeox:examples=archeox notification send "󰔛" "Reminder" "5 minutes are up" -u critical
 
 set -euo pipefail
 
 if (($# < 2)); then
-  echo "Usage: Archeox-notification-send <glyph> <headline> [description] [notify-send options]"
+  echo "Usage: archeox-notification-send <glyph> <headline> [description] [notify-send options]"
   exit 1
 fi
 

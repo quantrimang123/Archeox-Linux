@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Archeox:summary=Set the default browser for Archeox and XDG handlers
-# Archeox:args=[chromium|chrome|brave|brave-origin|edge|firefox|zen]
-# Archeox:examples=Archeox default browser firefox | Archeox default browser brave
+# archeox:summary=Set the default browser for archeox and XDG handlers
+# archeox:args=[chromium|chrome|brave|brave-origin|edge|firefox|zen]
+# archeox:examples=archeox default browser firefox | archeox default browser brave
 
 if (($# == 0)); then
   case "$(xdg-settings get default-web-browser)" in
@@ -27,7 +27,7 @@ edge) desktop_id="microsoft-edge.desktop"; name="Edge"; glyph="󰇩" ;;
 firefox) desktop_id="firefox.desktop"; name="Firefox"; glyph="󰈹" ;;
 zen) desktop_id="zen.desktop"; name="Zen"; glyph="󰰷" ;;
 *)
-  echo "Usage: Archeox-default-browser <chromium|chrome|brave|brave-origin|edge|firefox|zen>"
+  echo "Usage: archeox-default-browser <chromium|chrome|brave|brave-origin|edge|firefox|zen>"
   exit 1
   ;;
 esac

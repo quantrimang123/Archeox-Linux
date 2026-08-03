@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Archeox:summary=Check if a Hyprland toggle is currently disabled (missing).
-# Archeox:args=<flag-name>
+# archeox:summary=Check if a Hyprland toggle is currently disabled (missing).
+# archeox:args=<flag-name>
 
-[[ ! -f "$HOME/.local/state/Archeox/toggles/hypr/$1.conf" ]]
+[[ ! -f "$HOME/.local/state/archeox/toggles/hypr/$1.conf" ]]

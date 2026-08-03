@@ -1,6 +1,6 @@
-# Starting the installer with Archeox_CHROOT_INSTALL=1 will put it into chroot mode
+# Starting the installer with archeox_CHROOT_INSTALL=1 will put it into chroot mode
 chrootable_systemctl_enable() {
-  if [[ -n ${Archeox_CHROOT_INSTALL:-} ]]; then
+  if [[ -n ${archeox_CHROOT_INSTALL:-} ]]; then
     sudo systemctl enable $1
   else
     sudo systemctl enable --now $1

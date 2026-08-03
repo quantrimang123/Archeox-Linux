@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Archeox:summary=Toggle single-window square aspect ratio.
+# archeox:summary=Toggle single-window square aspect ratio.
 
-Archeox-hyprland-toggle \
+archeox-hyprland-toggle \
   --enabled-notification "      Enable single-window square aspect ratio" \
   --disabled-notification "      Disable single-window square aspect ratio" \
   single-window-aspect-ratio

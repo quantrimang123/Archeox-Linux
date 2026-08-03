@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Archeox:summary=Adjust brightness on the most likely display device.
-# Archeox:args=<+N%|N%-|N%|off|on>
-# Archeox:examples=Archeox brightness display +5% | Archeox brightness display 5%- | Archeox brightness display 50% | Archeox brightness display off | Archeox brightness display on
+# archeox:summary=Adjust brightness on the most likely display device.
+# archeox:args=<+N%|N%-|N%|off|on>
+# archeox:examples=archeox brightness display +5% | archeox brightness display 5%- | archeox brightness display 50% | archeox brightness display off | archeox brightness display on
 
 step="${1:-+5%}"
 
@@ -23,8 +23,8 @@ elif [[ $step == "on" ]]; then
   exit 0
 fi
 
-if Archeox-hyprland-monitor-focused-apple; then
-  Archeox-brightness-display-apple "$step"
+if archeox-hyprland-monitor-focused-apple; then
+  archeox-brightness-display-apple "$step"
   exit
 fi
 
@@ -57,4 +57,4 @@ fi
 brightnessctl -d "$device" set "$step" >/dev/null
 
 # Use SwayOSD to display the new brightness setting.
-Archeox-swayosd-brightness "$(brightnessctl -d "$device" -m | cut -d',' -f4 | tr -d '%')"
+archeox-swayosd-brightness "$(brightnessctl -d "$device" -m | cut -d',' -f4 | tr -d '%')"

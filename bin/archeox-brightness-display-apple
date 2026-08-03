@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Archeox:summary=Adjust the brightness on Apple Studio Displays and Apple XDR Displays using asdcontrol.
-# Archeox:args=<+N%|N%-|N%>
-# Archeox:examples=Archeox brightness display apple +5% | Archeox brightness display apple 5%- | Archeox brightness display apple 50%
+# archeox:summary=Adjust the brightness on Apple Studio Displays and Apple XDR Displays using asdcontrol.
+# archeox:args=<+N%|N%-|N%>
+# archeox:examples=archeox brightness display apple +5% | archeox brightness display apple 5%- | archeox brightness display apple 50%
 
 if (( $# == 0 )); then
   echo "Adjust Apple Display brightness by passing +5%, 5%-, or 100%"
@@ -30,5 +30,5 @@ else
 
   sudo asdcontrol "$device" -- "$step" >/dev/null
   value="$(sudo asdcontrol "$device" | awk -F= '/BRIGHTNESS=/{print $2+0}')"
-  Archeox-swayosd-brightness "$(( value * 100 / 60000 ))"
+  archeox-swayosd-brightness "$(( value * 100 / 60000 ))"
 fi

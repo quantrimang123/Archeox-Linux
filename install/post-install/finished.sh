@@ -6,13 +6,13 @@ echo_in_style() {
 
 clear
 echo
-tte -i ~/.local/share/Archeox/logo.txt --canvas-width 0 --anchor-text c --frame-rate 920 laseretch
+tte -i ~/.local/share/archeox/logo.txt --canvas-width 0 --anchor-text c --frame-rate 920 laseretch
 echo
 
 # Display installation time if available
-if [[ -f $Archeox_INSTALL_LOG_FILE ]] && grep -q "Total:" "$Archeox_INSTALL_LOG_FILE" 2>/dev/null; then
+if [[ -f $archeox_INSTALL_LOG_FILE ]] && grep -q "Total:" "$archeox_INSTALL_LOG_FILE" 2>/dev/null; then
   echo
-  TOTAL_TIME=$(tail -n 20 "$Archeox_INSTALL_LOG_FILE" | grep "^Total:" | sed 's/^Total:[[:space:]]*//')
+  TOTAL_TIME=$(tail -n 20 "$archeox_INSTALL_LOG_FILE" | grep "^Total:" | sed 's/^Total:[[:space:]]*//')
   if [[ -n $TOTAL_TIME ]]; then
     echo_in_style "Installed in $TOTAL_TIME"
   fi
@@ -20,8 +20,8 @@ else
   echo_in_style "Finished installing"
 fi
 
-if sudo test -f /etc/sudoers.d/99-Archeox-installer; then
-  sudo rm -f /etc/sudoers.d/99-Archeox-installer &>/dev/null
+if sudo test -f /etc/sudoers.d/99-archeox-installer; then
+  sudo rm -f /etc/sudoers.d/99-archeox-installer &>/dev/null
 fi
 
 # Exit gracefully if user chooses not to reboot
@@ -29,8 +29,8 @@ if gum confirm --padding "0 0 0 $((PADDING_LEFT + 32))" --show-help=false --defa
   # Clear screen to hide any shutdown messages
   clear
 
-  if [[ -n ${Archeox_CHROOT_INSTALL:-} ]]; then
-    touch /var/tmp/Archeox-install-completed
+  if [[ -n ${archeox_CHROOT_INSTALL:-} ]]; then
+    touch /var/tmp/archeox-install-completed
     exit 0
   else
     sudo reboot 2>/dev/null

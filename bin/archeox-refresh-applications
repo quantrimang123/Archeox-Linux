@@ -1,24 +1,24 @@
 #!/bin/bash
 
-# Archeox:summary=Ensure all default .desktop, web apps, TUIs, and npx wrappers are installed.
+# archeox:summary=Ensure all default .desktop, web apps, TUIs, and npx wrappers are installed.
 
 mkdir -p ~/.local/share/icons/hicolor/48x48/apps/
-cp ~/.local/share/Archeox/applications/icons/*.png ~/.local/share/icons/hicolor/48x48/apps/
+cp ~/.local/share/archeox/applications/icons/*.png ~/.local/share/icons/hicolor/48x48/apps/
 gtk-update-icon-cache ~/.local/share/icons/hicolor &>/dev/null
 
 # Copy .desktop declarations
 mkdir -p ~/.local/share/applications
-cp ~/.local/share/Archeox/applications/*.desktop ~/.local/share/applications/
-cp ~/.local/share/Archeox/applications/hidden/*.desktop ~/.local/share/applications/
+cp ~/.local/share/archeox/applications/*.desktop ~/.local/share/applications/
+cp ~/.local/share/archeox/applications/hidden/*.desktop ~/.local/share/applications/
 
-if Archeox-cmd-present foot; then
-  cp ~/.local/share/Archeox/default/foot/foot.desktop ~/.local/share/applications/
+if archeox-cmd-present foot; then
+  cp ~/.local/share/archeox/default/foot/foot.desktop ~/.local/share/applications/
 fi
 
 # Refresh the webapps, TUIs, and npx wrappers
-bash $Archeox_PATH/install/packaging/icons.sh
-bash $Archeox_PATH/install/packaging/webapps.sh
-bash $Archeox_PATH/install/packaging/tuis.sh
-bash $Archeox_PATH/install/packaging/npx.sh
+bash $archeox_PATH/install/packaging/icons.sh
+bash $archeox_PATH/install/packaging/webapps.sh
+bash $archeox_PATH/install/packaging/tuis.sh
+bash $archeox_PATH/install/packaging/npx.sh
 
 update-desktop-database ~/.local/share/applications

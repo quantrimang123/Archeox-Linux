@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Archeox:summary=Launch a TUI or focus an existing terminal window for it
-# Archeox:args=<command> [args...]
+# archeox:summary=Launch a TUI or focus an existing terminal window for it
+# archeox:args=<command> [args...]
 
-APP_ID="org.Archeox.$(basename "$1")"
-LAUNCH_COMMAND="Archeox-launch-tui $@"
+APP_ID="org.archeox.$(basename "$1")"
+LAUNCH_COMMAND="archeox-launch-tui $@"
 
-exec Archeox-launch-or-focus "$APP_ID" "$LAUNCH_COMMAND"
+exec archeox-launch-or-focus "$APP_ID" "$LAUNCH_COMMAND"

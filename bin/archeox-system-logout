@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Archeox:summary=Log out after closing application windows
-# Archeox:examples=Archeox logout | Archeox system logout
-# Archeox:aliases=Archeox logout
+# archeox:summary=Log out after closing application windows
+# archeox:examples=archeox logout | archeox system logout
+# archeox:aliases=archeox logout
 
 nohup bash -c "sleep 2 && uwsm stop" >/dev/null 2>&1 &
 
 # Now close all windows
-Archeox-hyprland-window-close-all
+archeox-hyprland-window-close-all
 sleep 1 # Allow apps like Chrome to shutdown correctly

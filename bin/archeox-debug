@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Archeox:summary=Print debugging information
-# Archeox:args=[--no-sudo] [--print]
-# Archeox:examples=Archeox debug --print --no-sudo
-# Archeox:requires-sudo=true
+# archeox:summary=Print debugging information
+# archeox:args=[--no-sudo] [--print]
+# archeox:examples=archeox debug --print --no-sudo
+# archeox:requires-sudo=true
 
 NO_SUDO=false
 PRINT_ONLY=false
@@ -20,13 +20,13 @@ while (( $# > 0 )); do
       ;;
     *)
       echo "Unknown option: $1"
-      echo "Usage: Archeox-debug [--no-sudo] [--print]"
+      echo "Usage: archeox-debug [--no-sudo] [--print]"
       exit 1
       ;;
   esac
 done
 
-LOG_FILE="/tmp/Archeox-debug.log"
+LOG_FILE="/tmp/archeox-debug.log"
 
 if [[ $NO_SUDO = "true" ]]; then
   DMESG_OUTPUT="(skipped - --no-sudo flag used)"
@@ -37,7 +37,7 @@ fi
 cat > "$LOG_FILE" <<EOF
 Date: $(date)
 Hostname: $(hostname)
-Archeox Branch: $(git -C "$Archeox_PATH" branch --show-current 2>/dev/null || echo "unknown")
+archeox Branch: $(git -C "$archeox_PATH" branch --show-current 2>/dev/null || echo "unknown")
 
 =========================================
 SYSTEM INFORMATION
@@ -74,8 +74,8 @@ ACTION=$(gum choose "${OPTIONS[@]}")
 
 case "$ACTION" in
   "Upload log")
-    echo "Uploading debug log to logs.Archeox.org..."
-    URL=$(curl -sf -F "file=@$LOG_FILE" https://logs.Archeox.org/)
+    echo "Uploading debug log to logs.archeox.org..."
+    URL=$(curl -sf -F "file=@$LOG_FILE" https://logs.archeox.org/)
     if (( $? == 0 )) && [[ -n $URL ]]; then
       echo "✓ Log uploaded successfully!"
       echo "Share this URL:"
@@ -90,7 +90,7 @@ case "$ACTION" in
     less "$LOG_FILE"
     ;;
   "Save in current directory")
-    cp "$LOG_FILE" "./Archeox-debug.log"
-    echo "✓ Log saved to $(pwd)/Archeox-debug.log"
+    cp "$LOG_FILE" "./archeox-debug.log"
+    echo "✓ Log saved to $(pwd)/archeox-debug.log"
     ;;
 esac

@@ -1,24 +1,24 @@
 #!/bin/bash
 
-# Archeox:summary=Reset all Archeox user configs to the defaults
-# Archeox:requires-sudo=true
+# archeox:summary=Reset all archeox user configs to the defaults
+# archeox:requires-sudo=true
 
 set -e
 
-# Overwrite all user configs with the Archeox defaults.
+# Overwrite all user configs with the archeox defaults.
 
 if (( EUID == 0 )); then
   echo "Error: This script should not be run as root"
   exit 1
 fi
 
-echo "Resetting all Archeox configs"
-cp -R ~/.local/share/Archeox/config/* ~/.config/
-cp ~/.local/share/Archeox/default/bashrc ~/.bashrc
+echo "Resetting all archeox configs"
+cp -R ~/.local/share/archeox/config/* ~/.config/
+cp ~/.local/share/archeox/default/bashrc ~/.bashrc
 echo '[[ -f ~/.bashrc ]] && . ~/.bashrc' | tee ~/.bash_profile >/dev/null
 
-$(bash $Archeox_PATH/install/config/theme.sh)
+$(bash $archeox_PATH/install/config/theme.sh)
 
-Archeox-refresh-limine
-Archeox-refresh-plymouth
-Archeox-nvim-setup
+archeox-refresh-limine
+archeox-refresh-plymouth
+archeox-nvim-setup

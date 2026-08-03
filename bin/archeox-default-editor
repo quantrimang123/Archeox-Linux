@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Archeox:summary=Set the default editor for $EDITOR
-# Archeox:args=[code|cursor|zed|sublime_text|helix|vim|emacs|nvim]
-# Archeox:examples=Archeox default editor | Archeox default editor code | Archeox default editor helix
+# archeox:summary=Set the default editor for $EDITOR
+# archeox:args=[code|cursor|zed|sublime_text|helix|vim|emacs|nvim]
+# archeox:examples=archeox default editor | archeox default editor code | archeox default editor helix
 
 if (($# == 0)); then
   sed -n 's/^export EDITOR=//p' ~/.config/uwsm/default | head -n 1
@@ -19,7 +19,7 @@ vim) editor="vim"; name="Vim"; glyph="" ;;
 emacs) editor="emacs"; name="Emacs"; glyph="" ;;
 nvim) editor="nvim"; name="Neovim"; glyph="" ;;
 *)
-  echo "Usage: Archeox-default-editor <code|cursor|zed|sublime_text|helix|vim|emacs|nvim>"
+  echo "Usage: archeox-default-editor <code|cursor|zed|sublime_text|helix|vim|emacs|nvim>"
   exit 1
   ;;
 esac

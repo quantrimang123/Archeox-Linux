@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Archeox:summary=Reset the trackpad by unbinding and rebinding its driver.
-# Archeox:requires-sudo=true
+# archeox:summary=Reset the trackpad by unbinding and rebinding its driver.
+# archeox:requires-sudo=true
 
 for dev in /sys/bus/i2c/drivers/i2c_hid_acpi/i2c-*; do
   [[ -e $dev ]] || continue

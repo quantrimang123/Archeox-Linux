@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Archeox:summary=Install Steam and graphics drivers selected for this system
-# Archeox:requires-sudo=true
+# archeox:summary=Install Steam and graphics drivers selected for this system
+# archeox:requires-sudo=true
 
 set -e
 
 echo "Installing Steam..."
-Archeox-pkg-add steam
-Archeox-install-gaming-gpu-lib32
+archeox-pkg-add steam
+archeox-install-gaming-gpu-lib32
 
 echo ""
 echo "Steam will start automatically now. This might take a while..."

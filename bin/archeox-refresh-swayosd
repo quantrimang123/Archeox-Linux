@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Archeox:summary=Overwrite the user configs for swayosd (controls on-screen feedback for changing volume/songs etc) with the Archeox defaults and restart the service.
+# archeox:summary=Overwrite the user configs for swayosd (controls on-screen feedback for changing volume/songs etc) with the archeox defaults and restart the service.
 
-Archeox-refresh-config swayosd/config.toml
-Archeox-refresh-config swayosd/style.css
-Archeox-restart-swayosd
+archeox-refresh-config swayosd/config.toml
+archeox-refresh-config swayosd/style.css
+archeox-restart-swayosd

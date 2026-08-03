@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Archeox:summary=Launch the Archeox bluetooth controls TUI (provided by bluetui).
+# archeox:summary=Launch the archeox bluetooth controls TUI (provided by bluetui).
 
 rfkill unblock bluetooth
-exec Archeox-launch-or-focus-tui bluetui
+exec archeox-launch-or-focus-tui bluetui

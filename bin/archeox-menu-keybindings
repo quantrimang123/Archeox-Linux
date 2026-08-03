@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Archeox:summary=Display Hyprland keybindings defined in your configuration using walker for an interactive search menu.
+# archeox:summary=Display Hyprland keybindings defined in your configuration using walker for an interactive search menu.
 
 declare -A KEYCODE_SYM_MAP
 
@@ -87,7 +87,7 @@ parse_keycodes() {
 # bindsRequest), and older versions broke on quotes in bind args.
 #
 # Also do some pre-processing:
-# - Remove standard Archeox bin path prefix
+# - Remove standard archeox bin path prefix
 # - Remove uwsm prefix
 # - Map numeric modifier key mask to a textual rendition
 # - Output comma-separated values that the parser can understand
@@ -101,7 +101,7 @@ dynamic_bindings() {
       if (key == "" && f["keycode"] != "0") key = "code:" f["keycode"]
 
       arg = f["arg"]
-      sub(/~\/.local\/share\/Archeox\/bin\//, "", arg)
+      sub(/~\/.local\/share\/archeox\/bin\//, "", arg)
       sub(/uwsm(-app| app) -- /, "", arg)
 
       modifiers = (f["modmask"] in mod_text) ? mod_text[f["modmask"]] : f["modmask"]
@@ -181,7 +181,7 @@ prioritize_entries() {
     if (match(line, /Browser/) && !match(line, /Browser[[:space:]]*\(/) && !match(line, /SUPER SHIFT.*\+.*B.*→.*Browser/)) prio = 2
     if (match(line, /File manager/) && !match(line, /File manager \(cwd\)/))  prio = 3
     if (match(line, /Launch apps/))  prio = 4
-    if (match(line, /Archeox menu/))  prio = 5
+    if (match(line, /archeox menu/))  prio = 5
     if (match(line, /System menu/))  prio = 6
     if (match(line, /Theme menu/))  prio = 7
     if (match(line, /Full screen/))  prio = 8

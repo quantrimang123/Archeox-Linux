@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Archeox:summary=Generate a theme's colors.toml from its alacritty.toml palette
-# Archeox:args=<theme-dir>
-# Archeox:hidden=true
+# archeox:summary=Generate a theme's colors.toml from its alacritty.toml palette
+# archeox:args=<theme-dir>
+# archeox:hidden=true
 
 set -e
 
@@ -11,7 +11,7 @@ COLORS_OUTPUT="$THEME_SOURCE/colors.toml"
 ALACRITTY_FILE="$THEME_SOURCE/alacritty.toml"
 
 if [[ -z $THEME_SOURCE ]]; then
-  echo "Usage: Archeox-theme-colors-from-alacritty <theme-dir>" >&2
+  echo "Usage: archeox-theme-colors-from-alacritty <theme-dir>" >&2
   exit 1
 fi
 

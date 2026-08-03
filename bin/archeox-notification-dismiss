@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Archeox:summary=Dismiss a mako notification on the basis of its summary. Used by the first-run notifications to dismiss them after clicking for action.
-# Archeox:args=<summary>
+# archeox:summary=Dismiss a mako notification on the basis of its summary. Used by the first-run notifications to dismiss them after clicking for action.
+# archeox:args=<summary>
 
 if (($# == 0)); then
-  echo "Usage: Archeox-notification-dismiss <summary>"
+  echo "Usage: archeox-notification-dismiss <summary>"
   exit 1
 fi
 

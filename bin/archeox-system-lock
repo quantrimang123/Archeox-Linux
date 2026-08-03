@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Archeox:summary=Lock the computer and turn off the display
-# Archeox:group=system
-# Archeox:name=lock
-# Archeox:examples=Archeox system lock
+# archeox:summary=Lock the computer and turn off the display
+# archeox:group=system
+# archeox:name=lock
+# archeox:examples=archeox system lock
 
 if ! pidof hyprlock >/dev/null; then
   (
     hyprlock
-    Archeox-system-wake
+    archeox-system-wake
   ) &
 fi
 
@@ -21,13 +21,13 @@ if pgrep -x "1password" >/dev/null; then
 fi
 
 # Avoid running screensaver when locked
-pkill -f org.Archeox.screensaver
+pkill -f org.archeox.screensaver
 
-if [[ ${Archeox_LOCK_ONLY:-false} != "true" ]]; then
+if [[ ${archeox_LOCK_ONLY:-false} != "true" ]]; then
   (
     sleep 3
     pidof hyprlock >/dev/null || exit 0
-    Archeox-brightness-keyboard off
-    Archeox-brightness-display off
+    archeox-brightness-keyboard off
+    archeox-brightness-display off
   ) &
 fi

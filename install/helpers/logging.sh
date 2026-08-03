@@ -16,7 +16,7 @@ start_log_output() {
 
     while true; do
       # Read the last N lines into an array
-      mapfile -t current_lines < <(tail -n $log_lines "$Archeox_INSTALL_LOG_FILE" 2>/dev/null)
+      mapfile -t current_lines < <(tail -n $log_lines "$archeox_INSTALL_LOG_FILE" 2>/dev/null)
 
       # Build complete output buffer with escape sequences
       output=""
@@ -53,12 +53,12 @@ stop_log_output() {
 }
 
 start_install_log() {
-  sudo touch "$Archeox_INSTALL_LOG_FILE"
-  sudo chmod 666 "$Archeox_INSTALL_LOG_FILE"
+  sudo touch "$archeox_INSTALL_LOG_FILE"
+  sudo chmod 666 "$archeox_INSTALL_LOG_FILE"
 
-  export Archeox_START_TIME=$(date '+%Y-%m-%d %H:%M:%S')
+  export archeox_START_TIME=$(date '+%Y-%m-%d %H:%M:%S')
 
-  echo "=== Archeox Installation Started: $Archeox_START_TIME ===" >>"$Archeox_INSTALL_LOG_FILE"
+  echo "=== archeox Installation Started: $archeox_START_TIME ===" >>"$archeox_INSTALL_LOG_FILE"
   start_log_output
 }
 
@@ -66,11 +66,11 @@ stop_install_log() {
   stop_log_output
   show_cursor
 
-  if [[ -n ${Archeox_INSTALL_LOG_FILE:-} ]]; then
-    Archeox_END_TIME=$(date '+%Y-%m-%d %H:%M:%S')
-    echo "=== Archeox Installation Completed: $Archeox_END_TIME ===" >>"$Archeox_INSTALL_LOG_FILE"
-    echo "" >>"$Archeox_INSTALL_LOG_FILE"
-    echo "=== Installation Time Summary ===" >>"$Archeox_INSTALL_LOG_FILE"
+  if [[ -n ${archeox_INSTALL_LOG_FILE:-} ]]; then
+    archeox_END_TIME=$(date '+%Y-%m-%d %H:%M:%S')
+    echo "=== archeox Installation Completed: $archeox_END_TIME ===" >>"$archeox_INSTALL_LOG_FILE"
+    echo "" >>"$archeox_INSTALL_LOG_FILE"
+    echo "=== Installation Time Summary ===" >>"$archeox_INSTALL_LOG_FILE"
 
     if [[ -f "/var/log/archinstall/install.log" ]]; then
       ARCHINSTALL_START=$(grep -m1 '^\[' /var/log/archinstall/install.log 2>/dev/null | sed 's/^\[\([^]]*\)\].*/\1/' || true)
@@ -84,30 +84,30 @@ stop_install_log() {
         ARCH_MINS=$((ARCH_DURATION / 60))
         ARCH_SECS=$((ARCH_DURATION % 60))
 
-        echo "Archinstall: ${ARCH_MINS}m ${ARCH_SECS}s" >>"$Archeox_INSTALL_LOG_FILE"
+        echo "Archinstall: ${ARCH_MINS}m ${ARCH_SECS}s" >>"$archeox_INSTALL_LOG_FILE"
       fi
     fi
 
-    if [[ -n $Archeox_START_TIME ]]; then
-      Archeox_START_EPOCH=$(date -d "$Archeox_START_TIME" +%s)
-      Archeox_END_EPOCH=$(date -d "$Archeox_END_TIME" +%s)
-      Archeox_DURATION=$((Archeox_END_EPOCH - Archeox_START_EPOCH))
+    if [[ -n $archeox_START_TIME ]]; then
+      archeox_START_EPOCH=$(date -d "$archeox_START_TIME" +%s)
+      archeox_END_EPOCH=$(date -d "$archeox_END_TIME" +%s)
+      archeox_DURATION=$((archeox_END_EPOCH - archeox_START_EPOCH))
 
-      Archeox_MINS=$((Archeox_DURATION / 60))
-      Archeox_SECS=$((Archeox_DURATION % 60))
+      archeox_MINS=$((archeox_DURATION / 60))
+      archeox_SECS=$((archeox_DURATION % 60))
 
-      echo "Archeox:     ${Archeox_MINS}m ${Archeox_SECS}s" >>"$Archeox_INSTALL_LOG_FILE"
+      echo "archeox:     ${archeox_MINS}m ${archeox_SECS}s" >>"$archeox_INSTALL_LOG_FILE"
 
       if [[ -n $ARCH_DURATION ]]; then
-        TOTAL_DURATION=$((ARCH_DURATION + Archeox_DURATION))
+        TOTAL_DURATION=$((ARCH_DURATION + archeox_DURATION))
         TOTAL_MINS=$((TOTAL_DURATION / 60))
         TOTAL_SECS=$((TOTAL_DURATION % 60))
-        echo "Total:       ${TOTAL_MINS}m ${TOTAL_SECS}s" >>"$Archeox_INSTALL_LOG_FILE"
+        echo "Total:       ${TOTAL_MINS}m ${TOTAL_SECS}s" >>"$archeox_INSTALL_LOG_FILE"
       fi
     fi
-    echo "=================================" >>"$Archeox_INSTALL_LOG_FILE"
+    echo "=================================" >>"$archeox_INSTALL_LOG_FILE"
 
-    echo "Rebooting system..." >>"$Archeox_INSTALL_LOG_FILE"
+    echo "Rebooting system..." >>"$archeox_INSTALL_LOG_FILE"
   fi
 }
 
@@ -116,18 +116,18 @@ run_logged() {
 
   export CURRENT_SCRIPT="$script"
 
-  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting: $script" >>"$Archeox_INSTALL_LOG_FILE"
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting: $script" >>"$archeox_INSTALL_LOG_FILE"
 
   # Use bash -c to create a clean subshell
-  bash -c "source '$script'" </dev/null >>"$Archeox_INSTALL_LOG_FILE" 2>&1
+  bash -c "source '$script'" </dev/null >>"$archeox_INSTALL_LOG_FILE" 2>&1
 
   local exit_code=$?
 
   if (( exit_code == 0 )); then
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Completed: $script" >>"$Archeox_INSTALL_LOG_FILE"
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Completed: $script" >>"$archeox_INSTALL_LOG_FILE"
     unset CURRENT_SCRIPT
   else
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Failed: $script (exit code: $exit_code)" >>"$Archeox_INSTALL_LOG_FILE"
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Failed: $script (exit code: $exit_code)" >>"$archeox_INSTALL_LOG_FILE"
   fi
 
   return $exit_code

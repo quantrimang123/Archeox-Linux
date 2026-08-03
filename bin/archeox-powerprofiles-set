@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Archeox:summary=Set the power profile to the requested level, falling back to balanced
-# Archeox:args=[autodetect|ac|battery]
+# archeox:summary=Set the power profile to the requested level, falling back to balanced
+# archeox:args=[autodetect|ac|battery]
 
 action="${1-}"
 

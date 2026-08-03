@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# Archeox:summary=Print the current Archeox git branch
+# archeox:summary=Print the current archeox git branch
 
-echo $(git -C "$Archeox_PATH" rev-parse --abbrev-ref HEAD)
+echo $(git -C "$archeox_PATH" rev-parse --abbrev-ref HEAD)

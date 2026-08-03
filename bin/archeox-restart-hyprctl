@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# Archeox:summary=Reload hyprland configuration (used by the Archeox theme switching).
+# archeox:summary=Reload hyprland configuration (used by the archeox theme switching).
 
 hyprctl reload >/dev/null

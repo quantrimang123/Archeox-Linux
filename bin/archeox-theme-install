@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Archeox:summary=Install a theme from a git repository
-# Archeox:args=[git-repo-url]
-# Archeox:examples=Archeox theme install https://github.com/example/Archeox-example-theme.git
-# Archeox:examples=Archeox theme install git@github.com:example/Archeox-example-theme.git
+# archeox:summary=Install a theme from a git repository
+# archeox:args=[git-repo-url]
+# archeox:examples=archeox theme install https://github.com/example/archeox-example-theme.git
+# archeox:examples=archeox theme install git@github.com:example/archeox-example-theme.git
 
 if [[ -z $1 ]]; then
-  echo -e "\e[32mSee https://manuals.omamix.org/2/the-Archeox-manual/90/extra-themes\n\e[0m"
+  echo -e "\e[32mSee https://manuals.omamix.org/2/the-archeox-manual/90/extra-themes\n\e[0m"
   REPO_URL=$(gum input --placeholder="Git repo URL (https or git@host:org/repo.git)" --header="")
 else
   REPO_URL="$1"
@@ -16,12 +16,12 @@ if [[ -z $REPO_URL ]]; then
   exit 1
 fi
 
-THEMES_DIR="$HOME/.config/Archeox/themes"
+THEMES_DIR="$HOME/.config/archeox/themes"
 
 # Strip user@host: prefix from scp-style SSH URLs so basename sees just the path
 REPO_PATH="$REPO_URL"
 [[ $REPO_PATH != *"://"* && $REPO_PATH == *:*/* ]] && REPO_PATH="${REPO_PATH#*:}"
-THEME_NAME=$(basename "$REPO_PATH" .git | sed -E 's/^Archeox-//; s/-theme$//' | tr '[:upper:]' '[:lower:]')
+THEME_NAME=$(basename "$REPO_PATH" .git | sed -E 's/^archeox-//; s/-theme$//' | tr '[:upper:]' '[:lower:]')
 THEME_PATH="$THEMES_DIR/$THEME_NAME"
 
 # Remove existing theme if present
@@ -29,11 +29,11 @@ if [[ -d $THEME_PATH ]]; then
   rm -rf "$THEME_PATH"
 fi
 
-# Clone the repo directly to ~/.config/Archeox/themes
+# Clone the repo directly to ~/.config/archeox/themes
 if ! git clone "$REPO_URL" "$THEME_PATH"; then
   echo "Error: Failed to clone theme repo."
   exit 1
 fi
 
-# Apply the new theme with Archeox-theme-set
-Archeox-theme-set $THEME_NAME
+# Apply the new theme with archeox-theme-set
+archeox-theme-set $THEME_NAME

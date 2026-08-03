@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Archeox:summary=Enable, disable, toggle, or recover mirroring the internal display to an external monitor
-# Archeox:args=<on|off|toggle|recover>
+# archeox:summary=Enable, disable, toggle, or recover mirroring the internal display to an external monitor
+# archeox:args=<on|off|toggle|recover>
 
 TOGGLE="internal-monitor-mirror"
-TOGGLE_FLAG="$HOME/.local/state/Archeox/toggles/hypr/$TOGGLE.conf"
+TOGGLE_FLAG="$HOME/.local/state/archeox/toggles/hypr/$TOGGLE.conf"
 DISABLE_TOGGLE="internal-monitor-disable"
 
 # Get names dynamically
@@ -23,11 +23,11 @@ enable() {
     exit 1
   fi
 
-  if Archeox-hyprland-toggle-enabled "$DISABLE_TOGGLE"; then
-    Archeox-hyprland-toggle "$DISABLE_TOGGLE"
+  if archeox-hyprland-toggle-enabled "$DISABLE_TOGGLE"; then
+    archeox-hyprland-toggle "$DISABLE_TOGGLE"
   fi
 
-  if Archeox-hyprland-toggle-disabled "$TOGGLE"; then
+  if archeox-hyprland-toggle-disabled "$TOGGLE"; then
     echo "monitor=$EXTERNAL, preferred, auto, 1, mirror, $INTERNAL" > "$TOGGLE_FLAG"
     notify-send -u low "󰍹    Mirroring enabled ($EXTERNAL)"
     hyprctl reload
@@ -35,21 +35,21 @@ enable() {
 }
 
 disable() {
-  if Archeox-hyprland-toggle-enabled "$TOGGLE"; then
-    Archeox-hyprland-toggle --disabled-notification "󰍹    Extended mode restored" "$TOGGLE"
+  if archeox-hyprland-toggle-enabled "$TOGGLE"; then
+    archeox-hyprland-toggle --disabled-notification "󰍹    Extended mode restored" "$TOGGLE"
   fi
 }
 
 recover() {
-  if ! Archeox-hw-external-monitors && Archeox-hyprland-toggle-enabled "$TOGGLE"; then
-    Archeox-hyprland-toggle "$TOGGLE"
+  if ! archeox-hw-external-monitors && archeox-hyprland-toggle-enabled "$TOGGLE"; then
+    archeox-hyprland-toggle "$TOGGLE"
   fi
 }
 
 case "$1" in
   on) enable ;;
   off) disable ;;
-  toggle) if Archeox-hyprland-toggle-enabled "$TOGGLE"; then disable; else enable; fi ;;
+  toggle) if archeox-hyprland-toggle-enabled "$TOGGLE"; then disable; else enable; fi ;;
   recover) recover ;;
   *)
     echo "Usage: $(basename "$0") {on|off|toggle|recover}" >&2

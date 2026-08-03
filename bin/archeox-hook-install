@@ -1,21 +1,21 @@
 #!/bin/bash
 
-# Archeox:summary=Install a hook into ~/.config/Archeox/hooks/<type>.d/
-# Archeox:group=hook
-# Archeox:name=install
-# Archeox:args=<type> <file>
-# Archeox:examples=Archeox hook install post-update ~/my-hook
+# archeox:summary=Install a hook into ~/.config/archeox/hooks/<type>.d/
+# archeox:group=hook
+# archeox:name=install
+# archeox:args=<type> <file>
+# archeox:examples=archeox hook install post-update ~/my-hook
 
 set -e
 
 if (( $# != 2 )); then
-  echo "Usage: Archeox-hook-install <type> <file>"
+  echo "Usage: archeox-hook-install <type> <file>"
   exit 1
 fi
 
 HOOK_TYPE=$1
 HOOK_FILE=$2
-HOOK_DIR="$HOME/.config/Archeox/hooks/$HOOK_TYPE.d"
+HOOK_DIR="$HOME/.config/archeox/hooks/$HOOK_TYPE.d"
 HOOK_NAME=$(basename "$HOOK_FILE")
 HOOK_PATH="$HOOK_DIR/$HOOK_NAME"
 

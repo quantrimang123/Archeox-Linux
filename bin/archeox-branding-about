@@ -1,28 +1,28 @@
 #!/bin/bash
 
-# Archeox:summary=Edit, set, or reset About branding
-# Archeox:group=branding
-# Archeox:name=about
-# Archeox:args=<image|text|reset>
-# Archeox:examples=Archeox branding about image | Archeox branding about text | Archeox branding about reset
+# archeox:summary=Edit, set, or reset About branding
+# archeox:group=branding
+# archeox:name=about
+# archeox:args=<image|text|reset>
+# archeox:examples=archeox branding about image | archeox branding about text | archeox branding about reset
 
 set -euo pipefail
 
 case "${1:-}" in
 image)
-  image=$(Archeox-menu-file "Logo image" "$HOME" "svg png")
-  if [[ -n $image ]] && Archeox-transcode-ascii "$image" ~/.config/Archeox/branding/about.txt --width 54 --height 26 --mode block; then
-    Archeox-launch-about >/dev/null 2>&1
+  image=$(archeox-menu-file "Logo image" "$HOME" "svg png")
+  if [[ -n $image ]] && archeox-transcode-ascii "$image" ~/.config/archeox/branding/about.txt --width 54 --height 26 --mode block; then
+    archeox-launch-about >/dev/null 2>&1
   fi
   ;;
 text)
-  Archeox-launch-editor ~/.config/Archeox/branding/about.txt >/dev/null 2>&1 && Archeox-launch-about >/dev/null 2>&1
+  archeox-launch-editor ~/.config/archeox/branding/about.txt >/dev/null 2>&1 && archeox-launch-about >/dev/null 2>&1
   ;;
 reset)
-  cp "$Archeox_PATH/icon.txt" ~/.config/Archeox/branding/about.txt && Archeox-launch-about >/dev/null 2>&1
+  cp "$archeox_PATH/icon.txt" ~/.config/archeox/branding/about.txt && archeox-launch-about >/dev/null 2>&1
   ;;
 *)
-  echo "Usage: Archeox-branding-about <image|text|reset>" >&2
+  echo "Usage: archeox-branding-about <image|text|reset>" >&2
   exit 1
   ;;
 esac

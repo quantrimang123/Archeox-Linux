@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# Archeox:summary=Designed to be run by systemd timer every 30 seconds and alerts if battery is low
-# Archeox:hidden=true
+# archeox:summary=Designed to be run by systemd timer every 30 seconds and alerts if battery is low
+# archeox:hidden=true
 
 BATTERY_THRESHOLD=10
-NOTIFICATION_FLAG="/run/user/$UID/Archeox_battery_notified"
-BATTERY_LEVEL=$(Archeox-battery-remaining)
+NOTIFICATION_FLAG="/run/user/$UID/archeox_battery_notified"
+BATTERY_LEVEL=$(archeox-battery-remaining)
 BATTERY_STATE=$(upower -i $(upower -e | grep 'BAT') | grep -E "state" | awk '{print $2}')
 
 send_notification() {
   notify-send -u critical "󱐋 Time to recharge!" "Battery is down to ${1}%" -i battery-caution -t 30000
-  Archeox-hook battery-low "$1"
+  archeox-hook battery-low "$1"
 }
 
 if [[ -n $BATTERY_LEVEL && $BATTERY_LEVEL =~ ^[0-9]+$ ]]; then

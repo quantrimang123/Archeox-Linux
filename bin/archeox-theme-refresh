@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Archeox:summary=Refresh the current theme from its templates.
+# archeox:summary=Refresh the current theme from its templates.
 
-THEME_NAME_PATH="$HOME/.config/Archeox/current/theme.name"
+THEME_NAME_PATH="$HOME/.config/archeox/current/theme.name"
 
 if [[ -f $THEME_NAME_PATH ]]; then
-  Archeox_THEME_SKIP_BACKGROUND=1 Archeox-theme-set "$(cat $THEME_NAME_PATH)"
+  archeox_THEME_SKIP_BACKGROUND=1 archeox-theme-set "$(cat $THEME_NAME_PATH)"
 fi

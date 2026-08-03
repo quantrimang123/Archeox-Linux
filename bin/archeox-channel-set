@@ -1,22 +1,22 @@
 #!/bin/bash
 
-# Archeox:summary=Set the Archeox channel, which dictates what git branch and package repository is used.
-# Archeox:args=<stable|rc|edge|dev>
-# Archeox:requires-sudo=true
+# archeox:summary=Set the archeox channel, which dictates what git branch and package repository is used.
+# archeox:args=<stable|rc|edge|dev>
+# archeox:requires-sudo=true
 
 if (($# == 0)); then
-  echo "Usage: Archeox-channel-set [stable|rc|edge|dev]"
+  echo "Usage: archeox-channel-set [stable|rc|edge|dev]"
   exit 1
 else
   channel="$1"
 fi
 
 case "$channel" in
-"stable") Archeox-branch-set "master" && Archeox-refresh-pacman "stable" ;;
-"rc") Archeox-branch-set "rc" && Archeox-refresh-pacman "rc" ;;
-"edge") Archeox-branch-set "master" && Archeox-refresh-pacman "edge" ;;
-"dev") Archeox-branch-set "dev" && Archeox-refresh-pacman "edge" ;;
+"stable") archeox-branch-set "master" && archeox-refresh-pacman "stable" ;;
+"rc") archeox-branch-set "rc" && archeox-refresh-pacman "rc" ;;
+"edge") archeox-branch-set "master" && archeox-refresh-pacman "edge" ;;
+"dev") archeox-branch-set "dev" && archeox-refresh-pacman "edge" ;;
 *) echo "Unknown channel: $channel"; exit 1; ;;
 esac
 
-Archeox-update -y
+archeox-update -y

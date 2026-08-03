@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Archeox:summary=Install Heroic Games Launcher (Epic, GOG, Amazon Prime Gaming) with graphics drivers.
-# Archeox:requires-sudo=true
+# archeox:summary=Install Heroic Games Launcher (Epic, GOG, Amazon Prime Gaming) with graphics drivers.
+# archeox:requires-sudo=true
 
 set -e
 
 echo "Installing Heroic Games Launcher..."
-Archeox-pkg-add heroic-games-launcher-bin
-Archeox-install-gaming-gpu-lib32
+archeox-pkg-add heroic-games-launcher-bin
+archeox-install-gaming-gpu-lib32
 
 setsid gtk-launch heroic >/dev/null 2>&1 &

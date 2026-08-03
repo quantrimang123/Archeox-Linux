@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Archeox:summary=Add the named packages to the system from the AUR if they're missing. Returns false if it couldn't be done.
-# Archeox:args=<packages...>
+# archeox:summary=Add the named packages to the system from the AUR if they're missing. Returns false if it couldn't be done.
+# archeox:args=<packages...>
 
-if Archeox-pkg-missing "$@"; then
+if archeox-pkg-missing "$@"; then
   yay -S --noconfirm --needed "$@" || exit 1
 fi
 

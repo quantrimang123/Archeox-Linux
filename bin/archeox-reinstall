@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Archeox:summary=Reinstall Archeox packages and reset default configs
-# Archeox:requires-sudo=true
+# archeox:summary=Reinstall archeox packages and reset default configs
+# archeox:requires-sudo=true
 
 set -e
 
-# Attempt to reinstall all default Archeox packages and reset all the default configs.
+# Attempt to reinstall all default archeox packages and reset all the default configs.
 
-echo -e "This will reinstall all the default Archeox packages and reset all default configs.\nWarning: All user changes to configs will be lost.\n"
+echo -e "This will reinstall all the default archeox packages and reset all default configs.\nWarning: All user changes to configs will be lost.\n"
 
 if gum confirm "Are you sure you want to reinstall and lose all config changes?"; then
-  Archeox-reinstall-git
-  Archeox-reinstall-pkgs
-  Archeox-reinstall-configs
+  archeox-reinstall-git
+  archeox-reinstall-pkgs
+  archeox-reinstall-configs
 
-  gum confirm "System has been reinstalled. Reboot?" && Archeox-system-reboot
+  gum confirm "System has been reinstalled. Reboot?" && archeox-system-reboot
 fi

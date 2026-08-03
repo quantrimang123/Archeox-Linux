@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# Archeox:summary=Reload btop configuration (used by the Archeox theme switching).
+# archeox:summary=Reload btop configuration (used by the archeox theme switching).
 
 pkill -SIGUSR2 btop

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-# Archeox:summary=No-op now that Archeox-update-perform is responsible for idle management.
-# Archeox:hidden=true
+# archeox:summary=No-op now that archeox-update-perform is responsible for idle management.
+# archeox:hidden=true

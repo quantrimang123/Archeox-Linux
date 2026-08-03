@@ -1,6 +1,6 @@
-# Copy over Archeox configs
+# Copy over archeox configs
 mkdir -p ~/.config
-cp -R ~/.local/share/Archeox/config/* ~/.config/
+cp -R ~/.local/share/archeox/config/* ~/.config/
 
-# Use default bashrc from Archeox
-cp ~/.local/share/Archeox/default/bashrc ~/.bashrc
+# Use default bashrc from archeox
+cp ~/.local/share/archeox/default/bashrc ~/.bashrc

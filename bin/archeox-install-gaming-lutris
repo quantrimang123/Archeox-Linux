@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Archeox:summary=Install Lutris with Wine + DXVK for running Windows games (Battle.net, EA, Ubisoft Connect, etc.)
-# Archeox:requires-sudo=true
+# archeox:summary=Install Lutris with Wine + DXVK for running Windows games (Battle.net, EA, Ubisoft Connect, etc.)
+# archeox:requires-sudo=true
 
 set -e
 
 echo "Installing Lutris..."
-Archeox-pkg-add lutris umu-launcher wine-staging wine-mono wine-gecko winetricks python-protobuf
-Archeox-install-gaming-gpu-lib32
+archeox-pkg-add lutris umu-launcher wine-staging wine-mono wine-gecko winetricks python-protobuf
+archeox-install-gaming-gpu-lib32
 
 # Lutris ships with `#!/usr/bin/env python3`, which resolves to mise's Python and
 # fails to import the lutris module. Pin the shebang to the system Python.

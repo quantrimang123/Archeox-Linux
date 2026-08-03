@@ -1,22 +1,22 @@
 #!/bin/bash
 
-# Archeox:summary=Apply an Archeox theme
-# Archeox:args=<theme-name>
-# Archeox:examples=Archeox theme list | Archeox theme set "Tokyo Night"
+# archeox:summary=Apply an archeox theme
+# archeox:args=<theme-name>
+# archeox:examples=archeox theme list | archeox theme set "Tokyo Night"
 
 if [[ -z $1 ]]; then
-  echo "Usage: Archeox-theme-set <theme-name>"
+  echo "Usage: archeox-theme-set <theme-name>"
   exit 1
 fi
 
-CURRENT_THEME_PATH="$HOME/.config/Archeox/current/theme"
-NEXT_THEME_PATH="$HOME/.config/Archeox/current/next-theme"
-USER_THEMES_PATH="$HOME/.config/Archeox/themes"
-Archeox_THEMES_PATH="$Archeox_PATH/themes"
+CURRENT_THEME_PATH="$HOME/.config/archeox/current/theme"
+NEXT_THEME_PATH="$HOME/.config/archeox/current/next-theme"
+USER_THEMES_PATH="$HOME/.config/archeox/themes"
+archeox_THEMES_PATH="$archeox_PATH/themes"
 
 THEME_NAME=$(echo "$1" | sed -E 's/<[^>]+>//g' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 
-if [[ ! -d $Archeox_THEMES_PATH/$THEME_NAME ]] && [[ ! -d $USER_THEMES_PATH/$THEME_NAME ]]; then
+if [[ ! -d $archeox_THEMES_PATH/$THEME_NAME ]] && [[ ! -d $USER_THEMES_PATH/$THEME_NAME ]]; then
   echo "Theme '$THEME_NAME' does not exist"
   exit 1
 fi
@@ -26,48 +26,48 @@ rm -rf "$NEXT_THEME_PATH"
 mkdir -p "$NEXT_THEME_PATH"
 
 # Copy official theme first, then overlay user customizations on top
-cp -r "$Archeox_THEMES_PATH/$THEME_NAME/"* "$NEXT_THEME_PATH/" 2>/dev/null
+cp -r "$archeox_THEMES_PATH/$THEME_NAME/"* "$NEXT_THEME_PATH/" 2>/dev/null
 cp -r "$USER_THEMES_PATH/$THEME_NAME/"* "$NEXT_THEME_PATH/" 2>/dev/null
 
 # Generate colors.toml from alacritty.toml if theme is missing colors.toml
 if [[ ! -f $NEXT_THEME_PATH/colors.toml && -f $NEXT_THEME_PATH/alacritty.toml ]]; then
-  Archeox-theme-colors-from-alacritty "$NEXT_THEME_PATH"
+  archeox-theme-colors-from-alacritty "$NEXT_THEME_PATH"
 fi
 
 # Generate dynamic configs
-Archeox-theme-set-templates
+archeox-theme-set-templates
 
 # Swap next theme in as current
 rm -rf "$CURRENT_THEME_PATH"
 mv "$NEXT_THEME_PATH" "$CURRENT_THEME_PATH"
 
 # Store theme name for reference
-echo "$THEME_NAME" >"$HOME/.config/Archeox/current/theme.name"
+echo "$THEME_NAME" >"$HOME/.config/archeox/current/theme.name"
 
 # Change background with theme
-if [[ $Archeox_THEME_SKIP_BACKGROUND != "1" ]]; then
-  Archeox-theme-bg-next
+if [[ $archeox_THEME_SKIP_BACKGROUND != "1" ]]; then
+  archeox-theme-bg-next
 fi
 
 # Restart components to apply new theme
 if pgrep -x waybar >/dev/null; then
-  Archeox-restart-waybar
+  archeox-restart-waybar
 fi
-Archeox-restart-swayosd
-Archeox-restart-terminal
-Archeox-restart-hyprctl
-Archeox-restart-btop
-Archeox-restart-opencode
-Archeox-restart-mako
-Archeox-restart-helix
+archeox-restart-swayosd
+archeox-restart-terminal
+archeox-restart-hyprctl
+archeox-restart-btop
+archeox-restart-opencode
+archeox-restart-mako
+archeox-restart-helix
 
 # Change app-specific themes
-Archeox-theme-set-foot
-Archeox-theme-set-gnome
-Archeox-theme-set-browser
-Archeox-theme-set-vscode
-Archeox-theme-set-obsidian
-Archeox-theme-set-keyboard
+archeox-theme-set-foot
+archeox-theme-set-gnome
+archeox-theme-set-browser
+archeox-theme-set-vscode
+archeox-theme-set-obsidian
+archeox-theme-set-keyboard
 
 # Call hook on theme set
-Archeox-hook theme-set "$THEME_NAME" >/dev/null
+archeox-hook theme-set "$THEME_NAME" >/dev/null

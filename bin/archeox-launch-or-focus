@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Archeox:summary=Launch an app or focus an existing window matching a pattern
-# Archeox:args=<window-pattern> <launch-command>
+# archeox:summary=Launch an app or focus an existing window matching a pattern
+# archeox:args=<window-pattern> <launch-command>
 
 if (($# == 0)); then
-  echo "Usage: Archeox-launch-or-focus [window-pattern] [launch-command]"
+  echo "Usage: archeox-launch-or-focus [window-pattern] [launch-command]"
   exit 1
 fi
 

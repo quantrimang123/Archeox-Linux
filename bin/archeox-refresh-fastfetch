@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# Archeox:summary=Overwrite the user config for fastfetch with the Archeox default.
+# archeox:summary=Overwrite the user config for fastfetch with the archeox default.
 
-Archeox-refresh-config fastfetch/config.jsonc
+archeox-refresh-config fastfetch/config.jsonc

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Archeox:summary=Remove Steam and all of its game libraries, configs, and caches.
-# Archeox:requires-sudo=true
+# archeox:summary=Remove Steam and all of its game libraries, configs, and caches.
+# archeox:requires-sudo=true
 
 set -e
 
-Archeox-pkg-drop steam
+archeox-pkg-drop steam
 
 rm -rf \
   "$HOME/.steam" \

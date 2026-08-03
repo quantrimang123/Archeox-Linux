@@ -1,5 +1,5 @@
 # Allow passwordless reboot for the installer - removed in first-run
-sudo tee /etc/sudoers.d/99-Archeox-installer-reboot >/dev/null <<EOF
+sudo tee /etc/sudoers.d/99-archeox-installer-reboot >/dev/null <<EOF
 $USER ALL=(ALL) NOPASSWD: /usr/bin/reboot
 EOF
-sudo chmod 440 /etc/sudoers.d/99-Archeox-installer-reboot
+sudo chmod 440 /etc/sudoers.d/99-archeox-installer-reboot

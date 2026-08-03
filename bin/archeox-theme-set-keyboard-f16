@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Archeox:summary=Apply the current theme keyboard color to Framework Laptop 16 keyboards
-# Archeox:hidden=true
+# archeox:summary=Apply the current theme keyboard color to Framework Laptop 16 keyboards
+# archeox:hidden=true
 
-FRAMEWORK16_THEME=~/.config/Archeox/current/theme/keyboard.rgb
+FRAMEWORK16_THEME=~/.config/archeox/current/theme/keyboard.rgb
 
-if Archeox-cmd-present qmk_hid && [[ -f $FRAMEWORK16_THEME ]]; then
+if archeox-cmd-present qmk_hid && [[ -f $FRAMEWORK16_THEME ]]; then
   hex=$(cat "$FRAMEWORK16_THEME")
   hex="${hex#\#}"
 

@@ -1,21 +1,21 @@
 #!/bin/bash
 
-# Archeox:summary=Measure Archeox CLI response times
-# Archeox:args=[--repeat=<count>]
-# Archeox:examples=Archeox dev benchmark | Archeox dev benchmark --repeat=10
+# archeox:summary=Measure archeox CLI response times
+# archeox:args=[--repeat=<count>]
+# archeox:examples=archeox dev benchmark | archeox dev benchmark --repeat=10
 
 set -euo pipefail
 
-Archeox_BIN_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
-CLI="$Archeox_BIN_DIR/Archeox"
+archeox_BIN_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
+CLI="$archeox_BIN_DIR/archeox"
 REPEAT=5
 
 show_help() {
   cat <<'EOF'
 Usage:
-  Archeox dev benchmark [--repeat=<count>]
+  archeox dev benchmark [--repeat=<count>]
 
-Measure response times for common Archeox CLI surfaces.
+Measure response times for common archeox CLI surfaces.
 
 Options:
   --repeat=<count>  Number of times to run each case (default: 5)
@@ -99,13 +99,13 @@ if [[ ! $REPEAT =~ ^[0-9]+$ ]] || (( REPEAT < 1 )); then
   exit 2
 fi
 
-printf 'Archeox CLI benchmark (%d runs each)\n\n' "$REPEAT"
-run_case "Archeox" "$CLI"
-run_case "Archeox --help" "$CLI" --help
-run_case "Archeox commands" "$CLI" commands
-run_case "Archeox commands --json" "$CLI" commands --json
-run_case "Archeox commands --all --json" "$CLI" commands --all --json
-run_case "Archeox theme set --help" "$CLI" theme set --help
-run_case "Archeox screenshot --help" "$CLI" screenshot --help
-run_case "Archeox restart --help" "$CLI" restart --help
-run_case "Archeox theme current" "$CLI" theme current
+printf 'archeox CLI benchmark (%d runs each)\n\n' "$REPEAT"
+run_case "archeox" "$CLI"
+run_case "archeox --help" "$CLI" --help
+run_case "archeox commands" "$CLI" commands
+run_case "archeox commands --json" "$CLI" commands --json
+run_case "archeox commands --all --json" "$CLI" commands --all --json
+run_case "archeox theme set --help" "$CLI" theme set --help
+run_case "archeox screenshot --help" "$CLI" screenshot --help
+run_case "archeox restart --help" "$CLI" restart --help
+run_case "archeox theme current" "$CLI" theme current

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Archeox:summary=Set the default terminal used by xdg-terminal-exec
-# Archeox:args=[alacritty|foot|ghostty|kitty]
-# Archeox:examples=Archeox default terminal ghostty | Archeox default terminal kitty
+# archeox:summary=Set the default terminal used by xdg-terminal-exec
+# archeox:args=[alacritty|foot|ghostty|kitty]
+# archeox:examples=archeox default terminal ghostty | archeox default terminal kitty
 
 if (($# == 0)); then
   desktop_id=$(grep -vE '^($|#)' ~/.config/xdg-terminals.list 2>/dev/null | head -n 1)
@@ -22,7 +22,7 @@ foot) desktop_id="foot.desktop"; name="Foot"; glyph="" ;;
 ghostty) desktop_id="com.mitchellh.ghostty.desktop"; name="Ghostty"; glyph="" ;;
 kitty) desktop_id="kitty.desktop"; name="Kitty"; glyph="" ;;
 *)
-  echo "Usage: Archeox-default-terminal <alacritty|foot|ghostty|kitty>"
+  echo "Usage: archeox-default-terminal <alacritty|foot|ghostty|kitty>"
   exit 1
   ;;
 esac

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Archeox:summary=Creates a new Archeox migration named after the unix timestamp of the last commit.
+# archeox:summary=Creates a new archeox migration named after the unix timestamp of the last commit.
 
-cd ~/.local/share/Archeox
-migration_file="$HOME/.local/share/Archeox/migrations/$(git log -1 --format=%cd --date=unix).sh"
+cd ~/.local/share/archeox
+migration_file="$HOME/.local/share/archeox/migrations/$(git log -1 --format=%cd --date=unix).sh"
 touch $migration_file
 
 if [[ $1 != "--no-edit" ]]; then

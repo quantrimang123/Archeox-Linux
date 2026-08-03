@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Archeox:summary=Install Moonlight (NVIDIA GameStream / Sunshine client) for streaming games to this PC.
-# Archeox:requires-sudo=true
+# archeox:summary=Install Moonlight (NVIDIA GameStream / Sunshine client) for streaming games to this PC.
+# archeox:requires-sudo=true
 
 set -e
 
 echo "Installing Moonlight..."
-Archeox-pkg-add moonlight-qt
+archeox-pkg-add moonlight-qt
 
 setsid gtk-launch com.moonlight_stream.Moonlight.desktop >/dev/null 2>&1 &

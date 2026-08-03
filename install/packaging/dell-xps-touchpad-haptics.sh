@@ -1,3 +1,3 @@
-if Archeox-hw-dell-xps-haptic-touchpad; then
-  Archeox-pkg-add dell-xps-touchpad-haptics
+if archeox-hw-dell-xps-haptic-touchpad; then
+  archeox-pkg-add dell-xps-touchpad-haptics
 fi

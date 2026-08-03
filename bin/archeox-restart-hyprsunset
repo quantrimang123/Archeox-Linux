@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# Archeox:summary=Restart the hyprsunset service (used for blue light filtering/night light).
+# archeox:summary=Restart the hyprsunset service (used for blue light filtering/night light).
 
-Archeox-restart-app hyprsunset
+archeox-restart-app hyprsunset

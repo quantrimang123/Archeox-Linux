@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Archeox:summary=Install one of the approved terminals and set it as the default for Archeox (Super + Return etc).
-# Archeox:args=<alacritty|foot|ghostty|kitty>
-# Archeox:requires-sudo=true
+# archeox:summary=Install one of the approved terminals and set it as the default for archeox (Super + Return etc).
+# archeox:args=<alacritty|foot|ghostty|kitty>
+# archeox:requires-sudo=true
 
 if (($# == 0)); then
-  echo "Usage: Archeox-install-terminal [alacritty|foot|ghostty|kitty]"
+  echo "Usage: archeox-install-terminal [alacritty|foot|ghostty|kitty]"
   exit 1
 fi
 
@@ -26,19 +26,19 @@ esac
 echo "Installing $package..."
 
 # Install package
-if Archeox-pkg-add $package; then
+if archeox-pkg-add $package; then
   # Copy custom desktop entries with X-TerminalArg* keys
   if [[ $package == "alacritty" ]]; then
     mkdir -p ~/.local/share/applications
-    cp "$Archeox_PATH/applications/$desktop_id" ~/.local/share/applications/
+    cp "$archeox_PATH/applications/$desktop_id" ~/.local/share/applications/
   elif [[ $package == "foot" ]]; then
     mkdir -p ~/.local/share/applications
-    cp "$Archeox_PATH/default/foot/$desktop_id" ~/.local/share/applications/
+    cp "$archeox_PATH/default/foot/$desktop_id" ~/.local/share/applications/
   fi
 
   # Copy default config for optional terminals when missing
   if [[ ! -e ~/.config/$package ]]; then
-    cp -Rpf "$Archeox_PATH/config/$package" ~/.config/
+    cp -Rpf "$archeox_PATH/config/$package" ~/.config/
   fi
 
   # Update xdg-terminals.list to prioritize the proper terminal

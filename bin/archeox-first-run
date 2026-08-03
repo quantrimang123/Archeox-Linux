@@ -1,28 +1,28 @@
 #!/bin/bash
 
-# Archeox:summary=Finish the installation of Archeox with items that can only be done after logging in.
-# Archeox:requires-sudo=true
+# archeox:summary=Finish the installation of archeox with items that can only be done after logging in.
+# archeox:requires-sudo=true
 
 set -e
 
-FIRST_RUN_MODE=~/.local/state/Archeox/first-run.mode
+FIRST_RUN_MODE=~/.local/state/archeox/first-run.mode
 
 if [[ -f $FIRST_RUN_MODE ]]; then
   rm -f "$FIRST_RUN_MODE"
 
-  bash "$Archeox_PATH/install/first-run/battery-monitor.sh"
-  bash "$Archeox_PATH/install/first-run/recover-internal-monitor.sh"
-  bash "$Archeox_PATH/install/first-run/cleanup-reboot-sudoers.sh"
-  bash "$Archeox_PATH/install/first-run/firewall.sh"
-  bash "$Archeox_PATH/install/first-run/dns-resolver.sh"
-  bash "$Archeox_PATH/install/first-run/gnome-theme.sh"
-  bash "$Archeox_PATH/install/first-run/swayosd.sh"
-  bash "$Archeox_PATH/install/first-run/gtk-primary-paste.sh"
-  bash "$Archeox_PATH/install/first-run/text-scaling.sh"
-  bash "$Archeox_PATH/install/first-run/elephant.sh"
-  Archeox-hook-install post-update "$Archeox_PATH/install/first-run/install-voxtype.hook"
+  bash "$archeox_PATH/install/first-run/battery-monitor.sh"
+  bash "$archeox_PATH/install/first-run/recover-internal-monitor.sh"
+  bash "$archeox_PATH/install/first-run/cleanup-reboot-sudoers.sh"
+  bash "$archeox_PATH/install/first-run/firewall.sh"
+  bash "$archeox_PATH/install/first-run/dns-resolver.sh"
+  bash "$archeox_PATH/install/first-run/gnome-theme.sh"
+  bash "$archeox_PATH/install/first-run/swayosd.sh"
+  bash "$archeox_PATH/install/first-run/gtk-primary-paste.sh"
+  bash "$archeox_PATH/install/first-run/text-scaling.sh"
+  bash "$archeox_PATH/install/first-run/elephant.sh"
+  archeox-hook-install post-update "$archeox_PATH/install/first-run/install-voxtype.hook"
   sudo rm -f /etc/sudoers.d/first-run
 
-  bash "$Archeox_PATH/install/first-run/welcome.sh"
-  bash "$Archeox_PATH/install/first-run/wifi.sh"
+  bash "$archeox_PATH/install/first-run/welcome.sh"
+  bash "$archeox_PATH/install/first-run/wifi.sh"
 fi

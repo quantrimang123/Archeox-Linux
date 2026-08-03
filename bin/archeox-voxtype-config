@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Archeox:summary=Open the Voxtype configuration file
+# archeox:summary=Open the Voxtype configuration file
 
 set -e
 
 # Used by Voxtype waybar module to open config on right click
 
-exec Archeox-launch-editor ~/.config/voxtype/config.toml
+exec archeox-launch-editor ~/.config/voxtype/config.toml

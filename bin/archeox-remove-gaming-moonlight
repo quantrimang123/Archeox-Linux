@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Archeox:summary=Remove Moonlight and its configs and caches.
-# Archeox:requires-sudo=true
+# archeox:summary=Remove Moonlight and its configs and caches.
+# archeox:requires-sudo=true
 
 set -e
 
-Archeox-pkg-drop moonlight-qt
+archeox-pkg-drop moonlight-qt
 
 rm -rf \
   "$HOME/.config/Moonlight Game Streaming Project" \

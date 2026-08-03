@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Archeox:summary=Set the system monospace font
-# Archeox:args=<font-name>
-# Archeox:examples=Archeox font list | Archeox font set "CaskaydiaMono Nerd Font"
+# archeox:summary=Set the system monospace font
+# archeox:args=<font-name>
+# archeox:examples=archeox font list | archeox font set "CaskaydiaMono Nerd Font"
 
 font_name="$1"
 
@@ -34,8 +34,8 @@ if [[ -n $font_name ]]; then
       -v "$font_name" \
       ~/.config/fontconfig/fonts.conf
 
-    Archeox-restart-waybar
-    Archeox-restart-swayosd
+    archeox-restart-waybar
+    archeox-restart-swayosd
 
     if pgrep -x ghostty; then
       notify-send -u low "    You must restart Ghostty to see font change"
@@ -45,11 +45,11 @@ if [[ -n $font_name ]]; then
       notify-send -u low "    You must restart Foot to see font change"
     fi
 
-    Archeox-hook font-set "$font_name"
+    archeox-hook font-set "$font_name"
   else
     echo "Font '$font_name' not found."
     exit 1
   fi
 else
-  echo "Usage: Archeox-font-set <font-name>"
+  echo "Usage: archeox-font-set <font-name>"
 fi

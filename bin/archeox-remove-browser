@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Archeox:summary=Remove a supported browser and clean up Archeox browser defaults
-# Archeox:args=<chrome|brave|brave-origin|edge|firefox|zen>
-# Archeox:examples=Archeox remove browser firefox | Archeox remove browser brave
-# Archeox:requires-sudo=true
+# archeox:summary=Remove a supported browser and clean up archeox browser defaults
+# archeox:args=<chrome|brave|brave-origin|edge|firefox|zen>
+# archeox:examples=archeox remove browser firefox | archeox remove browser brave
+# archeox:requires-sudo=true
 
 set_fallback_default_browser() {
   local current_browser
@@ -13,7 +13,7 @@ set_fallback_default_browser() {
     return
   fi
 
-  if Archeox-cmd-present chromium; then
+  if archeox-cmd-present chromium; then
     xdg-settings set default-web-browser chromium.desktop
     xdg-mime default chromium.desktop x-scheme-handler/http
     xdg-mime default chromium.desktop x-scheme-handler/https
@@ -25,49 +25,49 @@ case $1 in
 chrome)
   echo "Removing Chrome..."
   set_fallback_default_browser google-chrome.desktop
-  Archeox-pkg-drop google-chrome
+  archeox-pkg-drop google-chrome
   rm -f ~/.config/chrome-flags.conf
   sudo rm -f /etc/opt/chrome/policies/managed/color.json
   ;;
 edge)
   echo "Removing Edge..."
   set_fallback_default_browser microsoft-edge.desktop
-  Archeox-pkg-drop microsoft-edge-stable-bin
+  archeox-pkg-drop microsoft-edge-stable-bin
   rm -f ~/.config/microsoft-edge-stable-flags.conf
   sudo rm -f /etc/opt/edge/policies/managed/color.json
   ;;
 brave)
   echo "Removing Brave..."
   set_fallback_default_browser brave-browser.desktop
-  Archeox-pkg-drop brave-bin
+  archeox-pkg-drop brave-bin
   rm -f ~/.config/brave-flags.conf
 
-  if Archeox-pkg-missing brave-origin-beta-bin; then
+  if archeox-pkg-missing brave-origin-beta-bin; then
     sudo rm -rf /etc/brave
   fi
   ;;
 brave-origin)
   echo "Removing Brave Origin..."
   set_fallback_default_browser brave-origin-beta.desktop
-  Archeox-pkg-drop brave-origin-beta-bin
+  archeox-pkg-drop brave-origin-beta-bin
   rm -f ~/.config/brave-origin-beta-flags.conf
 
-  if Archeox-pkg-missing brave-bin; then
+  if archeox-pkg-missing brave-bin; then
     sudo rm -rf /etc/brave
   fi
   ;;
 firefox)
   echo "Removing Firefox..."
   set_fallback_default_browser firefox.desktop
-  Archeox-pkg-drop firefox
+  archeox-pkg-drop firefox
   ;;
 zen)
   echo "Removing Zen..."
   set_fallback_default_browser zen.desktop
-  Archeox-pkg-drop zen-browser-bin
+  archeox-pkg-drop zen-browser-bin
   ;;
 *)
-  echo "Usage: Archeox-remove-browser <chrome|brave|brave-origin|edge|firefox|zen>"
+  echo "Usage: archeox-remove-browser <chrome|brave|brave-origin|edge|firefox|zen>"
   exit 1
   ;;
 esac

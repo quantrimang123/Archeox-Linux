@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Archeox:summary=Create a desktop launcher for a terminal UI app
-# Archeox:args=[name command window-style icon-url]
+# archeox:summary=Create a desktop launcher for a terminal UI app
+# archeox:args=[name command window-style icon-url]
 
 set -e
 

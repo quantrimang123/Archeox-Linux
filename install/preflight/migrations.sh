@@ -1,6 +1,6 @@
-Archeox_MIGRATIONS_STATE_PATH=~/.local/state/Archeox/migrations
-mkdir -p $Archeox_MIGRATIONS_STATE_PATH
+archeox_MIGRATIONS_STATE_PATH=~/.local/state/archeox/migrations
+mkdir -p $archeox_MIGRATIONS_STATE_PATH
 
-for file in ~/.local/share/Archeox/migrations/*.sh; do
-  touch "$Archeox_MIGRATIONS_STATE_PATH/$(basename "$file")"
+for file in ~/.local/share/archeox/migrations/*.sh; do
+  touch "$archeox_MIGRATIONS_STATE_PATH/$(basename "$file")"
 done

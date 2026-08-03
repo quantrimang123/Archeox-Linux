@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Archeox:summary=Remove all TUIs installed via Archeox-tui-install.
+# archeox:summary=Remove all TUIs installed via archeox-tui-install.
 
 set -e
 

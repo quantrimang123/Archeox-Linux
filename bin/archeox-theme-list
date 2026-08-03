@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Archeox:summary=List available themes
-# Archeox:examples=Archeox theme list | Archeox theme set "Tokyo Night"
+# archeox:summary=List available themes
+# archeox:examples=archeox theme list | archeox theme set "Tokyo Night"
 
 {
-  find ~/.config/Archeox/themes/ -mindepth 1 -maxdepth 1 \( -type d -o -type l \) -printf '%f\n'
-  find "$Archeox_PATH/themes/" -mindepth 1 -maxdepth 1 -type d -printf '%f\n'
+  find ~/.config/archeox/themes/ -mindepth 1 -maxdepth 1 \( -type d -o -type l \) -printf '%f\n'
+  find "$archeox_PATH/themes/" -mindepth 1 -maxdepth 1 -type d -printf '%f\n'
 } | sort -u | while read -r name; do
   echo "$name" | sed -E 's/(^|-)([a-z])/\1\u\2/g; s/-/ /g'
 done

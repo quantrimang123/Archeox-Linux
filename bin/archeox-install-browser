@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Archeox:summary=Install a supported browser
-# Archeox:args=<chrome|brave|brave-origin|edge|firefox|zen>
-# Archeox:examples=Archeox install browser firefox | Archeox install browser brave
+# archeox:summary=Install a supported browser
+# archeox:args=<chrome|brave|brave-origin|edge|firefox|zen>
+# archeox:examples=archeox install browser firefox | archeox install browser brave
 
 setup_policy_directory() {
   sudo mkdir -p "$1"
@@ -16,63 +16,63 @@ announce_browser_installed() {
 
 copy_chromium_flags() {
   mkdir -p ~/.config
-  cp -f "${Archeox_PATH:-$HOME/.local/share/Archeox}/config/chromium-flags.conf" "$1"
+  cp -f "${archeox_PATH:-$HOME/.local/share/archeox}/config/chromium-flags.conf" "$1"
 }
 
 setup_firefox_preferences() {
   local distribution_dir="$1"
 
   setup_policy_directory "$distribution_dir"
-  sudo cp -f "$Archeox_PATH/default/firefox/policies.json" "$distribution_dir/policies.json"
+  sudo cp -f "$archeox_PATH/default/firefox/policies.json" "$distribution_dir/policies.json"
 }
 
 setup_firefox_wayland() {
   mkdir -p ~/.config/environment.d
-  echo "MOZ_ENABLE_WAYLAND=1" > ~/.config/environment.d/Archeox-firefox-wayland.conf
+  echo "MOZ_ENABLE_WAYLAND=1" > ~/.config/environment.d/archeox-firefox-wayland.conf
 }
 
 case $1 in
 chrome)
   echo "Installing Chrome..."
-  Archeox-pkg-aur-add google-chrome || exit 1
+  archeox-pkg-aur-add google-chrome || exit 1
 
   setup_policy_directory /etc/opt/chrome/policies/managed
   copy_chromium_flags ~/.config/chrome-flags.conf
-  Archeox-theme-set-browser
+  archeox-theme-set-browser
   announce_browser_installed "Chrome"
   ;;
 edge)
   echo "Installing Edge..."
-  Archeox-pkg-aur-add microsoft-edge-stable-bin || exit 1
+  archeox-pkg-aur-add microsoft-edge-stable-bin || exit 1
 
   setup_policy_directory /etc/opt/edge/policies/managed
   copy_chromium_flags ~/.config/microsoft-edge-stable-flags.conf
-  Archeox-theme-set-browser
+  archeox-theme-set-browser
   announce_browser_installed "Edge"
   ;;
 brave)
   echo "Installing Brave..."
-  Archeox-pkg-aur-add brave-bin || exit 1
+  archeox-pkg-aur-add brave-bin || exit 1
 
   setup_policy_directory /etc/brave/policies/managed
   copy_chromium_flags ~/.config/brave-flags.conf
-  Archeox-theme-set-browser
+  archeox-theme-set-browser
   announce_browser_installed "Brave"
   ;;
 brave-origin)
   echo "Installing Brave Origin..."
-  Archeox-pkg-aur-add brave-origin-beta-bin || exit 1
+  archeox-pkg-aur-add brave-origin-beta-bin || exit 1
 
   setup_policy_directory /etc/brave/policies/managed
   mkdir -p ~/.config
   # FIXME: Use normal chromium flags when Brave Origin wrapper has been fixed
-  echo "--load-extension=~/.local/share/Archeox/default/chromium/extensions/copy-url" > ~/.config/brave-origin-beta-flags.conf
-  Archeox-theme-set-browser
+  echo "--load-extension=~/.local/share/archeox/default/chromium/extensions/copy-url" > ~/.config/brave-origin-beta-flags.conf
+  archeox-theme-set-browser
   announce_browser_installed "Brave Origin"
   ;;
 firefox)
   echo "Installing Firefox..."
-  Archeox-pkg-add firefox || exit 1
+  archeox-pkg-add firefox || exit 1
 
   setup_firefox_preferences /usr/lib/firefox/distribution
   setup_firefox_wayland
@@ -80,14 +80,14 @@ firefox)
   ;;
 zen)
   echo "Installing Zen..."
-  Archeox-pkg-aur-add zen-browser-bin || exit 1
+  archeox-pkg-aur-add zen-browser-bin || exit 1
 
   setup_firefox_preferences /opt/zen-browser/distribution
   setup_firefox_wayland
   announce_browser_installed "Zen"
   ;;
 *)
-  echo "Usage: Archeox-install-browser <chrome|brave|brave-origin|edge|firefox|zen>"
+  echo "Usage: archeox-install-browser <chrome|brave|brave-origin|edge|firefox|zen>"
   exit 1
   ;;
 esac

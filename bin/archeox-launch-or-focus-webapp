@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Archeox:summary=Launch or focus on a given web app identified by the window-pattern.
-# Archeox:args=<window-pattern> <url-and-flags...>
+# archeox:summary=Launch or focus on a given web app identified by the window-pattern.
+# archeox:args=<window-pattern> <url-and-flags...>
 
 if (($# == 0)); then
-  echo "Usage: Archeox-launch-or-focus-webapp [window-pattern] [url-and-flags...]"
+  echo "Usage: archeox-launch-or-focus-webapp [window-pattern] [url-and-flags...]"
   exit 1
 fi
 
 WINDOW_PATTERN="$1"
 shift
-LAUNCH_COMMAND="Archeox-launch-webapp $@"
+LAUNCH_COMMAND="archeox-launch-webapp $@"
 
-exec Archeox-launch-or-focus "$WINDOW_PATTERN" "$LAUNCH_COMMAND"
+exec archeox-launch-or-focus "$WINDOW_PATTERN" "$LAUNCH_COMMAND"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Archeox:summary=List available monospace fonts
-# Archeox:examples=Archeox font list | Archeox font set "CaskaydiaMono Nerd Font"
+# archeox:summary=List available monospace fonts
+# archeox:examples=archeox font list | archeox font set "CaskaydiaMono Nerd Font"
 
-fc-list :spacing=100 -f "%{family[0]}\n" | grep -v -i -E 'emoji|signwriting|Archeox' | sort -u
+fc-list :spacing=100 -f "%{family[0]}\n" | grep -v -i -E 'emoji|signwriting|archeox' | sort -u

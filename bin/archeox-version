@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# Archeox:summary=Print the installed Archeox version
+# archeox:summary=Print the installed archeox version
 
-cat $Archeox_PATH/version
+cat $archeox_PATH/version

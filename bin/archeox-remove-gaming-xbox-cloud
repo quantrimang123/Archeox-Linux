@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Archeox:summary=Remove the Xbox Cloud Gaming web app.
+# archeox:summary=Remove the Xbox Cloud Gaming web app.
 
 set -e
 
-Archeox-webapp-remove "Xbox Cloud Gaming"
+archeox-webapp-remove "Xbox Cloud Gaming"

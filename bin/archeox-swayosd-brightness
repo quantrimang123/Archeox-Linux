@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# Archeox:summary=Display brightness level using SwayOSD on the current monitor.
-# Archeox:args=<0-100>
-# Archeox:examples=Archeox swayosd brightness 0 | Archeox swayosd brightness 50 | Archeox swayosd brightness 100
+# archeox:summary=Display brightness level using SwayOSD on the current monitor.
+# archeox:args=<0-100>
+# archeox:examples=archeox swayosd brightness 0 | archeox swayosd brightness 50 | archeox swayosd brightness 100
 
 percent="$1"
 
 progress="$(awk -v p="$percent" 'BEGIN{printf "%.2f", p/100}')"
 [[ $progress == "0.00" ]] && progress="0.01"
 
-Archeox-swayosd-client \
+archeox-swayosd-client \
   --custom-icon display-brightness-symbolic \
   --custom-progress "$progress" \
   --custom-progress-text "${percent}%"

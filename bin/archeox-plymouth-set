@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Archeox:summary=Set the Plymouth boot theme colors and logo
-# Archeox:args=<background-hex> <text-hex> <path-to-logo.png>
-# Archeox:examples=Archeox plymouth set '#1d2021' '#ebdbb2' ~/.config/Archeox/current/theme/plymouth/logo.png
-# Archeox:requires-sudo=true
+# archeox:summary=Set the Plymouth boot theme colors and logo
+# archeox:args=<background-hex> <text-hex> <path-to-logo.png>
+# archeox:examples=archeox plymouth set '#1d2021' '#ebdbb2' ~/.config/archeox/current/theme/plymouth/logo.png
+# archeox:requires-sudo=true
 
 # Configure the Plymouth boot theme with a custom background color, text color, and logo.
 # Stages the change in a temp dir, then commits the staged files to /usr/share and
@@ -11,7 +11,7 @@
 # screen) with the same colors and logo so boot/login stay visually unified.
 
 if [[ $# -ne 3 ]]; then
-  echo "Usage: Archeox-plymouth-set <background-hex> <text-hex> <path-to-logo.png>" >&2
+  echo "Usage: archeox-plymouth-set <background-hex> <text-hex> <path-to-logo.png>" >&2
   exit 1
 fi
 
@@ -38,34 +38,34 @@ bg_r=$(awk -v n=$((16#${bg_hex:0:2})) 'BEGIN{printf "%.3f", n/255}')
 bg_g=$(awk -v n=$((16#${bg_hex:2:2})) 'BEGIN{printf "%.3f", n/255}')
 bg_b=$(awk -v n=$((16#${bg_hex:4:2})) 'BEGIN{printf "%.3f", n/255}')
 
-theme_dir="/usr/share/plymouth/themes/Archeox"
+theme_dir="/usr/share/plymouth/themes/archeox"
 staging_dir=$(mktemp -d)
 trap 'rm -rf "$staging_dir"' EXIT
 
-find ~/.local/share/Archeox/default/plymouth -maxdepth 1 -type f -exec cp -t "$staging_dir/" {} +
+find ~/.local/share/archeox/default/plymouth -maxdepth 1 -type f -exec cp -t "$staging_dir/" {} +
 cp "$logo_path" "$staging_dir/logo.png"
 
 sed -i \
   -e "s/^Window.SetBackgroundTopColor.*/Window.SetBackgroundTopColor($bg_r, $bg_g, $bg_b);/" \
   -e "s/^Window.SetBackgroundBottomColor.*/Window.SetBackgroundBottomColor($bg_r, $bg_g, $bg_b);/" \
-  "$staging_dir/Archeox.script"
+  "$staging_dir/archeox.script"
 
 for asset in bullet.png entry.png lock.png progress_bar.png; do
   magick "$staging_dir/$asset" -channel RGB +level-colors "#$text_hex","#$text_hex" "$staging_dir/$asset"
 done
 
 sudo cp -a "$staging_dir/." "$theme_dir/"
-sudo plymouth-set-default-theme Archeox
+sudo plymouth-set-default-theme archeox
 
-if Archeox-cmd-present limine-mkinitcpio; then
+if archeox-cmd-present limine-mkinitcpio; then
   sudo limine-mkinitcpio
 else
   sudo mkinitcpio -P
 fi
 
 # Sync the SDDM login screen with the same colors and logo.
-sddm_dir="/usr/share/sddm/themes/Archeox"
-sddm_template="$HOME/.local/share/Archeox/default/sddm/Archeox/Main.qml"
+sddm_dir="/usr/share/sddm/themes/archeox"
+sddm_template="$HOME/.local/share/archeox/default/sddm/archeox/Main.qml"
 
 sed \
   -e "s/#1a1b26/#$bg_hex/g" \

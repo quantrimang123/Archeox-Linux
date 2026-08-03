@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# Archeox:summary=Launch the Archeox audio controls TUI (provided by wiremix).
+# archeox:summary=Launch the archeox audio controls TUI (provided by wiremix).
 
-Archeox-launch-or-focus-tui wiremix
+archeox-launch-or-focus-tui wiremix

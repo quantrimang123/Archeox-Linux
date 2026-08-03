@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# Archeox:summary=Restore the default Archeox Plymouth boot theme and SDDM login screen
-# Archeox:requires-sudo=true
+# archeox:summary=Restore the default archeox Plymouth boot theme and SDDM login screen
+# archeox:requires-sudo=true
 
-theme_dir="/usr/share/plymouth/themes/Archeox"
+theme_dir="/usr/share/plymouth/themes/archeox"
 
-sudo find ~/.local/share/Archeox/default/plymouth -maxdepth 1 -type f -exec cp -t "$theme_dir/" {} +
-sudo plymouth-set-default-theme Archeox
+sudo find ~/.local/share/archeox/default/plymouth -maxdepth 1 -type f -exec cp -t "$theme_dir/" {} +
+sudo plymouth-set-default-theme archeox
 
-if Archeox-cmd-present limine-mkinitcpio; then
+if archeox-cmd-present limine-mkinitcpio; then
   sudo limine-mkinitcpio
 else
   sudo mkinitcpio -P
 fi
 
-Archeox-refresh-sddm
+archeox-refresh-sddm

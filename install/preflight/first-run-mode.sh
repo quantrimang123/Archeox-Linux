@@ -1,6 +1,6 @@
 # Set first-run mode marker so we can install stuff post-installation
-mkdir -p ~/.local/state/Archeox
-touch ~/.local/state/Archeox/first-run.mode
+mkdir -p ~/.local/state/archeox
+touch ~/.local/state/archeox/first-run.mode
 
 # Setup sudo-less access for first-run
 sudo tee /etc/sudoers.d/first-run >/dev/null <<EOF
