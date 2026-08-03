@@ -57,5 +57,5 @@ jobs:
           tag_name: ${{ env.DATE }}
           body_path: CHECKSUMS.txt
           files: |
-            ARCHEOXLinux-baseline-${{ env.DATE }}-x86_64.iso
+            ARCHEOX Linux-baseline-${{ env.DATE }}-x86_64.iso
             CHECKSUMS.txt
