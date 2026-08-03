@@ -13,7 +13,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: "ARCHEOX"
-          replace: "ARCHEOX"
+          replace: "Archeox"
        
       - name: Set up Rust toolchain
         uses: dtolnay/rust-toolchain@stable
