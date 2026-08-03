@@ -19,8 +19,9 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
 
       - name: Install rnr
-        run: cargo install rnr
-
+        run: |
+            cargo install rnr
+            rnr --help
       - name: Run rnr to rename files
         run: rnr -f 'omarchy' 'archeox' ./*
       - name: Push changes
