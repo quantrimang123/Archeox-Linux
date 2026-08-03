@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-iso_name="archeoxLinux-baseline"
+iso_name="Archeox Linux-baseline"
 iso_label="ARCH_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
-iso_publisher="archeox Linux <hd070812@gmail.com>"
-iso_application="archeox Linux baseline"
+iso_publisher="Archeox Linux <hd070812@gmail.com>"
+iso_application="Archeox Linux baseline"
 iso_version="live"
 iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)"
 install_dir="arch"
