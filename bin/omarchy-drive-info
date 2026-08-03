@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ILV:summary=Print drive information such as size, model, and mount details
-# ILV:args=<drive>
+# ARCHEOX:summary=Print drive information such as size, model, and mount details
+# ARCHEOX:args=<drive>
 
 if (($# == 0)); then
-  echo "Usage: ILV-drive-info [/dev/drive]"
+  echo "Usage: ARCHEOX-drive-info [/dev/drive]"
   exit 1
 else
   drive="$1"

@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# ILV:summary=Lock the computer and turn off the display
-# ILV:group=system
-# ILV:name=lock
-# ILV:examples=ILV system lock
+# ARCHEOX:summary=Lock the computer and turn off the display
+# ARCHEOX:group=system
+# ARCHEOX:name=lock
+# ARCHEOX:examples=ARCHEOX system lock
 
 if ! pidof hyprlock >/dev/null; then
   (
     hyprlock
-    ILV-system-wake
+    ARCHEOX-system-wake
   ) &
 fi
 
@@ -21,13 +21,13 @@ if pgrep -x "1password" >/dev/null; then
 fi
 
 # Avoid running screensaver when locked
-pkill -f org.ILV.screensaver
+pkill -f org.ARCHEOX.screensaver
 
-if [[ ${ILV_LOCK_ONLY:-false} != "true" ]]; then
+if [[ ${ARCHEOX_LOCK_ONLY:-false} != "true" ]]; then
   (
     sleep 3
     pidof hyprlock >/dev/null || exit 0
-    ILV-brightness-keyboard off
-    ILV-brightness-display off
+    ARCHEOX-brightness-keyboard off
+    ARCHEOX-brightness-display off
   ) &
 fi

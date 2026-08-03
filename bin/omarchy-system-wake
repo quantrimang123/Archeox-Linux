@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# ILV:summary=Wake displays and restore brightness after idle
-# ILV:group=system
-# ILV:name=wake
-# ILV:examples=ILV system wake
+# ARCHEOX:summary=Wake displays and restore brightness after idle
+# ARCHEOX:group=system
+# ARCHEOX:name=wake
+# ARCHEOX:examples=ARCHEOX system wake
 
-ILV-brightness-display on
-ILV-brightness-keyboard restore
+ARCHEOX-brightness-display on
+ARCHEOX-brightness-keyboard restore

@@ -1,6 +1,6 @@
-# Starting the installer with ILV_CHROOT_INSTALL=1 will put it into chroot mode
+# Starting the installer with ARCHEOX_CHROOT_INSTALL=1 will put it into chroot mode
 chrootable_systemctl_enable() {
-  if [[ -n ${ILV_CHROOT_INSTALL:-} ]]; then
+  if [[ -n ${ARCHEOX_CHROOT_INSTALL:-} ]]; then
     sudo systemctl enable $1
   else
     sudo systemctl enable --now $1

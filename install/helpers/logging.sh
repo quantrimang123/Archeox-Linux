@@ -16,7 +16,7 @@ start_log_output() {
 
     while true; do
       # Read the last N lines into an array
-      mapfile -t current_lines < <(tail -n $log_lines "$ILV_INSTALL_LOG_FILE" 2>/dev/null)
+      mapfile -t current_lines < <(tail -n $log_lines "$ARCHEOX_INSTALL_LOG_FILE" 2>/dev/null)
 
       # Build complete output buffer with escape sequences
       output=""
@@ -53,12 +53,12 @@ stop_log_output() {
 }
 
 start_install_log() {
-  sudo touch "$ILV_INSTALL_LOG_FILE"
-  sudo chmod 666 "$ILV_INSTALL_LOG_FILE"
+  sudo touch "$ARCHEOX_INSTALL_LOG_FILE"
+  sudo chmod 666 "$ARCHEOX_INSTALL_LOG_FILE"
 
-  export ILV_START_TIME=$(date '+%Y-%m-%d %H:%M:%S')
+  export ARCHEOX_START_TIME=$(date '+%Y-%m-%d %H:%M:%S')
 
-  echo "=== ILV Installation Started: $ILV_START_TIME ===" >>"$ILV_INSTALL_LOG_FILE"
+  echo "=== ARCHEOX Installation Started: $ARCHEOX_START_TIME ===" >>"$ARCHEOX_INSTALL_LOG_FILE"
   start_log_output
 }
 
@@ -66,11 +66,11 @@ stop_install_log() {
   stop_log_output
   show_cursor
 
-  if [[ -n ${ILV_INSTALL_LOG_FILE:-} ]]; then
-    ILV_END_TIME=$(date '+%Y-%m-%d %H:%M:%S')
-    echo "=== ILV Installation Completed: $ILV_END_TIME ===" >>"$ILV_INSTALL_LOG_FILE"
-    echo "" >>"$ILV_INSTALL_LOG_FILE"
-    echo "=== Installation Time Summary ===" >>"$ILV_INSTALL_LOG_FILE"
+  if [[ -n ${ARCHEOX_INSTALL_LOG_FILE:-} ]]; then
+    ARCHEOX_END_TIME=$(date '+%Y-%m-%d %H:%M:%S')
+    echo "=== ARCHEOX Installation Completed: $ARCHEOX_END_TIME ===" >>"$ARCHEOX_INSTALL_LOG_FILE"
+    echo "" >>"$ARCHEOX_INSTALL_LOG_FILE"
+    echo "=== Installation Time Summary ===" >>"$ARCHEOX_INSTALL_LOG_FILE"
 
     if [[ -f "/var/log/archinstall/install.log" ]]; then
       ARCHINSTALL_START=$(grep -m1 '^\[' /var/log/archinstall/install.log 2>/dev/null | sed 's/^\[\([^]]*\)\].*/\1/' || true)
@@ -84,30 +84,30 @@ stop_install_log() {
         ARCH_MINS=$((ARCH_DURATION / 60))
         ARCH_SECS=$((ARCH_DURATION % 60))
 
-        echo "Archinstall: ${ARCH_MINS}m ${ARCH_SECS}s" >>"$ILV_INSTALL_LOG_FILE"
+        echo "Archinstall: ${ARCH_MINS}m ${ARCH_SECS}s" >>"$ARCHEOX_INSTALL_LOG_FILE"
       fi
     fi
 
-    if [[ -n $ILV_START_TIME ]]; then
-      ILV_START_EPOCH=$(date -d "$ILV_START_TIME" +%s)
-      ILV_END_EPOCH=$(date -d "$ILV_END_TIME" +%s)
-      ILV_DURATION=$((ILV_END_EPOCH - ILV_START_EPOCH))
+    if [[ -n $ARCHEOX_START_TIME ]]; then
+      ARCHEOX_START_EPOCH=$(date -d "$ARCHEOX_START_TIME" +%s)
+      ARCHEOX_END_EPOCH=$(date -d "$ARCHEOX_END_TIME" +%s)
+      ARCHEOX_DURATION=$((ARCHEOX_END_EPOCH - ARCHEOX_START_EPOCH))
 
-      ILV_MINS=$((ILV_DURATION / 60))
-      ILV_SECS=$((ILV_DURATION % 60))
+      ARCHEOX_MINS=$((ARCHEOX_DURATION / 60))
+      ARCHEOX_SECS=$((ARCHEOX_DURATION % 60))
 
-      echo "ILV:     ${ILV_MINS}m ${ILV_SECS}s" >>"$ILV_INSTALL_LOG_FILE"
+      echo "ARCHEOX:     ${ARCHEOX_MINS}m ${ARCHEOX_SECS}s" >>"$ARCHEOX_INSTALL_LOG_FILE"
 
       if [[ -n $ARCH_DURATION ]]; then
-        TOTAL_DURATION=$((ARCH_DURATION + ILV_DURATION))
+        TOTAL_DURATION=$((ARCH_DURATION + ARCHEOX_DURATION))
         TOTAL_MINS=$((TOTAL_DURATION / 60))
         TOTAL_SECS=$((TOTAL_DURATION % 60))
-        echo "Total:       ${TOTAL_MINS}m ${TOTAL_SECS}s" >>"$ILV_INSTALL_LOG_FILE"
+        echo "Total:       ${TOTAL_MINS}m ${TOTAL_SECS}s" >>"$ARCHEOX_INSTALL_LOG_FILE"
       fi
     fi
-    echo "=================================" >>"$ILV_INSTALL_LOG_FILE"
+    echo "=================================" >>"$ARCHEOX_INSTALL_LOG_FILE"
 
-    echo "Rebooting system..." >>"$ILV_INSTALL_LOG_FILE"
+    echo "Rebooting system..." >>"$ARCHEOX_INSTALL_LOG_FILE"
   fi
 }
 
@@ -116,18 +116,18 @@ run_logged() {
 
   export CURRENT_SCRIPT="$script"
 
-  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting: $script" >>"$ILV_INSTALL_LOG_FILE"
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Starting: $script" >>"$ARCHEOX_INSTALL_LOG_FILE"
 
   # Use bash -c to create a clean subshell
-  bash -c "source '$script'" </dev/null >>"$ILV_INSTALL_LOG_FILE" 2>&1
+  bash -c "source '$script'" </dev/null >>"$ARCHEOX_INSTALL_LOG_FILE" 2>&1
 
   local exit_code=$?
 
   if (( exit_code == 0 )); then
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Completed: $script" >>"$ILV_INSTALL_LOG_FILE"
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Completed: $script" >>"$ARCHEOX_INSTALL_LOG_FILE"
     unset CURRENT_SCRIPT
   else
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Failed: $script (exit code: $exit_code)" >>"$ILV_INSTALL_LOG_FILE"
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] Failed: $script (exit code: $exit_code)" >>"$ARCHEOX_INSTALL_LOG_FILE"
   fi
 
   return $exit_code

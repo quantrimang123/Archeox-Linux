@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ILV:summary=Install a supported browser
-# ILV:args=<chrome|brave|brave-origin|edge|firefox|zen>
-# ILV:examples=ILV install browser firefox | ILV install browser brave
+# ARCHEOX:summary=Install a supported browser
+# ARCHEOX:args=<chrome|brave|brave-origin|edge|firefox|zen>
+# ARCHEOX:examples=ARCHEOX install browser firefox | ARCHEOX install browser brave
 
 setup_policy_directory() {
   sudo mkdir -p "$1"
@@ -16,63 +16,63 @@ announce_browser_installed() {
 
 copy_chromium_flags() {
   mkdir -p ~/.config
-  cp -f "${ILV_PATH:-$HOME/.local/share/ILV}/config/chromium-flags.conf" "$1"
+  cp -f "${ARCHEOX_PATH:-$HOME/.local/share/ARCHEOX}/config/chromium-flags.conf" "$1"
 }
 
 setup_firefox_preferences() {
   local distribution_dir="$1"
 
   setup_policy_directory "$distribution_dir"
-  sudo cp -f "$ILV_PATH/default/firefox/policies.json" "$distribution_dir/policies.json"
+  sudo cp -f "$ARCHEOX_PATH/default/firefox/policies.json" "$distribution_dir/policies.json"
 }
 
 setup_firefox_wayland() {
   mkdir -p ~/.config/environment.d
-  echo "MOZ_ENABLE_WAYLAND=1" > ~/.config/environment.d/ILV-firefox-wayland.conf
+  echo "MOZ_ENABLE_WAYLAND=1" > ~/.config/environment.d/ARCHEOX-firefox-wayland.conf
 }
 
 case $1 in
 chrome)
   echo "Installing Chrome..."
-  ILV-pkg-aur-add google-chrome || exit 1
+  ARCHEOX-pkg-aur-add google-chrome || exit 1
 
   setup_policy_directory /etc/opt/chrome/policies/managed
   copy_chromium_flags ~/.config/chrome-flags.conf
-  ILV-theme-set-browser
+  ARCHEOX-theme-set-browser
   announce_browser_installed "Chrome"
   ;;
 edge)
   echo "Installing Edge..."
-  ILV-pkg-aur-add microsoft-edge-stable-bin || exit 1
+  ARCHEOX-pkg-aur-add microsoft-edge-stable-bin || exit 1
 
   setup_policy_directory /etc/opt/edge/policies/managed
   copy_chromium_flags ~/.config/microsoft-edge-stable-flags.conf
-  ILV-theme-set-browser
+  ARCHEOX-theme-set-browser
   announce_browser_installed "Edge"
   ;;
 brave)
   echo "Installing Brave..."
-  ILV-pkg-aur-add brave-bin || exit 1
+  ARCHEOX-pkg-aur-add brave-bin || exit 1
 
   setup_policy_directory /etc/brave/policies/managed
   copy_chromium_flags ~/.config/brave-flags.conf
-  ILV-theme-set-browser
+  ARCHEOX-theme-set-browser
   announce_browser_installed "Brave"
   ;;
 brave-origin)
   echo "Installing Brave Origin..."
-  ILV-pkg-aur-add brave-origin-beta-bin || exit 1
+  ARCHEOX-pkg-aur-add brave-origin-beta-bin || exit 1
 
   setup_policy_directory /etc/brave/policies/managed
   mkdir -p ~/.config
   # FIXME: Use normal chromium flags when Brave Origin wrapper has been fixed
-  echo "--load-extension=~/.local/share/ILV/default/chromium/extensions/copy-url" > ~/.config/brave-origin-beta-flags.conf
-  ILV-theme-set-browser
+  echo "--load-extension=~/.local/share/ARCHEOX/default/chromium/extensions/copy-url" > ~/.config/brave-origin-beta-flags.conf
+  ARCHEOX-theme-set-browser
   announce_browser_installed "Brave Origin"
   ;;
 firefox)
   echo "Installing Firefox..."
-  ILV-pkg-add firefox || exit 1
+  ARCHEOX-pkg-add firefox || exit 1
 
   setup_firefox_preferences /usr/lib/firefox/distribution
   setup_firefox_wayland
@@ -80,14 +80,14 @@ firefox)
   ;;
 zen)
   echo "Installing Zen..."
-  ILV-pkg-aur-add zen-browser-bin || exit 1
+  ARCHEOX-pkg-aur-add zen-browser-bin || exit 1
 
   setup_firefox_preferences /opt/zen-browser/distribution
   setup_firefox_wayland
   announce_browser_installed "Zen"
   ;;
 *)
-  echo "Usage: ILV-install-browser <chrome|brave|brave-origin|edge|firefox|zen>"
+  echo "Usage: ARCHEOX-install-browser <chrome|brave|brave-origin|edge|firefox|zen>"
   exit 1
   ;;
 esac

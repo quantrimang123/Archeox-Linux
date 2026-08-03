@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Check whether any required commands are missing
+# ARCHEOX:summary=Check whether any required commands are missing
 
 for cmd in "$@"; do
   if ! command -v "$cmd" &>/dev/null; then

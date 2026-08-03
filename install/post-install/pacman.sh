@@ -1,6 +1,6 @@
 # Configure pacman
-sudo cp -f ~/.local/share/ILV/default/pacman/pacman-${ILV_MIRROR:-stable}.conf /etc/pacman.conf
-sudo cp -f ~/.local/share/ILV/default/pacman/mirrorlist-${ILV_MIRROR:-stable} /etc/pacman.d/mirrorlist
+sudo cp -f ~/.local/share/ARCHEOX/default/pacman/pacman-${ARCHEOX_MIRROR:-stable}.conf /etc/pacman.conf
+sudo cp -f ~/.local/share/ARCHEOX/default/pacman/mirrorlist-${ARCHEOX_MIRROR:-stable} /etc/pacman.d/mirrorlist
 
 if lspci -nn | grep -q "106b:180[12]"; then
   cat <<EOF | sudo tee -a /etc/pacman.conf >/dev/null

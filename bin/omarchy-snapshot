@@ -1,26 +1,26 @@
 #!/bin/bash
 
-# ILV:summary=Create or restore system snapshots with snapper
-# ILV:args=<create|restore>
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Create or restore system snapshots with snapper
+# ARCHEOX:args=<create|restore>
+# ARCHEOX:requires-sudo=true
 
 set -e
 
 COMMAND="$1"
-ILV_PATH=${ILV_PATH:-$HOME/.local/share/ILV}
+ARCHEOX_PATH=${ARCHEOX_PATH:-$HOME/.local/share/ARCHEOX}
 
 if [[ -z $COMMAND ]]; then
-  echo "Usage: ILV-snapshot <create|restore>" >&2
+  echo "Usage: ARCHEOX-snapshot <create|restore>" >&2
   exit 1
 fi
 
 if ! command -v snapper &>/dev/null; then
-  exit 127 # ILV-update can use this to just ignore if snapper is not available
+  exit 127 # ARCHEOX-update can use this to just ignore if snapper is not available
 fi
 
 case "$COMMAND" in
 create)
-  DESC="$(ILV-version)"
+  DESC="$(ARCHEOX-version)"
 
   echo -e "\e[32mCreate system snapshot\e[0m"
 

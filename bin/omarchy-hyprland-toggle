@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ILV:summary=Toggle permanent Hyprland flags by copying them into a directory that's sourced entirely.
-# ILV:args=[--enabled-notification <text>] [--disabled-notification <text>] <flag-name>
+# ARCHEOX:summary=Toggle permanent Hyprland flags by copying them into a directory that's sourced entirely.
+# ARCHEOX:args=[--enabled-notification <text>] [--disabled-notification <text>] <flag-name>
 
 ENABLED_NOTIFICATION=""
 DISABLED_NOTIFICATION=""
@@ -15,8 +15,8 @@ while [[ $# -gt 1 ]]; do
 done
 
 FLAG_NAME="$1"
-FLAG="$HOME/.local/state/ILV/toggles/hypr/$FLAG_NAME.conf"
-FLAG_SOURCE="$ILV_PATH/default/hypr/toggles/$FLAG_NAME.conf"
+FLAG="$HOME/.local/state/ARCHEOX/toggles/hypr/$FLAG_NAME.conf"
+FLAG_SOURCE="$ARCHEOX_PATH/default/hypr/toggles/$FLAG_NAME.conf"
 
 if [[ -f $FLAG ]]; then
   rm $FLAG

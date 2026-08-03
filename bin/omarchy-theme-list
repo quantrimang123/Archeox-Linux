@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ILV:summary=List available themes
-# ILV:examples=ILV theme list | ILV theme set "Tokyo Night"
+# ARCHEOX:summary=List available themes
+# ARCHEOX:examples=ARCHEOX theme list | ARCHEOX theme set "Tokyo Night"
 
 {
-  find ~/.config/ILV/themes/ -mindepth 1 -maxdepth 1 \( -type d -o -type l \) -printf '%f\n'
-  find "$ILV_PATH/themes/" -mindepth 1 -maxdepth 1 -type d -printf '%f\n'
+  find ~/.config/ARCHEOX/themes/ -mindepth 1 -maxdepth 1 \( -type d -o -type l \) -printf '%f\n'
+  find "$ARCHEOX_PATH/themes/" -mindepth 1 -maxdepth 1 -type d -printf '%f\n'
 } | sort -u | while read -r name; do
   echo "$name" | sed -E 's/(^|-)([a-z])/\1\u\2/g; s/-/ /g'
 done

@@ -1,22 +1,22 @@
 #!/bin/bash
 
-# ILV:summary=Manage persistent state files for ILV toggles and settings.
-# ILV:args=<set|clear> <state-name-or-pattern>
-# ILV:hidden=true
+# ARCHEOX:summary=Manage persistent state files for ARCHEOX toggles and settings.
+# ARCHEOX:args=<set|clear> <state-name-or-pattern>
+# ARCHEOX:hidden=true
 
-STATE_DIR="$HOME/.local/state/ILV"
+STATE_DIR="$HOME/.local/state/ARCHEOX"
 mkdir -p "$STATE_DIR"
 
 COMMAND="$1"
 STATE_NAME="$2"
 
 if [[ -z $COMMAND ]]; then
-  echo "Usage: ILV-state <set|clear> <state-name-or-pattern>"
+  echo "Usage: ARCHEOX-state <set|clear> <state-name-or-pattern>"
   exit 1
 fi
 
 if [[ -z $STATE_NAME ]]; then
-  echo "Usage: ILV-state $COMMAND <state-name>"
+  echo "Usage: ARCHEOX-state $COMMAND <state-name>"
   exit 1
 fi
 

@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# ILV:summary=Send a desktop notification with ILV glyph and body spacing
-# ILV:args=<glyph> <headline> [description] [notify-send options]
-# ILV:examples=ILV notification send "󰔛" "Reminder" "5 minutes are up" -u critical
+# ARCHEOX:summary=Send a desktop notification with ARCHEOX glyph and body spacing
+# ARCHEOX:args=<glyph> <headline> [description] [notify-send options]
+# ARCHEOX:examples=ARCHEOX notification send "󰔛" "Reminder" "5 minutes are up" -u critical
 
 set -euo pipefail
 
 if (($# < 2)); then
-  echo "Usage: ILV-notification-send <glyph> <headline> [description] [notify-send options]"
+  echo "Usage: ARCHEOX-notification-send <glyph> <headline> [description] [notify-send options]"
   exit 1
 fi
 

@@ -1,10 +1,10 @@
 # Install Panther Lake kernel for Dell XPS Panther Lake systems
 # The linux-ptl kernel includes audio driver patches not yet in mainline.
 
-if ILV-hw-match "XPS" && ILV-hw-intel-ptl; then
+if ARCHEOX-hw-match "XPS" && ARCHEOX-hw-intel-ptl; then
   echo "Detected Dell XPS Panther Lake, installing PTL kernel..."
 
-  ILV-pkg-add linux-ptl linux-ptl-headers
+  ARCHEOX-pkg-add linux-ptl linux-ptl-headers
   for pkg in linux linux-headers; do
     sudo pacman -Rdd --noconfirm "$pkg" 2>/dev/null || true
   done

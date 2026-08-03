@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ILV:summary=Print the current ILV git branch
+# ARCHEOX:summary=Print the current ARCHEOX git branch
 
-echo $(git -C "$ILV_PATH" rev-parse --abbrev-ref HEAD)
+echo $(git -C "$ARCHEOX_PATH" rev-parse --abbrev-ref HEAD)

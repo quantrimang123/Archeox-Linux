@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ILV:summary=Launch the ILV audio controls TUI (provided by wiremix).
+# ARCHEOX:summary=Launch the ARCHEOX audio controls TUI (provided by wiremix).
 
-ILV-launch-or-focus-tui wiremix
+ARCHEOX-launch-or-focus-tui wiremix

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# ILV:summary=Refresh the current theme from its templates.
+# ARCHEOX:summary=Refresh the current theme from its templates.
 
-THEME_NAME_PATH="$HOME/.config/ILV/current/theme.name"
+THEME_NAME_PATH="$HOME/.config/ARCHEOX/current/theme.name"
 
 if [[ -f $THEME_NAME_PATH ]]; then
-  ILV_THEME_SKIP_BACKGROUND=1 ILV-theme-set "$(cat $THEME_NAME_PATH)"
+  ARCHEOX_THEME_SKIP_BACKGROUND=1 ARCHEOX-theme-set "$(cat $THEME_NAME_PATH)"
 fi

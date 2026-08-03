@@ -1,7 +1,7 @@
-ILV-npx-install @openai/codex codex
-ILV-npx-install @google/gemini-cli gemini
-ILV-npx-install @github/copilot copilot
-ILV-npx-install opencode-ai opencode
-ILV-npx-install playwright playwright-cli
-ILV-npx-install @earendil-works/pi-coding-agent pi
-ILV-npx-install @kitlangton/ghui ghui
+ARCHEOX-npx-install @openai/codex codex
+ARCHEOX-npx-install @google/gemini-cli gemini
+ARCHEOX-npx-install @github/copilot copilot
+ARCHEOX-npx-install opencode-ai opencode
+ARCHEOX-npx-install playwright playwright-cli
+ARCHEOX-npx-install @earendil-works/pi-coding-agent pi
+ARCHEOX-npx-install @kitlangton/ghui ghui

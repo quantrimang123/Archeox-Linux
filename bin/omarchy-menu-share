@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# ILV:summary=Share clipboard, files, or folders with LocalSend
-# ILV:group=share
-# ILV:name=
-# ILV:args=<clipboard|file|folder> [path...]
-# ILV:examples=ILV share clipboard | ILV share file ~/Downloads/example.txt
+# ARCHEOX:summary=Share clipboard, files, or folders with LocalSend
+# ARCHEOX:group=share
+# ARCHEOX:name=
+# ARCHEOX:args=<clipboard|file|folder> [path...]
+# ARCHEOX:examples=ARCHEOX share clipboard | ARCHEOX share file ~/Downloads/example.txt
 
 if (($# == 0)); then
-  echo "Usage: ILV-menu-share [clipboard|file|folder]"
+  echo "Usage: ARCHEOX-menu-share [clipboard|file|folder]"
   exit 1
 fi
 

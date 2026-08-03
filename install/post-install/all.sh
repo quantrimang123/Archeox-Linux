@@ -1,3 +1,3 @@
-run_logged $ILV_INSTALL/post-install/pacman.sh
-source $ILV_INSTALL/post-install/allow-reboot.sh
-source $ILV_INSTALL/post-install/finished.sh
+run_logged $ARCHEOX_INSTALL/post-install/pacman.sh
+source $ARCHEOX_INSTALL/post-install/allow-reboot.sh
+source $ARCHEOX_INSTALL/post-install/finished.sh

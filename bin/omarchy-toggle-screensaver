@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ILV:summary=Toggle screensaver availability
+# ARCHEOX:summary=Toggle screensaver availability
 
-ILV-toggle \
+ARCHEOX-toggle \
   --enabled-notification "󱄄   Screensaver disabled" \
   --disabled-notification "󱄄   Screensaver enabled" \
   screensaver-off

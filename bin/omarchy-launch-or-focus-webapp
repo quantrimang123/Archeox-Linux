@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# ILV:summary=Launch or focus on a given web app identified by the window-pattern.
-# ILV:args=<window-pattern> <url-and-flags...>
+# ARCHEOX:summary=Launch or focus on a given web app identified by the window-pattern.
+# ARCHEOX:args=<window-pattern> <url-and-flags...>
 
 if (($# == 0)); then
-  echo "Usage: ILV-launch-or-focus-webapp [window-pattern] [url-and-flags...]"
+  echo "Usage: ARCHEOX-launch-or-focus-webapp [window-pattern] [url-and-flags...]"
   exit 1
 fi
 
 WINDOW_PATTERN="$1"
 shift
-LAUNCH_COMMAND="ILV-launch-webapp $@"
+LAUNCH_COMMAND="ARCHEOX-launch-webapp $@"
 
-exec ILV-launch-or-focus "$WINDOW_PATTERN" "$LAUNCH_COMMAND"
+exec ARCHEOX-launch-or-focus "$WINDOW_PATTERN" "$LAUNCH_COMMAND"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Unblock and restart the bluetooth service.
+# ARCHEOX:summary=Unblock and restart the bluetooth service.
 
 echo -e "Unblocking bluetooth...\n"
 rfkill unblock bluetooth

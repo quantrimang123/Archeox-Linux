@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ILV:summary=Overwrite the user config for hyprlock with the ILV default.
+# ARCHEOX:summary=Overwrite the user config for hyprlock with the ARCHEOX default.
 
-ILV-refresh-config hypr/hyprlock.conf
+ARCHEOX-refresh-config hypr/hyprlock.conf

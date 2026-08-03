@@ -1,24 +1,24 @@
 #!/bin/bash
 
-# ILV:summary=Ensure all default .desktop, web apps, TUIs, and npx wrappers are installed.
+# ARCHEOX:summary=Ensure all default .desktop, web apps, TUIs, and npx wrappers are installed.
 
 mkdir -p ~/.local/share/icons/hicolor/48x48/apps/
-cp ~/.local/share/ILV/applications/icons/*.png ~/.local/share/icons/hicolor/48x48/apps/
+cp ~/.local/share/ARCHEOX/applications/icons/*.png ~/.local/share/icons/hicolor/48x48/apps/
 gtk-update-icon-cache ~/.local/share/icons/hicolor &>/dev/null
 
 # Copy .desktop declarations
 mkdir -p ~/.local/share/applications
-cp ~/.local/share/ILV/applications/*.desktop ~/.local/share/applications/
-cp ~/.local/share/ILV/applications/hidden/*.desktop ~/.local/share/applications/
+cp ~/.local/share/ARCHEOX/applications/*.desktop ~/.local/share/applications/
+cp ~/.local/share/ARCHEOX/applications/hidden/*.desktop ~/.local/share/applications/
 
-if ILV-cmd-present foot; then
-  cp ~/.local/share/ILV/default/foot/foot.desktop ~/.local/share/applications/
+if ARCHEOX-cmd-present foot; then
+  cp ~/.local/share/ARCHEOX/default/foot/foot.desktop ~/.local/share/applications/
 fi
 
 # Refresh the webapps, TUIs, and npx wrappers
-bash $ILV_PATH/install/packaging/icons.sh
-bash $ILV_PATH/install/packaging/webapps.sh
-bash $ILV_PATH/install/packaging/tuis.sh
-bash $ILV_PATH/install/packaging/npx.sh
+bash $ARCHEOX_PATH/install/packaging/icons.sh
+bash $ARCHEOX_PATH/install/packaging/webapps.sh
+bash $ARCHEOX_PATH/install/packaging/tuis.sh
+bash $ARCHEOX_PATH/install/packaging/npx.sh
 
 update-desktop-database ~/.local/share/applications

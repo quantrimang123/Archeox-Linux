@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ILV:summary=Remove a user-installed theme
-# ILV:args=[theme-name]
-# ILV:examples=ILV theme remove "Tokyo Night"
+# ARCHEOX:summary=Remove a user-installed theme
+# ARCHEOX:args=[theme-name]
+# ARCHEOX:examples=ARCHEOX theme remove "Tokyo Night"
 
 if [[ -z $1 ]]; then
-  mapfile -t extra_themes < <(find ~/.config/ILV/themes -mindepth 1 -maxdepth 1 -type d ! -xtype l -printf '%f\n')
+  mapfile -t extra_themes < <(find ~/.config/ARCHEOX/themes -mindepth 1 -maxdepth 1 -type d ! -xtype l -printf '%f\n')
 
   if (( ${#extra_themes[@]} > 0 )); then
     THEME_NAME=$(printf '%s\n' "${extra_themes[@]}" | sort | gum choose --header="Remove extra theme")
@@ -17,8 +17,8 @@ else
   THEME_NAME="$1"
 fi
 
-THEMES_DIR="$HOME/.config/ILV/themes"
-CURRENT_DIR="$HOME/.config/ILV/current"
+THEMES_DIR="$HOME/.config/ARCHEOX/themes"
+CURRENT_DIR="$HOME/.config/ARCHEOX/current"
 THEME_PATH="$THEMES_DIR/$THEME_NAME"
 
 # Ensure a theme was set

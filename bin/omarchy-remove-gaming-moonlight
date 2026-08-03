@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ILV:summary=Remove Moonlight and its configs and caches.
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Remove Moonlight and its configs and caches.
+# ARCHEOX:requires-sudo=true
 
 set -e
 
-ILV-pkg-drop moonlight-qt
+ARCHEOX-pkg-drop moonlight-qt
 
 rm -rf \
   "$HOME/.config/Moonlight Game Streaming Project" \

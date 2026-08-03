@@ -1,21 +1,21 @@
 #!/bin/bash
 
-# ILV:summary=Install a hook into ~/.config/ILV/hooks/<type>.d/
-# ILV:group=hook
-# ILV:name=install
-# ILV:args=<type> <file>
-# ILV:examples=ILV hook install post-update ~/my-hook
+# ARCHEOX:summary=Install a hook into ~/.config/ARCHEOX/hooks/<type>.d/
+# ARCHEOX:group=hook
+# ARCHEOX:name=install
+# ARCHEOX:args=<type> <file>
+# ARCHEOX:examples=ARCHEOX hook install post-update ~/my-hook
 
 set -e
 
 if (( $# != 2 )); then
-  echo "Usage: ILV-hook-install <type> <file>"
+  echo "Usage: ARCHEOX-hook-install <type> <file>"
   exit 1
 fi
 
 HOOK_TYPE=$1
 HOOK_FILE=$2
-HOOK_DIR="$HOME/.config/ILV/hooks/$HOOK_TYPE.d"
+HOOK_DIR="$HOME/.config/ARCHEOX/hooks/$HOOK_TYPE.d"
 HOOK_NAME=$(basename "$HOOK_FILE")
 HOOK_PATH="$HOOK_DIR/$HOOK_NAME"
 

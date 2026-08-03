@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ILV:summary=Set the default editor for $EDITOR
-# ILV:args=[code|cursor|zed|sublime_text|helix|vim|emacs|nvim]
-# ILV:examples=ILV default editor | ILV default editor code | ILV default editor helix
+# ARCHEOX:summary=Set the default editor for $EDITOR
+# ARCHEOX:args=[code|cursor|zed|sublime_text|helix|vim|emacs|nvim]
+# ARCHEOX:examples=ARCHEOX default editor | ARCHEOX default editor code | ARCHEOX default editor helix
 
 if (($# == 0)); then
   sed -n 's/^export EDITOR=//p' ~/.config/uwsm/default | head -n 1
@@ -19,7 +19,7 @@ vim) editor="vim"; name="Vim"; glyph="" ;;
 emacs) editor="emacs"; name="Emacs"; glyph="" ;;
 nvim) editor="nvim"; name="Neovim"; glyph="" ;;
 *)
-  echo "Usage: ILV-default-editor <code|cursor|zed|sublime_text|helix|vim|emacs|nvim>"
+  echo "Usage: ARCHEOX-default-editor <code|cursor|zed|sublime_text|helix|vim|emacs|nvim>"
   exit 1
   ;;
 esac

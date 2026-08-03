@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# ILV:summary=Apply the current theme color to Chromium, Chrome, Edge, and Brave
-# ILV:hidden=true
+# ARCHEOX:summary=Apply the current theme color to Chromium, Chrome, Edge, and Brave
+# ARCHEOX:hidden=true
 
-CHROMIUM_THEME=~/.config/ILV/current/theme/chromium.theme
+CHROMIUM_THEME=~/.config/ARCHEOX/current/theme/chromium.theme
 
 if [[ -f $CHROMIUM_THEME ]]; then
   THEME_RGB_COLOR=$(<$CHROMIUM_THEME)
@@ -25,7 +25,7 @@ refresh_running_browser() {
   local command="$2"
   local pgrep_args="${3:--x}"
 
-  if ILV-cmd-present "$command" && pgrep $pgrep_args "$process" >/dev/null; then
+  if ARCHEOX-cmd-present "$command" && pgrep $pgrep_args "$process" >/dev/null; then
     "$command" --refresh-platform-policy --no-startup-window &>/dev/null
   fi
 }

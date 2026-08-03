@@ -1,4 +1,4 @@
-source $ILV_INSTALL/helpers/chroot.sh
-source $ILV_INSTALL/helpers/presentation.sh
-source $ILV_INSTALL/helpers/errors.sh
-source $ILV_INSTALL/helpers/logging.sh
+source $ARCHEOX_INSTALL/helpers/chroot.sh
+source $ARCHEOX_INSTALL/helpers/presentation.sh
+source $ARCHEOX_INSTALL/helpers/errors.sh
+source $ARCHEOX_INSTALL/helpers/logging.sh

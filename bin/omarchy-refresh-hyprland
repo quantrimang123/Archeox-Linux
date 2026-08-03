@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ILV:summary=Overwrite all the user configs in ~/.config/hypr with the ILV defaults.
+# ARCHEOX:summary=Overwrite all the user configs in ~/.config/hypr with the ARCHEOX defaults.
 
-ILV-refresh-config hypr/autostart.conf
-ILV-refresh-config hypr/bindings.conf
-ILV-refresh-config hypr/input.conf
-ILV-refresh-config hypr/looknfeel.conf
-ILV-refresh-config hypr/hyprland.conf
-ILV-refresh-config hypr/monitors.conf
-bash "$ILV_PATH/install/config/detect-keyboard-layout.sh"
+ARCHEOX-refresh-config hypr/autostart.conf
+ARCHEOX-refresh-config hypr/bindings.conf
+ARCHEOX-refresh-config hypr/input.conf
+ARCHEOX-refresh-config hypr/looknfeel.conf
+ARCHEOX-refresh-config hypr/hyprland.conf
+ARCHEOX-refresh-config hypr/monitors.conf
+bash "$ARCHEOX_PATH/install/config/detect-keyboard-layout.sh"

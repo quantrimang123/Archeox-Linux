@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ILV:summary=Reload hyprland configuration (used by the ILV theme switching).
+# ARCHEOX:summary=Reload hyprland configuration (used by the ARCHEOX theme switching).
 
 hyprctl reload >/dev/null

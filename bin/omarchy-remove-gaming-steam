@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ILV:summary=Remove Steam and all of its game libraries, configs, and caches.
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Remove Steam and all of its game libraries, configs, and caches.
+# ARCHEOX:requires-sudo=true
 
 set -e
 
-ILV-pkg-drop steam
+ARCHEOX-pkg-drop steam
 
 rm -rf \
   "$HOME/.steam" \

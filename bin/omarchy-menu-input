@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ILV:summary=Prompt for text input with Walker
-# ILV:group=menu
-# ILV:name=input
-# ILV:args=prompt [walker args...]
-# ILV:examples=ILV menu input Reminder|ILV-menu-input "Reminder in minutes" --width 400
+# ARCHEOX:summary=Prompt for text input with Walker
+# ARCHEOX:group=menu
+# ARCHEOX:name=input
+# ARCHEOX:args=prompt [walker args...]
+# ARCHEOX:examples=ARCHEOX menu input Reminder|ARCHEOX-menu-input "Reminder in minutes" --width 400
 
 set -euo pipefail
 
@@ -13,4 +13,4 @@ if (( $# > 0 )); then
   shift
 fi
 
-ILV-launch-walker --dmenu --inputonly --width 295 --minheight 1 --maxheight 1 -p "$prompt…" "$@" 2>/dev/null
+ARCHEOX-launch-walker --dmenu --inputonly --width 295 --minheight 1 --maxheight 1 -p "$prompt…" "$@" 2>/dev/null

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ILV:summary=Reinstall the ILV source directory from git
+# ARCHEOX:summary=Reinstall the ARCHEOX source directory from git
 
 set -e
 
-# Reinstall the ILV configuration directory from the git source.
+# Reinstall the ARCHEOX configuration directory from the git source.
 
-git clone --depth=1 --branch master "https://github.com/basecamp/ILV.git" ~/.local/share/ILV-new >/dev/null
-mv $ILV_PATH ~/.local/share/ILV-old
-mv ~/.local/share/ILV-new $ILV_PATH
+git clone --depth=1 --branch master "https://github.com/basecamp/ARCHEOX.git" ~/.local/share/ARCHEOX-new >/dev/null
+mv $ARCHEOX_PATH ~/.local/share/ARCHEOX-old
+mv ~/.local/share/ARCHEOX-new $ARCHEOX_PATH

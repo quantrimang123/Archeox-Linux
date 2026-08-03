@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Overwrite the user tmux config with the ILV default and reload tmux.
+# ARCHEOX:summary=Overwrite the user tmux config with the ARCHEOX default and reload tmux.
 
-ILV-refresh-config tmux/tmux.conf
-ILV-restart-tmux
+ARCHEOX-refresh-config tmux/tmux.conf
+ARCHEOX-restart-tmux

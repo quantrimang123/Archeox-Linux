@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ILV:summary=Launch an app or focus an existing window matching a pattern
-# ILV:args=<window-pattern> <launch-command>
+# ARCHEOX:summary=Launch an app or focus an existing window matching a pattern
+# ARCHEOX:args=<window-pattern> <launch-command>
 
 if (($# == 0)); then
-  echo "Usage: ILV-launch-or-focus [window-pattern] [launch-command]"
+  echo "Usage: ARCHEOX-launch-or-focus [window-pattern] [launch-command]"
   exit 1
 fi
 

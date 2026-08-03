@@ -6,13 +6,13 @@ echo_in_style() {
 
 clear
 echo
-tte -i ~/.local/share/ILV/logo.txt --canvas-width 0 --anchor-text c --frame-rate 920 laseretch
+tte -i ~/.local/share/ARCHEOX/logo.txt --canvas-width 0 --anchor-text c --frame-rate 920 laseretch
 echo
 
 # Display installation time if available
-if [[ -f $ILV_INSTALL_LOG_FILE ]] && grep -q "Total:" "$ILV_INSTALL_LOG_FILE" 2>/dev/null; then
+if [[ -f $ARCHEOX_INSTALL_LOG_FILE ]] && grep -q "Total:" "$ARCHEOX_INSTALL_LOG_FILE" 2>/dev/null; then
   echo
-  TOTAL_TIME=$(tail -n 20 "$ILV_INSTALL_LOG_FILE" | grep "^Total:" | sed 's/^Total:[[:space:]]*//')
+  TOTAL_TIME=$(tail -n 20 "$ARCHEOX_INSTALL_LOG_FILE" | grep "^Total:" | sed 's/^Total:[[:space:]]*//')
   if [[ -n $TOTAL_TIME ]]; then
     echo_in_style "Installed in $TOTAL_TIME"
   fi
@@ -20,8 +20,8 @@ else
   echo_in_style "Finished installing"
 fi
 
-if sudo test -f /etc/sudoers.d/99-ILV-installer; then
-  sudo rm -f /etc/sudoers.d/99-ILV-installer &>/dev/null
+if sudo test -f /etc/sudoers.d/99-ARCHEOX-installer; then
+  sudo rm -f /etc/sudoers.d/99-ARCHEOX-installer &>/dev/null
 fi
 
 # Exit gracefully if user chooses not to reboot
@@ -29,8 +29,8 @@ if gum confirm --padding "0 0 0 $((PADDING_LEFT + 32))" --show-help=false --defa
   # Clear screen to hide any shutdown messages
   clear
 
-  if [[ -n ${ILV_CHROOT_INSTALL:-} ]]; then
-    touch /var/tmp/ILV-install-completed
+  if [[ -n ${ARCHEOX_CHROOT_INSTALL:-} ]]; then
+    touch /var/tmp/ARCHEOX-install-completed
     exit 0
   else
     sudo reboot 2>/dev/null

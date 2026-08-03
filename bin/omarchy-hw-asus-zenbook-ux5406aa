@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ILV:summary=Detect ASUS Zenbook UX5406AA series laptops on Intel Panther Lake.
+# ARCHEOX:summary=Detect ASUS Zenbook UX5406AA series laptops on Intel Panther Lake.
 
-ILV-hw-match "ux5406aa" && ILV-hw-intel-ptl
+ARCHEOX-hw-match "ux5406aa" && ARCHEOX-hw-intel-ptl

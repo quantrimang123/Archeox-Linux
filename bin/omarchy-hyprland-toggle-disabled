@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Check if a Hyprland toggle is currently disabled (missing).
-# ILV:args=<flag-name>
+# ARCHEOX:summary=Check if a Hyprland toggle is currently disabled (missing).
+# ARCHEOX:args=<flag-name>
 
-[[ ! -f "$HOME/.local/state/ILV/toggles/hypr/$1.conf" ]]
+[[ ! -f "$HOME/.local/state/ARCHEOX/toggles/hypr/$1.conf" ]]

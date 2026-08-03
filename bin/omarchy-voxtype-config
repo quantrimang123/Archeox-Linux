@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# ILV:summary=Open the Voxtype configuration file
+# ARCHEOX:summary=Open the Voxtype configuration file
 
 set -e
 
 # Used by Voxtype waybar module to open config on right click
 
-exec ILV-launch-editor ~/.config/voxtype/config.toml
+exec ARCHEOX-launch-editor ~/.config/voxtype/config.toml

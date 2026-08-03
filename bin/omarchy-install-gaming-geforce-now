@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ILV:summary=Install and launch Geforce Now.
+# ARCHEOX:summary=Install and launch Geforce Now.
 
 set -e
 
 echo "Installing GeForce NOW..."
-ILV-pkg-add flatpak
+ARCHEOX-pkg-add flatpak
 cd /tmp
 
 # Download and run GeForce NOW
@@ -15,4 +15,4 @@ chmod +x GeForceNOWSetup.bin
 
 # Ensure a separate browser process not started by GFN is available.
 # If not, it seems like GFN has a tendency to hang on login.
-setsid ILV-launch-browser
+setsid ARCHEOX-launch-browser

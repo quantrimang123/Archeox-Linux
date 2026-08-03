@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Wrapper for swayosd-client that targets the currently focused monitor.
-# ILV:args=<swayosd-client-args...>
+# ARCHEOX:summary=Wrapper for swayosd-client that targets the currently focused monitor.
+# ARCHEOX:args=<swayosd-client-args...>
 
-exec swayosd-client --monitor "$(ILV-hyprland-monitor-focused)" "$@"
+exec swayosd-client --monitor "$(ARCHEOX-hyprland-monitor-focused)" "$@"

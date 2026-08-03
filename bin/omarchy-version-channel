@@ -1,22 +1,22 @@
 #!/bin/bash
 
-# ILV:summary=Print the active ILV mirror and package channel
+# ARCHEOX:summary=Print the active ARCHEOX mirror and package channel
 
-if grep -q "https://stable-mirror.ILV.org/" /etc/pacman.d/mirrorlist; then
+if grep -q "https://stable-mirror.ARCHEOX.org/" /etc/pacman.d/mirrorlist; then
   mirror="stable"
-elif grep -q "https://rc-mirror.ILV.org/" /etc/pacman.d/mirrorlist; then
+elif grep -q "https://rc-mirror.ARCHEOX.org/" /etc/pacman.d/mirrorlist; then
   mirror="rc"
-elif grep -q "https://mirror.ILV.org/" /etc/pacman.d/mirrorlist; then
+elif grep -q "https://mirror.ARCHEOX.org/" /etc/pacman.d/mirrorlist; then
   mirror="edge"
 else
   mirror="unknown"
 fi
 
-if grep -q "https://pkgs.ILV.org/stable/" /etc/pacman.conf; then
+if grep -q "https://pkgs.ARCHEOX.org/stable/" /etc/pacman.conf; then
   pkgs="stable"
-elif grep -q "https://pkgs.ILV.org/edge/" /etc/pacman.conf; then
+elif grep -q "https://pkgs.ARCHEOX.org/edge/" /etc/pacman.conf; then
   pkgs="edge"
-elif grep -q "https://pkgs.ILV.org/rc/" /etc/pacman.conf; then
+elif grep -q "https://pkgs.ARCHEOX.org/rc/" /etc/pacman.conf; then
   pkgs="rc"
 else
   pkgs="unknown"

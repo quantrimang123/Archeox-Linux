@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# ILV:summary=Transcode an image into ASCII/Unicode art text
-# ILV:group=transcode
-# ILV:name=ascii
-# ILV:args=<input-image.svg|png> <output-path> [--width <columns>] [--height <rows>] [--mode <braille|block>] [--threshold <percent>] [--invert]
-# ILV:examples=ILV transcode ascii ~/logo.svg /tmp/logo.txt | ILV transcode ascii ~/logo.png ~/.config/ILV/branding/screensaver.txt --width 80
+# ARCHEOX:summary=Transcode an image into ASCII/Unicode art text
+# ARCHEOX:group=transcode
+# ARCHEOX:name=ascii
+# ARCHEOX:args=<input-image.svg|png> <output-path> [--width <columns>] [--height <rows>] [--mode <braille|block>] [--threshold <percent>] [--invert]
+# ARCHEOX:examples=ARCHEOX transcode ascii ~/logo.svg /tmp/logo.txt | ARCHEOX transcode ascii ~/logo.png ~/.config/ARCHEOX/branding/screensaver.txt --width 80
 
 set -o pipefail
 
 usage() {
   cat <<'EOF'
-Usage: ILV-transcode-ascii <input-image.svg|png> <output-path> [options]
+Usage: ARCHEOX-transcode-ascii <input-image.svg|png> <output-path> [options]
 
 Transcodes an image into ASCII/Unicode art text.
 
@@ -165,7 +165,7 @@ if [[ ! -f $image_path ]]; then
   exit 1
 fi
 
-if ILV-cmd-missing magick; then
+if ARCHEOX-cmd-missing magick; then
   echo "ImageMagick is required to convert logo images" >&2
   exit 1
 fi

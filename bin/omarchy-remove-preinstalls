@@ -1,22 +1,22 @@
 #!/bin/bash
 
-# ILV:summary=Remove preinstalled ILV applications (web apps, TUIs, and selected packages).
+# ARCHEOX:summary=Remove preinstalled ARCHEOX applications (web apps, TUIs, and selected packages).
 
 if gum confirm "Are you sure you want to remove all preinstalled web apps, TUI wrappers, and desktop applications?"; then
-  echo -e "Removing preinstalled ILV applications...\n"
+  echo -e "Removing preinstalled ARCHEOX applications...\n"
 
-  ILV-webapp-remove-all
-  ILV-tui-remove-all
+  ARCHEOX-webapp-remove-all
+  ARCHEOX-tui-remove-all
 
   cp ~/.config/hypr/bindings.conf ~/.config/hypr/bindings.conf.bak
-  cp "$ILV_PATH/default/hypr/plain-bindings.conf" ~/.config/hypr/bindings.conf
+  cp "$ARCHEOX_PATH/default/hypr/plain-bindings.conf" ~/.config/hypr/bindings.conf
   hyprctl reload
 
   # Remove npx stubs
   rm -f ~/.local/bin/codex ~/.local/bin/gemini ~/.local/bin/copilot \
        ~/.local/bin/opencode ~/.local/bin/playwright-cli ~/.local/bin/pi
 
-  ILV-pkg-drop \
+  ARCHEOX-pkg-drop \
     aether \
     cliamp \
     typora \

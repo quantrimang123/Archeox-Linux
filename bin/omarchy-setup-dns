@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ILV:summary=Configure the system DNS provider
-# ILV:args=[Cloudflare|Google|DHCP|Custom]
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Configure the system DNS provider
+# ARCHEOX:args=[Cloudflare|Google|DHCP|Custom]
+# ARCHEOX:requires-sudo=true
 
 lock_dns_to_resolved() {
   for file in /etc/systemd/network/*.network; do

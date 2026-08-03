@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# ILV:summary=Add the named packages to the system from the AUR if they're missing. Returns false if it couldn't be done.
-# ILV:args=<packages...>
+# ARCHEOX:summary=Add the named packages to the system from the AUR if they're missing. Returns false if it couldn't be done.
+# ARCHEOX:args=<packages...>
 
-if ILV-pkg-missing "$@"; then
+if ARCHEOX-pkg-missing "$@"; then
   yay -S --noconfirm --needed "$@" || exit 1
 fi
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ILV:summary=Match Dell XPS systems with LG OLED panel on Intel Panther Lake (Xe3) GPU.
+# ARCHEOX:summary=Match Dell XPS systems with LG OLED panel on Intel Panther Lake (Xe3) GPU.
 
-ILV-hw-match "XPS" \
-  && ILV-hw-intel-ptl \
+ARCHEOX-hw-match "XPS" \
+  && ARCHEOX-hw-intel-ptl \
   && test "$(od -An -tx1 -j8 -N2 /sys/class/drm/card*-eDP-*/edid 2>/dev/null | tr -d ' \n')" = "30e4"

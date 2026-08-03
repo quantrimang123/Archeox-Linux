@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ILV:summary=Update user-installed git themes
+# ARCHEOX:summary=Update user-installed git themes
 
-for dir in ~/.config/ILV/themes/*/; do
+for dir in ~/.config/ARCHEOX/themes/*/; do
   if [[ -d $dir ]] && [[ ! -L ${dir%/} ]] && [[ -d $dir/.git ]]; then
     echo "Updating: $(basename "$dir")"
     git -C "$dir" pull

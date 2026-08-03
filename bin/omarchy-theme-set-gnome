@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# ILV:summary=Apply the current theme to GNOME color mode and icon settings
-# ILV:hidden=true
+# ARCHEOX:summary=Apply the current theme to GNOME color mode and icon settings
+# ARCHEOX:hidden=true
 
-if [[ -f ~/.config/ILV/current/theme/light.mode ]]; then
+if [[ -f ~/.config/ARCHEOX/current/theme/light.mode ]]; then
   gsettings set org.gnome.desktop.interface color-scheme "prefer-light"
   gsettings set org.gnome.desktop.interface gtk-theme "Adwaita"
 else
@@ -12,7 +12,7 @@ else
 fi
 
 # Change gnome icon theme color
-GNOME_ICONS_THEME=~/.config/ILV/current/theme/icons.theme
+GNOME_ICONS_THEME=~/.config/ARCHEOX/current/theme/icons.theme
 if [[ -f $GNOME_ICONS_THEME ]]; then
   gsettings set org.gnome.desktop.interface icon-theme "$(<$GNOME_ICONS_THEME)"
 else

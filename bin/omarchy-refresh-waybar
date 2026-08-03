@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ILV:summary=Reset Waybar config to ILV defaults
-# ILV:examples=ILV refresh waybar
+# ARCHEOX:summary=Reset Waybar config to ARCHEOX defaults
+# ARCHEOX:examples=ARCHEOX refresh waybar
 
-ILV-refresh-config waybar/config.jsonc
-ILV-refresh-config waybar/style.css
-ILV-restart-waybar
+ARCHEOX-refresh-config waybar/config.jsonc
+ARCHEOX-refresh-config waybar/style.css
+ARCHEOX-restart-waybar

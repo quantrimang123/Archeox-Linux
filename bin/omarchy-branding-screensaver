@@ -1,28 +1,28 @@
 #!/bin/bash
 
-# ILV:summary=Edit, set, or reset screensaver branding
-# ILV:group=branding
-# ILV:name=screensaver
-# ILV:args=<image|text|reset>
-# ILV:examples=ILV branding screensaver image | ILV branding screensaver text | ILV branding screensaver reset
+# ARCHEOX:summary=Edit, set, or reset screensaver branding
+# ARCHEOX:group=branding
+# ARCHEOX:name=screensaver
+# ARCHEOX:args=<image|text|reset>
+# ARCHEOX:examples=ARCHEOX branding screensaver image | ARCHEOX branding screensaver text | ARCHEOX branding screensaver reset
 
 set -euo pipefail
 
 case "${1:-}" in
 image)
-  image=$(ILV-menu-file "Logo image" "$HOME" "svg png")
-  if [[ -n $image ]] && ILV-transcode-ascii "$image" ~/.config/ILV/branding/screensaver.txt; then
-    ILV-launch-screensaver force >/dev/null 2>&1
+  image=$(ARCHEOX-menu-file "Logo image" "$HOME" "svg png")
+  if [[ -n $image ]] && ARCHEOX-transcode-ascii "$image" ~/.config/ARCHEOX/branding/screensaver.txt; then
+    ARCHEOX-launch-screensaver force >/dev/null 2>&1
   fi
   ;;
 text)
-  ILV-launch-editor ~/.config/ILV/branding/screensaver.txt >/dev/null 2>&1 && ILV-launch-screensaver force >/dev/null 2>&1
+  ARCHEOX-launch-editor ~/.config/ARCHEOX/branding/screensaver.txt >/dev/null 2>&1 && ARCHEOX-launch-screensaver force >/dev/null 2>&1
   ;;
 reset)
-  cp "$ILV_PATH/logo.txt" ~/.config/ILV/branding/screensaver.txt && ILV-launch-screensaver force >/dev/null 2>&1
+  cp "$ARCHEOX_PATH/logo.txt" ~/.config/ARCHEOX/branding/screensaver.txt && ARCHEOX-launch-screensaver force >/dev/null 2>&1
   ;;
 *)
-  echo "Usage: ILV-branding-screensaver <image|text|reset>" >&2
+  echo "Usage: ARCHEOX-branding-screensaver <image|text|reset>" >&2
   exit 1
   ;;
 esac

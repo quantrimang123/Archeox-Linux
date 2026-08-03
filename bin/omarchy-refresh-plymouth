@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ILV:summary=Overwrite the user config for the Plymouth drive decryption and boot sequence with the ILV default and rebuild it.
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Overwrite the user config for the Plymouth drive decryption and boot sequence with the ARCHEOX default and rebuild it.
+# ARCHEOX:requires-sudo=true
 
-sudo cp -r ~/.local/share/ILV/default/plymouth/* /usr/share/plymouth/themes/ILV/
-sudo plymouth-set-default-theme ILV
+sudo cp -r ~/.local/share/ARCHEOX/default/plymouth/* /usr/share/plymouth/themes/ARCHEOX/
+sudo plymouth-set-default-theme ARCHEOX
 
 if command -v limine-mkinitcpio &>/dev/null; then
   sudo limine-mkinitcpio

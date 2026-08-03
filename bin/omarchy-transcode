@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# ILV:group=transcode
-# ILV:name=
-# ILV:summary=Transcode pictures and videos for sharing
-# ILV:args=[--path path] [input] [format] [resolution]
-# ILV:examples=ILV transcode|ILV transcode --path ~/Downloads|ILV transcode ~/Videos/demo.mov mp4 1080p|ILV transcode ~/Pictures/wallpaper.heic jpg medium
+# ARCHEOX:group=transcode
+# ARCHEOX:name=
+# ARCHEOX:summary=Transcode pictures and videos for sharing
+# ARCHEOX:args=[--path path] [input] [format] [resolution]
+# ARCHEOX:examples=ARCHEOX transcode|ARCHEOX transcode --path ~/Downloads|ARCHEOX transcode ~/Videos/demo.mov mp4 1080p|ARCHEOX transcode ~/Pictures/wallpaper.heic jpg medium
 
 set -euo pipefail
 
 usage() {
   cat <<'EOF'
 Usage:
-  ILV transcode [--path path] [input] [format] [resolution]
+  ARCHEOX transcode [--path path] [input] [format] [resolution]
 
 With no input, pick a picture or video with Walker from ~/Pictures and ~/Videos,
 or only from --path when provided. Then pick the output format and resolution.
@@ -166,7 +166,7 @@ main() {
   search_path="${search_path:-$HOME/Pictures:$HOME/Videos}"
 
   if [[ -z $input ]]; then
-    input=$(ILV-menu-file "Transcode picture or video" "$search_path" "jpg jpeg png webp gif heic avif mp4 mov m4v mkv webm avi")
+    input=$(ARCHEOX-menu-file "Transcode picture or video" "$search_path" "jpg jpeg png webp gif heic avif mp4 mov m4v mkv webm avi")
   fi
 
   [[ -n $input ]] || return 1
@@ -176,31 +176,31 @@ main() {
 
   if [[ -z $format ]]; then
     if [[ $type == "picture" ]]; then
-      format=$(ILV-menu-select "Select format" jpg png)
+      format=$(ARCHEOX-menu-select "Select format" jpg png)
     else
-      format=$(ILV-menu-select "Select format" mp4 gif)
+      format=$(ARCHEOX-menu-select "Select format" mp4 gif)
     fi
   fi
 
   if [[ -z $resolution ]]; then
     if [[ $type == "picture" ]]; then
-      resolution=$(ILV-menu-select "Select resolution" high medium low)
+      resolution=$(ARCHEOX-menu-select "Select resolution" high medium low)
     else
-      resolution=$(ILV-menu-select "Select resolution" 4k 1080p 720p)
+      resolution=$(ARCHEOX-menu-select "Select resolution" 4k 1080p 720p)
     fi
   fi
 
   output=$(output_path "$input" "$format" "$resolution")
 
   if [[ $type == "video" ]]; then
-    ILV-notification-send "" "Transcoding video…" "$(basename -- "$input") to $format ($resolution)"
+    ARCHEOX-notification-send "" "Transcoding video…" "$(basename -- "$input") to $format ($resolution)"
     transcode_video "$input" "$format" "$resolution" "$output"
     copy_to_clipboard "$output"
-    ILV-notification-send "" "Transcoded to $resolution $format" "Saved and copied to clipboard."
+    ARCHEOX-notification-send "" "Transcoded to $resolution $format" "Saved and copied to clipboard."
   else
     transcode_picture "$input" "$format" "$resolution" "$output"
     copy_to_clipboard "$output"
-    ILV-notification-send "" "Transcoded to $resolution $format" "Saved and copied to clipboard."
+    ARCHEOX-notification-send "" "Transcoded to $resolution $format" "Saved and copied to clipboard."
   fi
 }
 

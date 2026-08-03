@@ -1,4 +1,4 @@
 ICON_DIR="$HOME/.local/share/applications/icons"
 
-ILV-tui-install "Disk Usage" "bash -c 'dust -r; read -n 1 -s'" float "$ICON_DIR/Disk Usage.png"
-ILV-tui-install "Docker" "lazydocker" tile "$ICON_DIR/Docker.png"
+ARCHEOX-tui-install "Disk Usage" "bash -c 'dust -r; read -n 1 -s'" float "$ICON_DIR/Disk Usage.png"
+ARCHEOX-tui-install "Docker" "lazydocker" tile "$ICON_DIR/Docker.png"

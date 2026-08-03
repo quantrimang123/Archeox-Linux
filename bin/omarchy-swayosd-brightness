@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# ILV:summary=Display brightness level using SwayOSD on the current monitor.
-# ILV:args=<0-100>
-# ILV:examples=ILV swayosd brightness 0 | ILV swayosd brightness 50 | ILV swayosd brightness 100
+# ARCHEOX:summary=Display brightness level using SwayOSD on the current monitor.
+# ARCHEOX:args=<0-100>
+# ARCHEOX:examples=ARCHEOX swayosd brightness 0 | ARCHEOX swayosd brightness 50 | ARCHEOX swayosd brightness 100
 
 percent="$1"
 
 progress="$(awk -v p="$percent" 'BEGIN{printf "%.2f", p/100}')"
 [[ $progress == "0.00" ]] && progress="0.01"
 
-ILV-swayosd-client \
+ARCHEOX-swayosd-client \
   --custom-icon display-brightness-symbolic \
   --custom-progress "$progress" \
   --custom-progress-text "${percent}%"

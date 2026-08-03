@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ILV:summary=Launch a floating terminal with the ILV presentation wrapper
-# ILV:args=<command>
+# ARCHEOX:summary=Launch a floating terminal with the ARCHEOX presentation wrapper
+# ARCHEOX:args=<command>
 
 cmd="$*"
-exec setsid uwsm-app -- xdg-terminal-exec --app-id=org.ILV.terminal --title=ILV -e bash -c "ILV-show-logo; $cmd; if (( \$? != 130 )); then ILV-show-done; fi"
+exec setsid uwsm-app -- xdg-terminal-exec --app-id=org.ARCHEOX.terminal --title=ARCHEOX -e bash -c "ARCHEOX-show-logo; $cmd; if (( \$? != 130 )); then ARCHEOX-show-done; fi"

@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# ILV:summary=Set the current background image
-# ILV:args=<path-to-image>
-# ILV:examples=ILV theme bg set ~/Pictures/wallpaper.png
+# ARCHEOX:summary=Set the current background image
+# ARCHEOX:args=<path-to-image>
+# ARCHEOX:examples=ARCHEOX theme bg set ~/Pictures/wallpaper.png
 
 if [[ -z $1 ]]; then
-  echo "Usage: ILV-theme-bg-set <path-to-image>" >&2
+  echo "Usage: ARCHEOX-theme-bg-set <path-to-image>" >&2
   exit 1
 fi
 
 BACKGROUND="$(realpath "$1")"
-CURRENT_BACKGROUND_LINK="$HOME/.config/ILV/current/background"
+CURRENT_BACKGROUND_LINK="$HOME/.config/ARCHEOX/current/background"
 
 if [[ ! -f "$BACKGROUND" ]]; then
   echo "File does not exist: $BACKGROUND" >&2

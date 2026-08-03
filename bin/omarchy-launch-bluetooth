@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Launch the ILV bluetooth controls TUI (provided by bluetui).
+# ARCHEOX:summary=Launch the ARCHEOX bluetooth controls TUI (provided by bluetui).
 
 rfkill unblock bluetooth
-exec ILV-launch-or-focus-tui bluetui
+exec ARCHEOX-launch-or-focus-tui bluetui

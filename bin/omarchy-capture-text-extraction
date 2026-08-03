@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ILV:summary=Extract text from a screenshot region with OCR
-# ILV:group=capture
-# ILV:examples=ILV capture ocr
+# ARCHEOX:summary=Extract text from a screenshot region with OCR
+# ARCHEOX:group=capture
+# ARCHEOX:examples=ARCHEOX capture ocr
 
 # Keep hyprpicker alive until after grim captures so the screenshot sees the
 # frozen overlay rather than live content shifting during teardown.
@@ -18,7 +18,7 @@ SELECTION=$(slurp 2>/dev/null)
 
 [[ -z $SELECTION ]] && exit 0
 
-TEXT=$(grim -g "$SELECTION" - | tesseract stdin stdout --oem 1 --psm 6 -l "${ILV_OCR_LANGS:-eng}" --dpi 300 -c preserve_interword_spaces=1 2>/dev/null) || exit 1
+TEXT=$(grim -g "$SELECTION" - | tesseract stdin stdout --oem 1 --psm 6 -l "${ARCHEOX_OCR_LANGS:-eng}" --dpi 300 -c preserve_interword_spaces=1 2>/dev/null) || exit 1
 
 [[ -z $TEXT ]] && exit 1
 

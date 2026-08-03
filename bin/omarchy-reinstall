@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# ILV:summary=Reinstall ILV packages and reset default configs
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Reinstall ARCHEOX packages and reset default configs
+# ARCHEOX:requires-sudo=true
 
 set -e
 
-# Attempt to reinstall all default ILV packages and reset all the default configs.
+# Attempt to reinstall all default ARCHEOX packages and reset all the default configs.
 
-echo -e "This will reinstall all the default ILV packages and reset all default configs.\nWarning: All user changes to configs will be lost.\n"
+echo -e "This will reinstall all the default ARCHEOX packages and reset all default configs.\nWarning: All user changes to configs will be lost.\n"
 
 if gum confirm "Are you sure you want to reinstall and lose all config changes?"; then
-  ILV-reinstall-git
-  ILV-reinstall-pkgs
-  ILV-reinstall-configs
+  ARCHEOX-reinstall-git
+  ARCHEOX-reinstall-pkgs
+  ARCHEOX-reinstall-configs
 
-  gum confirm "System has been reinstalled. Reboot?" && ILV-system-reboot
+  gum confirm "System has been reinstalled. Reboot?" && ARCHEOX-system-reboot
 fi

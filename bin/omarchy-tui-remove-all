@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Remove all TUIs installed via ILV-tui-install.
+# ARCHEOX:summary=Remove all TUIs installed via ARCHEOX-tui-install.
 
 set -e
 

@@ -1,28 +1,28 @@
 #!/bin/bash
 
-# ILV:summary=Finish the installation of ILV with items that can only be done after logging in.
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Finish the installation of ARCHEOX with items that can only be done after logging in.
+# ARCHEOX:requires-sudo=true
 
 set -e
 
-FIRST_RUN_MODE=~/.local/state/ILV/first-run.mode
+FIRST_RUN_MODE=~/.local/state/ARCHEOX/first-run.mode
 
 if [[ -f $FIRST_RUN_MODE ]]; then
   rm -f "$FIRST_RUN_MODE"
 
-  bash "$ILV_PATH/install/first-run/battery-monitor.sh"
-  bash "$ILV_PATH/install/first-run/recover-internal-monitor.sh"
-  bash "$ILV_PATH/install/first-run/cleanup-reboot-sudoers.sh"
-  bash "$ILV_PATH/install/first-run/firewall.sh"
-  bash "$ILV_PATH/install/first-run/dns-resolver.sh"
-  bash "$ILV_PATH/install/first-run/gnome-theme.sh"
-  bash "$ILV_PATH/install/first-run/swayosd.sh"
-  bash "$ILV_PATH/install/first-run/gtk-primary-paste.sh"
-  bash "$ILV_PATH/install/first-run/text-scaling.sh"
-  bash "$ILV_PATH/install/first-run/elephant.sh"
-  ILV-hook-install post-update "$ILV_PATH/install/first-run/install-voxtype.hook"
+  bash "$ARCHEOX_PATH/install/first-run/battery-monitor.sh"
+  bash "$ARCHEOX_PATH/install/first-run/recover-internal-monitor.sh"
+  bash "$ARCHEOX_PATH/install/first-run/cleanup-reboot-sudoers.sh"
+  bash "$ARCHEOX_PATH/install/first-run/firewall.sh"
+  bash "$ARCHEOX_PATH/install/first-run/dns-resolver.sh"
+  bash "$ARCHEOX_PATH/install/first-run/gnome-theme.sh"
+  bash "$ARCHEOX_PATH/install/first-run/swayosd.sh"
+  bash "$ARCHEOX_PATH/install/first-run/gtk-primary-paste.sh"
+  bash "$ARCHEOX_PATH/install/first-run/text-scaling.sh"
+  bash "$ARCHEOX_PATH/install/first-run/elephant.sh"
+  ARCHEOX-hook-install post-update "$ARCHEOX_PATH/install/first-run/install-voxtype.hook"
   sudo rm -f /etc/sudoers.d/first-run
 
-  bash "$ILV_PATH/install/first-run/welcome.sh"
-  bash "$ILV_PATH/install/first-run/wifi.sh"
+  bash "$ARCHEOX_PATH/install/first-run/welcome.sh"
+  bash "$ARCHEOX_PATH/install/first-run/wifi.sh"
 fi

@@ -1,8 +1,8 @@
-if ILV-battery-present; then
+if ARCHEOX-battery-present; then
   powerprofilesctl set balanced || true
 
   # Enable battery monitoring timer for low battery notifications
-  systemctl --user enable --now ILV-battery-monitor.timer
+  systemctl --user enable --now ARCHEOX-battery-monitor.timer
 else
   powerprofilesctl set performance || true
 fi

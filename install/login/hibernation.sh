@@ -3,4 +3,4 @@
 # rebuild. The --no-rebuild flag tells the script to skip its own rebuild —
 # limine-snapper's pacman install will produce a UKI that already includes
 # hibernation.
-ILV-hibernation-setup --force --no-rebuild
+ARCHEOX-hibernation-setup --force --no-rebuild

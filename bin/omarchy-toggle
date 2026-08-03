@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ILV:summary=Toggle ILV features between enabled and disabled
-# ILV:args=[--enabled-notification <text>] [--disabled-notification <text>] <flag-name>
+# ARCHEOX:summary=Toggle ARCHEOX features between enabled and disabled
+# ARCHEOX:args=[--enabled-notification <text>] [--disabled-notification <text>] <flag-name>
 
 ENABLED_NOTIFICATION=""
 DISABLED_NOTIFICATION=""
@@ -15,7 +15,7 @@ while [[ $# -gt 1 ]]; do
 done
 
 FLAG_NAME="$1"
-FLAG="$HOME/.local/state/ILV/toggles/$FLAG_NAME"
+FLAG="$HOME/.local/state/ARCHEOX/toggles/$FLAG_NAME"
 
 if [[ -f $FLAG ]]; then
   rm $FLAG

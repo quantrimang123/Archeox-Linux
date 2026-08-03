@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# ILV:summary=Run all pending migrations to bring the system in line with the installed version.
+# ARCHEOX:summary=Run all pending migrations to bring the system in line with the installed version.
 
-STATE_DIR="$HOME/.local/state/ILV/migrations"
+STATE_DIR="$HOME/.local/state/ARCHEOX/migrations"
 mkdir -p "$STATE_DIR"
 
 # Skipped migrations are tracked separately
 mkdir -p "$STATE_DIR/skipped"
 
 # Run any pending migrations
-for file in $ILV_PATH/migrations/*.sh; do
+for file in $ARCHEOX_PATH/migrations/*.sh; do
   filename=$(basename "$file")
 
   if [[ ! -f $STATE_DIR/$filename && ! -f $STATE_DIR/skipped/$filename ]]; then

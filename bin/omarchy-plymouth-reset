@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# ILV:summary=Restore the default ILV Plymouth boot theme and SDDM login screen
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Restore the default ARCHEOX Plymouth boot theme and SDDM login screen
+# ARCHEOX:requires-sudo=true
 
-theme_dir="/usr/share/plymouth/themes/ILV"
+theme_dir="/usr/share/plymouth/themes/ARCHEOX"
 
-sudo find ~/.local/share/ILV/default/plymouth -maxdepth 1 -type f -exec cp -t "$theme_dir/" {} +
-sudo plymouth-set-default-theme ILV
+sudo find ~/.local/share/ARCHEOX/default/plymouth -maxdepth 1 -type f -exec cp -t "$theme_dir/" {} +
+sudo plymouth-set-default-theme ARCHEOX
 
-if ILV-cmd-present limine-mkinitcpio; then
+if ARCHEOX-cmd-present limine-mkinitcpio; then
   sudo limine-mkinitcpio
 else
   sudo mkinitcpio -P
 fi
 
-ILV-refresh-sddm
+ARCHEOX-refresh-sddm

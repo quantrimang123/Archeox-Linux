@@ -1,25 +1,25 @@
 #!/bin/bash
 
-# ILV:summary=Install Helix and configure it to use the current ILV theme
+# ARCHEOX:summary=Install Helix and configure it to use the current ARCHEOX theme
 
 echo "Installing Helix..."
-ILV-pkg-add helix
+ARCHEOX-pkg-add helix
 
 mkdir -p ~/.config/helix/themes
 
-# Symlink the rendered ILV theme so Helix tracks the active theme
-ln -sf ~/.config/ILV/current/theme/helix.toml ~/.config/helix/themes/ILV.toml
+# Symlink the rendered ARCHEOX theme so Helix tracks the active theme
+ln -sf ~/.config/ARCHEOX/current/theme/helix.toml ~/.config/helix/themes/ARCHEOX.toml
 
 # Only seed a config.toml if the user does not already have one
 if [[ ! -f ~/.config/helix/config.toml ]]; then
   cat >~/.config/helix/config.toml <<'EOF'
-theme = "ILV"
+theme = "ARCHEOX"
 EOF
 fi
 
 # Ensure the symlink target exists for users whose current theme predates this template
-if [[ ! -e ~/.config/ILV/current/theme/helix.toml ]]; then
-  ILV-theme-refresh
+if [[ ! -e ~/.config/ARCHEOX/current/theme/helix.toml ]]; then
+  ARCHEOX-theme-refresh
 fi
 
 # Arch-based distros ship Helix as 'helix' rather than the upstream 'hx'.

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ILV:summary=Restart an application by killing it and relaunching via uwsm.
-# ILV:args=<application-name> [application-args...]
+# ARCHEOX:summary=Restart an application by killing it and relaunching via uwsm.
+# ARCHEOX:args=<application-name> [application-args...]
 
 pkill -x $1
 setsid uwsm-app -- "$@" >/dev/null 2>&1 &

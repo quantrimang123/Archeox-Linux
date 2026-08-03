@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Reload opencode configuration (used by the ILV theme switching).
+# ARCHEOX:summary=Reload opencode configuration (used by the ARCHEOX theme switching).
 
 if pgrep -x opencode >/dev/null; then
   killall -SIGUSR2 opencode

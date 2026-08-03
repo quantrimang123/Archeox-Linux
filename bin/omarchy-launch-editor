@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# ILV:summary=Launch the default editor as determined by $EDITOR (set via ~/.config/uwsm/default) (or nvim if missing).
-# ILV:args=<path>
+# ARCHEOX:summary=Launch the default editor as determined by $EDITOR (set via ~/.config/uwsm/default) (or nvim if missing).
+# ARCHEOX:args=<path>
 
-ILV-cmd-present "$EDITOR" || EDITOR=nvim
+ARCHEOX-cmd-present "$EDITOR" || EDITOR=nvim
 
 case "$EDITOR" in
 nvim | vim | nano | micro | hx | helix | fresh)
-  exec ILV-launch-tui "$EDITOR" "$@"
+  exec ARCHEOX-launch-tui "$EDITOR" "$@"
   ;;
 *)
   exec setsid uwsm-app -- "$EDITOR" "$@"

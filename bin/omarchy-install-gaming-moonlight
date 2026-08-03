@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ILV:summary=Install Moonlight (NVIDIA GameStream / Sunshine client) for streaming games to this PC.
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Install Moonlight (NVIDIA GameStream / Sunshine client) for streaming games to this PC.
+# ARCHEOX:requires-sudo=true
 
 set -e
 
 echo "Installing Moonlight..."
-ILV-pkg-add moonlight-qt
+ARCHEOX-pkg-add moonlight-qt
 
 setsid gtk-launch com.moonlight_stream.Moonlight.desktop >/dev/null 2>&1 &

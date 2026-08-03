@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# ILV:summary=Install Heroic Games Launcher (Epic, GOG, Amazon Prime Gaming) with graphics drivers.
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Install Heroic Games Launcher (Epic, GOG, Amazon Prime Gaming) with graphics drivers.
+# ARCHEOX:requires-sudo=true
 
 set -e
 
 echo "Installing Heroic Games Launcher..."
-ILV-pkg-add heroic-games-launcher-bin
-ILV-install-gaming-gpu-lib32
+ARCHEOX-pkg-add heroic-games-launcher-bin
+ARCHEOX-install-gaming-gpu-lib32
 
 setsid gtk-launch heroic >/dev/null 2>&1 &

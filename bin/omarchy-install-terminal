@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ILV:summary=Install one of the approved terminals and set it as the default for ILV (Super + Return etc).
-# ILV:args=<alacritty|foot|ghostty|kitty>
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Install one of the approved terminals and set it as the default for ARCHEOX (Super + Return etc).
+# ARCHEOX:args=<alacritty|foot|ghostty|kitty>
+# ARCHEOX:requires-sudo=true
 
 if (($# == 0)); then
-  echo "Usage: ILV-install-terminal [alacritty|foot|ghostty|kitty]"
+  echo "Usage: ARCHEOX-install-terminal [alacritty|foot|ghostty|kitty]"
   exit 1
 fi
 
@@ -26,19 +26,19 @@ esac
 echo "Installing $package..."
 
 # Install package
-if ILV-pkg-add $package; then
+if ARCHEOX-pkg-add $package; then
   # Copy custom desktop entries with X-TerminalArg* keys
   if [[ $package == "alacritty" ]]; then
     mkdir -p ~/.local/share/applications
-    cp "$ILV_PATH/applications/$desktop_id" ~/.local/share/applications/
+    cp "$ARCHEOX_PATH/applications/$desktop_id" ~/.local/share/applications/
   elif [[ $package == "foot" ]]; then
     mkdir -p ~/.local/share/applications
-    cp "$ILV_PATH/default/foot/$desktop_id" ~/.local/share/applications/
+    cp "$ARCHEOX_PATH/default/foot/$desktop_id" ~/.local/share/applications/
   fi
 
   # Copy default config for optional terminals when missing
   if [[ ! -e ~/.config/$package ]]; then
-    cp -Rpf "$ILV_PATH/config/$package" ~/.config/
+    cp -Rpf "$ARCHEOX_PATH/config/$package" ~/.config/
   fi
 
   # Update xdg-terminals.list to prioritize the proper terminal

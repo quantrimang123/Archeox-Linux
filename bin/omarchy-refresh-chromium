@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Refresh the ~/.config/chromium-flags.conf file from the ILV defaults.
+# ARCHEOX:summary=Refresh the ~/.config/chromium-flags.conf file from the ARCHEOX defaults.
 
 CONFIG_FILE="$HOME/.config/chromium-flags.conf"
 INSTALL_GOOGLE_ACCOUNTS=false
@@ -13,9 +13,9 @@ if [[ -f $CONFIG_FILE ]] && \
 fi
 
 # Refresh the Chromium configuration
-ILV-refresh-config chromium-flags.conf
+ARCHEOX-refresh-config chromium-flags.conf
 
 # Re-install Google accounts if previously configured
 if [[ $INSTALL_GOOGLE_ACCOUNTS == "true" ]]; then
-  ILV-install-chromium-google-account
+  ARCHEOX-install-chromium-google-account
 fi

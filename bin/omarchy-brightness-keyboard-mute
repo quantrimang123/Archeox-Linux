@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ILV:summary=Set the mic-mute indicator LED on laptops that expose a platform::micmute LED node.
-# ILV:args=<on|off>
+# ARCHEOX:summary=Set the mic-mute indicator LED on laptops that expose a platform::micmute LED node.
+# ARCHEOX:args=<on|off>
 
 if [[ -e /sys/class/leds/platform::micmute/brightness ]]; then
   case "$1" in

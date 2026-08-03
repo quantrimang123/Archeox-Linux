@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Toggle hypridle idle locking
+# ARCHEOX:summary=Toggle hypridle idle locking
 
 if pgrep -x hypridle >/dev/null; then
   pkill -x hypridle

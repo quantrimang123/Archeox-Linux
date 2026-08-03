@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Check if a toggle is enabled (flag file exists)
-# ILV:args=<flag-name>
+# ARCHEOX:summary=Check if a toggle is enabled (flag file exists)
+# ARCHEOX:args=<flag-name>
 
-[[ -f "$HOME/.local/state/ILV/toggles/$1" ]]
+[[ -f "$HOME/.local/state/ARCHEOX/toggles/$1" ]]

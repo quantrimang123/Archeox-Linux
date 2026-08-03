@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ILV:summary=Returns true if all of the named packages are installed on the system (or false if any of them are missing).
-# ILV:args=<packages...>
+# ARCHEOX:summary=Returns true if all of the named packages are installed on the system (or false if any of them are missing).
+# ARCHEOX:args=<packages...>
 
 for pkg in "$@"; do
   pacman -Q "$pkg" &>/dev/null || exit 1

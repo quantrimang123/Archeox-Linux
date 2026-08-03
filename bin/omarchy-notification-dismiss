@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ILV:summary=Dismiss a mako notification on the basis of its summary. Used by the first-run notifications to dismiss them after clicking for action.
-# ILV:args=<summary>
+# ARCHEOX:summary=Dismiss a mako notification on the basis of its summary. Used by the first-run notifications to dismiss them after clicking for action.
+# ARCHEOX:args=<summary>
 
 if (($# == 0)); then
-  echo "Usage: ILV-notification-dismiss <summary>"
+  echo "Usage: ARCHEOX-notification-dismiss <summary>"
   exit 1
 fi
 

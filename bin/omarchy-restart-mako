@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ILV:summary=Reload mako configuration (used by the ILV theme switching).
+# ARCHEOX:summary=Reload mako configuration (used by the ARCHEOX theme switching).
 
 makoctl reload

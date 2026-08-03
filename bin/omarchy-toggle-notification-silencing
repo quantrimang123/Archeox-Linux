@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Toggle notification do-not-disturb mode
+# ARCHEOX:summary=Toggle notification do-not-disturb mode
 
 makoctl mode -t do-not-disturb
 

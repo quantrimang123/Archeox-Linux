@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ILV:summary=Remove the Minecraft launcher along with its worlds, mods, and caches.
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Remove the Minecraft launcher along with its worlds, mods, and caches.
+# ARCHEOX:requires-sudo=true
 
 set -e
 
-ILV-pkg-drop minecraft-launcher
+ARCHEOX-pkg-drop minecraft-launcher
 
 rm -rf \
   "$HOME/.minecraft" \

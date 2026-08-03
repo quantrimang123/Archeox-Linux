@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ILV:summary=Print the installed ILV version
+# ARCHEOX:summary=Print the installed ARCHEOX version
 
-cat $ILV_PATH/version
+cat $ARCHEOX_PATH/version

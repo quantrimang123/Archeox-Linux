@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ILV:summary=Check the update log for known failure conditions
+# ARCHEOX:summary=Check the update log for known failure conditions
 
-update_log="/tmp/ILV-update.log"
+update_log="/tmp/ARCHEOX-update.log"
 
 # Check for initramfs generation failure
 if grep -q "Updating linux initcpios" "$update_log"; then

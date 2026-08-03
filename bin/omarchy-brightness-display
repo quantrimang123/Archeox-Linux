@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ILV:summary=Adjust brightness on the most likely display device.
-# ILV:args=<+N%|N%-|N%|off|on>
-# ILV:examples=ILV brightness display +5% | ILV brightness display 5%- | ILV brightness display 50% | ILV brightness display off | ILV brightness display on
+# ARCHEOX:summary=Adjust brightness on the most likely display device.
+# ARCHEOX:args=<+N%|N%-|N%|off|on>
+# ARCHEOX:examples=ARCHEOX brightness display +5% | ARCHEOX brightness display 5%- | ARCHEOX brightness display 50% | ARCHEOX brightness display off | ARCHEOX brightness display on
 
 step="${1:-+5%}"
 
@@ -23,8 +23,8 @@ elif [[ $step == "on" ]]; then
   exit 0
 fi
 
-if ILV-hyprland-monitor-focused-apple; then
-  ILV-brightness-display-apple "$step"
+if ARCHEOX-hyprland-monitor-focused-apple; then
+  ARCHEOX-brightness-display-apple "$step"
   exit
 fi
 
@@ -57,4 +57,4 @@ fi
 brightnessctl -d "$device" set "$step" >/dev/null
 
 # Use SwayOSD to display the new brightness setting.
-ILV-swayosd-brightness "$(brightnessctl -d "$device" -m | cut -d',' -f4 | tr -d '%')"
+ARCHEOX-swayosd-brightness "$(brightnessctl -d "$device" -m | cut -d',' -f4 | tr -d '%')"

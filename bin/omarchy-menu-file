@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# ILV:summary=Pick a file with Walker
-# ILV:group=menu
-# ILV:name=file
-# ILV:args=label paths formats [walker args...]
-# ILV:examples=ILV menu file "Select image" "$HOME/Pictures" "jpg png webp"|ILV-menu-file "Select media" "$HOME/Pictures:$HOME/Videos" "jpg png mp4 mov" --width 800
+# ARCHEOX:summary=Pick a file with Walker
+# ARCHEOX:group=menu
+# ARCHEOX:name=file
+# ARCHEOX:args=label paths formats [walker args...]
+# ARCHEOX:examples=ARCHEOX menu file "Select image" "$HOME/Pictures" "jpg png webp"|ARCHEOX-menu-file "Select media" "$HOME/Pictures:$HOME/Videos" "jpg png mp4 mov" --width 800
 
 set -euo pipefail
 
 if (( $# < 3 )); then
-  echo "Usage: ILV-menu-file <label> <paths> <formats> [walker args...]" >&2
+  echo "Usage: ARCHEOX-menu-file <label> <paths> <formats> [walker args...]" >&2
   exit 1
 fi
 
@@ -22,7 +22,7 @@ IFS=: read -r -a paths <<<"$paths_arg"
 read -r -a formats <<<"$formats_arg"
 
 if (( ${#paths[@]} == 0 || ${#formats[@]} == 0 )); then
-  echo "Usage: ILV-menu-file <label> <paths> <formats> [walker args...]" >&2
+  echo "Usage: ARCHEOX-menu-file <label> <paths> <formats> [walker args...]" >&2
   exit 1
 fi
 
@@ -45,4 +45,4 @@ done
 find_args+=(")" -printf '%T@\t%p\n')
 
 find "${find_args[@]}" 2>/dev/null | sort -rn | cut -f2- |
-  ILV-launch-walker --dmenu --width 800 --minheight 1 --maxheight 500 -p "$label…" "$@" 2>/dev/null
+  ARCHEOX-launch-walker --dmenu --width 800 --minheight 1 --maxheight 500 -p "$label…" "$@" 2>/dev/null

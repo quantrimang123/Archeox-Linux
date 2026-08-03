@@ -1,6 +1,6 @@
-ILV_MIGRATIONS_STATE_PATH=~/.local/state/ILV/migrations
-mkdir -p $ILV_MIGRATIONS_STATE_PATH
+ARCHEOX_MIGRATIONS_STATE_PATH=~/.local/state/ARCHEOX/migrations
+mkdir -p $ARCHEOX_MIGRATIONS_STATE_PATH
 
-for file in ~/.local/share/ILV/migrations/*.sh; do
-  touch "$ILV_MIGRATIONS_STATE_PATH/$(basename "$file")"
+for file in ~/.local/share/ARCHEOX/migrations/*.sh; do
+  touch "$ARCHEOX_MIGRATIONS_STATE_PATH/$(basename "$file")"
 done

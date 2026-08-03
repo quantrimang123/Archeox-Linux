@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# ILV:summary=Creates a new ILV migration named after the unix timestamp of the last commit.
+# ARCHEOX:summary=Creates a new ARCHEOX migration named after the unix timestamp of the last commit.
 
-cd ~/.local/share/ILV
-migration_file="$HOME/.local/share/ILV/migrations/$(git log -1 --format=%cd --date=unix).sh"
+cd ~/.local/share/ARCHEOX
+migration_file="$HOME/.local/share/ARCHEOX/migrations/$(git log -1 --format=%cd --date=unix).sh"
 touch $migration_file
 
 if [[ $1 != "--no-edit" ]]; then

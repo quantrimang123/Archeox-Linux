@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# ILV:summary=Set and show lightweight desktop notification reminders
-# ILV:args=<minutes> [message] | show | clear
-# ILV:examples=ILV reminder 5 | ILV reminder 30 "Check the oven" | ILV reminder show | ILV reminder clear
+# ARCHEOX:summary=Set and show lightweight desktop notification reminders
+# ARCHEOX:args=<minutes> [message] | show | clear
+# ARCHEOX:examples=ARCHEOX reminder 5 | ARCHEOX reminder 30 "Check the oven" | ARCHEOX reminder show | ARCHEOX reminder clear
 
 set -euo pipefail
 
@@ -42,10 +42,10 @@ parse_systemd_timespan() {
 
 show_reminders() {
   local timers timer next next_seconds uptime remaining body=""
-  local reminder_dir="${XDG_RUNTIME_DIR:-/tmp}/ILV-reminders"
+  local reminder_dir="${XDG_RUNTIME_DIR:-/tmp}/ARCHEOX-reminders"
   local reminder_message=""
 
-  timers=$(systemctl --user list-timers --all --no-legend --no-pager "ILV-reminder-*.timer" 2>/dev/null | awk '{ print $(NF - 1) }')
+  timers=$(systemctl --user list-timers --all --no-legend --no-pager "ARCHEOX-reminder-*.timer" 2>/dev/null | awk '{ print $(NF - 1) }')
   uptime=${SECONDS_SINCE_BOOT:-$(awk '{ print int($1) }' /proc/uptime)}
 
   for timer in $timers; do
@@ -57,7 +57,7 @@ show_reminders() {
 
     remaining=$((next_seconds - uptime))
     reminder=${timer%.timer}
-    reminder=${reminder#ILV-reminder-}
+    reminder=${reminder#ARCHEOX-reminder-}
     set_at=${reminder##*-}
     reminder_minutes=${reminder%%m-*}
     reminder_message=""
@@ -71,24 +71,24 @@ show_reminders() {
   done
 
   if [[ -z $body ]]; then
-    ILV-notification-send "󰔛" "Upcoming reminders" "No outstanding reminders" -u low
+    ARCHEOX-notification-send "󰔛" "Upcoming reminders" "No outstanding reminders" -u low
   else
-    ILV-notification-send "󰔛" "Upcoming reminders" "${body%$'\n'}" -u low
+    ARCHEOX-notification-send "󰔛" "Upcoming reminders" "${body%$'\n'}" -u low
   fi
 }
 
 clear_reminders() {
   local units
-  local reminder_dir="${XDG_RUNTIME_DIR:-/tmp}/ILV-reminders"
+  local reminder_dir="${XDG_RUNTIME_DIR:-/tmp}/ARCHEOX-reminders"
 
-  units=$(systemctl --user list-timers --all --no-legend --no-pager "ILV-reminder-*.timer" 2>/dev/null | awk '{ print $(NF - 1), $NF }')
+  units=$(systemctl --user list-timers --all --no-legend --no-pager "ARCHEOX-reminder-*.timer" 2>/dev/null | awk '{ print $(NF - 1), $NF }')
 
   if [[ -n $units ]]; then
     xargs -r systemctl --user stop <<<"$units" || true
   fi
 
-  rm -f "$reminder_dir"/ILV-reminder-*.message 2>/dev/null || true
-  ILV-notification-send "󰔛" "All reminders have been cleared" -u low
+  rm -f "$reminder_dir"/ARCHEOX-reminder-*.message 2>/dev/null || true
+  ARCHEOX-notification-send "󰔛" "All reminders have been cleared" -u low
 }
 
 case ${1:-} in
@@ -108,9 +108,9 @@ message="$*"
 custom_message="$message"
 
 if [[ -z $minutes ]] || [[ ! $minutes =~ ^[0-9]+$ ]] || ((minutes == 0)); then
-  echo "Usage: ILV-reminder <minutes> [message]"
-  echo "       ILV-reminder show"
-  echo "       ILV-reminder clear"
+  echo "Usage: ARCHEOX-reminder <minutes> [message]"
+  echo "       ARCHEOX-reminder show"
+  echo "       ARCHEOX-reminder clear"
   exit 1
 fi
 
@@ -120,8 +120,8 @@ fi
 
 set_at=$(date +%s)
 remind_at=$(date -d "+${minutes} minutes" +%H:%M)
-unit="ILV-reminder-${minutes}m-$set_at"
-reminder_dir="${XDG_RUNTIME_DIR:-/tmp}/ILV-reminders"
+unit="ARCHEOX-reminder-${minutes}m-$set_at"
+reminder_dir="${XDG_RUNTIME_DIR:-/tmp}/ARCHEOX-reminders"
 message_file="$reminder_dir/$unit.message"
 confirmation="You'll be reminded at $remind_at"
 confirmation_title="Reminder set for ${minutes} minutes"
@@ -134,6 +134,6 @@ if [[ -n $custom_message ]]; then
 fi
 
 systemd-run --user --quiet --collect --on-active="${minutes}m" --unit="$unit" \
-  bash -c 'ILV-notification-send "󰔛" "Reminder" "$1" -u critical; rm -f "$2"' bash "$message" "$message_file"
+  bash -c 'ARCHEOX-notification-send "󰔛" "Reminder" "$1" -u critical; rm -f "$2"' bash "$message" "$message_file"
 
-ILV-notification-send "󰔛" "$confirmation_title" "$confirmation" -u low
+ARCHEOX-notification-send "󰔛" "$confirmation_title" "$confirmation" -u low

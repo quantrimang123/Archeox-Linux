@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# ILV:summary=Print debugging information
-# ILV:args=[--no-sudo] [--print]
-# ILV:examples=ILV debug --print --no-sudo
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Print debugging information
+# ARCHEOX:args=[--no-sudo] [--print]
+# ARCHEOX:examples=ARCHEOX debug --print --no-sudo
+# ARCHEOX:requires-sudo=true
 
 NO_SUDO=false
 PRINT_ONLY=false
@@ -20,13 +20,13 @@ while (( $# > 0 )); do
       ;;
     *)
       echo "Unknown option: $1"
-      echo "Usage: ILV-debug [--no-sudo] [--print]"
+      echo "Usage: ARCHEOX-debug [--no-sudo] [--print]"
       exit 1
       ;;
   esac
 done
 
-LOG_FILE="/tmp/ILV-debug.log"
+LOG_FILE="/tmp/ARCHEOX-debug.log"
 
 if [[ $NO_SUDO = "true" ]]; then
   DMESG_OUTPUT="(skipped - --no-sudo flag used)"
@@ -37,7 +37,7 @@ fi
 cat > "$LOG_FILE" <<EOF
 Date: $(date)
 Hostname: $(hostname)
-ILV Branch: $(git -C "$ILV_PATH" branch --show-current 2>/dev/null || echo "unknown")
+ARCHEOX Branch: $(git -C "$ARCHEOX_PATH" branch --show-current 2>/dev/null || echo "unknown")
 
 =========================================
 SYSTEM INFORMATION
@@ -74,8 +74,8 @@ ACTION=$(gum choose "${OPTIONS[@]}")
 
 case "$ACTION" in
   "Upload log")
-    echo "Uploading debug log to logs.ILV.org..."
-    URL=$(curl -sf -F "file=@$LOG_FILE" https://logs.ILV.org/)
+    echo "Uploading debug log to logs.ARCHEOX.org..."
+    URL=$(curl -sf -F "file=@$LOG_FILE" https://logs.ARCHEOX.org/)
     if (( $? == 0 )) && [[ -n $URL ]]; then
       echo "✓ Log uploaded successfully!"
       echo "Share this URL:"
@@ -90,7 +90,7 @@ case "$ACTION" in
     less "$LOG_FILE"
     ;;
   "Save in current directory")
-    cp "$LOG_FILE" "./ILV-debug.log"
-    echo "✓ Log saved to $(pwd)/ILV-debug.log"
+    cp "$LOG_FILE" "./ARCHEOX-debug.log"
+    echo "✓ Log saved to $(pwd)/ARCHEOX-debug.log"
     ;;
 esac

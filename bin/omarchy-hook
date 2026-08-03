@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# ILV:summary=Run a named hook from ~/.config/ILV/hooks/<name> and ~/.config/ILV/hooks/<name>.d/.
-# ILV:args=[name] [args...]
+# ARCHEOX:summary=Run a named hook from ~/.config/ARCHEOX/hooks/<name> and ~/.config/ARCHEOX/hooks/<name>.d/.
+# ARCHEOX:args=[name] [args...]
 
 set -e
 
 if (( $# < 1 )); then
-  echo "Usage: ILV-hook [name] [args...]"
+  echo "Usage: ARCHEOX-hook [name] [args...]"
   exit 1
 fi
 
 HOOK=$1
-HOOK_PATH="$HOME/.config/ILV/hooks/$1"
+HOOK_PATH="$HOME/.config/ARCHEOX/hooks/$1"
 HOOK_DIR="$HOOK_PATH.d"
 shift
 

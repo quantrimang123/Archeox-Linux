@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Overwrite the user config for hyprsunset with the ILV default and restart the service.
+# ARCHEOX:summary=Overwrite the user config for hyprsunset with the ARCHEOX default and restart the service.
 
-ILV-refresh-config hypr/hyprsunset.conf
-ILV-restart-hyprsunset
+ARCHEOX-refresh-config hypr/hyprsunset.conf
+ARCHEOX-restart-hyprsunset

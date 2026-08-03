@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Show current monospace font
-# ILV:examples=ILV font current
+# ARCHEOX:summary=Show current monospace font
+# ARCHEOX:examples=ARCHEOX font current
 
 grep -oP 'font-family:\s*["'\'']?\K[^;"'\'']+' ~/.config/waybar/style.css | head -n1

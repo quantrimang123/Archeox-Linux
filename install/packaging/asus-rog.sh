@@ -1,3 +1,3 @@
-if ILV-hw-asus-rog; then
-  ILV-pkg-add asusctl
+if ARCHEOX-hw-asus-rog; then
+  ARCHEOX-pkg-add asusctl
 fi

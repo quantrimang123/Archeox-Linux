@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ILV:summary=Toggle nightlight screen temperature
-# ILV:examples=ILV toggle nightlight
+# ARCHEOX:summary=Toggle nightlight screen temperature
+# ARCHEOX:examples=ARCHEOX toggle nightlight
 
 ON_TEMP=4000
 OFF_TEMP=6000
@@ -17,7 +17,7 @@ CURRENT_TEMP=$(hyprctl hyprsunset temperature 2>/dev/null | grep -oE '[0-9]+')
 
 restart_nightlighted_waybar() {
   if grep -q "custom/nightlight" ~/.config/waybar/config.jsonc; then
-    ILV-restart-waybar # restart waybar in case user has waybar module for hyprsunset
+    ARCHEOX-restart-waybar # restart waybar in case user has waybar module for hyprsunset
   fi
 }
 

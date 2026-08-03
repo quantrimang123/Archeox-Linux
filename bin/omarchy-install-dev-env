@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# ILV:summary=Install a supported development environment
-# ILV:name=dev-env
-# ILV:args=<ruby|node|bun|deno|go|laravel|symfony|php|python|elixir|phoenix|rust|java|zig|ocaml|dotnet|clojure|scala>
-# ILV:examples=ILV install dev-env ruby | ILV install dev-env node
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Install a supported development environment
+# ARCHEOX:name=dev-env
+# ARCHEOX:args=<ruby|node|bun|deno|go|laravel|symfony|php|python|elixir|phoenix|rust|java|zig|ocaml|dotnet|clojure|scala>
+# ARCHEOX:examples=ARCHEOX install dev-env ruby | ARCHEOX install dev-env node
+# ARCHEOX:requires-sudo=true
 
 if [[ -z $1 ]]; then
-  echo "Usage: ILV-install-dev-env <ruby|node|bun|deno|go|laravel|symfony|php|python|elixir|phoenix|rust|java|zig|ocaml|dotnet|clojure|scala>" >&2
+  echo "Usage: ARCHEOX-install-dev-env <ruby|node|bun|deno|go|laravel|symfony|php|python|elixir|phoenix|rust|java|zig|ocaml|dotnet|clojure|scala>" >&2
   exit 1
 fi
 
 install_php() {
-  ILV-pkg-add php composer php-sqlite xdebug
+  ARCHEOX-pkg-add php composer php-sqlite xdebug
 
   # Install Path for Composer
   if [[ :$PATH: != *:$HOME/.config/composer/vendor/bin:* ]]; then
@@ -53,7 +53,7 @@ install_node() {
 case "$1" in
 ruby)
   echo -e "Installing Ruby on Rails...\n"
-  ILV-pkg-add libyaml
+  ARCHEOX-pkg-add libyaml
   mise settings add ruby.compile false
   mise settings add idiomatic_version_file_enable_tools ruby
   mise use --global ruby@latest
@@ -90,7 +90,7 @@ laravel)
 symfony)
   echo -e "Installing PHP and Symfony...\n"
   install_php
-  ILV-pkg-add symfony-cli
+  ARCHEOX-pkg-add symfony-cli
   echo -e "\nYou can now run: symfony new --webapp myproject"
   ;;
 python)
@@ -143,7 +143,7 @@ dotnet)
   ;;
 clojure)
   echo -e "Installing Clojure...\n"
-  ILV-pkg-add rlwrap
+  ARCHEOX-pkg-add rlwrap
   mise use --global clojure@latest
   ;;
 scala)

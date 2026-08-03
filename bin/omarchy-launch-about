@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ILV:summary=Launch the fastfetch TUI that gives information about the current system.
+# ARCHEOX:summary=Launch the fastfetch TUI that gives information about the current system.
 
-exec ILV-launch-or-focus-tui "bash -c 'fastfetch; read -n 1 -s'"
+exec ARCHEOX-launch-or-focus-tui "bash -c 'fastfetch; read -n 1 -s'"

@@ -1,27 +1,27 @@
 #!/bin/bash
 
-# ILV:summary=Enable, disable, toggle, or recover the internal laptop display
-# ILV:args=<on|off|toggle|recover>
+# ARCHEOX:summary=Enable, disable, toggle, or recover the internal laptop display
+# ARCHEOX:args=<on|off|toggle|recover>
 
 TOGGLE="internal-monitor-disable"
-TOGGLE_FLAG="$HOME/.local/state/ILV/toggles/hypr/$TOGGLE.conf"
+TOGGLE_FLAG="$HOME/.local/state/ARCHEOX/toggles/hypr/$TOGGLE.conf"
 MIRROR_TOGGLE="internal-monitor-mirror"
 
 # Get internal monitor name dynamically
 INTERNAL=$(hyprctl monitors -j | jq -r '.[] | select(.name | contains("eDP")).name' | head -n 1)
 
 enable() {
-  if ILV-hyprland-toggle-enabled "$TOGGLE"; then
-    ILV-hyprland-toggle --disabled-notification "󰍹    Laptop display enabled" "$TOGGLE"
+  if ARCHEOX-hyprland-toggle-enabled "$TOGGLE"; then
+    ARCHEOX-hyprland-toggle --disabled-notification "󰍹    Laptop display enabled" "$TOGGLE"
   fi
 }
 
 disable() {
-  if ! ILV-hw-external-monitors; then
+  if ! ARCHEOX-hw-external-monitors; then
     notify-send -u low "󰍹    Can't disable the only active display"
     exit 1
   fi
-  if ILV-hyprland-toggle-disabled "$TOGGLE" && ILV-hyprland-toggle-disabled "$MIRROR_TOGGLE"; then
+  if ARCHEOX-hyprland-toggle-disabled "$TOGGLE" && ARCHEOX-hyprland-toggle-disabled "$MIRROR_TOGGLE"; then
     echo "monitor=$INTERNAL,disable" >"$TOGGLE_FLAG"
     notify-send -u low "󰍹    Laptop display disabled"
     hyprctl reload
@@ -29,15 +29,15 @@ disable() {
 }
 
 recover() {
-  if ! ILV-hw-external-monitors && ILV-hyprland-toggle-enabled "$TOGGLE"; then
-    ILV-hyprland-toggle "$TOGGLE"
+  if ! ARCHEOX-hw-external-monitors && ARCHEOX-hyprland-toggle-enabled "$TOGGLE"; then
+    ARCHEOX-hyprland-toggle "$TOGGLE"
   fi
 }
 
 case "$1" in
   on) enable ;;
   off) disable ;;
-  toggle) if ILV-hyprland-toggle-enabled "$TOGGLE"; then enable; else disable; fi ;;
+  toggle) if ARCHEOX-hyprland-toggle-enabled "$TOGGLE"; then enable; else disable; fi ;;
   recover) recover ;;
   *)
     echo "Usage: $(basename "$0") {on|off|toggle|recover}" >&2

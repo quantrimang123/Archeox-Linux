@@ -1,15 +1,15 @@
 #!/bin/bash
 
-# ILV:summary=Sync ILV theme to VS Code, VSCodium, and Cursor
-# ILV:hidden=true
+# ARCHEOX:summary=Sync ARCHEOX theme to VS Code, VSCodium, and Cursor
+# ARCHEOX:hidden=true
 
-VS_CODE_THEME="$HOME/.config/ILV/current/theme/vscode.json"
+VS_CODE_THEME="$HOME/.config/ARCHEOX/current/theme/vscode.json"
 
 set_theme() {
   local editor_cmd="$1"
   local settings_path="$2"
 
-  ILV-cmd-present "$editor_cmd" || return 0
+  ARCHEOX-cmd-present "$editor_cmd" || return 0
 
   if [[ -f $VS_CODE_THEME ]]; then
     theme_name=$(jq -r '.name' "$VS_CODE_THEME")
@@ -34,7 +34,7 @@ set_theme() {
   fi
 }
 
-! ILV-toggle-enabled skip-vscode-theme-changes && set_theme "code" "$HOME/.config/Code/User/settings.json"
-! ILV-toggle-enabled skip-vscode-insiders-theme-changes && set_theme "code-insiders" "$HOME/.config/Code - Insiders/User/settings.json"
-! ILV-toggle-enabled skip-codium-theme-changes && set_theme "codium" "$HOME/.config/VSCodium/User/settings.json"
-! ILV-toggle-enabled skip-cursor-theme-changes && set_theme "cursor" "$HOME/.config/Cursor/User/settings.json"
+! ARCHEOX-toggle-enabled skip-vscode-theme-changes && set_theme "code" "$HOME/.config/Code/User/settings.json"
+! ARCHEOX-toggle-enabled skip-vscode-insiders-theme-changes && set_theme "code-insiders" "$HOME/.config/Code - Insiders/User/settings.json"
+! ARCHEOX-toggle-enabled skip-codium-theme-changes && set_theme "codium" "$HOME/.config/VSCodium/User/settings.json"
+! ARCHEOX-toggle-enabled skip-cursor-theme-changes && set_theme "cursor" "$HOME/.config/Cursor/User/settings.json"

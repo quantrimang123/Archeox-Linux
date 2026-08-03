@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# ILV:summary=Close all open windows
+# ARCHEOX:summary=Close all open windows
 
 hyprctl clients -j | \
   jq -r ".[].address" | \

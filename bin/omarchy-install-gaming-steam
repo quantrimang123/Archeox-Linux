@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# ILV:summary=Install Steam and graphics drivers selected for this system
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Install Steam and graphics drivers selected for this system
+# ARCHEOX:requires-sudo=true
 
 set -e
 
 echo "Installing Steam..."
-ILV-pkg-add steam
-ILV-install-gaming-gpu-lib32
+ARCHEOX-pkg-add steam
+ARCHEOX-install-gaming-gpu-lib32
 
 echo ""
 echo "Steam will start automatically now. This might take a while..."

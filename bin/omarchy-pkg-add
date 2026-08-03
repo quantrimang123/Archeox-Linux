@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ILV:summary=Install Arch packages if they are missing
-# ILV:args=<packages...>
-# ILV:examples=ILV pkg add jq ripgrep
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Install Arch packages if they are missing
+# ARCHEOX:args=<packages...>
+# ARCHEOX:examples=ARCHEOX pkg add jq ripgrep
+# ARCHEOX:requires-sudo=true
 
-if ILV-pkg-missing "$@"; then
+if ARCHEOX-pkg-missing "$@"; then
   sudo pacman -S --noconfirm --needed "$@" || exit 1
 fi
 

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# ILV:summary=Generate themed config files from ILV templates
-# ILV:hidden=true
+# ARCHEOX:summary=Generate themed config files from ARCHEOX templates
+# ARCHEOX:hidden=true
 
-TEMPLATES_DIR="$ILV_PATH/default/themed"
-USER_TEMPLATES_DIR="$HOME/.config/ILV/themed"
-NEXT_THEME_DIR="$HOME/.config/ILV/current/next-theme"
+TEMPLATES_DIR="$ARCHEOX_PATH/default/themed"
+USER_TEMPLATES_DIR="$HOME/.config/ARCHEOX/themed"
+NEXT_THEME_DIR="$HOME/.config/ARCHEOX/current/next-theme"
 COLORS_FILE="$NEXT_THEME_DIR/colors.toml"
 
 # Convert hex color to decimal RGB (e.g., "#1e1e2e" -> "30,30,46")

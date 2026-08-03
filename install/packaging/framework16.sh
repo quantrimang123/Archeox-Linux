@@ -1,3 +1,3 @@
-if ILV-hw-framework16; then
-  ILV-pkg-add qmk-hid
+if ARCHEOX-hw-framework16; then
+  ARCHEOX-pkg-add qmk-hid
 fi

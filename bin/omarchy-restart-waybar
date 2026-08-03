@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ILV:summary=Restart Waybar
-# ILV:examples=ILV restart waybar
+# ARCHEOX:summary=Restart Waybar
+# ARCHEOX:examples=ARCHEOX restart waybar
 
 pkill -9 -x waybar
 setsid uwsm-app -- waybar >/dev/null 2>&1 &

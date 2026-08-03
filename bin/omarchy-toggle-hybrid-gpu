@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# ILV:summary=Toggle dedicated vs integrated GPU mode via supergfxd (for hybrid gpu laptops, like Asus G14).
-# ILV:requires-sudo=true
+# ARCHEOX:summary=Toggle dedicated vs integrated GPU mode via supergfxd (for hybrid gpu laptops, like Asus G14).
+# ARCHEOX:requires-sudo=true
 
-if ILV-cmd-missing supergfxctl; then
-  ILV-pkg-add supergfxctl
+if ARCHEOX-cmd-missing supergfxctl; then
+  ARCHEOX-pkg-add supergfxctl
 
   # Create config before starting service to prevent hang on first boot
   sudo tee /etc/supergfxd.conf >/dev/null <<'CONF'
@@ -36,7 +36,7 @@ case "$gpu_mode" in
     # Remove the startup delay override (not needed for Hybrid mode)
     sudo rm -rf /etc/systemd/system/supergfxd.service.d/delay-start.conf
 
-    ILV-system-reboot
+    ARCHEOX-system-reboot
   fi
   ;;
 "Hybrid")
@@ -47,14 +47,14 @@ case "$gpu_mode" in
 
     # Force igpu mode after system sleep (or dgpu could get activated)
     sudo mkdir -p /usr/lib/systemd/system-sleep
-    sudo cp -p $ILV_PATH/default/systemd/system-sleep/force-igpu /usr/lib/systemd/system-sleep/
+    sudo cp -p $ARCHEOX_PATH/default/systemd/system-sleep/force-igpu /usr/lib/systemd/system-sleep/
 
     # Delay supergfxd startup to avoid race condition with display manager
     # that can cause system freeze when booting in Integrated mode
     sudo mkdir -p /etc/systemd/system/supergfxd.service.d
-    sudo cp -p $ILV_PATH/default/systemd/system/supergfxd.service.d/delay-start.conf /etc/systemd/system/supergfxd.service.d/
+    sudo cp -p $ARCHEOX_PATH/default/systemd/system/supergfxd.service.d/delay-start.conf /etc/systemd/system/supergfxd.service.d/
 
-    ILV-system-reboot
+    ARCHEOX-system-reboot
   fi
   ;;
 *)

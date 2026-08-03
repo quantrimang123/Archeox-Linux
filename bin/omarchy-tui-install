@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# ILV:summary=Create a desktop launcher for a terminal UI app
-# ILV:args=[name command window-style icon-url]
+# ARCHEOX:summary=Create a desktop launcher for a terminal UI app
+# ARCHEOX:args=[name command window-style icon-url]
 
 set -e
 

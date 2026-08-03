@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ILV:summary=Reload btop configuration (used by the ILV theme switching).
+# ARCHEOX:summary=Reload btop configuration (used by the ARCHEOX theme switching).
 
 pkill -SIGUSR2 btop

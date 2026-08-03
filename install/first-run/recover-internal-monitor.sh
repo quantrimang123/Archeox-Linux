@@ -1,1 +1,1 @@
-systemctl --user enable ILV-recover-internal-monitor.service
+systemctl --user enable ARCHEOX-recover-internal-monitor.service

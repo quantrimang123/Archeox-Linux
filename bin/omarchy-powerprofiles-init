@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# ILV:summary=Set the correct power profile on boot based on current AC/battery state.
+# ARCHEOX:summary=Set the correct power profile on boot based on current AC/battery state.
 
-if ILV-battery-present && ! ILV-ac-present; then
-  ILV-powerprofiles-set battery
+if ARCHEOX-battery-present && ! ARCHEOX-ac-present; then
+  ARCHEOX-powerprofiles-set battery
 else
-  ILV-powerprofiles-set ac
+  ARCHEOX-powerprofiles-set ac
 fi

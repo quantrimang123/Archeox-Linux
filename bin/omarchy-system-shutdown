@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# ILV:summary=Shut down after closing application windows
-# ILV:examples=ILV shutdown | ILV system shutdown
-# ILV:aliases=ILV shutdown
+# ARCHEOX:summary=Shut down after closing application windows
+# ARCHEOX:examples=ARCHEOX shutdown | ARCHEOX system shutdown
+# ARCHEOX:aliases=ARCHEOX shutdown
 
-ILV-state clear re*-required
+ARCHEOX-state clear re*-required
 
 # Schedule the shutdown to happen after closing windows (detached from terminal)
 nohup bash -c "sleep 2 && systemctl poweroff --no-wall" >/dev/null 2>&1 &
 
 # Now close all windows
-ILV-hyprland-window-close-all
+ARCHEOX-hyprland-window-close-all
 sleep 1 # Allow apps like Chrome to shutdown correctly

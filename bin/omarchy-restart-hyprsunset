@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# ILV:summary=Restart the hyprsunset service (used for blue light filtering/night light).
+# ARCHEOX:summary=Restart the hyprsunset service (used for blue light filtering/night light).
 
-ILV-restart-app hyprsunset
+ARCHEOX-restart-app hyprsunset
