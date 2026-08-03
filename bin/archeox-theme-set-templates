@@ -3,7 +3,7 @@
 # archeox:summary=Generate themed config files from archeox templates
 # archeox:hidden=true
 
-TEMPLATES_DIR="$archeox_PATH/default/themed"
+TEMPLATES_DIR="$ARCHEOX_"PATH/default/themed"
 USER_TEMPLATES_DIR="$HOME/.config/archeox/themed"
 NEXT_THEME_DIR="$HOME/.config/archeox/current/next-theme"
 COLORS_FILE="$NEXT_THEME_DIR/colors.toml"

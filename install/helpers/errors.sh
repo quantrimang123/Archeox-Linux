@@ -10,11 +10,11 @@ show_cursor() {
 
 # Display truncated log lines from the install log
 show_log_tail() {
-  if [[ -f $archeox_INSTALL_LOG_FILE ]]; then
+  if [[ -f $ARCHEOX_"INSTALL_LOG_FILE ]]; then
     local log_lines=$((TERM_HEIGHT - LOGO_HEIGHT - 35))
     local max_line_width=$((LOGO_WIDTH - 4))
 
-    tail -n $log_lines "$archeox_INSTALL_LOG_FILE" | while IFS= read -r line; do
+    tail -n $log_lines "$ARCHEOX_"INSTALL_LOG_FILE" | while IFS= read -r line; do
       if ((${#line} > max_line_width)); then
         local truncated_line="${line:0:$max_line_width}..."
       else
@@ -91,7 +91,7 @@ catch_errors() {
     options=()
 
     # If online install, show retry first
-    if [[ -n ${archeox_ONLINE_INSTALL:-} ]]; then
+    if [[ -n ${ARCHEOX_"ONLINE_INSTALL:-} ]]; then
       options+=("Retry installation")
     fi
 
@@ -113,9 +113,9 @@ catch_errors() {
       ;;
     "View full log")
       if command -v less &>/dev/null; then
-        less "$archeox_INSTALL_LOG_FILE"
+        less "$ARCHEOX_"INSTALL_LOG_FILE"
       else
-        tail "$archeox_INSTALL_LOG_FILE"
+        tail "$ARCHEOX_"INSTALL_LOG_FILE"
       fi
       ;;
     "Upload log for support")

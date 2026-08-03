@@ -2,4 +2,4 @@
 
 # archeox:summary=Print the current archeox git branch
 
-echo $(git -C "$archeox_PATH" rev-parse --abbrev-ref HEAD)
+echo $(git -C "$ARCHEOX_"PATH" rev-parse --abbrev-ref HEAD)

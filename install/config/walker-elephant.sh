@@ -2,11 +2,11 @@
 
 # Ensure Walker service is started automatically on boot
 mkdir -p ~/.config/autostart/
-cp $archeox_PATH/default/walker/walker.desktop ~/.config/autostart/
+cp $ARCHEOX_"PATH/default/walker/walker.desktop ~/.config/autostart/
 
 # And is restarted if it crashes or is killed
 mkdir -p ~/.config/systemd/user/app-walker@autostart.service.d/
-cp $archeox_PATH/default/walker/restart.conf ~/.config/systemd/user/app-walker@autostart.service.d/restart.conf
+cp $ARCHEOX_"PATH/default/walker/restart.conf ~/.config/systemd/user/app-walker@autostart.service.d/restart.conf
 
 # Create pacman hook to restart walker after updates
 sudo mkdir -p /etc/pacman.d/hooks
@@ -21,11 +21,11 @@ Target = elephant*
 [Action]
 Description = Restarting Walker services after system update
 When = PostTransaction
-Exec = $archeox_PATH/bin/archeox-restart-walker
+Exec = $ARCHEOX_"PATH/bin/archeox-restart-walker
 EOF
 
 # Link the visual theme menu config
 mkdir -p ~/.config/elephant/menus
-ln -snf $archeox_PATH/default/elephant/archeox_themes.lua ~/.config/elephant/menus/archeox_themes.lua
-ln -snf $archeox_PATH/default/elephant/archeox_background_selector.lua ~/.config/elephant/menus/archeox_background_selector.lua
-ln -snf $archeox_PATH/default/elephant/archeox_unlocks.lua ~/.config/elephant/menus/archeox_unlocks.lua
+ln -snf $ARCHEOX_"PATH/default/elephant/ARCHEOX_"themes.lua ~/.config/elephant/menus/ARCHEOX_"themes.lua
+ln -snf $ARCHEOX_"PATH/default/elephant/ARCHEOX_"background_selector.lua ~/.config/elephant/menus/ARCHEOX_"background_selector.lua
+ln -snf $ARCHEOX_"PATH/default/elephant/ARCHEOX_"unlocks.lua ~/.config/elephant/menus/ARCHEOX_"unlocks.lua

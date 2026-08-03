@@ -16,14 +16,14 @@ announce_browser_installed() {
 
 copy_chromium_flags() {
   mkdir -p ~/.config
-  cp -f "${archeox_PATH:-$HOME/.local/share/archeox}/config/chromium-flags.conf" "$1"
+  cp -f "${ARCHEOX_"PATH:-$HOME/.local/share/archeox}/config/chromium-flags.conf" "$1"
 }
 
 setup_firefox_preferences() {
   local distribution_dir="$1"
 
   setup_policy_directory "$distribution_dir"
-  sudo cp -f "$archeox_PATH/default/firefox/policies.json" "$distribution_dir/policies.json"
+  sudo cp -f "$ARCHEOX_"PATH/default/firefox/policies.json" "$distribution_dir/policies.json"
 }
 
 setup_firefox_wayland() {

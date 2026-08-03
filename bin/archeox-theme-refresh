@@ -5,5 +5,5 @@
 THEME_NAME_PATH="$HOME/.config/archeox/current/theme.name"
 
 if [[ -f $THEME_NAME_PATH ]]; then
-  archeox_THEME_SKIP_BACKGROUND=1 archeox-theme-set "$(cat $THEME_NAME_PATH)"
+  ARCHEOX_"THEME_SKIP_BACKGROUND=1 archeox-theme-set "$(cat $THEME_NAME_PATH)"
 fi

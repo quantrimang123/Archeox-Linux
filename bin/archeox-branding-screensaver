@@ -19,7 +19,7 @@ text)
   archeox-launch-editor ~/.config/archeox/branding/screensaver.txt >/dev/null 2>&1 && archeox-launch-screensaver force >/dev/null 2>&1
   ;;
 reset)
-  cp "$archeox_PATH/logo.txt" ~/.config/archeox/branding/screensaver.txt && archeox-launch-screensaver force >/dev/null 2>&1
+  cp "$ARCHEOX_"PATH/logo.txt" ~/.config/archeox/branding/screensaver.txt && archeox-launch-screensaver force >/dev/null 2>&1
   ;;
 *)
   echo "Usage: archeox-branding-screensaver <image|text|reset>" >&2

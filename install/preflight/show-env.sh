@@ -1,6 +1,6 @@
 # Show installation environment variables
 gum log --level info "Installation Environment:"
 
-env | grep -E "^(archeox_CHROOT_INSTALL|archeox_ONLINE_INSTALL|archeox_USER_NAME|archeox_USER_EMAIL|USER|HOME|archeox_REPO|archeox_REF|archeox_PATH)=" | sort | while IFS= read -r var; do
+env | grep -E "^(ARCHEOX_"CHROOT_INSTALL|ARCHEOX_"ONLINE_INSTALL|ARCHEOX_"USER_NAME|ARCHEOX_"USER_EMAIL|USER|HOME|ARCHEOX_"REPO|ARCHEOX_"REF|ARCHEOX_"PATH)=" | sort | while IFS= read -r var; do
   gum log --level info "  $var"
 done

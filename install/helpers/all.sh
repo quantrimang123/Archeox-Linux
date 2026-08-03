@@ -1,4 +1,4 @@
-source $archeox_INSTALL/helpers/chroot.sh
-source $archeox_INSTALL/helpers/presentation.sh
-source $archeox_INSTALL/helpers/errors.sh
-source $archeox_INSTALL/helpers/logging.sh
+source $ARCHEOX_"INSTALL/helpers/chroot.sh
+source $ARCHEOX_"INSTALL/helpers/presentation.sh
+source $ARCHEOX_"INSTALL/helpers/errors.sh
+source $ARCHEOX_"INSTALL/helpers/logging.sh

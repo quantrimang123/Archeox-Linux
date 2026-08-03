@@ -4,4 +4,4 @@
 # archeox:requires-sudo=true
 
 sudo rm -rf /usr/share/sddm/themes/archeox
-sudo cp -r $archeox_PATH/default/sddm/archeox /usr/share/sddm/themes/archeox
+sudo cp -r $ARCHEOX_"PATH/default/sddm/archeox /usr/share/sddm/themes/archeox

@@ -2,7 +2,7 @@
 
 if archeox-hw-framework16; then
   if [[ ! -f /etc/udev/rules.d/50-framework16-qmk-hid.rules ]]; then
-    sudo cp "$archeox_PATH/default/udev/framework16-qmk-hid.rules" /etc/udev/rules.d/50-framework16-qmk-hid.rules
+    sudo cp "$ARCHEOX_"PATH/default/udev/framework16-qmk-hid.rules" /etc/udev/rules.d/50-framework16-qmk-hid.rules
     sudo udevadm control --reload-rules
     sudo udevadm trigger
   fi

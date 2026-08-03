@@ -2,14 +2,14 @@
 
 # archeox:summary=Get remote tag
 
-latest_tag=$(git -C "$archeox_PATH" ls-remote --tags origin | grep -v "{}" | awk '{print $2}' | sed 's#refs/tags/##' | sort -V | tail -n 1)
+latest_tag=$(git -C "$ARCHEOX_"PATH" ls-remote --tags origin | grep -v "{}" | awk '{print $2}' | sed 's#refs/tags/##' | sort -V | tail -n 1)
 if [[ -z $latest_tag ]]; then
   echo "Error: Could not retrieve latest tag."
   exit 1
 fi
 
 # Get local tag
-current_tag=$(git -C "$archeox_PATH" describe --tags $(git -C "$archeox_PATH" rev-list --tags --max-count=1))
+current_tag=$(git -C "$ARCHEOX_"PATH" describe --tags $(git -C "$ARCHEOX_"PATH" rev-list --tags --max-count=1))
 if [[ -z $current_tag ]]; then
   echo "Error: Could not retrieve current tag."
   exit 1

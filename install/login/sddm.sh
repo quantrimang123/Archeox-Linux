@@ -3,8 +3,8 @@ archeox-refresh-sddm
 
 # Setup SDDM login service
 sudo mkdir -p /usr/local/share/wayland-sessions
-sudo cp "$archeox_PATH/default/wayland-sessions/archeox.desktop" /usr/local/share/wayland-sessions/archeox.desktop
-sudo cp "$archeox_PATH/default/sddm/hyprland.conf" /usr/share/sddm/hyprland.conf
+sudo cp "$ARCHEOX_"PATH/default/wayland-sessions/archeox.desktop" /usr/local/share/wayland-sessions/archeox.desktop
+sudo cp "$ARCHEOX_"PATH/default/sddm/hyprland.conf" /usr/share/sddm/hyprland.conf
 
 sudo mkdir -p /etc/sddm.conf.d
 cat <<EOF | sudo tee /etc/sddm.conf.d/10-wayland.conf >/dev/null
