@@ -13,11 +13,9 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@v3
         with:
           find: "ARCHEOX_""
-          replace: ARCHEOX_"
-       
+          replace: "ARCHEOX_"
       - name: Set up Rust toolchain
         uses: dtolnay/rust-toolchain@stable
-
       - name: Install rnr
         run: |
             cargo install rnr
