@@ -80,13 +80,13 @@ step "Building ISO..." "mkarchiso -v -w work/ -o ./ /tmp/isobuild"
   # Detect the actual ISO filename
   ISO_NAME=$(ls | grep "Archeox Linux baseline-.*-x86_64.iso" | head -n1)
 
-  step "Generating checksums text file..." "
-    b2sum $ISO_NAME > CHECKSUMS.txt
-    md5sum $ISO_NAME >> CHECKSUMS.txt
-    sha1sum $ISO_NAME >> CHECKSUMS.txt
-    sha256sum $ISO_NAME >> CHECKSUMS.txt
-  "
-}
+  #step "Generating checksums text file..." "
+    #b2sum $ISO_NAME > CHECKSUMS.txt
+    #md5sum $ISO_NAME >> CHECKSUMS.txt
+    #sha1sum $ISO_NAME >> CHECKSUMS.txt
+    #sha256sum $ISO_NAME >> CHECKSUMS.txt
+  #"
+#}
 
 main() {
   if [ -z ${DATE+x} ]; then
