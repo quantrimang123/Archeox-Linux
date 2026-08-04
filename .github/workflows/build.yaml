@@ -47,7 +47,7 @@ jobs:
         with:
           name: Archeox Linux ${{ env.DATE }}
           path: |
-            Archeox Linux baseline-${{ env.DATE }}-x86_64.iso
+            Archeox-Linux-baseline-${{ env.DATE }}-x86_64.iso
             CHECKSUMS.txt
       - name: Create tag and release
         uses: softprops/action-gh-release@v2
@@ -57,5 +57,5 @@ jobs:
           tag_name: ${{ env.DATE }}
           body_path: CHECKSUMS.txt
           files: |
-            Archeox Linux baseline-${{ env.DATE }}-x86_64.iso
+            Archeox-Linux-baseline-${{ env.DATE }}-x86_64.iso
             CHECKSUMS.txt
