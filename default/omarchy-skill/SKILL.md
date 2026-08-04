@@ -60,7 +60,7 @@ This directory contains Omarchy's source files managed by git. Any changes will 
 
 **Reading `/usr/share/omarchy/` is SAFE and useful** - do it freely to:
 - Understand how omarchy commands work: `omarchy theme set --help` or `cat $(which omarchy-theme-set)`
-- See default configs before customizing: `cat "$OMARCHY_PATH/config/omarchy/shell.json"`
+- See default configs before customizing: `cat "$ARCHEOX_PATH/config/omarchy/shell.json"`
 - Check stock theme files to copy for customization
 - Reference default hyprland settings: `cat /usr/share/omarchy/default/hypr/*`
 
@@ -173,13 +173,13 @@ inside a single long-running Quickshell process (`omarchy-shell`).
 ```
 ~/.config/omarchy/shell.json             # User overrides: bar, plugins, idle
 ~/.config/omarchy/plugins/<plugin-id>/   # User-owned shell plugins
-$OMARCHY_PATH/config/omarchy/shell.json  # Canonical defaults
+$ARCHEOX_PATH/config/omarchy/shell.json  # Canonical defaults
 ```
 
 The shell hot-reloads `shell.json` on save — no restart needed for layout
 changes. `idle.screensaver` and `idle.lock` are seconds since user idle began.
 
-To customize a built-in bar widget, never edit `$OMARCHY_PATH/shell/plugins/`.
+To customize a built-in bar widget, never edit `$ARCHEOX_PATH/shell/plugins/`.
 Clone it into the user plugin directory instead:
 
 ```bash
@@ -275,7 +275,7 @@ omarchy refresh hyprland
 
 # The refresh command:
 # 1. Backs up current config with timestamp
-# 2. Copies default from $OMARCHY_PATH/config/
+# 2. Copies default from $ARCHEOX_PATH/config/
 # 3. Restarts the component
 ```
 
@@ -336,7 +336,7 @@ Before writing ANY window rules, you MUST fetch the current documentation from t
 
 DO NOT rely on cached or memorized window rule syntax. The format has changed multiple times and using outdated syntax will cause errors or unexpected behavior.
 
-Window rules go in `~/.config/hypr/hyprland.lua` or a required Lua module. Prefer Omarchy's `o.window(match, rules)` helper — see examples in `$OMARCHY_PATH/default/hypr/windows.lua`.
+Window rules go in `~/.config/hypr/hyprland.lua` or a required Lua module. Prefer Omarchy's `o.window(match, rules)` helper — see examples in `$ARCHEOX_PATH/default/hypr/windows.lua`.
 
 ### Fonts
 

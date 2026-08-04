@@ -5,8 +5,8 @@
 
 # Omarchy session defaults. Users can override these in ~/.config/uwsm/default
 # or, preferably, ~/.config/uwsm/env.d/*.
-if [ -f "${OMARCHY_PATH%/}/default/uwsm/default" ]; then
-  . "${OMARCHY_PATH%/}/default/uwsm/default"
+if [ -f "${ARCHEOX_PATH%/}/default/uwsm/default" ]; then
+  . "${ARCHEOX_PATH%/}/default/uwsm/default"
 else
   export TERMINAL=xdg-terminal-exec
   export BROWSER=omarchy-launch-browser

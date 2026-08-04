@@ -29,11 +29,11 @@ for _, module in ipairs(modules_to_reload) do
 end
 
 -- Load generated state from ~/.local/state, user modules from ~/.config, and
--- Omarchy defaults from $OMARCHY_PATH.
+-- Omarchy defaults from $ARCHEOX_PATH.
 package.path = home
   .. "/.local/state/?.lua;"
   .. home
   .. "/.config/?.lua;"
-  .. (os.getenv("OMARCHY_PATH") or "/usr/share/omarchy")
+  .. (os.getenv("ARCHEOX_PATH") or "/usr/share/omarchy")
   .. "/?.lua;"
   .. package.path

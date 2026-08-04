@@ -1,0 +1,97 @@
+{
+  "date": "2026-08-04 16:06:19",
+  "operations": [
+    {
+      "source": "./default/systemd/user/omarchy-recover-internal-monitor.service",
+      "target": "./default/systemd/user/archeox-recover-internal-monitor.service"
+    },
+    {
+      "source": "./default/systemd/user/omarchy-sleep-lock.service",
+      "target": "./default/systemd/user/archeox-sleep-lock.service"
+    },
+    {
+      "source": "./default/libalpm/hooks/00-omarchy-update-guard.hook",
+      "target": "./default/libalpm/hooks/00-archeox-update-guard.hook"
+    },
+    {
+      "source": "./default/systemd/user/omarchy-speaker-tuning.service",
+      "target": "./default/systemd/user/archeox-speaker-tuning.service"
+    },
+    {
+      "source": "./default/fonts/omarchy/omarchy.ttf",
+      "target": "./default/fonts/omarchy/archeox.ttf"
+    },
+    {
+      "source": "./default/fontconfig/conf.avail/50-omarchy.conf",
+      "target": "./default/fontconfig/conf.avail/50-archeox.conf"
+    },
+    {
+      "source": "./default/libalpm/hooks/90-omarchy-hyprland-reload-resume.hook",
+      "target": "./default/libalpm/hooks/90-archeox-hyprland-reload-resume.hook"
+    },
+    {
+      "source": "./default/systemd/zram-generator.conf.d/90-omarchy.conf",
+      "target": "./default/systemd/zram-generator.conf.d/90-archeox.conf"
+    },
+    {
+      "source": "./default/uwsm/env.d/10-omarchy",
+      "target": "./default/uwsm/env.d/10-archeox"
+    },
+    {
+      "source": "./default/chromium/native-messaging-hosts/com.omarchy.ytdlp.json",
+      "target": "./default/chromium/native-messaging-hosts/com.archeox.ytdlp.json"
+    },
+    {
+      "source": "./default/systemd/user/omarchy-migrate-notify.service",
+      "target": "./default/systemd/user/archeox-migrate-notify.service"
+    },
+    {
+      "source": "./default/systemd/user/omarchy-tailscale-receive.service",
+      "target": "./default/systemd/user/archeox-tailscale-receive.service"
+    },
+    {
+      "source": "./default/chromium/native-messaging-hosts/com.omarchy.copy_url.json",
+      "target": "./default/chromium/native-messaging-hosts/com.archeox.copy_url.json"
+    },
+    {
+      "source": "./default/systemd/user/omarchy-fcitx5.service",
+      "target": "./default/systemd/user/archeox-fcitx5.service"
+    },
+    {
+      "source": "./default/hypr/apps/omarchy-shell.lua",
+      "target": "./default/hypr/apps/archeox-shell.lua"
+    },
+    {
+      "source": "./default/libalpm/hooks/10-omarchy-hyprland-reload-pause.hook",
+      "target": "./default/libalpm/hooks/10-archeox-hyprland-reload-pause.hook"
+    },
+    {
+      "source": "./default/environment.d/10-omarchy-fcitx.conf",
+      "target": "./default/environment.d/10-archeox-fcitx.conf"
+    },
+    {
+      "source": "./default/plymouth/omarchy.script",
+      "target": "./default/plymouth/archeox.script"
+    },
+    {
+      "source": "./default/omarchy/omarchy-menu.jsonc",
+      "target": "./default/omarchy/archeox-menu.jsonc"
+    },
+    {
+      "source": "./default/hypr/omarchy.lua",
+      "target": "./default/hypr/archeox.lua"
+    },
+    {
+      "source": "./default/wayland-sessions/omarchy.desktop",
+      "target": "./default/wayland-sessions/archeox.desktop"
+    },
+    {
+      "source": "./default/plymouth/omarchy.plymouth",
+      "target": "./default/plymouth/archeox.plymouth"
+    },
+    {
+      "source": "./bin/omarchy",
+      "target": "./bin/archeox"
+    }
+  ]
+}
