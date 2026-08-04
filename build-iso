@@ -86,7 +86,7 @@ step "Building ISO..." "mkarchiso -v -w work/ -o ./ /tmp/isobuild"
     #sha1sum $ISO_NAME >> CHECKSUMS.txt
     #sha256sum $ISO_NAME >> CHECKSUMS.txt
   #"
-#}
+}
 
 main() {
   if [ -z ${DATE+x} ]; then
