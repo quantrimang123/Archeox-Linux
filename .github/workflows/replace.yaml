@@ -21,7 +21,7 @@ jobs:
             cargo install rnr
             rnr --help
       - name: Run rnr to rename files
-        run: rnr regex -f -r 'omarchy-' 'archeox-' ./*
+        run: rnr regex -f -r 'omarchy' 'archeox' ./*
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
