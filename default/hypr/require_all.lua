@@ -1,5 +1,5 @@
 -- Require every *.lua file in a directory in sorted order.
--- Used for Omarchy extension-style folders such as default/hypr/apps,
+-- Used for Archeox extension-style folders such as default/hypr/apps,
 -- default/hypr/bindings, and ~/.local/state/archeox/toggles/hypr.
 -- Pass a module prefix for normal package.path modules, e.g.
 --   require_all.files(paths.archeox_path .. "/default/hypr/apps", "default.hypr.apps")
