@@ -24,7 +24,7 @@ Type=simple
 # The config name is deliberately not PipeWire's stock filter-chain.conf, which
 # merges every fragment in ~/.config/pipewire/filter-chain.conf.d/ and would make
 # this service host unrelated user filters too.
-ExecStart=/usr/bin/pipewire -c omarchy-speaker-tuning.conf
+ExecStart=/usr/bin/pipewire -c archeox-speaker-tuning.conf
 Restart=on-failure
 RestartSec=2
 

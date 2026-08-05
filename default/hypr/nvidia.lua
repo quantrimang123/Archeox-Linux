@@ -1,7 +1,7 @@
 local paths = require("default.hypr.paths")
 
-local nvidia_gsp = paths.omarchy_path .. "/bin/omarchy-hw-nvidia-gsp"
-local nvidia_without_gsp = paths.omarchy_path .. "/bin/omarchy-hw-nvidia-without-gsp"
+local nvidia_gsp = paths.omarchy_path .. "/bin/archeox-hw-nvidia-gsp"
+local nvidia_without_gsp = paths.omarchy_path .. "/bin/archeox-hw-nvidia-without-gsp"
 
 if o.shell_succeeds("lspci | grep -qi nvidia") then
   if o.shell_succeeds(o.shell_quote(nvidia_gsp)) then

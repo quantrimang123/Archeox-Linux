@@ -11,7 +11,7 @@ ConditionEnvironment=WAYLAND_DISPLAY
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/omarchy-system-sleep-monitor
+ExecStart=/usr/bin/archeox-system-sleep-monitor
 Restart=always
 RestartSec=2
 

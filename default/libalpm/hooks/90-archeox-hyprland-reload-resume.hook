@@ -2,11 +2,11 @@
 Operation = Install
 Operation = Upgrade
 Type = Package
-Target = omarchy-settings
-Target = omarchy-settings-dev
+Target = archeox-settings
+Target = archeox-settings-dev
 
 [Action]
 Description = Reloading Hyprland after Omarchy settings update...
 When = PostTransaction
 Depends = omarchy
-Exec = /usr/bin/omarchy-hyprland-reload-guard resume
+Exec = /usr/bin/archeox-hyprland-reload-guard resume

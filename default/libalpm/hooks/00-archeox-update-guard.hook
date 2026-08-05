@@ -7,5 +7,5 @@ Target = *
 Description = Checking Omarchy update entrypoint...
 When = PreTransaction
 Depends = omarchy
-Exec = /usr/bin/omarchy-update-pacman-guard
+Exec = /usr/bin/archeox-update-pacman-guard
 AbortOnFail

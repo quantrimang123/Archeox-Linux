@@ -48,7 +48,7 @@ local function command_from(value, description)
   end
 
   if value.omarchy then
-    return "omarchy-launch-" .. value.omarchy
+    return "archeox-launch-" .. value.omarchy
   elseif value.focus and value.launch then
     return o.launch_sole(value.focus, value.launch)
   elseif value.launch then
@@ -61,9 +61,9 @@ local function command_from(value, description)
     end
   elseif value.tui then
     if value.focus then
-      return "omarchy-launch-or-focus-tui " .. shell_quote(value.tui)
+      return "archeox-launch-or-focus-tui " .. shell_quote(value.tui)
     else
-      return "omarchy-launch-tui " .. shell_quote(value.tui)
+      return "archeox-launch-tui " .. shell_quote(value.tui)
     end
   end
 
@@ -109,19 +109,19 @@ function o.launch_on_start(command)
 end
 
 function o.launch_webapp(url)
-  return "omarchy-launch-webapp " .. shell_quote(url)
+  return "archeox-launch-webapp " .. shell_quote(url)
 end
 
 function o.launch_webapp_sole(name, url)
-  return "omarchy-launch-or-focus-webapp " .. shell_quote(name) .. " " .. shell_quote(url)
+  return "archeox-launch-or-focus-webapp " .. shell_quote(name) .. " " .. shell_quote(url)
 end
 
 function o.launch_sole(match, command)
-  return "omarchy-launch-or-focus " .. shell_quote(match) .. " " .. shell_quote(o.launch(command))
+  return "archeox-launch-or-focus " .. shell_quote(match) .. " " .. shell_quote(o.launch(command))
 end
 
 function o.bind_toggle(keys, description, toggle, options)
-  o.bind(keys, description, "omarchy-toggle-" .. toggle, options)
+  o.bind(keys, description, "archeox-toggle-" .. toggle, options)
 end
 
 function o.notify(message)

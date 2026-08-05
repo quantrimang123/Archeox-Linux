@@ -4,10 +4,10 @@
 export TERMINAL=xdg-terminal-exec
 
 # Used by terminal programs (like gh) to open URLs detached from the terminal process tree
-export BROWSER=omarchy-launch-browser
+export BROWSER=archeox-launch-browser
 
 # Used by terminal programs to open files with the selected Omarchy default editor
-export EDITOR="omarchy-launch-editor --inline"
+export EDITOR="archeox-launch-editor --inline"
 
 # Use a custom directory for screenshots (remember to make the directory!)
 # export ARCHEOX_SCREENSHOT_DIR="$HOME/Pictures/Screenshots"

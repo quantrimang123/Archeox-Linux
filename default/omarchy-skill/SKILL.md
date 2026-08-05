@@ -5,7 +5,7 @@ description: >
   Use when editing ~/.config/hypr/, ~/.config/omarchy/,
   ~/.config/alacritty/, ~/.config/foot/, ~/.config/kitty/, or ~/.config/ghostty/.
   Triggers: Hyprland, window rules, animations, keybindings, monitors, gaps, borders,
-  blur, opacity, omarchy-shell, bar, terminal config, themes, background,
+  blur, opacity, archeox-shell, bar, terminal config, themes, background,
   night light, idle, lock screen, screenshots, reminders, layer rules, workspace
   settings, display config, and user-facing omarchy commands. Excludes Omarchy
   source development through `omarchy dev link` workflows.
@@ -59,7 +59,7 @@ This directory contains Omarchy's source files managed by git. Any changes will 
 ```
 
 **Reading `/usr/share/omarchy/` is SAFE and useful** - do it freely to:
-- Understand how omarchy commands work: `omarchy theme set --help` or `cat $(which omarchy-theme-set)`
+- Understand how omarchy commands work: `omarchy theme set --help` or `cat $(which archeox-theme-set)`
 - See default configs before customizing: `cat "$ARCHEOX_PATH/config/omarchy/shell.json"`
 - Check stock theme files to copy for customization
 - Reference default hyprland settings: `cat /usr/share/omarchy/default/hypr/*`
@@ -98,7 +98,7 @@ Omarchy is built on:
 
 ## Command Discovery
 
-Omarchy ships a single `omarchy` CLI that dispatches to all `omarchy-*` binaries via `omarchy <group> <action>`. Always prefer this form — it is self-documenting and stable. The underlying `omarchy-*` binaries still exist on `PATH` and remain safe to read for source.
+Omarchy ships a single `omarchy` CLI that dispatches to all `archeox-*` binaries via `omarchy <group> <action>`. Always prefer this form — it is self-documenting and stable. The underlying `archeox-*` binaries still exist on `PATH` and remain safe to read for source.
 
 ```bash
 # List every documented command and its summary
@@ -116,7 +116,7 @@ omarchy theme set --help
 omarchy commands --json
 
 # Read a command's source to understand it
-cat $(which omarchy-theme-set)
+cat $(which archeox-theme-set)
 ```
 
 ### Command Groups
@@ -168,7 +168,7 @@ defaults, so overrides go here:
 ### Omarchy shell (Status Bar + Notifications)
 
 The bar, notification daemon, settings panel, and assorted overlays all run
-inside a single long-running Quickshell process (`omarchy-shell`).
+inside a single long-running Quickshell process (`archeox-shell`).
 
 ```
 ~/.config/omarchy/shell.json             # User overrides: bar, plugins, idle
@@ -227,7 +227,7 @@ cp ~/.config/hypr/bindings.lua ~/.config/hypr/bindings.lua.bak.$(date +%s)
 
 # 4. Apply changes
 # - Hyprland: auto-reloads on save, but MUST validate with `hyprctl reload` and `hyprctl configerrors`
-# - Omarchy shell: shell.json hot-reloads; use `omarchy-shell shell rescanPlugins` for plugin/widget code changes
+# - Omarchy shell: shell.json hot-reloads; use `archeox-shell shell rescanPlugins` for plugin/widget code changes
 # - Launcher: restart with `omarchy restart shell`
 # - Terminals: MUST restart with `omarchy restart terminal`
 ```

@@ -4,11 +4,11 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("dbus-update-activation-environment --systemd --all")
 
   hl.exec_cmd("quickshell -n -p $ARCHEOX_PATH/shell")
-  hl.exec_cmd("omarchy-first-run")
-  hl.exec_cmd("omarchy-powerprofiles-init")
-  hl.exec_cmd(o.launch("omarchy-hyprland-monitor-watch"))
+  hl.exec_cmd("archeox-first-run")
+  hl.exec_cmd("archeox-powerprofiles-init")
+  hl.exec_cmd(o.launch("archeox-hyprland-monitor-watch"))
   hl.exec_cmd(o.launch("udiskie --automount --no-notify --no-tray"))
 
   -- Run post-boot hooks after startup config has loaded.
-  hl.exec_cmd("sleep 2 && omarchy-hook post-boot")
+  hl.exec_cmd("sleep 2 && archeox-hook post-boot")
 end)

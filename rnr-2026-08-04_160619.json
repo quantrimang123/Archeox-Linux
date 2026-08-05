@@ -2,19 +2,19 @@
   "date": "2026-08-04 16:06:19",
   "operations": [
     {
-      "source": "./default/systemd/user/omarchy-recover-internal-monitor.service",
+      "source": "./default/systemd/user/archeox-recover-internal-monitor.service",
       "target": "./default/systemd/user/archeox-recover-internal-monitor.service"
     },
     {
-      "source": "./default/systemd/user/omarchy-sleep-lock.service",
+      "source": "./default/systemd/user/archeox-sleep-lock.service",
       "target": "./default/systemd/user/archeox-sleep-lock.service"
     },
     {
-      "source": "./default/libalpm/hooks/00-omarchy-update-guard.hook",
+      "source": "./default/libalpm/hooks/00-archeox-update-guard.hook",
       "target": "./default/libalpm/hooks/00-archeox-update-guard.hook"
     },
     {
-      "source": "./default/systemd/user/omarchy-speaker-tuning.service",
+      "source": "./default/systemd/user/archeox-speaker-tuning.service",
       "target": "./default/systemd/user/archeox-speaker-tuning.service"
     },
     {
@@ -26,7 +26,7 @@
       "target": "./default/fontconfig/conf.avail/50-archeox.conf"
     },
     {
-      "source": "./default/libalpm/hooks/90-omarchy-hyprland-reload-resume.hook",
+      "source": "./default/libalpm/hooks/90-archeox-hyprland-reload-resume.hook",
       "target": "./default/libalpm/hooks/90-archeox-hyprland-reload-resume.hook"
     },
     {
@@ -42,11 +42,11 @@
       "target": "./default/chromium/native-messaging-hosts/com.archeox.ytdlp.json"
     },
     {
-      "source": "./default/systemd/user/omarchy-migrate-notify.service",
+      "source": "./default/systemd/user/archeox-migrate-notify.service",
       "target": "./default/systemd/user/archeox-migrate-notify.service"
     },
     {
-      "source": "./default/systemd/user/omarchy-tailscale-receive.service",
+      "source": "./default/systemd/user/archeox-tailscale-receive.service",
       "target": "./default/systemd/user/archeox-tailscale-receive.service"
     },
     {
@@ -54,19 +54,19 @@
       "target": "./default/chromium/native-messaging-hosts/com.archeox.copy_url.json"
     },
     {
-      "source": "./default/systemd/user/omarchy-fcitx5.service",
+      "source": "./default/systemd/user/archeox-fcitx5.service",
       "target": "./default/systemd/user/archeox-fcitx5.service"
     },
     {
-      "source": "./default/hypr/apps/omarchy-shell.lua",
+      "source": "./default/hypr/apps/archeox-shell.lua",
       "target": "./default/hypr/apps/archeox-shell.lua"
     },
     {
-      "source": "./default/libalpm/hooks/10-omarchy-hyprland-reload-pause.hook",
+      "source": "./default/libalpm/hooks/10-archeox-hyprland-reload-pause.hook",
       "target": "./default/libalpm/hooks/10-archeox-hyprland-reload-pause.hook"
     },
     {
-      "source": "./default/environment.d/10-omarchy-fcitx.conf",
+      "source": "./default/environment.d/10-archeox-fcitx.conf",
       "target": "./default/environment.d/10-archeox-fcitx.conf"
     },
     {
@@ -74,7 +74,7 @@
       "target": "./default/plymouth/archeox.script"
     },
     {
-      "source": "./default/omarchy/omarchy-menu.jsonc",
+      "source": "./default/omarchy/archeox-menu.jsonc",
       "target": "./default/omarchy/archeox-menu.jsonc"
     },
     {
