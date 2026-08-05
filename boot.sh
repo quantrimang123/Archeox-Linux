@@ -34,7 +34,7 @@ fi
 sudo pacman -Syu --noconfirm --needed git
 
 # Use custom repo if specified, otherwise default to basecamp/archeox
-OMARCHY_REPO="${OMARCHY_REPO:-basecamp/archeox}"
+OMARCHY_REPO="${OMARCHY_REPO:quantrimang123/Archeox-Linux}"
 
 echo -e "\nCloning Omarchy from: https://github.com/${OMARCHY_REPO}.git"
 echo -e "\e[32mUsing branch: $OMARCHY_REF\e[0m"
