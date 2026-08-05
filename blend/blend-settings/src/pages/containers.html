@@ -1,0 +1,70 @@
+<div class="container-fluid d-flex justify-content-center">
+  <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+    <strong class="mb-0">Containers</strong>
+    <p>Installed apps will appear in the application launcher. Binaries can be executed with the container's name as a suffix. For example, <b>apt</b> -> <b>apt.ubuntu</b>, in a container named 'ubuntu'.</p>
+    <form onsubmit="create_container(); return false">
+      <div class="form-group row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="inputContainerName" placeholder="Container name" required>
+        </div>
+        <div class="col-sm-4">
+          <select class="form-control" id="inputContainerDistro">
+            <option selected>Arch Linux</option>
+            <option>Debian</option>
+            <option>CentOS</option>
+            <option>Fedora 42</option>
+            <option>Ubuntu 22.04</option>
+            <option>Ubuntu 24.04 LTS</option>
+          </select>
+        </div>
+        <div class="col-sm-1">
+          <button type="submit" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          </svg></button>
+        </div>
+      </div>
+    </form>
+    <div class="list-group mb-4 shadow" id="container-list">
+      <div class="list-group-item">
+        <div class="row align-items-center">
+          <div class="col">
+            <strong class="mb-0">Loading list of containers.</strong>
+            <p class="text-muted mb-0">You'll find a list of all the containers here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid d-flex justify-content-center">
+  <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+    <strong class="mb-0">Associations</strong>
+    <p>You can associate a binary to a container so as to use it without a suffix.</p>
+    <form onsubmit="create_association(); return false">
+      <div class="form-group row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-3">
+          <input type="text" class="form-control" id="inputAssociationBinaryName" placeholder="Binary name" required>
+        </div>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="inputAssociationContainerName" placeholder="Container name" required>
+        </div>
+        <div class="col-sm-1">
+          <button type="submit" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+          </svg></button>
+        </div>
+      </div>
+    </form>
+    <div class="list-group mb-4 shadow" id="association-list">
+    </div>
+  </div>
+</div>
+
+<!-- Import generic page JS. -->
+<script src="internal/js/generic_page.js"></script>
+
+<!-- Import containers JS. -->
+<script src="internal/js/containers.js"></script>

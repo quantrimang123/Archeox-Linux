@@ -1,0 +1,30 @@
+<div class="container-fluid d-flex justify-content-center">
+  <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+    <strong class="mb-0">System Updates</strong>
+    <div style="height: 0.75rem;"></div>
+    <div class="list-group mb-3 shadow">
+      <div class="list-group-item" id="system-update-item">
+        <div class="row align-items-center">
+          <div class="col">
+            <strong class="mb-0">Update system</strong>
+            <p class="text-muted mb-0">
+              Checks for updates, and updates your computer if they're available.
+            </p>
+          </div>
+          <div class="col-auto">
+            <div class="form-check form-switch align-middle">
+              <button type="button" id="update-btn" onclick="update_system()"
+                class="btn btn-primary" disabled>Checking...</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Import generic page JS. -->
+<script src="internal/js/generic_page.js"></script>
+
+<!-- Import overlay JS. -->
+<script src="internal/js/system.js"></script>
