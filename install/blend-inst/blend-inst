@@ -1,0 +1,404 @@
+#!/usr/bin/env python3
+
+# Copyright (C) 2023 Rudra Saraswat
+# Licensed under GPL-3.0.
+
+# Error codes
+# 1 - Partitioning error
+# 3 - Username not allowed
+
+import os
+import sys
+import json
+import yaml
+import signal
+import subprocess
+
+if os.environ.get('TESTING_INST') == 'true':
+    testing = True
+else:
+    testing = False
+
+# State variables
+mountpoints = []
+
+########################################################################################
+# Helper utils
+
+
+def preexec():
+    signal.signal(signal.SIGHUP, signal.SIG_IGN)
+    signal.signal(signal.SIGINT, signal.SIG_IGN)
+    signal.signal(signal.SIGQUIT, signal.SIG_IGN)
+
+
+def exec(cmd, input=None):
+    if testing:
+        if input != None:
+            print(' '.join(cmd), '<--', input)
+        else:
+            print(' '.join(cmd))
+    else:
+        if input != None:
+            subprocess.run(cmd, shell=False, stdout=sys.stdout,
+                            stderr=sys.stderr, preexec_fn=preexec, input=input.encode()).returncode
+        else:
+            subprocess.run(cmd, shell=False, stdout=sys.stdout,
+                            stderr=sys.stderr, preexec_fn=preexec).returncode
+
+
+def exec_chroot(cmd):
+    chroot_cmd = ['arch-chroot', '/mnt']
+    chroot_cmd += cmd
+    exec(chroot_cmd)
+
+
+def enable_service(service):
+    exec_chroot(['systemctl', 'enable', service])
+
+
+def enable_user_service(service):
+    exec_chroot(['systemctl', '--global', 'enable', service])
+
+
+def mount(part, path):
+    exec(['mount', part, path])
+
+
+def mkdir(path):
+    exec(['mkdir', '-p', path])
+
+
+########################################################################################
+# Filesystem
+
+
+def format_and_mount(config, mountpoint, filesystem, blockdevice):
+    efi = config['partition']['efi']
+
+    if filesystem == 'vfat':
+        exec(['mkfs.vfat', '-F32', blockdevice])
+    elif filesystem == 'bfs':
+        exec(['mkfs.bfs', blockdevice])
+    elif filesystem == 'cramfs':
+        exec(['mkfs.cramfs', blockdevice])
+    elif filesystem == 'ext3':
+        exec(['mkfs.ext3', blockdevice])
+    elif filesystem == 'fat':
+        exec(['mkfs.fat', blockdevice])
+    elif filesystem == 'msdos':
+        exec(['mkfs.msdos', blockdevice])
+    elif filesystem == 'xfs':
+        exec(['mkfs.xfs', blockdevice])
+    elif filesystem == 'btrfs':
+        exec(['mkfs.btrfs', '-f', blockdevice])
+    elif filesystem == 'ext2':
+        exec(['mkfs.ext2', blockdevice])
+    elif filesystem == 'ext4':
+        exec(['mkfs.ext4', blockdevice])
+    elif filesystem == 'minix':
+        exec(['mkfs.minix', blockdevice])
+    elif filesystem == 'f2fs':
+        exec(['mkfs.f2fs', blockdevice])
+    elif filesystem == 'don\'t format':
+        print(f'Not formatting {blockdevice}.')
+    elif filesystem == 'noformat':
+        print(f'Not formatting {blockdevice}.')
+
+    if mountpoint in mountpoints:
+        print()
+        print(
+            f'Invalid manual partitioning configuration. There are multiple partitions with the mount point {mountpoint}.')
+        sys.exit(1)
+
+    if mountpoint != 'none':
+        if mountpoint == 'System':
+            mountpoint = '/mnt/'
+        elif mountpoint == 'Boot':
+            mountpoint = '/mnt/boot/'
+        elif mountpoint == 'User':
+            mountpoint = '/mnt/home/'
+        else:
+            print()
+            print(
+                f'Invalid manual partitioning configuration.')
+            sys.exit(1)
+        mkdir(mountpoint)
+        mountpoints.append(mountpoint)
+        mount(blockdevice, mountpoint)
+
+
+def inst_partition(config):
+    try:
+        config['partition']
+    except:
+        return
+
+    device = config['partition']['device']
+    mode = config['partition']['mode']
+    efi = config['partition']['efi']
+    partitions = config['partition']['partitions']
+    password = config['partition']['password']
+
+    if mode == 'Auto':
+        # Delete partition table
+        exec(['wipefs', '-a', device])
+        exec(['sync'])
+
+        if efi:
+            # Create GPT label
+            exec(['parted', '-s', device, 'mklabel', 'gpt'])
+            # Create EFI partition
+            exec(['parted', '-s', device, 'mkpart', 'fat32', '0%', '512MiB'])
+        else:
+            # Create msdos label
+            exec(['parted', '-s', device, 'mklabel', 'msdos'])
+            # Create boot partition
+            exec(['parted', '-s', device, 'mkpart',
+                 'primary', 'ext4', '0%', '512MiB'])
+
+        # Create root partition
+        exec(['parted', '-s', device, 'mkpart',
+             'primary', 'ext4', '513MiB', '100%'])
+
+        global orig_main_partition
+
+        if 'nvme' in device or 'mmcblk' in device:
+            # Format EFI/boot partition
+            if efi:
+                exec(['mkfs.vfat', '-F32', f'{device}p1'])
+            else:
+                exec(['mkfs.ext4', '-F', f'{device}p1'])
+            root_partition = f'{device}p2'
+            orig_main_partition = root_partition
+            if password != '':
+                exec(['cryptsetup', '-q', 'luksFormat', root_partition], input=f'{password}\n')
+                exec(['cryptsetup', 'open', root_partition, 'new_root', '-'], input=f'{password}\n')
+                root_partition = '/dev/mapper/new_root'
+            # Format root partition
+            exec(['mkfs.ext4', '-F', root_partition])
+            # Mount partitions
+            mount(root_partition, '/mnt')
+            mkdir('/mnt/boot')
+            mount(f'{device}p1', '/mnt/boot')
+        else:
+            # Format EFI/boot partition
+            if efi:
+                exec(['mkfs.vfat', '-F32', f'{device}1'])
+            else:
+                exec(['mkfs.ext4', '-F', f'{device}1'])
+            root_partition = f'{device}2'
+            orig_main_partition = root_partition
+            if password != '':
+                exec(['cryptsetup', '-q', 'luksFormat', root_partition], input=f'{password}\n')
+                exec(['cryptsetup', 'open', root_partition, 'new_root', '-'], input=f'{password}\n')
+                root_partition = '/dev/mapper/new_root'
+            # Format root partition
+            exec(['mkfs.ext4', '-F', root_partition])
+            # Mount partitions
+            mount(root_partition, '/mnt')
+            mkdir('/mnt/boot')
+            mount(f'{device}1', '/mnt/boot')
+    else:
+        partitions.sort(key=lambda x: len(x[1]))
+        for p in partitions:
+            mountpoint = p.split(':')[0]
+            filesystem = p.split(':')[2]
+            blockdevice = p.split(':')[1]
+            format_and_mount(config, mountpoint, filesystem, blockdevice)
+        if '/mnt/' not in mountpoints:
+            print()
+            print(
+                "Invalid manual partitioning configuration. There must be a 'System' partition.")
+            sys.exit(1)
+        if '/mnt/boot/' not in mountpoints:
+            print()
+            print(
+                "Invalid manual partitioning configuration. There must be a 'Boot' partition.")
+            sys.exit(1)
+
+
+########################################################################################
+# Setup base
+
+
+def inst_setup_base(config):
+    if testing == False:
+        airootfs_files = [os.path.join(dirpath, filename)
+                          for (dirpath, dirs, files) in os.walk('/run/archiso')
+                          for filename in (dirs + files)]
+        airootfs_sfs = 'none'
+        for f in airootfs_files:
+            if os.path.basename(f) == 'airootfs.sfs':
+                airootfs_sfs = f
+                break
+        if airootfs_sfs == 'none':
+            print("====================")
+            print("Failed installation.")
+            sys.exit(1)
+        exec(['unsquashfs', '-f', '-d', '/mnt',
+              airootfs_sfs])
+    else:
+        exec(['unsquashfs', '-f', '-d', '/mnt',
+              '/run/archiso/bootmnt/blend/x86_64/airootfs.sfs'])
+    enable_service('bluetooth')
+    enable_service('cups')
+    # Enable blend-files
+    enable_user_service('blend-files')
+    # Generate fstab
+    exec(['bash', '-c', 'genfstab -U /mnt > /mnt/etc/fstab'])
+    # Refresh package lists, pacman-key --init
+    exec_chroot(['pacman-key', '--init'])
+    exec_chroot(['pacman-key', '--populate', 'archlinux'])
+    # Add akshara and encrypt hooks
+    exec_chroot(['bash', '-c', 'echo "MODULES=()" > /etc/mkinitcpio.conf'])
+    exec_chroot(['bash', '-c', 'echo "BINARIES=()" >> /etc/mkinitcpio.conf'])
+    exec_chroot(['bash', '-c', 'echo "FILES=()" >> /etc/mkinitcpio.conf'])
+    if config['partition']['password'] == '':
+        exec_chroot(['bash', '-c', 'echo "HOOKS=(base udev akshara autodetect keyboard keymap modconf block filesystems fsck)" >> /etc/mkinitcpio.conf'])
+    else:
+        exec_chroot(['bash', '-c', 'echo "HOOKS=(base udev akshara autodetect keyboard keymap consolefont modconf block encrypt filesystems fsck)" >> /etc/mkinitcpio.conf'])
+    # Install linux-zen
+    exec_chroot(['pacman', '-Sy', '--noconfirm', 'linux-zen', 'xorriso'])
+    # Remove jade-gui
+    exec_chroot(['pacman', '-Rn', '--noconfirm', 'jade-gui'])
+
+
+def inst_bootloader(config):
+    # Install bootloader
+    if 'NVIDIA' in subprocess.check_output(['lspci']).decode('utf-8'):
+        exec_chroot(
+            ['bash', '-c', 'echo -e \'\\nGRUB_CMDLINE_LINUX_DEFAULT="${GRUB_CMDLINE_LINUX_DEFAULT} nvidia_drm.modeset=1 splash"\' >> /etc/default/grub'])
+        mkdir('/mnt/etc/udev/rules.d')
+        exec_chroot(['ln', '-s', '/dev/null',
+                    '/etc/udev/rules.d/61-gdm.rules'])
+    else:
+        exec_chroot(
+            ['bash', '-c', 'echo -e \'\\nGRUB_CMDLINE_LINUX_DEFAULT="${GRUB_CMDLINE_LINUX_DEFAULT} splash"\' >> /etc/default/grub'])
+    if config['partition']['mode'] == 'Auto':
+        if config['partition']['password'] != '':
+            exec_chroot(
+                ['bash', '-c', 'echo -e \'\\nGRUB_CMDLINE_LINUX_DEFAULT="${GRUB_CMDLINE_LINUX_DEFAULT} cryptdevice=UUID=' + subprocess.check_output(['blkid', '-s', 'UUID', '-o', 'value', orig_main_partition]).decode('UTF-8').strip() + ':root root=/dev/mapper/root"\' >> /etc/default/grub'])
+        exec_chroot(
+            ['bash', '-c', 'echo -e \'\\nGRUB_TIMEOUT=3\' >> /etc/default/grub'])
+    if config['bootloader']['type'] == 'grub-efi':
+        exec_chroot(['grub-install', '--target=x86_64-efi', f'--efi-directory=/boot',
+                     '--bootloader-id=blend', '--removable'])
+        exec_chroot(['grub-install', '--target=x86_64-efi', f'--efi-directory=/boot',
+                     '--bootloader-id=blend'])
+    else:
+        exec_chroot(['grub-install', '--target=i386-pc',
+                    config["bootloader"]["location"]])
+    # Generate grub.cfg
+    exec_chroot(['grub-mkconfig', '-o', '/boot/grub/grub.cfg'])
+
+
+########################################################################################
+# Networking
+
+
+def inst_networking(config):
+    # Set hostname
+    exec_chroot(
+        ['bash', '-c', f'echo \'{config["networking"]["hostname"]}\' > /etc/hostname'])
+
+    # Create hosts file
+    exec_chroot(['bash', '-c', 'echo \'127.0.0.1     localhost\' > /etc/hosts'])
+
+    if config['networking']['ipv6']:
+        # Enable ipv6
+        exec_chroot(['bash', '-c', 'echo \'::1 localhost\' > /etc/hosts'])
+
+
+########################################################################################
+# Users
+
+
+def inst_users(config):
+    exec_chroot(['useradd', 'gnome-initial-setup'])
+    exec_chroot(['userdel', '-r', 'blend'])
+
+    # Write files
+    exec_chroot(
+        ['bash', '-c', 'echo "root ALL=(ALL:ALL) ALL" > /etc/sudoers'])
+    exec_chroot(
+        ['bash', '-c', 'echo "%wheel ALL=(ALL:ALL) ALL" >> /etc/sudoers'])
+    exec_chroot(
+        ['bash', '-c', 'echo "Defaults pwfeedback" >> /etc/sudoers']
+    )
+
+    exec_chroot(
+        ['bash', '-c', 'echo "[Theme]" > /etc/sddm.conf.d/default.conf'])
+    exec_chroot(
+        ['bash', '-c', 'echo "Current=breeze" >> /etc/sddm.conf.d/default.conf'])
+
+    exec_chroot(
+        ['bash', '-c', 'echo "[daemon]" > /etc/gdm/custom.conf'])
+    exec_chroot(
+        ['bash', '-c', 'echo "InitialSetupEnable=true" >> /etc/gdm/custom.conf'])
+
+
+########################################################################################
+# Akshara
+
+def inst_akshara(config):
+    exec_chroot(
+            ['rm', '-f', '/etc/locale.gen'])
+    for locale in ['en_US.UTF-8', 'de_DE.UTF-8', 'fr_FR.UTF-8', 'es_ES.UTF-8', 'zh_CN.UTF-8', 'ja_JP.UTF-8', 'ru_RU.UTF-8', 'ar_EG.UTF-8']:
+        exec_chroot(
+            ['bash', '-c', f'echo "{locale} UTF-8" >> /etc/locale.gen'])
+    exec_chroot(
+        ['locale-gen'])
+
+    system_config = {
+        'arch-repo': 'https://geo.mirror.pkgbuild.com',
+        'repo': 'https://pkg-repo.blendos.co',
+        'impl': 'https://github.com/blend-os/tracks/raw/main',
+        'track': 'default-gnome'
+        
+    }
+    if 'NVIDIA' in subprocess.check_output(['lspci']).decode('utf-8'):
+        system_config['packages'] = [
+            'nvidia-dkms',
+            'nvidia-prime',
+            'switcheroo-control'
+        ]
+
+        system_config['services'] = [
+            'switcheroo-control'
+        ]
+
+    if testing == False:
+        with open('/mnt/system.yaml', 'w') as system_config_file:
+            yaml.dump(system_config, system_config_file)
+    else:
+        print(system_config)
+    exec_chroot(['env', 'AKSHARA_INSTALL=1', 'akshara', 'update'])
+
+
+########################################################################################
+
+
+signal.signal(signal.SIGHUP, signal.SIG_IGN)
+signal.signal(signal.SIGINT, signal.SIG_IGN)
+signal.signal(signal.SIGQUIT, signal.SIG_IGN)
+
+
+try:
+    if sys.argv[1] == 'config' and os.path.isfile(sys.argv[2]):
+        with open(sys.argv[2]) as config_file:
+            config = json.load(config_file)
+            inst_partition(config)
+            inst_setup_base(config)
+            inst_bootloader(config)
+            inst_networking(config)
+            inst_users(config)
+            inst_akshara(config)
+
+        print()
+        print('========================')
+        print('Successful installation.')
+
+        sys.exit()
+except IndexError:
+    pass
