@@ -1,0 +1,21 @@
+{
+  "date": "2026-08-05 01:37:38",
+  "operations": [
+    {
+      "source": "./default/fonts/omarchy",
+      "target": "./default/fonts/archeox"
+    },
+    {
+      "source": "./default/sddm/omarchy",
+      "target": "./default/sddm/archeox"
+    },
+    {
+      "source": "./default/omarchy-skill",
+      "target": "./default/archeox-skill"
+    },
+    {
+      "source": "./default/omarchy",
+      "target": "./default/archeox"
+    }
+  ]
+}
