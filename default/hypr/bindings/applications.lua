@@ -1,22 +1,22 @@
 -- Essential application bindings.
-o.bind("SUPER + RETURN", "Terminal", { omarchy = "terminal" })
-o.bind("SUPER + SHIFT + RETURN", "Browser", { omarchy = "browser" })
-o.bind("SUPER + SHIFT + F", "File manager", { omarchy = "nautilus" })
-o.bind("SUPER + ALT + SHIFT + F", "File manager (cwd)", { omarchy = "nautilus-cwd" })
-o.bind("SUPER + SHIFT + B", "Browser", { omarchy = "browser" })
-o.bind("SUPER + SHIFT + ALT + B", "Browser (private)", { omarchy = "browser --private" })
-o.bind("SUPER + SHIFT + N", "Editor", { omarchy = "editor" })
+o.bind("SUPER + RETURN", "Terminal", { archeox = "terminal" })
+o.bind("SUPER + SHIFT + RETURN", "Browser", { archeox = "browser" })
+o.bind("SUPER + SHIFT + F", "File manager", { archeox = "nautilus" })
+o.bind("SUPER + ALT + SHIFT + F", "File manager (cwd)", { archeox = "nautilus-cwd" })
+o.bind("SUPER + SHIFT + B", "Browser", { archeox = "browser" })
+o.bind("SUPER + SHIFT + ALT + B", "Browser (private)", { archeox = "browser --private" })
+o.bind("SUPER + SHIFT + N", "Editor", { archeox = "editor" })
 
 if o.preinstalled_bindings_enabled() then
   -- Bindings for preinstalled Omarchy applications, TUIs, and web apps.
-  o.bind("SUPER + ALT + RETURN", "Tmux", { omarchy = "terminal-tmux" })
-  o.bind("SUPER + SHIFT + M", "Music", { omarchy = "spotify" })
+  o.bind("SUPER + ALT + RETURN", "Tmux", { archeox = "terminal-tmux" })
+  o.bind("SUPER + SHIFT + M", "Music", { archeox = "spotify" })
   o.bind("SUPER + SHIFT + ALT + M", "Music TUI", { tui = "cliamp", focus = true })
   o.bind("SUPER + SHIFT + D", "Docker", { tui = "lazydocker" })
-  o.bind("SUPER + SHIFT + G", "Signal", { omarchy = "signal" })
+  o.bind("SUPER + SHIFT + G", "Signal", { archeox = "signal" })
   o.bind("SUPER + SHIFT + O", "Obsidian", { launch = "obsidian", focus = "^obsidian$" })
   o.bind("SUPER + SHIFT + W", "Omawrite", { launch = "omawrite" })
-  o.bind("SUPER + SHIFT + SLASH", "Passwords", { omarchy = "1password" })
+  o.bind("SUPER + SHIFT + SLASH", "Passwords", { archeox = "1password" })
 
   o.bind("SUPER + SHIFT + A", "ChatGPT", { webapp = "https://chatgpt.com" })
   o.bind("SUPER + SHIFT + ALT + A", "Grok", { webapp = "https://grok.com" })

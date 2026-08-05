@@ -4,7 +4,7 @@ local home = os.getenv("HOME")
 local reload_prefixes = {
   "default.hypr",
   "hypr",
-  "omarchy.current.theme",
+  "archeox.current.theme",
 }
 
 local function should_reload_module(module)
@@ -34,6 +34,6 @@ package.path = home
   .. "/.local/state/?.lua;"
   .. home
   .. "/.config/?.lua;"
-  .. (os.getenv("ARCHEOX_PATH") or "/usr/share/omarchy")
+  .. (os.getenv("ARCHEOX_PATH") or "/usr/share/archeox")
   .. "/?.lua;"
   .. package.path

@@ -1,4 +1,4 @@
-: "${ARCHEOX_PATH:=/usr/share/omarchy}"
+: "${ARCHEOX_PATH:=/usr/share/archeox}"
 source "$ARCHEOX_PATH/default/bash/envs"
 source "$ARCHEOX_PATH/default/bash/shell"
 source "$ARCHEOX_PATH/default/bash/aliases"

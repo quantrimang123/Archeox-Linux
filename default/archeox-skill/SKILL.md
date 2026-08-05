@@ -1,19 +1,19 @@
 ---
-name: omarchy
+name: archeox
 description: >
   REQUIRED for end-user customization of Linux desktop, window manager, or system config.
-  Use when editing ~/.config/hypr/, ~/.config/omarchy/,
+  Use when editing ~/.config/hypr/, ~/.config/archeox/,
   ~/.config/alacritty/, ~/.config/foot/, ~/.config/kitty/, or ~/.config/ghostty/.
   Triggers: Hyprland, window rules, animations, keybindings, monitors, gaps, borders,
   blur, opacity, archeox-shell, bar, terminal config, themes, background,
   night light, idle, lock screen, screenshots, reminders, layer rules, workspace
-  settings, display config, and user-facing omarchy commands. Excludes Omarchy
-  source development through `omarchy dev link` workflows.
+  settings, display config, and user-facing archeox commands. Excludes Omarchy
+  source development through `archeox dev link` workflows.
 ---
 
 # Omarchy Skill
 
-Manage [Omarchy](https://omarchy.org/) Linux systems - a beautiful, modern, opinionated Arch Linux distribution with Hyprland.
+Manage [Omarchy](https://archeox.org/) Linux systems - a beautiful, modern, opinionated Arch Linux distribution with Hyprland.
 
 This skill is for end-user customization on installed systems.
 It is not for contributing to Omarchy source code.
@@ -23,32 +23,32 @@ It is not for contributing to Omarchy source code.
 **ALWAYS invoke this skill for end-user requests involving ANY of these:**
 
 - Editing ANY file in `~/.config/hypr/` (window rules, animations, keybindings, monitors, etc.)
-- Editing `~/.config/omarchy/shell.json` (status bar layout, widgets)
+- Editing `~/.config/archeox/shell.json` (status bar layout, widgets)
 - Editing terminal configs (alacritty, foot, kitty, ghostty)
-- Editing ANY file in `~/.config/omarchy/`
+- Editing ANY file in `~/.config/archeox/`
 - Window behavior, animations, opacity, blur, gaps, borders
 - Layer rules, workspace settings, display/monitor configuration
 - Themes, backgrounds, fonts, appearance changes
-- User-facing `omarchy` commands (`omarchy theme ...`, `omarchy refresh ...`, `omarchy restart ...`, etc.)
+- User-facing `archeox` commands (`archeox theme ...`, `archeox refresh ...`, `archeox restart ...`, etc.)
 - Screenshots, screen recording, reminders, night light, idle behavior, lock screen
 
 **If you're about to edit a config file in ~/.config/ on this system, STOP and use this skill first.**
 
-**Do NOT use this skill for Omarchy development tasks** (editing the Omarchy source tree, creating migrations, or running `omarchy dev ...` workflows).
+**Do NOT use this skill for Omarchy development tasks** (editing the Omarchy source tree, creating migrations, or running `archeox dev ...` workflows).
 
 ## Critical Safety Rules
 
 When invoking a privileged command directly, use `pkexec` instead of `sudo` so Omarchy can show a graphical authorization prompt with command context. Do not wrap commands that already manage privilege elevation themselves.
 
-**For end-user customization tasks, NEVER modify anything in `/usr/share/omarchy/`** - but READING is safe and encouraged.
+**For end-user customization tasks, NEVER modify anything in `/usr/share/archeox/`** - but READING is safe and encouraged.
 
 This directory contains Omarchy's source files managed by git. Any changes will be:
-- Lost on next `omarchy update`
+- Lost on next `archeox update`
 - Cause conflicts with upstream
 - Break the system's update mechanism
 
 ```
-/usr/share/omarchy/     # READ-ONLY - NEVER EDIT (reading is OK)
+/usr/share/archeox/     # READ-ONLY - NEVER EDIT (reading is OK)
 ├── bin/                    # Source scripts (symlinked to PATH)
 ├── config/                 # Default config templates
 ├── themes/                 # Stock themes
@@ -58,16 +58,16 @@ This directory contains Omarchy's source files managed by git. Any changes will 
 └── install/                # Installation scripts
 ```
 
-**Reading `/usr/share/omarchy/` is SAFE and useful** - do it freely to:
-- Understand how omarchy commands work: `omarchy theme set --help` or `cat $(which archeox-theme-set)`
-- See default configs before customizing: `cat "$ARCHEOX_PATH/config/omarchy/shell.json"`
+**Reading `/usr/share/archeox/` is SAFE and useful** - do it freely to:
+- Understand how archeox commands work: `archeox theme set --help` or `cat $(which archeox-theme-set)`
+- See default configs before customizing: `cat "$ARCHEOX_PATH/config/archeox/shell.json"`
 - Check stock theme files to copy for customization
-- Reference default hyprland settings: `cat /usr/share/omarchy/default/hypr/*`
+- Reference default hyprland settings: `cat /usr/share/archeox/default/hypr/*`
 
 **Always use these safe locations instead:**
 - `~/.config/` - User configuration (safe to edit)
-- `~/.config/omarchy/themes/<custom-name>/` - Custom themes (must be real directories)
-- `~/.config/omarchy/hooks/` - Custom automation hooks
+- `~/.config/archeox/themes/<custom-name>/` - Custom themes (must be real directories)
+- `~/.config/archeox/hooks/` - Custom automation hooks
 
 If the request is to develop Omarchy itself, this skill is out of scope. Follow repository development instructions instead of this skill.
 
@@ -91,29 +91,29 @@ Omarchy is built on:
 |-----------|---------|-----------------|
 | **Arch Linux** | Base OS | `/etc/`, `~/.config/` |
 | **Hyprland** | Wayland compositor/WM | `~/.config/hypr/` |
-| **Omarchy shell** | Status bar + notifications (Quickshell) | `~/.config/omarchy/shell.json` |
-| **Launcher** | Quickshell launcher | `~/.config/omarchy/shell.json` |
+| **Omarchy shell** | Status bar + notifications (Quickshell) | `~/.config/archeox/shell.json` |
+| **Launcher** | Quickshell launcher | `~/.config/archeox/shell.json` |
 | **Alacritty/Foot/Kitty/Ghostty** | Terminals | `~/.config/<terminal>/` |
 | **Omarchy OSD** | On-screen display | Quickshell plugin |
 
 ## Command Discovery
 
-Omarchy ships a single `omarchy` CLI that dispatches to all `archeox-*` binaries via `omarchy <group> <action>`. Always prefer this form — it is self-documenting and stable. The underlying `archeox-*` binaries still exist on `PATH` and remain safe to read for source.
+Omarchy ships a single `archeox` CLI that dispatches to all `archeox-*` binaries via `archeox <group> <action>`. Always prefer this form — it is self-documenting and stable. The underlying `archeox-*` binaries still exist on `PATH` and remain safe to read for source.
 
 ```bash
 # List every documented command and its summary
-omarchy commands
+archeox commands
 
 # Show the commands inside a group
-omarchy theme --help
-omarchy refresh --help
-omarchy restart --help
+archeox theme --help
+archeox refresh --help
+archeox restart --help
 
 # Show help for a specific command (does not execute it)
-omarchy theme set --help
+archeox theme set --help
 
 # Machine-readable listing (binary, route, summary, args, aliases)
-omarchy commands --json
+archeox commands --json
 
 # Read a command's source to understand it
 cat $(which archeox-theme-set)
@@ -121,24 +121,24 @@ cat $(which archeox-theme-set)
 
 ### Command Groups
 
-Run `omarchy --help` for the full list. The most common groups:
+Run `archeox --help` for the full list. The most common groups:
 
 | Group | Purpose | Example |
 |-------|---------|---------|
-| `omarchy refresh` | Reset config to defaults (backs up first) | `omarchy refresh shell` |
-| `omarchy restart` | Restart a service/app | `omarchy restart shell` |
-| `omarchy toggle` | Toggle feature on/off | `omarchy toggle nightlight` |
-| `omarchy theme` | Theme management | `omarchy theme set <name>` |
-| `omarchy bar` | Bar layout and widgets | `omarchy bar move omarchy.clock --section right` |
-| `omarchy plugin` | Manage/clone shell plugins | `omarchy plugin clone omarchy.clock` |
-| `omarchy hook` | Install automation hooks | `omarchy hook install theme-set <script>` |
-| `omarchy install` | Install optional software / packages | `omarchy install docker dbs` |
-| `omarchy launch` | Launch apps | `omarchy launch browser` |
-| `omarchy capture` | Screenshots and recordings | `omarchy capture screenshot` |
-| `omarchy reminder` | Desktop notification reminders | `omarchy reminder 15 "Pickup Jack"` |
-| `omarchy pkg` | Package management | `omarchy pkg add <pkg>` |
-| `omarchy setup` | Interactive setup wizards | `omarchy setup security fingerprint` |
-| `omarchy update` | System updates | `omarchy update` |
+| `archeox refresh` | Reset config to defaults (backs up first) | `archeox refresh shell` |
+| `archeox restart` | Restart a service/app | `archeox restart shell` |
+| `archeox toggle` | Toggle feature on/off | `archeox toggle nightlight` |
+| `archeox theme` | Theme management | `archeox theme set <name>` |
+| `archeox bar` | Bar layout and widgets | `archeox bar move archeox.clock --section right` |
+| `archeox plugin` | Manage/clone shell plugins | `archeox plugin clone archeox.clock` |
+| `archeox hook` | Install automation hooks | `archeox hook install theme-set <script>` |
+| `archeox install` | Install optional software / packages | `archeox install docker dbs` |
+| `archeox launch` | Launch apps | `archeox launch browser` |
+| `archeox capture` | Screenshots and recordings | `archeox capture screenshot` |
+| `archeox reminder` | Desktop notification reminders | `archeox reminder 15 "Pickup Jack"` |
+| `archeox pkg` | Package management | `archeox pkg add <pkg>` |
+| `archeox setup` | Interactive setup wizards | `archeox setup security fingerprint` |
+| `archeox update` | System updates | `archeox update` |
 
 ## Configuration Locations
 
@@ -163,7 +163,7 @@ defaults, so overrides go here:
 - Use `hyprctl reload` to force reload
 - After ANY Hyprland config change, validate with `hyprctl reload` followed by `hyprctl configerrors`
 - If `hyprctl configerrors` reports errors, address them and rerun validation until clean or until a real blocker is identified
-- Use `omarchy refresh hyprland` to reset to defaults
+- Use `archeox refresh hyprland` to reset to defaults
 
 ### Omarchy shell (Status Bar + Notifications)
 
@@ -171,9 +171,9 @@ The bar, notification daemon, settings panel, and assorted overlays all run
 inside a single long-running Quickshell process (`archeox-shell`).
 
 ```
-~/.config/omarchy/shell.json             # User overrides: bar, plugins, idle
-~/.config/omarchy/plugins/<plugin-id>/   # User-owned shell plugins
-$ARCHEOX_PATH/config/omarchy/shell.json  # Canonical defaults
+~/.config/archeox/shell.json             # User overrides: bar, plugins, idle
+~/.config/archeox/plugins/<plugin-id>/   # User-owned shell plugins
+$ARCHEOX_PATH/config/archeox/shell.json  # Canonical defaults
 ```
 
 The shell hot-reloads `shell.json` on save — no restart needed for layout
@@ -183,11 +183,11 @@ To customize a built-in bar widget, never edit `$ARCHEOX_PATH/shell/plugins/`.
 Clone it into the user plugin directory instead:
 
 ```bash
-omarchy plugin clone omarchy.workspaces
-# Edit ~/.config/omarchy/plugins/<username>.workspaces/; saved changes reload automatically.
+archeox plugin clone archeox.workspaces
+# Edit ~/.config/archeox/plugins/<username>.workspaces/; saved changes reload automatically.
 ```
 
-**Commands:** `omarchy restart shell`, `omarchy refresh shell`
+**Commands:** `archeox restart shell`, `archeox refresh shell`
 
 ### Terminals
 
@@ -198,7 +198,7 @@ omarchy plugin clone omarchy.workspaces
 ~/.config/ghostty/config
 ```
 
-**Command:** `omarchy restart terminal`
+**Command:** `archeox restart terminal`
 
 ### Other Configs
 
@@ -228,30 +228,30 @@ cp ~/.config/hypr/bindings.lua ~/.config/hypr/bindings.lua.bak.$(date +%s)
 # 4. Apply changes
 # - Hyprland: auto-reloads on save, but MUST validate with `hyprctl reload` and `hyprctl configerrors`
 # - Omarchy shell: shell.json hot-reloads; use `archeox-shell shell rescanPlugins` for plugin/widget code changes
-# - Launcher: restart with `omarchy restart shell`
-# - Terminals: MUST restart with `omarchy restart terminal`
+# - Launcher: restart with `archeox restart shell`
+# - Terminals: MUST restart with `archeox restart terminal`
 ```
 
 ### Pattern 2: Make a new theme
 
-1. Create a directory under ~/.config/omarchy/themes.
-2. See how an existing theme is done via /usr/share/omarchy/themes/catppuccin.
-3. Download a matching background (or several) from the internet and put them in ~/.config/omarchy/themes/[name-of-new-theme]
-4. When done with the theme, run `omarchy theme set "Name of new theme"`
+1. Create a directory under ~/.config/archeox/themes.
+2. See how an existing theme is done via /usr/share/archeox/themes/catppuccin.
+3. Download a matching background (or several) from the internet and put them in ~/.config/archeox/themes/[name-of-new-theme]
+4. When done with the theme, run `archeox theme set "Name of new theme"`
 
 ### Pattern 3: Use Hooks for Automation
 
-Hooks live in `~/.config/omarchy/hooks/<name>.d/` — one directory per event,
+Hooks live in `~/.config/archeox/hooks/<name>.d/` — one directory per event,
 holding any number of independent scripts. Install with
-`omarchy hook install <name> <script>` (copies the script in and makes it
+`archeox hook install <name> <script>` (copies the script in and makes it
 executable):
 
 ```
-~/.config/omarchy/hooks/
+~/.config/archeox/hooks/
 ├── battery-low.d/          # Low battery (percentage in $1)
 ├── font-set.d/             # After font change (font name in $1)
 ├── post-boot.d/            # After the desktop starts
-├── post-update.d/          # After `omarchy update`
+├── post-update.d/          # After `archeox update`
 ├── pre-refresh-pacman.d/   # Before package sync during update
 └── theme-set.d/            # After theme change (theme slug in $1)
 ```
@@ -270,8 +270,8 @@ When customizations go wrong:
 
 ```bash
 # Reset specific config (creates backup automatically)
-omarchy refresh shell
-omarchy refresh hyprland
+archeox refresh shell
+archeox refresh hyprland
 
 # The refresh command:
 # 1. Backs up current config with timestamp
@@ -284,11 +284,11 @@ omarchy refresh hyprland
 ### Themes
 
 ```bash
-omarchy theme list              # Show available themes
-omarchy theme current           # Show current theme
-omarchy theme set <name>        # Apply theme ("Tokyo Night" and "tokyo-night" both work)
-omarchy theme bg next           # Cycle background
-omarchy theme install <url>     # Install from git repo
+archeox theme list              # Show available themes
+archeox theme current           # Show current theme
+archeox theme set <name>        # Apply theme ("Tokyo Night" and "tokyo-night" both work)
+archeox theme bg next           # Cycle background
+archeox theme install <url>     # Install from git repo
 ```
 
 ### Keybindings
@@ -299,11 +299,11 @@ o.bind("SUPER + SHIFT + R", "SSH", "alacritty -e ssh your-server")
 o.bind("SUPER + B", "Browser", { launch = "chromium" })  -- launch wraps with uwsm-app
 ```
 
-View current bindings: `omarchy menu keybindings --print`
+View current bindings: `archeox menu keybindings --print`
 
 **IMPORTANT: When re-binding an existing key:**
 
-1. First check existing bindings: `omarchy menu keybindings --print`
+1. First check existing bindings: `archeox menu keybindings --print`
 2. If the key is already bound, you MUST call `hl.unbind(...)` BEFORE the new `o.bind(...)`
 3. Inform the user what the key was previously bound to
 
@@ -341,84 +341,84 @@ Window rules go in `~/.config/hypr/hyprland.lua` or a required Lua module. Prefe
 ### Fonts
 
 ```bash
-omarchy font list               # Available fonts
-omarchy font current            # Current font
-omarchy font set <name>         # Change font
+archeox font list               # Available fonts
+archeox font current            # Current font
+archeox font set <name>         # Change font
 ```
 
 ### System
 
 ```bash
-omarchy update                  # Full system update
-omarchy version                 # Show Omarchy version
-omarchy debug --no-sudo --print # Debug info (ALWAYS use these flags)
-omarchy system lock             # Lock screen
-omarchy system shutdown         # Shutdown
-omarchy system reboot           # Reboot
+archeox update                  # Full system update
+archeox version                 # Show Omarchy version
+archeox debug --no-sudo --print # Debug info (ALWAYS use these flags)
+archeox system lock             # Lock screen
+archeox system shutdown         # Shutdown
+archeox system reboot           # Reboot
 ```
 
-**IMPORTANT:** Always run `omarchy debug` with `--no-sudo --print` flags to avoid interactive sudo prompts that will hang the terminal.
+**IMPORTANT:** Always run `archeox debug` with `--no-sudo --print` flags to avoid interactive sudo prompts that will hang the terminal.
 
 ## Troubleshooting
 
 ```bash
 # Get debug information (ALWAYS use these flags to avoid interactive prompts)
-omarchy debug --no-sudo --print
+archeox debug --no-sudo --print
 
 # Reset specific config to defaults
-omarchy refresh <app>
+archeox refresh <app>
 
 # Refresh specific config file
 # config-file path is relative to ~/.config/
-# eg. `omarchy refresh config hypr/hyprland.lua` will refresh ~/.config/hypr/hyprland.lua
-omarchy refresh config <config-file>
+# eg. `archeox refresh config hypr/hyprland.lua` will refresh ~/.config/hypr/hyprland.lua
+archeox refresh config <config-file>
 
 # Full reinstall of configs (nuclear option)
-omarchy reinstall
+archeox reinstall
 ```
 
 ## Decision Framework
 
 When user requests system changes:
 
-1. **Is it a stock omarchy command?** Use it directly
-2. **Is it a config edit?** Edit in `~/.config/`, never `/usr/share/omarchy/`
+1. **Is it a stock archeox command?** Use it directly
+2. **Is it a config edit?** Edit in `~/.config/`, never `/usr/share/archeox/`
 3. **Is it a theme customization?** Create a NEW custom theme directory
-4. **Is it automation?** Use `omarchy hook install` and the hook `.d` directories
-5. **Is it a package install?** Use `omarchy pkg add <pkgs...>` (or `omarchy pkg aur add <pkgs...>` for AUR-only packages)
-6. **Is it built-in shell/plugin code?** Clone it with `omarchy plugin clone`; never edit the packaged copy
-7. **Unsure if command exists?** Run `omarchy commands` (or `omarchy <group> --help` for one group)
+4. **Is it automation?** Use `archeox hook install` and the hook `.d` directories
+5. **Is it a package install?** Use `archeox pkg add <pkgs...>` (or `archeox pkg aur add <pkgs...>` for AUR-only packages)
+6. **Is it built-in shell/plugin code?** Clone it with `archeox plugin clone`; never edit the packaged copy
+7. **Unsure if command exists?** Run `archeox commands` (or `archeox <group> --help` for one group)
 
 ### Reminder Requests
 
-When the user asks to set a reminder, use `omarchy reminder <minutes> [message]` directly. Convert natural language durations to minutes and title-case short reminder labels when appropriate.
+When the user asks to set a reminder, use `archeox reminder <minutes> [message]` directly. Convert natural language durations to minutes and title-case short reminder labels when appropriate.
 
 ```bash
-omarchy reminder 15 "Pickup Jack"
-omarchy reminder 60 "Check laundry"
-omarchy reminder show
-omarchy reminder clear
+archeox reminder 15 "Pickup Jack"
+archeox reminder 60 "Check laundry"
+archeox reminder show
+archeox reminder clear
 ```
 
 ## Out of Scope
 
 This skill intentionally does not cover Omarchy source development. Do not use this skill for:
-- Editing files in `/usr/share/omarchy/` (`bin/`, `config/`, `default/`, `shell/`, `themes/`, `migrations/`, etc.)
+- Editing files in `/usr/share/archeox/` (`bin/`, `config/`, `default/`, `shell/`, `themes/`, `migrations/`, etc.)
 - Creating or editing migrations
-- Running `omarchy dev ...` commands
+- Running `archeox dev ...` commands
 
 ## Example Requests
 
-- "Change my theme to catppuccin" -> `omarchy theme set catppuccin`
+- "Change my theme to catppuccin" -> `archeox theme set catppuccin`
 - "Add a keybinding for Super+E to open file manager" -> Check existing bindings first, call `hl.unbind` if needed, then `o.bind` in `~/.config/hypr/bindings.lua`
 - "Configure my external monitor" -> Edit `~/.config/hypr/monitors.lua`
 - "Make the window gaps smaller" -> Edit `~/.config/hypr/looknfeel.lua`
-- "Set up night light to turn on at sunset" -> `omarchy toggle nightlight` or edit `~/.config/hypr/hyprsunset.conf`
-- "Set a reminder to pickup jack in 15 minutes" -> `omarchy reminder 15 "Pickup Jack"`
-- "Show my reminders" -> `omarchy reminder show`
-- "Clear all reminders" -> `omarchy reminder clear`
-- "Customize the catppuccin theme colors" -> Create `~/.config/omarchy/themes/catppuccin-custom/` by copying from stock, then edit
-- "Run a script every time I change themes" -> Install it with `omarchy hook install theme-set <script>`
-- "Change how workspace labels are rendered" -> Clone `omarchy.workspaces`, which switches the bar to `<username>.workspaces`, then edit the clone
-- "Lock after ten minutes" -> Set `idle.lock` to `600` in `~/.config/omarchy/shell.json`
-- "Reset shell/bar to defaults" -> `omarchy refresh shell`
+- "Set up night light to turn on at sunset" -> `archeox toggle nightlight` or edit `~/.config/hypr/hyprsunset.conf`
+- "Set a reminder to pickup jack in 15 minutes" -> `archeox reminder 15 "Pickup Jack"`
+- "Show my reminders" -> `archeox reminder show`
+- "Clear all reminders" -> `archeox reminder clear`
+- "Customize the catppuccin theme colors" -> Create `~/.config/archeox/themes/catppuccin-custom/` by copying from stock, then edit
+- "Run a script every time I change themes" -> Install it with `archeox hook install theme-set <script>`
+- "Change how workspace labels are rendered" -> Clone `archeox.workspaces`, which switches the bar to `<username>.workspaces`, then edit the clone
+- "Lock after ten minutes" -> Set `idle.lock` to `600` in `~/.config/archeox/shell.json`
+- "Reset shell/bar to defaults" -> `archeox refresh shell`

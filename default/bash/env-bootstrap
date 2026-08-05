@@ -1,24 +1,24 @@
 # Single source of truth for ARCHEOX_PATH + PATH adjustments. Sourced by:
-#   /etc/profile.d/omarchy.sh                 (system login shells)
+#   /etc/profile.d/archeox.sh                 (system login shells)
 #   /etc/skel/.bashrc                         (interactive shells)
-#   /usr/share/uwsm/env.d/10-omarchy          (Hyprland session via uwsm)
-#   /usr/share/omarchy/default/bash/envs      (bash rc chain; SSH/non-login)
+#   /usr/share/uwsm/env.d/10-archeox          (Hyprland session via uwsm)
+#   /usr/share/archeox/default/bash/envs      (bash rc chain; SSH/non-login)
 
-# /etc/omarchy.conf is written by archeox-dev-link and reset by
+# /etc/archeox.conf is written by archeox-dev-link and reset by
 # archeox-dev-unlink. When absent, force the packaged default instead of
 # preserving a stale inherited value.
-if [ -f /etc/omarchy.conf ]; then
-  . /etc/omarchy.conf
-  : "${ARCHEOX_PATH:=/usr/share/omarchy}"
+if [ -f /etc/archeox.conf ]; then
+  . /etc/archeox.conf
+  : "${ARCHEOX_PATH:=/usr/share/archeox}"
 else
-  ARCHEOX_PATH=/usr/share/omarchy
+  ARCHEOX_PATH=/usr/share/archeox
 fi
 export ARCHEOX_PATH
 
 # Only prepend in dev-link mode. On a production install, the binaries are
-# already on PATH as /usr/bin/archeox-* via the omarchy package — prepending
-# /usr/share/omarchy/bin would just be noise.
-if [ "$ARCHEOX_PATH" != /usr/share/omarchy ]; then
+# already on PATH as /usr/bin/archeox-* via the archeox package — prepending
+# /usr/share/archeox/bin would just be noise.
+if [ "$ARCHEOX_PATH" != /usr/share/archeox ]; then
   case ":$PATH:" in
     *":${ARCHEOX_PATH%/}/bin:"*) ;;
     *) PATH="${ARCHEOX_PATH%/}/bin${PATH:+:$PATH}" ;;

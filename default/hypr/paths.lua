@@ -8,5 +8,5 @@ return {
   home = home,
   config_home = os.getenv("XDG_CONFIG_HOME") or (home .. "/.config"),
   state_home = os.getenv("XDG_STATE_HOME") or (home .. "/.local/state"),
-  omarchy_path = os.getenv("ARCHEOX_PATH") or "/usr/share/omarchy",
+  archeox_path = os.getenv("ARCHEOX_PATH") or "/usr/share/archeox",
 }

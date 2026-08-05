@@ -8,5 +8,5 @@ Target = archeox-settings-dev
 [Action]
 Description = Reloading Hyprland after Omarchy settings update...
 When = PostTransaction
-Depends = omarchy
+Depends = archeox
 Exec = /usr/bin/archeox-hyprland-reload-guard resume

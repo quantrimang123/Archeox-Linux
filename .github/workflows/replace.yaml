@@ -12,7 +12,7 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@v3
         with:
-          find: "omarchy"
+          find: "archeox"
           replace: "archeox"
       - name: Set up Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -22,8 +22,8 @@ jobs:
             rnr --help
       - name: Run rnr to rename files
         run: |
-            rnr regex -f -r 'omarchy' 'archeox' ./*
-             rnr regex -f -D -r 'omarchy' 'archeox' ./*
+            rnr regex -f -r 'archeox' 'archeox' ./*
+             rnr regex -f -D -r 'archeox' 'archeox' ./*
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:

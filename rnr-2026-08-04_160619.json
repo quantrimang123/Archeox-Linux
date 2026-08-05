@@ -18,11 +18,11 @@
       "target": "./default/systemd/user/archeox-speaker-tuning.service"
     },
     {
-      "source": "./default/fonts/omarchy/omarchy.ttf",
-      "target": "./default/fonts/omarchy/archeox.ttf"
+      "source": "./default/fonts/archeox/archeox.ttf",
+      "target": "./default/fonts/archeox/archeox.ttf"
     },
     {
-      "source": "./default/fontconfig/conf.avail/50-omarchy.conf",
+      "source": "./default/fontconfig/conf.avail/50-archeox.conf",
       "target": "./default/fontconfig/conf.avail/50-archeox.conf"
     },
     {
@@ -30,15 +30,15 @@
       "target": "./default/libalpm/hooks/90-archeox-hyprland-reload-resume.hook"
     },
     {
-      "source": "./default/systemd/zram-generator.conf.d/90-omarchy.conf",
+      "source": "./default/systemd/zram-generator.conf.d/90-archeox.conf",
       "target": "./default/systemd/zram-generator.conf.d/90-archeox.conf"
     },
     {
-      "source": "./default/uwsm/env.d/10-omarchy",
+      "source": "./default/uwsm/env.d/10-archeox",
       "target": "./default/uwsm/env.d/10-archeox"
     },
     {
-      "source": "./default/chromium/native-messaging-hosts/com.omarchy.ytdlp.json",
+      "source": "./default/chromium/native-messaging-hosts/com.archeox.ytdlp.json",
       "target": "./default/chromium/native-messaging-hosts/com.archeox.ytdlp.json"
     },
     {
@@ -50,7 +50,7 @@
       "target": "./default/systemd/user/archeox-tailscale-receive.service"
     },
     {
-      "source": "./default/chromium/native-messaging-hosts/com.omarchy.copy_url.json",
+      "source": "./default/chromium/native-messaging-hosts/com.archeox.copy_url.json",
       "target": "./default/chromium/native-messaging-hosts/com.archeox.copy_url.json"
     },
     {
@@ -70,27 +70,27 @@
       "target": "./default/environment.d/10-archeox-fcitx.conf"
     },
     {
-      "source": "./default/plymouth/omarchy.script",
+      "source": "./default/plymouth/archeox.script",
       "target": "./default/plymouth/archeox.script"
     },
     {
-      "source": "./default/omarchy/archeox-menu.jsonc",
-      "target": "./default/omarchy/archeox-menu.jsonc"
+      "source": "./default/archeox/archeox-menu.jsonc",
+      "target": "./default/archeox/archeox-menu.jsonc"
     },
     {
-      "source": "./default/hypr/omarchy.lua",
+      "source": "./default/hypr/archeox.lua",
       "target": "./default/hypr/archeox.lua"
     },
     {
-      "source": "./default/wayland-sessions/omarchy.desktop",
+      "source": "./default/wayland-sessions/archeox.desktop",
       "target": "./default/wayland-sessions/archeox.desktop"
     },
     {
-      "source": "./default/plymouth/omarchy.plymouth",
+      "source": "./default/plymouth/archeox.plymouth",
       "target": "./default/plymouth/archeox.plymouth"
     },
     {
-      "source": "./bin/omarchy",
+      "source": "./bin/archeox",
       "target": "./bin/archeox"
     }
   ]

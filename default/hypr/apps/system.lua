@@ -4,7 +4,7 @@ o.window({ tag = "floating-window" }, { center = true })
 o.window({ tag = "floating-window" }, { size = { 875, 600 } })
 
 o.window(
-  "(org.omarchy.btop|org.omarchy.terminal|org.omarchy.bash|org.codeberg.dnkl.foot|org.gnome.NautilusPreviewer|org.gnome.Evince|Omarchy|About|TUI.float|imv|mpv)",
+  "(org.archeox.btop|org.archeox.terminal|org.archeox.bash|org.codeberg.dnkl.foot|org.gnome.NautilusPreviewer|org.gnome.Evince|Omarchy|About|TUI.float|imv|mpv)",
   {
     tag = "+floating-window",
   }
@@ -22,9 +22,9 @@ o.window("dev.tensaku.Tensaku", { center = true })
 o.window("omacalc", { float = true })
 
 -- Fullscreen screensaver.
-o.window("org.omarchy.screensaver", { fullscreen = true })
-o.window("org.omarchy.screensaver", { float = true })
-o.window("org.omarchy.screensaver", { animation = "slide" })
+o.window("org.archeox.screensaver", { fullscreen = true })
+o.window("org.archeox.screensaver", { float = true })
+o.window("org.archeox.screensaver", { animation = "slide" })
 
 -- No transparency on media windows.
 o.window(

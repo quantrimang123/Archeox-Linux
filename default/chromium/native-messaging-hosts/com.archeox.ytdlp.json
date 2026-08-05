@@ -1,5 +1,5 @@
 {
-  "name": "com.omarchy.ytdlp",
+  "name": "com.archeox.ytdlp",
   "description": "Omarchy yt-dlp download host",
   "path": "__HOST_PATH__",
   "type": "stdio",

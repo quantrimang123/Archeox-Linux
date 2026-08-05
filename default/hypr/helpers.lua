@@ -47,8 +47,8 @@ local function command_from(value, description)
     return value
   end
 
-  if value.omarchy then
-    return "archeox-launch-" .. value.omarchy
+  if value.archeox then
+    return "archeox-launch-" .. value.archeox
   elseif value.focus and value.launch then
     return o.launch_sole(value.focus, value.launch)
   elseif value.launch then
@@ -71,11 +71,11 @@ local function command_from(value, description)
 end
 
 function o.preinstalled_bindings_enabled()
-  if _G.omarchy_preinstalled_bindings ~= nil then
-    return _G.omarchy_preinstalled_bindings == true
+  if _G.archeox_preinstalled_bindings ~= nil then
+    return _G.archeox_preinstalled_bindings == true
   end
 
-  return not file_exists((os.getenv("HOME") or "") .. "/.local/state/omarchy/preinstalls-removed")
+  return not file_exists((os.getenv("HOME") or "") .. "/.local/state/archeox/preinstalls-removed")
 end
 
 function o.bind(keys, description, dispatcher, options)

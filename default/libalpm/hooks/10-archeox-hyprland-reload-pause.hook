@@ -8,5 +8,5 @@ Target = archeox-settings-dev
 [Action]
 Description = Pausing Hyprland config auto-reload for Omarchy settings update...
 When = PreTransaction
-Depends = omarchy
+Depends = archeox
 Exec = /usr/bin/archeox-hyprland-reload-guard pause
