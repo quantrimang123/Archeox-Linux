@@ -16,4 +16,4 @@ source "$ARCHEOX_INSTALL/packaging/all.sh"
 source "$ARCHEOX_INSTALL/config/all.sh"
 source "$ARCHEOX_INSTALL/login/all.sh"
 source "$ARCHEOX_INSTALL/post-install/all.sh"
-source "$ARCHEOX_INSTALL/archeox-inst/all.sh"
+
