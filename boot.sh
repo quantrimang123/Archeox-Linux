@@ -2,8 +2,6 @@
 
 set -e
 
-# Support both legacy OMARCHY_* env names and the new ARCHEOX_* names.
-export OMARCHY_ONLINE_INSTALL=true
 export ARCHEOX_ONLINE_INSTALL=true
 
 ansi_art=' 
