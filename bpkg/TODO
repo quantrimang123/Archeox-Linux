@@ -1,2 +1,0 @@
-add -c flag
-add a -r flag for the remove function to remove the defined program recursively in case it was installed on multiple containers
